@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.2
+
+- Preserve unknown CVSS v3 severity when an upstream advisory supplies a zero score without a valid zero-impact vector. Recover scores from valid vectors and reject out-of-range scores.
+- Add regression coverage and record real Codex adoption-review validation.
+
 ## 0.2.1
 
 - Explain deps.dev package/version misses with bounded npm/PyPI public-registry existence checks, without substituting review evidence or approving missing data.
