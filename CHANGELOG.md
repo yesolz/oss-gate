@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Explain deps.dev package/version misses with bounded npm/PyPI public-registry existence checks, without substituting review evidence or approving missing data.
+- Retry transient read failures once, honor short Retry-After delays, and leave long waits and unresolved lookups explicit.
+
 ## 0.2.0
 
 - Package OSS Gate for Claude Code and Codex with shared MCP, skills, policy and renderer.

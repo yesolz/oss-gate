@@ -60,6 +60,7 @@ Remove only the links and MCP entries you added (`codex mcp remove oss-gate-deep
 ## Connection and privacy checks
 
 - depsdev contacts `api.deps.dev` and `api.osv.dev` with public package names/versions, repository identifiers and selected manifest package entries.
+- After a deps.dev package/version 404 only, npm/PyPI public identifiers may also be sent to `registry.npmjs.org` or `pypi.org` to distinguish missing registry metadata from a public-registry miss. These existence checks cannot approve a review.
 - DeepWiki receives the public repository name and your research questions. Your model provider receives the conversation/tool context under that client's terms.
 - The collector writes to the output folder chosen by the agent. Prefer an absolute workspace path so the client's server working directory cannot change where results go.
 - The MCP does not execute reviewed packages. The agent and uv still run local code; normal host permissions apply. The plugin does not install a global network-blocking hook.

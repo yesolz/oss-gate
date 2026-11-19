@@ -5,7 +5,8 @@
 """Local MCP for public deps.dev and OSV metadata. No API key required.
 
 Read tools return JSON strings with explicit errors. collect_review also writes
-new local evidence files. Only api.deps.dev and api.osv.dev are queried."""
+new local evidence files. npm/PyPI registry metadata is checked only after a
+deps.dev package/version lookup returns HTTP 404."""
 
 from __future__ import annotations
 
@@ -16,9 +17,11 @@ from contextvars import ContextVar, copy_context
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 import re
+import time
 from collections import deque
 from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from typing import Any
 from urllib.parse import quote
 
@@ -30,6 +33,8 @@ DEPSDEV_BASE = "https://api.deps.dev/v3"
 OSV_BASE = "https://api.osv.dev/v1"
 USER_AGENT = f"oss-gate-depsdev/{VERSION}"
 TIMEOUT = 15.0
+RETRY_STATUSES = {429, 500, 502, 503, 504}
+MAX_RETRY_DELAY = 2.0
 MAX_MANIFEST_BYTES = 512_000
 MAX_MANIFEST_ENTRIES = 2000
 MAX_FALLBACK_ATTEMPTS = 8
@@ -47,6 +52,7 @@ _OSV_ECO = {
 }
 
 from core.licenses import CATEGORIES, _SEV, classify_license
+from registry import check_registry
 
 mcp = FastMCP("depsdev")
 _client = httpx.Client(timeout=TIMEOUT, headers={"User-Agent": USER_AGENT}, follow_redirects=False, trust_env=False)
@@ -271,9 +277,44 @@ def _record(method: str, url: str, body, response):
         )
 
 
+def _retry_delay(response) -> float | None:
+    """Honor Retry-After without blocking a review for an unbounded interval."""
+    value = getattr(response, "headers", {}).get("Retry-After")
+    delay = 0.25
+    if value:
+        try:
+            if re.fullmatch(r"[0-9]+", value.strip()):
+                delay = float(value)
+            else:
+                when = parsedate_to_datetime(value)
+                if when.tzinfo is None:
+                    when = when.replace(tzinfo=timezone.utc)
+                delay = max(0.0, (when - datetime.now(timezone.utc)).total_seconds())
+        except (TypeError, ValueError, OverflowError):
+            pass
+    return delay if delay <= MAX_RETRY_DELAY else None
+
+
+def _request(method: str, url: str, body=None):
+    """At most two attempts for reads, including OSV's read-only query POST."""
+    for attempt in range(2):
+        try:
+            response = _client.get(url) if method == "GET" else _client.post(url, json=body)
+        except (httpx.TimeoutException, httpx.NetworkError):
+            if attempt:
+                raise
+            time.sleep(0.25)
+            continue
+        _record(method, url, body, response)
+        delay = _retry_delay(response) if response.status_code in RETRY_STATUSES and not attempt else None
+        if delay is None:
+            return response
+        time.sleep(delay)
+    return response
+
+
 def _get(url: str) -> dict:
-    response = _client.get(url)
-    _record("GET", url, None, response)
+    response = _request("GET", url)
     data = _parse(response)
     if not isinstance(data, dict):
         raise ApiError("unexpected upstream shape")
@@ -281,8 +322,7 @@ def _get(url: str) -> dict:
 
 
 def _post(url: str, body: dict) -> dict:
-    response = _client.post(url, json=body)
-    _record("POST", url, body, response)
+    response = _request("POST", url, body)
     data = _parse(response)
     if not isinstance(data, dict):
         raise ApiError("unexpected upstream shape")
@@ -640,10 +680,52 @@ def _affected_summary(affected: list[dict]) -> list[dict]:
 
 
 # ----------------------------------------------------------------- tools
+def _lookup_metadata(url, system, name, version, stage):
+    """Explain lookup failures without turning registry existence into approval."""
+    extra = {"source": "deps.dev", "lookup_stage": stage}
+    try:
+        return _get(url)
+    except ApiError as error:
+        if error.status == 404:
+            registry = check_registry(system, name, version, lambda address: _request("GET", address))
+            extra["registry_check"] = registry
+            state = registry["status"]
+            if state == "found":
+                extra["code"] = "depsdev_metadata_unavailable"
+                hint = "The public registry confirms this target exists, but deps.dev metadata is unavailable. Retry later or review the sources manually; existence alone is not approval."
+            elif state == "package_not_found":
+                extra["code"] = state
+                hint = f"The package was not found in public {registry['registry']}. Check the package name and ecosystem. Private/custom registries are not checked."
+            elif state == "version_not_found":
+                extra["code"] = state
+                hint = f"The package exists in public {registry['registry']}, but the requested version was not found. Check the exact version; no other version was substituted."
+            else:
+                extra["code"] = "lookup_unresolved"
+                hint = "deps.dev has no metadata for this target; registry existence could not be verified. Do not conclude that the package does not exist."
+            raise ApiError("target not found in deps.dev", 404, hint, extra) from error
+        extra["code"] = "upstream_rate_limited" if error.status == 429 else "upstream_lookup_failed"
+        raise ApiError(
+            error.message,
+            error.status,
+            "Try again later or check the upstream service. This lookup did not complete; it is not a clean review.",
+            extra,
+        ) from error
+    except httpx.HTTPError as error:
+        extra["code"] = "upstream_timeout" if isinstance(error, httpx.TimeoutException) else "upstream_network_error"
+        raise ApiError(
+            "upstream timeout" if isinstance(error, httpx.TimeoutException) else "network error",
+            None,
+            "Check connectivity and try again later. Registry existence was not checked because deps.dev did not return a not-found response.",
+            extra,
+        ) from error
+
+
 def _lookup_package(system: str, name: str, version: str) -> dict:
     sysn, name = norm_system(system), _seg(name, "name")
     version = version.strip() if isinstance(version, str) else ""
-    pkg = _get(f"{DEPSDEV_BASE}/systems/{sysn}/packages/{_q(name)}")
+    if version:
+        version = _seg(version, "version")
+    pkg = _lookup_metadata(f"{DEPSDEV_BASE}/systems/{sysn}/packages/{_q(name)}", sysn, name, version, "package")
     versions = _dicts(pkg.get("versions"))
     default = next((v for v in versions if v.get("isDefault") is True), None)
     latest = _vkey(default).get("version") if default else None
@@ -652,9 +734,16 @@ def _lookup_package(system: str, name: str, version: str) -> dict:
         latest = _vkey(max(dated, key=_published_ts)).get("version") if dated else None
     ver = version or latest
     if not ver:
-        raise ApiError("package has no resolvable default version", 404)
+        raise ApiError(
+            "package has no resolvable default version",
+            404,
+            "Specify an exact version. deps.dev returned package metadata but no usable default version.",
+            {"code": "version_unresolved", "source": "deps.dev"},
+        )
     ver = _seg(ver, "version")
-    det = _get(f"{DEPSDEV_BASE}/systems/{sysn}/packages/{_q(name)}/versions/{_q(ver)}")
+    det = _lookup_metadata(
+        f"{DEPSDEV_BASE}/systems/{sysn}/packages/{_q(name)}/versions/{_q(ver)}", sysn, name, ver, "version"
+    )
     if _vkey(det).get("version") != ver:
         raise ApiError("version mismatch from upstream")
     licenses = _strs(det.get("licenses"))
@@ -967,7 +1056,9 @@ def lookup_package(system: str, name: str, version: str = "") -> str:
     selects the registry default or newest dated publication. Returns licenses,
     license_policy, advisories, repository candidates, links and release timeline.
     Unknown licenses are review questions, not proof of a license violation.
-    Errors are JSON objects with error/status; no match is status 404."""
+    Errors have error/status; upstream lookup failures add a code and hint. On a deps.dev 404,
+    npm/PyPI public registries are checked for existence only, not approval.
+    Other ecosystems remain unverified; a 404 is not proof of nonexistence."""
     return _run(_lookup_package, system, name, version)
 
 
