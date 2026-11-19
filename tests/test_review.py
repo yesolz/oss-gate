@@ -38,6 +38,40 @@ def clean():
 
 
 class ApiRegression(unittest.TestCase):
+    def test_unscored_advisory_zero_is_unknown_unless_vector_confirms_it(self):
+        vector = "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        zero_vector = "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        v4_vector = "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+        cases = [
+            (0, "", [], None, None),
+            (0, "", [{"type": "CVSS_V4", "score": v4_vector}], None, None),
+            (0, "", [{"type": "CVSS_V3", "score": vector}], 9.8, "computed_from_vector"),
+            (0, zero_vector, [], 0, "deps.dev"),
+            (0, "invalid", [], None, None),
+            (11, "", [], None, None),
+        ]
+        for score, raw_vector, severity, expected, source in cases:
+            with self.subTest(score=score, vector=raw_vector, severity=severity):
+                with legacy_server.fake({
+                    legacy_server.ADV("PYSEC-example"): {
+                        "advisoryKey": {"id": "PYSEC-example"},
+                        "cvss3Score": score,
+                        "cvss3Vector": raw_vector,
+                    },
+                    legacy_server.OSVV("PYSEC-example"): {"id": "PYSEC-example", "severity": severity},
+                }):
+                    advisory = server._get_advisory("PYSEC-example")
+                self.assertEqual(advisory["cvss3_score"], expected)
+                self.assertEqual(advisory["cvss3_score_source"], source)
+                self.assertEqual(advisory["severity_label"], server.severity_label(expected))
+                data = clean()
+                data["advisories"] = {"PYSEC-example": advisory}
+                data["root_osv"]["ids"] = ["PYSEC-example"]
+                verdict = evaluate(data)
+                self.assertEqual(verdict["severity_unknown_count"], int(expected is None))
+                if expected is None:
+                    self.assertEqual(verdict["areas"]["vulns"], "conditional")
+
     def test_original_offline_suite(self):
         with contextlib.redirect_stdout(io.StringIO()):
             for name in vars(legacy_server):
