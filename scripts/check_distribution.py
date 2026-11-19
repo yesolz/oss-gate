@@ -94,6 +94,17 @@ def check(root=ROOT):
     claude = json.loads((root / "plugins/oss-gate/.claude-plugin/plugin.json").read_text(encoding="utf-8"))
     if manifest["version"] != claude["version"]:
         errors.append("manifest version mismatch")
+    marketplace = json.loads((root / ".claude-plugin/marketplace.json").read_text(encoding="utf-8"))
+    if marketplace["plugins"][0]["version"] != manifest["version"]:
+        errors.append("marketplace version mismatch")
+    for relative, key in [
+        ("pyproject.toml", "version"),
+        ("plugins/oss-gate/pyproject.toml", "version"),
+        ("plugins/oss-gate/mcp/depsdev/server.py", "VERSION"),
+    ]:
+        match = re.search(rf'^{key} = "([^"]+)"', (root / relative).read_text(encoding="utf-8"), re.M)
+        if not match or match[1] != manifest["version"]:
+            errors.append(f"release version mismatch: {relative}")
     if (root / "LICENSE").read_text(encoding="utf-8") != (root / "plugins/oss-gate/LICENSE").read_text(
         encoding="utf-8"
     ):

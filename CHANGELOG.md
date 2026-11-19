@@ -1,9 +1,12 @@
 # Changelog
 
-## Unreleased
+## 0.2.1
 
 - Explain deps.dev package/version misses with bounded npm/PyPI public-registry existence checks, without substituting review evidence or approving missing data.
 - Retry transient read failures once, honor short Retry-After delays, and leave long waits and unresolved lookups explicit.
+
+- Reject upstream redirects as failed lookups, including JSON bodies that resemble successful OSV results.
+- Derive release archive names from the plugin version.
 
 ## 0.2.0
 

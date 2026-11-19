@@ -1,6 +1,8 @@
 """Create a deterministic source distribution without local environments or private outputs."""
 
 import hashlib
+import json
+import re
 import zipfile
 from pathlib import Path
 
@@ -23,6 +25,10 @@ ALLOWED_FILES = {
 
 
 def build():
+    version = json.loads((ROOT / "plugins/oss-gate/plugin.json").read_text(encoding="utf-8"))["version"]
+    if not re.fullmatch(r"\d+\.\d+\.\d+", version):
+        raise ValueError("release version must have major.minor.patch form")
+    release_name = f"oss-gate-v{version}"
     files = []
     for path in sorted(ROOT.rglob("*")):
         rel = path.relative_to(ROOT)
@@ -39,10 +45,10 @@ def build():
         files.append((path, rel))
     out = ROOT / "dist"
     out.mkdir(exist_ok=True)
-    archive = out / "oss-gate-v0.2.0.zip"
+    archive = out / f"{release_name}.zip"
     with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as z:
         for path, rel in files:
-            info = zipfile.ZipInfo("oss-gate-v0.2.0/" + rel.as_posix(), date_time=(2026, 11, 20, 0, 0, 0))
+            info = zipfile.ZipInfo(release_name + "/" + rel.as_posix(), date_time=(2026, 11, 20, 0, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o100644 << 16
             z.writestr(info, path.read_bytes())

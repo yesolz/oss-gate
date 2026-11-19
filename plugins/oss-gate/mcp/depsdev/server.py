@@ -28,7 +28,7 @@ from urllib.parse import quote
 import httpx
 from mcp.server.fastmcp import FastMCP
 
-VERSION = "0.2.0"
+VERSION = "0.2.1"
 DEPSDEV_BASE = "https://api.deps.dev/v3"
 OSV_BASE = "https://api.osv.dev/v1"
 USER_AGENT = f"oss-gate-depsdev/{VERSION}"
@@ -254,7 +254,7 @@ def _q(x: str) -> str:
 def _parse(resp: httpx.Response) -> Any:
     if resp.status_code == 404:
         raise ApiError("not found", 404)
-    if resp.status_code >= 400:
+    if not 200 <= resp.status_code < 300:
         raise ApiError(f"upstream http {resp.status_code}", resp.status_code)
     try:
         return resp.json()

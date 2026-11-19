@@ -184,6 +184,25 @@ class LookupFailures(unittest.TestCase):
             self.assertEqual(self.lookup(version="")["code"], "version_unresolved")
             self.assertEqual(len(calls), 1)
 
+    def test_redirect_json_is_not_metadata_or_a_clean_osv_result(self):
+        response = httpx.Response(
+            302,
+            headers={"Location": "https://other.example/"},
+            json={"versions": [], "results": [{}]},
+        )
+        with self.routes({PKG: response}) as calls:
+            result = self.lookup()
+            self.assertEqual(result["code"], "upstream_lookup_failed")
+            self.assertEqual(result["status"], 302)
+            self.assertNotIn("registry_check", result)
+            self.assertEqual(len(calls), 1)
+        with self.routes({f"{server.OSV_BASE}/querybatch": response}) as calls:
+            results, incomplete = server._osv_batch([("PyPI", "demo", "1.0.0")])
+            self.assertEqual(results, [None])
+            self.assertTrue(incomplete)
+            self.assertEqual(len(calls), 1)
+        self.sleep.assert_not_called()
+
     def test_retry_recovers_reads_and_preserves_http_attempts(self):
         for method in ("GET", "POST"):
             responses = iter([httpx.Response(503), httpx.Response(200, json={"ok": True})])
