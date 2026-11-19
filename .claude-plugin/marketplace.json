@@ -1,0 +1,17 @@
+{
+  "name": "oss-gate",
+  "owner": {
+    "name": "yesolz"
+  },
+  "plugins": [
+    {
+      "name": "oss-gate",
+      "source": "./plugins/oss-gate",
+      "description": "Evidence-backed open-source adoption reviews in your own agent. Korean and English reports, source snapshots, and local HTML.",
+      "version": "0.2.0"
+    }
+  ],
+  "metadata": {
+    "description": "Agent-native open-source adoption reviews with preserved evidence."
+  }
+}

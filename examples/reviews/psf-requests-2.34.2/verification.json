@@ -1,0 +1,7 @@
+{
+  "status": "WARN",
+  "scope": "Historical snapshot integrity and policy re-evaluation; no fresh source authentication",
+  "source_sha256": "af943908340f5c6db720679a8f4f2473b43e91cfc39bf9a332f838c4648ddb3d",
+  "policy": "oss-gate.policy/2",
+  "original_reviewer": "WARN"
+}

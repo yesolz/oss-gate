@@ -1,0 +1,20 @@
+{
+  "name": "oss-gate",
+  "version": "0.2.0",
+  "description": "Evidence-backed open-source adoption reviews in your own agent. Korean and English reports, source snapshots, and local HTML.",
+  "author": {
+    "name": "yesolz",
+    "url": "https://github.com/yesolz"
+  },
+  "homepage": "https://github.com/yesolz/oss-gate",
+  "repository": "https://github.com/yesolz/oss-gate",
+  "license": "MIT",
+  "keywords": [
+    "open-source",
+    "license",
+    "vulnerability",
+    "sca",
+    "deepwiki",
+    "deps.dev"
+  ]
+}

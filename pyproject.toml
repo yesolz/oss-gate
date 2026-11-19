@@ -1,0 +1,25 @@
+[project]
+name = "oss-gate"
+version = "0.2.0"
+description = "Evidence-backed open-source adoption reviews in your own agent"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{name = "yesolz"}]
+dependencies = [
+    "mcp>=1.2,<2",
+    "httpx==0.28.1",
+    "markdown-it-py==4.3.0",
+]
+
+[dependency-groups]
+dev = ["pip-audit", "ruff"]
+
+[tool.uv]
+constraint-dependencies = ["filelock>=4.2.1"]
+
+[tool.ruff]
+line-length = 120
+extend-exclude = ["examples"]
+
+[tool.ruff.lint]
+select = ["E9", "F63", "F7", "F82"]

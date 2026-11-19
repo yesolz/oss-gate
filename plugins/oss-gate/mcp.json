@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "deepwiki": {
+      "type": "streamable-http",
+      "url": "https://mcp.deepwiki.com/mcp"
+    },
+    "depsdev": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--frozen",
+        "--project",
+        "${PLUGIN_ROOT}",
+        "python",
+        "${PLUGIN_ROOT}/mcp/depsdev/server.py"
+      ],
+      "type": "stdio"
+    }
+  },
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json"
+}

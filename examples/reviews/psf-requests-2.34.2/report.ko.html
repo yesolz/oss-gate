@@ -1,0 +1,617 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-o6GNtSeaOq845XJA+POFkaVnz+cEtOLPtYXW1zfVXlI='; img-src data:; base-uri 'none'; form-action 'none'"><meta name="generator" content="OSS Gate 0.2.0"><title>requests 2.34.2 | OSS Gate</title><style>
+:root{
+  color-scheme:light;
+  --paper:#eceeeb;--sheet:#ffffff;--sheet-2:#f4f5f2;
+  --ink:#1c2024;--ink-2:#4b5157;--muted:#7c838a;
+  --rule:#d8dbd6;--rule-2:#e6e8e4;--axis:#b9bdb8;
+  --accent:#1f3a8a;--accent-soft:#d9e1f5;--neutral:#d8dbd6;
+  --good:#0ca30c;--warn:#fab219;--serious:#ec835a;--crit:#d03b3b;
+  --good-ink:#0a6b0a;--warn-ink:#7a4f00;--serious-ink:#9a3b14;--crit-ink:#a52a2a;
+  --good-wash:rgba(12,163,12,.10);--warn-wash:rgba(250,178,25,.16);--serious-wash:rgba(236,131,90,.14);--crit-wash:rgba(208,59,59,.10);
+  --seal-warn:#d9960a;
+  --serif:"Noto Serif KR","Noto Serif CJK KR","Apple SD Gothic Neo","Nanum Myeongjo",Georgia,serif;
+  --sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo","Noto Sans KR","Noto Sans CJK KR",sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"D2Coding",monospace;
+  --measure:760px;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0f1113;--sheet:#181b1e;--sheet-2:#1f2327;
+  --ink:#e9ebe8;--ink-2:#b5bbc0;--muted:#7c838a;
+  --rule:#2b3035;--rule-2:#23282c;--axis:#3a4046;
+  --accent:#8fb0ff;--accent-soft:#1f3a8a;--neutral:#3a4046;
+  --good-ink:#5ad35a;--warn-ink:#fab219;--serious-ink:#ec835a;--crit-ink:#f08a8a;
+  --good-wash:rgba(12,163,12,.16);--warn-wash:rgba(250,178,25,.14);--serious-wash:rgba(236,131,90,.14);--crit-wash:rgba(208,59,59,.16);
+  --seal-warn:#fab219;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#0f1113;--sheet:#181b1e;--sheet-2:#1f2327;
+    --ink:#e9ebe8;--ink-2:#b5bbc0;--muted:#7c838a;
+    --rule:#2b3035;--rule-2:#23282c;--axis:#3a4046;
+    --accent:#8fb0ff;--accent-soft:#1f3a8a;--neutral:#3a4046;
+    --good-ink:#5ad35a;--warn-ink:#fab219;--serious-ink:#ec835a;--crit-ink:#f08a8a;
+    --good-wash:rgba(12,163,12,.16);--warn-wash:rgba(250,178,25,.14);--serious-wash:rgba(236,131,90,.14);--crit-wash:rgba(208,59,59,.16);
+    --seal-warn:#fab219;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 var(--sans);word-break:keep-all;overflow-wrap:anywhere;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline;text-underline-offset:2px}
+a.ext svg{width:11px;height:11px;margin-left:3px;vertical-align:-1px;opacity:.7}
+code{font:.9em var(--mono);background:var(--sheet-2);border-radius:3px;padding:.08em .35em;color:var(--ink)}
+h1,h2,h3,h4{margin:0;font-weight:600}
+h2{font:600 25px/1.3 var(--serif);letter-spacing:-.005em}
+h3{font-size:16px;margin:36px 0 12px}
+h4{font-size:15px;margin:18px 0 6px}
+.muted{color:var(--muted)}.empty{color:var(--muted);font-style:italic;margin:0}
+.ico{display:inline-flex;width:1em;height:1em;vertical-align:-.12em}.ico svg{width:100%;height:100%}
+.st{display:inline-flex;align-items:center;gap:5px;font-weight:600;white-space:nowrap}
+.st-good{color:var(--good-ink)}.st-warn{color:var(--warn-ink)}.st-serious{color:var(--serious-ink)}.st-crit{color:var(--crit-ink)}.st-neutral,.st-unknown{color:var(--ink-2)}
+
+
+.page{max-width:1240px;margin:0 auto;padding:40px 32px 120px;display:grid;grid-template-columns:272px minmax(0,1fr);gap:56px;align-items:start}
+.cover{position:sticky;top:32px}
+.cover-in{display:flex;flex-direction:column;gap:28px}
+.brand{display:flex;flex-direction:column;gap:2px}
+.wordmark{font:700 15px/1.2 var(--sans);letter-spacing:.01em}
+.brand-sub{font:500 13px/1.4 var(--serif);color:var(--ink-2)}
+
+
+.seal-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.seal{position:relative;width:var(--seal,160px);height:var(--seal,160px);transform:rotate(-6deg);animation:stamp .5s cubic-bezier(.2,.9,.3,1.2) both}
+.seal.st-good{color:var(--good)}.seal.st-warn{color:var(--seal-warn)}.seal.st-serious{color:var(--serious)}.seal.st-crit{color:var(--crit)}.seal.st-neutral{color:var(--axis)}
+.seal-ring{position:absolute;inset:0;width:100%;height:100%}
+.seal-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center}
+.seal-k{font:500 12px/1 var(--serif);letter-spacing:.3em;margin-left:.3em}
+.seal-v{font:700 38px/1.1 var(--serif);letter-spacing:.02em}
+.seal-d{font:500 11px/1 var(--sans);letter-spacing:.04em;opacity:.85;font-variant-numeric:tabular-nums}
+.seal-cap{margin:4px 0 0 4px;font:600 15px/1.3 var(--serif);color:var(--ink)}
+@keyframes stamp{from{opacity:0;transform:rotate(-6deg) scale(1.18)}to{opacity:1;transform:rotate(-6deg) scale(1)}}
+
+
+.mseals{display:flex;flex-wrap:wrap;gap:14px 12px}
+.mseal-item{display:flex;flex-direction:column;align-items:center;gap:4px;width:64px;color:inherit;text-decoration:none!important}
+.mseal{position:relative;width:52px;height:52px;display:inline-flex;align-items:center;justify-content:center;transform:rotate(-6deg)}
+.mseal svg{position:absolute;inset:0;width:100%;height:100%}
+.mseal-v{font:700 14px/1 var(--serif);letter-spacing:.02em}
+.mseal.st-good{color:var(--good)}.mseal.st-warn{color:var(--seal-warn)}.mseal.st-serious{color:var(--serious)}.mseal.st-crit{color:var(--crit)}.mseal.st-neutral{color:var(--axis)}
+.mseal-n{font-size:11.5px;color:var(--ink-2);text-align:center;line-height:1.3;max-width:64px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mseal-item:hover .mseal-n{color:var(--ink)}
+
+
+.arows{display:flex;flex-direction:column;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.arow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 2px;border-bottom:1px solid var(--rule-2);color:inherit;font-size:14px}
+.arow:last-child{border-bottom:0}a.arow:hover{text-decoration:none;background:var(--sheet)}
+.arow-l{color:var(--ink-2)}.arow-g{font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.arow-sub .arow-l{color:var(--muted);font-size:13px}
+
+.toc ol{list-style:none;margin:0;padding:0;font-size:14px}
+.toc li a{display:block;padding:5px 0 5px 12px;border-left:2px solid transparent;color:var(--ink-2)}
+.toc li a:hover{color:var(--ink);text-decoration:none}.toc li a.on{color:var(--ink);border-left-color:var(--ink);font-weight:600}
+
+.tools{display:flex;gap:6px;flex-wrap:wrap}
+.btn{font:inherit;font-size:13px;line-height:1;color:var(--ink);background:var(--sheet);border:1px solid var(--rule);border-radius:4px;padding:7px 11px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--axis)}.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn.icon{padding:7px;width:30px;height:30px;justify-content:center}.btn.icon svg{width:15px;height:15px}.btn.sm{padding:4px 9px;font-size:12px}
+.when-dark{display:none}:root[data-theme="dark"] .when-dark{display:inline-flex}:root[data-theme="dark"] .when-light{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .when-dark{display:inline-flex}:root:not([data-theme="light"]) .when-light{display:none}}
+
+
+.sheet{background:var(--sheet);border:1px solid var(--rule);padding:56px 64px 72px;min-width:0}
+.doc-head{max-width:var(--measure)}
+.pkg{font:700 49px/1.1 var(--serif);letter-spacing:-.015em}
+.pkg .ver{font:500 20px/1 var(--sans);color:var(--muted);margin-left:12px;letter-spacing:0}
+.desc{margin:14px 0 0;font:500 20px/1.5 var(--serif);color:var(--ink-2)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 28px;margin:32px 0 0;padding:18px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.facts>div{min-width:0}.facts dt{font-size:12.5px;color:var(--muted)}.facts dd{margin:0;font-size:15px;font-weight:500}
+@media (max-width:640px){.facts{grid-template-columns:repeat(2,1fr)}}
+
+.sec{padding-top:56px;margin-top:56px;border-top:1px solid var(--rule);max-width:var(--measure)}
+.sec-first{border-top:0;padding-top:40px;margin-top:0}
+.sec.wide{max-width:none}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.sec-h .src{font-size:13px;color:var(--muted)}
+.sec-sub{margin:10px 0 0;color:var(--ink-2);font-size:15px}
+.sec-h+*:not(.sec-sub){margin-top:22px}.sec-sub+*{margin-top:22px}.sec>h2+*{margin-top:22px}
+
+.tldr{margin:0;display:grid;gap:14px}
+.tldr>div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px}
+.tldr dt{font:600 15px/1.65 var(--serif);color:var(--ink)}.tldr dd{margin:0;color:var(--ink);font-size:15.5px}
+@media (max-width:640px){.tldr>div{grid-template-columns:1fr;gap:2px}}
+
+.ledger{display:grid;grid-template-columns:repeat(var(--cols,6),1fr);margin-top:36px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.fig{padding:16px 14px 14px 0;border-right:1px solid var(--rule-2);min-width:0}.fig:last-child{border-right:0}.fig+.fig{padding-left:14px}
+.fig-v{font:600 28px/1.1 var(--sans);letter-spacing:-.02em;white-space:nowrap}.fig-v small{font-size:13px;color:var(--muted);font-weight:400;margin-left:1px}
+.fig-l{font-size:12.5px;color:var(--ink-2);margin-top:6px}.fig-s{font-size:12px;color:var(--muted);margin-top:1px}
+.fig.tone-crit .fig-v{color:var(--crit-ink)}.fig.tone-warn .fig-v{color:var(--warn-ink)}.fig.tone-serious .fig-v{color:var(--serious-ink)}
+@media (max-width:900px){.ledger{grid-template-columns:repeat(3,1fr)}.fig:nth-child(3){border-right:0}.fig:nth-child(n+4){border-top:1px solid var(--rule-2)}.fig:nth-child(4){padding-left:0}}
+
+.reason{margin:20px 0 0;padding:14px 18px;background:var(--sheet-2);border-radius:4px;font-size:14.5px;color:var(--ink-2)}
+.reason b{display:block;color:var(--ink);font-weight:600;margin-bottom:2px;font-size:13px}
+.warnline{color:var(--serious-ink);font-size:14px}
+.calm{display:flex;align-items:center;gap:8px;color:var(--ink-2);margin:0 0 6px}.calm .ok{color:var(--good)}
+.calm.big{font:600 20px/1.4 var(--serif);color:var(--ink)}
+
+
+.deptree{display:grid;grid-template-columns:176px 32px minmax(0,1fr);align-items:center}
+.deptree-edge{height:100%;position:relative}
+.deptree-edge::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--axis)}
+.deptree-edge::after{content:"";position:absolute;right:-1px;top:12%;bottom:12%;width:1px;background:var(--axis)}
+.deptree-kids{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;padding-left:10px}
+.dep{position:relative;background:var(--sheet);border:1px solid var(--rule);border-radius:4px;padding:12px 14px 12px 17px;min-width:0;outline:none;transition:border-color .15s}
+.dep::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:3px 0 0 3px;background:var(--lc,transparent)}
+.dep:hover,.dep:focus-visible{border-color:var(--ink)}
+.dep.root{border:1.5px solid var(--ink);padding-left:14px;background:var(--sheet-2)}.dep.root::before{display:none}
+.dep.lic-neutral{--lc:var(--neutral)}.dep.lic-warn{--lc:var(--warn)}.dep.lic-crit{--lc:var(--crit)}.dep.lic-serious{--lc:var(--serious)}
+.dep.lic-unknown::before{background:repeating-linear-gradient(45deg,var(--neutral) 0 3px,var(--muted) 3px 4px)}
+.dep.more{display:flex;align-items:center;justify-content:center;color:var(--ink-2);font-size:14px;border-style:dashed}
+.dep-n{font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px}
+.dep-v{font-size:12.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.dep-l{font-size:12px;color:var(--muted);margin-top:6px}
+.vbadge{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--crit);color:#fff;font-size:11.5px;font-weight:700}
+@media (max-width:640px){.deptree{grid-template-columns:1fr}.deptree-edge{display:none}.deptree-kids{padding:10px 0 0}}
+.tv{margin-top:16px}details.tv>summary{color:var(--ink-2);font-size:13.5px;cursor:pointer}
+
+.ntree{margin:8px 0 0;padding-left:0;list-style:none;font-size:14px}
+.ntree ul{list-style:none;margin:0;padding-left:18px;border-left:1px solid var(--rule)}
+.ntree li{margin:3px 0;padding-left:8px}
+.ntree details>summary{cursor:pointer;list-style:none;display:inline}
+.ntree details>summary::-webkit-details-marker{display:none}
+.ntree details>summary::before{content:"";display:inline-block;width:6px;height:6px;margin:0 8px 2px 0;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(-45deg);transition:transform .15s}
+.ntree details[open]>summary::before{transform:rotate(45deg)}
+.ntree .nv{color:var(--muted);font-size:12.5px;margin-left:4px;font-variant-numeric:tabular-nums}
+.ntree .nl{color:var(--muted);font-size:12.5px;margin-left:8px}
+.ntree .multi{color:var(--muted);font-size:12px;margin-left:8px;font-style:italic}
+
+.segbar{display:flex;gap:2px;height:8px;border-radius:999px;overflow:hidden;background:var(--sheet-2)}
+.seg{display:block;height:100%;min-width:3px}
+.seg-neutral{background:var(--neutral)}.seg-warn{background:var(--warn)}.seg-crit{background:var(--crit)}.seg-serious{background:var(--serious)}.seg-good{background:var(--good)}
+.seg-unknown{background:repeating-linear-gradient(45deg,var(--neutral) 0 3px,var(--muted) 3px 4px)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;font-size:13.5px;color:var(--ink-2)}
+.lg{display:inline-flex;align-items:center;gap:7px}.lg b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums;margin-left:2px}.lg.dim{opacity:.5}
+.sw{width:12px;height:12px;border-radius:2px;display:inline-block;background:var(--neutral)}
+.sw-warn{background:var(--warn)}.sw-crit{background:var(--crit)}.sw-serious{background:var(--serious)}.sw-good{background:var(--good)}
+.sw-unknown{background:repeating-linear-gradient(45deg,var(--neutral) 0 3px,var(--muted) 3px 4px)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--neutral);margin-right:7px;vertical-align:1px}
+.dot-warn{background:var(--warn)}.dot-crit{background:var(--crit)}.dot-serious{background:var(--serious)}.dot-good{background:var(--good)}
+.dot-unknown{background:repeating-linear-gradient(45deg,var(--neutral) 0 2px,var(--muted) 2px 3px)}.dot-none{display:none}
+
+.tbl{width:100%;border-collapse:collapse;font-size:14px;margin-top:14px}
+.tbl th,.tbl td{text-align:left;padding:9px 10px 9px 0;border-bottom:1px solid var(--rule-2);vertical-align:top}
+.tbl th{color:var(--muted);font-weight:500;font-size:13px;white-space:nowrap;border-bottom-color:var(--rule)}
+.tbl.sortable th{cursor:pointer;user-select:none}.tbl.sortable th:hover{color:var(--ink)}
+.tbl th[aria-sort="ascending"]::after{content:" ↑"}.tbl th[aria-sort="descending"]::after{content:" ↓"}
+.tbl td.num,.tbl th.num{font-variant-numeric:tabular-nums;text-align:right;padding-right:14px}.tbl td.path{color:var(--muted);font-size:13px}
+.tbl td.nw{white-space:nowrap}
+.tbl tbody tr:hover{background:var(--sheet-2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.chip{font:inherit;font-size:13px;color:var(--ink-2);background:var(--sheet);border:1px solid var(--rule);border-radius:999px;padding:4px 11px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.chip b{color:var(--ink);font-weight:600}.chip.on{border-color:var(--ink);color:var(--ink)}
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;border-radius:3px;padding:1px 7px;white-space:nowrap;vertical-align:1px}
+.tag-good{background:var(--good-wash);color:var(--good-ink)}.tag-warn{background:var(--warn-wash);color:var(--warn-ink)}
+.tag-serious{background:var(--serious-wash);color:var(--serious-ink)}.tag-crit{background:var(--crit-wash);color:var(--crit-ink)}
+.tag-neutral,.tag-unknown{background:var(--sheet-2);color:var(--ink-2)}
+
+
+.maint-grid{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:40px}
+@media (max-width:900px){.maint-grid{grid-template-columns:1fr;gap:8px}}
+.sc-hero{display:flex;align-items:center;gap:20px;margin-bottom:18px}
+.sc-num{font:600 56px/1 var(--sans);letter-spacing:-.03em}.sc-num small{font-size:18px;color:var(--muted);font-weight:400;margin-left:2px}
+.sc-k{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.meter-tools{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:6px}
+.meters{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.meter-row{border-bottom:1px solid var(--rule-2)}
+.meter-btn{all:unset;display:grid;grid-template-columns:168px minmax(0,1fr) 72px;align-items:center;gap:14px;width:100%;padding:9px 4px;cursor:pointer;box-sizing:border-box;border-radius:3px}
+.meter-btn:hover{background:var(--sheet-2)}.meter-btn:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.meter-n{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meter-bar{display:block;height:6px;border-radius:999px;background:var(--track)}
+.meter-fill{display:block;height:100%;border-radius:999px;background:var(--fill);transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.meter-v{text-align:right;font-variant-numeric:tabular-nums;font-size:14px;font-weight:600}
+.meter-row.tone-ok{--fill:var(--accent);--track:var(--accent-soft)}
+.meter-row.tone-warn{--fill:var(--warn);--track:var(--warn-wash)}
+.meter-row.tone-crit{--fill:var(--crit);--track:var(--crit-wash)}
+.meter-row.tone-na{--fill:transparent;--track:repeating-linear-gradient(45deg,var(--sheet-2) 0 3px,var(--rule) 3px 4px)}
+.meter-row.tone-na .meter-v{color:var(--muted);font-weight:500;font-size:12.5px}
+.meter-reason{display:none;padding:0 4px 12px;color:var(--ink-2);font-size:13.5px}
+.meter-row.open .meter-reason{display:block}
+@media (max-width:560px){.meter-btn{grid-template-columns:1fr 60px}.meter-bar{grid-column:1/-1;order:3}}
+.maint-side h3:first-child{margin-top:0}
+.facts-list{border-top:1px solid var(--rule)}
+.fact{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--rule-2);font-size:14px;color:var(--ink-2)}
+.fact b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.timeline{list-style:none;margin:0;padding:0 0 0 14px;border-left:1px solid var(--rule)}
+.timeline li{position:relative;padding:2px 0 10px;font-size:13.5px;display:flex;gap:10px;align-items:baseline}
+.timeline li::before{content:"";position:absolute;left:-18px;top:8px;width:7px;height:7px;border-radius:50%;background:var(--axis);box-shadow:0 0 0 2px var(--sheet)}
+.timeline li:first-child::before{background:var(--accent)}
+.tl-d{color:var(--muted);font-variant-numeric:tabular-nums;min-width:82px}.tl-v{font-weight:600}
+.tl-tag{font-size:11px;color:var(--accent);border:1px solid currentColor;border-radius:3px;padding:0 5px;line-height:16px}
+
+
+.qa-list{border-top:1px solid var(--rule)}
+details.qa{border-bottom:1px solid var(--rule)}
+details.qa summary{list-style:none;display:flex;align-items:flex-start;gap:14px;padding:16px 0;cursor:pointer;font:600 17px/1.45 var(--serif)}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary::after{content:"";margin:9px 4px 0 auto;width:8px;height:8px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg);transition:transform .2s;flex:none}
+details.qa[open] summary::after{transform:rotate(-135deg)}
+details.qa summary:hover .q-t{color:var(--accent)}
+.qa-body{padding:0 0 22px;font-size:15.5px}
+.md p{margin:0 0 10px}.md p:last-child{margin-bottom:0}
+.md h4,.md h5,.md h6{font:600 14px/1.4 var(--sans);color:var(--ink);margin:18px 0 6px}
+.md ul,.md ol{margin:0 0 10px;padding-left:22px}.md li{margin:4px 0}.md strong{font-weight:650}
+.note{margin-top:14px;padding:12px 16px;background:var(--sheet-2);border-radius:4px;font-size:14px;color:var(--ink-2)}
+.note-k{display:block;font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:2px}.note p{margin:0}
+.src-line{margin:14px 0 0!important;font-size:13px;color:var(--muted)}.src-line span{margin-right:8px}
+details.pg{border-bottom:1px solid var(--rule-2);padding:10px 0}
+details.pg summary{cursor:pointer;font-weight:500;font-size:15px}
+details.pg .md,details.pg .structure{padding:10px 0 4px;font-size:14.5px;color:var(--ink-2)}
+.structure ul{margin:0;padding-left:18px}.structure li{margin:2px 0}
+
+
+.about{margin:0;display:grid;gap:10px}
+.about>div{display:grid;grid-template-columns:112px minmax(0,1fr);gap:12px;font-size:14.5px;padding-bottom:10px;border-bottom:1px solid var(--rule-2)}
+.about dt{color:var(--muted)}.about dd{margin:0}
+.disclaimer{margin-top:20px;font-size:14px;color:var(--ink-2)}
+
+
+.acts{display:grid;gap:18px}
+.act h4{display:flex;align-items:center;gap:10px;font-size:15.5px;margin:0 0 6px}
+.act ul{margin:0;padding-left:0;list-style:none}
+.act li{display:flex;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--rule-2);font-size:14.5px}
+.act li .tag{flex:none}
+
+
+.chart{display:block;max-width:100%;font:12px var(--sans)}
+.chart .axis-lbl{fill:var(--ink-2)}.chart .val{fill:var(--ink);font-variant-numeric:tabular-nums;font-weight:600}
+.chart .baseline{stroke:var(--axis);stroke-width:1}
+.chart .f-good{fill:var(--good)}.chart .f-warn{fill:var(--warn)}.chart .f-serious{fill:var(--serious)}.chart .f-crit{fill:var(--crit)}
+.chart .f-neutral{fill:var(--neutral)}.chart .f-muted{fill:var(--axis)}.chart .f-unknown{fill:url(#hatch)}.chart .f-accent{fill:var(--accent)}
+.chart .p-bg{fill:var(--neutral)}.chart .p-ln{stroke:var(--muted);stroke-width:1.5}
+.chart .seg-lbl{font-size:10.5px;font-weight:600}.chart .on-f-crit,.chart .on-f-serious,.chart .on-f-accent{fill:#fff}.chart .on-f-warn,.chart .on-f-muted,.chart .on-f-neutral,.chart .on-f-unknown{fill:#1c2024}
+.charts{display:grid;grid-template-columns:1fr 1.5fr;gap:36px;align-items:start}
+.charts h3{margin-top:0}.charts .sub{font-size:13px;color:var(--muted);margin:-6px 0 10px}
+@media (max-width:900px){.charts{grid-template-columns:1fr}}
+
+
+.tip{position:fixed;z-index:50;max-width:320px;background:var(--ink);color:var(--paper);border-radius:4px;padding:9px 12px;font-size:12.5px;line-height:1.5;pointer-events:none;opacity:0;transition:opacity .12s;box-shadow:0 8px 24px -8px rgba(0,0,0,.35)}
+.tip.show{opacity:1}.tip .t-n{font-weight:700;font-size:13px;margin-bottom:4px}
+.tip .t-r{display:grid;grid-template-columns:auto 1fr;gap:2px 10px}.tip .t-k{opacity:.65}
+
+
+@media (max-width:1000px){
+  .page{grid-template-columns:1fr;gap:24px;padding:20px 16px 80px}
+  .cover{position:static}.cover-in{display:grid;grid-template-columns:auto 1fr;gap:12px 24px;align-items:start}
+  .brand{grid-column:1/-1}.seal-wrap{grid-row:span 2}.toc{display:none}.tools{grid-column:1/-1}
+  .sheet{padding:32px 24px 48px}
+}
+@media (max-width:640px){
+  .cover-in{grid-template-columns:1fr}.seal-wrap{grid-row:auto}
+  .pkg{font-size:36px}.pkg .ver{font-size:16px;margin-left:8px}.desc{font-size:17px}
+  .sheet{padding:24px 18px 40px}.sec{padding-top:36px;margin-top:36px}
+}
+@page{margin:14mm}
+@media print{
+  .tools,.toc,.meter-tools,.chips,.tip{display:none!important}
+  body{background:#fff;color:#000;font-size:12px}
+  .page{display:block;padding:0;max-width:none}.cover{position:static;margin-bottom:24px}.cover-in{display:grid;grid-template-columns:auto 1fr;gap:16px 32px}
+  .sheet{border:0;padding:0}.sec{break-inside:avoid-page}
+  details{display:block}details>summary{list-style:none}details:not([open])>*:not(summary){display:block}
+  .meter-reason{display:block}.seal{animation:none}
+  a{color:inherit}a.ext svg{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spacing:.1em}
+.review-body{font-size:15px;line-height:1.9}.review-body h1{font-size:27px}.review-body h2{font-size:23px;margin:44px 0 16px}.review-body h3{font-size:18px;margin-top:28px}.review-body p{margin:14px 0}
+.review-body ul,.review-body ol{padding-left:24px}.review-body li{margin:7px 0}.review-body pre{overflow:auto;padding:18px;background:var(--sheet-2);font:12px/1.7 var(--mono);white-space:pre}.review-body code{overflow-wrap:anywhere}.review-body blockquote{border-left:3px solid var(--accent);padding:8px 18px;margin:20px 0;background:var(--sheet-2)}
+.table-wrap{overflow-x:auto;width:100%}table{border-collapse:collapse;width:100%;font-size:13px}th,td{text-align:left;vertical-align:top;padding:12px 10px;border-bottom:1px solid var(--rule);overflow-wrap:anywhere}th{overflow-wrap:normal;word-break:normal;font-weight:600;color:var(--ink-2);background:var(--sheet-2)}
+.details{border-top:1px solid var(--rule);padding:14px 0}.details summary{cursor:pointer;font-weight:600}.details pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px;background:var(--sheet-2);padding:16px;max-height:500px;overflow:auto}
+.notice{padding:16px 20px;border-left:3px solid var(--accent);background:var(--sheet-2);font-size:13px;line-height:1.8;margin:20px 0}.coverage{border-left-color:var(--warn)}
+.language{display:flex;gap:14px;align-items:center;font:600 12px var(--sans)}.language a[aria-current]{border-bottom:2px solid var(--ink);padding-bottom:4px}.actions{display:flex;gap:10px;flex-wrap:wrap}.actions a,.actions button{font:500 12px var(--sans);border:1px solid var(--rule);background:var(--sheet);padding:9px 12px;cursor:pointer;color:var(--ink);text-decoration:none}
+.cover nav a{display:block;padding:8px 0;font-size:13px}.cover .arows a{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid var(--rule);font-size:12px}.area-label{color:var(--ink-2)}
+.node-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:20px 0}.node{border:1px solid var(--rule);border-top:3px solid var(--accent);padding:16px;font:13px var(--sans);overflow-wrap:anywhere}.node small{display:block;color:var(--ink-2);margin-top:8px}.node.warn{border-top-color:var(--warn)}.node.unknown{border-top-color:var(--muted)}
+.meta{font:11px/1.7 var(--mono);color:var(--muted);overflow-wrap:anywhere}.ledger{--cols:4}.fig{padding:16px 10px!important}.fig-val{font:600 30px var(--serif)}.fig-label{font-size:11px;color:var(--ink-2);margin-top:7px}.legend-note{font:12px/1.8 var(--sans);color:var(--ink-2)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:4px}a{overflow-wrap:anywhere}summary{min-height:32px}.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:16px;background:white;padding:12px;z-index:99}
+@media(max-width:760px){.page{padding:20px 12px 60px}.sheet{padding:28px 20px}.cover-in{display:flex;gap:16px}.seal-wrap{align-self:center}.arows{width:100%}.ledger{grid-template-columns:repeat(2,1fr)}.fig{border-bottom:1px solid var(--rule)}.review-body h1{font-size:24px}.language{justify-content:center}.cover nav.toc{display:none}}
+@media print{.actions,.language,.skip{display:none!important}.cover{position:static}.review-body h2{break-after:avoid}.node,.notice{break-inside:avoid}.table-wrap{overflow:visible}details{display:block}.page{padding:0}.sheet{padding:25px}a{color:inherit;text-decoration:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style></head><body><a class="skip" href="#main">검토서 전문 읽기</a><div class="page"><aside class="cover"><div class="cover-in"><a class="brand" href="#main"><span class="wordmark">OSS GATE</span><span class="brand-sub">오픈소스 도입 검토서</span></a><nav class="language" aria-label="Language"><a href="report.ko.html" lang="ko" aria-current=page>한국어</a><a href="report.en.html" lang="en" >English</a></nav><div class="seal-wrap"><div class="seal st-warn" style="--seal:160px"><svg class="seal-ring" viewBox="0 0 160 160" aria-hidden="true"><circle cx="80" cy="80" r="76" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="80" cy="80" r="69" fill="none" stroke="currentColor"/></svg><div class="seal-text"><span class="seal-k">판정</span><span class="seal-v">조건부</span><span class="seal-d">2026-11-17</span></div></div><p class="seal-cap">저장된 근거에서 다시 계산한 판정</p></div><nav class="arows"><a href="#dependencies"><span class="area-label">라이선스</span><strong class="st-warn">조건부</strong></a><a href="#vulnerabilities"><span class="area-label">알려진 취약점</span><strong class="st-good">가능</strong></a><a href="#dependencies"><span class="area-label">의존성</span><strong class="st-good">가능</strong></a><a href="#maintenance"><span class="area-label">유지보수</span><strong class="st-good">가능</strong></a></nav><nav class="toc"><a href="#review">검토서 전문 읽기</a><a href="#evidence">근거 자료</a></nav><div class="actions"><button data-print>인쇄 / PDF</button><a href="review.ko.md" download>마크다운</a><a href="data.json" download>근거 JSON</a></div></div></aside><main class="sheet" id="main"><header class="doc-head"><p class="meta">pypi / 2026-11-17</p><h1 class="pkg">requests<span class="ver">2.34.2</span></h1><p class="desc">오픈소스 도입 검토서</p></header><p class="notice">과거 자료로 만든 예제입니다. 원본 스냅샷을 보존하고 정책 v2로 판정을 다시 계산했습니다. 실시간 검사 결과가 아닙니다.</p><div class="review-body"><p><strong>판정: 조건부</strong></p>
+<p>Requests는 외부 API를 호출하는 코드를 간결하게 작성할 수 있도록 돕는 Python HTTP 클라이언트다. 패키지 자신의 Apache-2.0 메타데이터는 이 프로젝트의 분류 정책을 통과한다. 이 스냅샷에서 도입 전 확인할 항목은 직접 의존성 certifi의 MPL-2.0 라이선스이며, 이에 따라 조건부로 판정한다. 실제 수정·배포 방식을 검토한 뒤 사람의 도입 결정을 별도로 기록해야 한다.</p>
+</div><section class="sec" id="summary"><h2>한눈에 보기</h2><div class="ledger"><div class="fig"><div class="fig-val">4</div><div class="fig-label">직접 의존성</div></div><div class="fig"><div class="fig-val">0</div><div class="fig-label">간접 의존성</div></div><div class="fig"><div class="fig-val">0</div><div class="fig-label">취약점 권고 묶음</div></div><div class="fig"><div class="fig-val">0</div><div class="fig-label">미확인 범위</div></div></div></section><section class="sec" id="dependencies"><h2>해석된 의존성 그래프</h2><div class="node-grid"><div class="node "><strong>requests</strong><small>2.34.2</small><small>Apache-2.0</small></div><div class="node warn"><strong>certifi</strong><small>2026.10.23</small><small>MPL-2.0</small></div><div class="node "><strong>charset-normalizer</strong><small>3.5.2</small><small>MIT</small></div><div class="node "><strong>idna</strong><small>3.20.0</small><small>BSD-3-Clause</small></div><div class="node "><strong>urllib3</strong><small>2.8.0</small><small>MIT</small></div></div><p class="legend-note">아래 표는 반환된 모든 노드를 포함합니다. 레지스트리 그래프는 실제 설치 환경의 검사 결과와 다를 수 있습니다.</p><div class="table-wrap"><table><thead><tr><th scope="col">패키지</th><th scope="col">버전</th><th scope="col">관계</th><th scope="col">라이선스</th><th scope="col">알려진 취약점</th><th scope="col">의존성 경로</th></tr></thead><tbody><tr><td>requests</td><td>2.34.2</td><td>SELF</td><td>Apache-2.0</td><td>0</td><td>requests@2.34.2</td></tr><tr><td>certifi</td><td>2026.10.23</td><td>DIRECT</td><td>MPL-2.0</td><td>0</td><td>requests@2.34.2 → certifi@2026.10.23</td></tr><tr><td>charset-normalizer</td><td>3.5.2</td><td>DIRECT</td><td>MIT</td><td>0</td><td>requests@2.34.2 → charset-normalizer@3.5.2</td></tr><tr><td>idna</td><td>3.20.0</td><td>DIRECT</td><td>BSD-3-Clause</td><td>0</td><td>requests@2.34.2 → idna@3.20.0</td></tr><tr><td>urllib3</td><td>2.8.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>requests@2.34.2 → urllib3@2.8.0</td></tr></tbody></table></div></section><section class="sec" id="vulnerabilities"><h2>알려진 취약점</h2><p>이 스냅샷에서 알려진 권고가 반환되지 않았습니다. 취약점이 없다는 보장은 아닙니다.</p></section><section class="sec" id="maintenance"><h2>유지보수</h2><p class="meta">Scorecard · 2026-08-24T00:00:00Z · 8.2/10</p><div class="table-wrap"><table><thead><tr><th scope="col">Check</th><th scope="col">점수</th><th scope="col">출처 상세</th></tr></thead><tbody><tr><td>Code-Review</td><td>8</td><td>Found 11/13 approved changesets -- score normalized to 8</td></tr><tr><td>Security-Policy</td><td>10</td><td>security policy file detected</td></tr><tr><td>Dangerous-Workflow</td><td>10</td><td>no dangerous workflow patterns detected</td></tr><tr><td>Maintained</td><td>10</td><td>26 commit(s) and 7 issue activity found in the last 90 days -- score normalized to 10</td></tr><tr><td>Binary-Artifacts</td><td>10</td><td>no binaries found in the repo</td></tr><tr><td>Token-Permissions</td><td>10</td><td>GitHub workflow tokens follow principle of least privilege</td></tr><tr><td>Pinned-Dependencies</td><td>5</td><td>dependency not pinned by hash detected -- score normalized to 5</td></tr><tr><td>CII-Best-Practices</td><td>0</td><td>no effort to earn an OpenSSF best practices badge detected</td></tr><tr><td>Fuzzing</td><td>10</td><td>project is fuzzed</td></tr><tr><td>License</td><td>10</td><td>license file detected</td></tr><tr><td>Signed-Releases</td><td>0</td><td>Project has not signed or included provenance with any releases.</td></tr><tr><td>Branch-Protection</td><td>-1</td><td>internal error: error during branchesHandler.setup: internal error: some github tokens can&#x27;t read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authenticatio…</td></tr><tr><td>Packaging</td><td>10</td><td>packaging workflow detected</td></tr><tr><td>SAST</td><td>10</td><td>SAST tool is run on all commits</td></tr></tbody></table></div></section><section class="sec" id="review"><h2>도입 검토서</h2><article class="review-body"><h1>requests 2.34.2: 오픈소스 도입 검토서</h1>
+<p>자료 수집일: 2026-11-17T00:00:00Z · pypi · psf/requests · oss-gate.policy/2</p>
+<blockquote>
+<p>과거 자료로 만든 예제입니다. 원본 스냅샷을 보존하고 정책 v2로 판정을 다시 계산했습니다. 실시간 검사 결과가 아닙니다.</p>
+</blockquote>
+<p><strong>판정: 조건부</strong></p>
+<p>Requests는 외부 API를 호출하는 코드를 간결하게 작성할 수 있도록 돕는 Python HTTP 클라이언트다. 패키지 자신의 Apache-2.0 메타데이터는 이 프로젝트의 분류 정책을 통과한다. 이 스냅샷에서 도입 전 확인할 항목은 직접 의존성 certifi의 MPL-2.0 라이선스이며, 이에 따라 조건부로 판정한다. 실제 수정·배포 방식을 검토한 뒤 사람의 도입 결정을 별도로 기록해야 한다.</p>
+<h2>1. 판정과 범위</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>영역</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>라이선스</td>
+<td>조건부</td>
+</tr>
+<tr>
+<td>알려진 취약점</td>
+<td>가능</td>
+</tr>
+<tr>
+<td>의존성</td>
+<td>가능</td>
+</tr>
+<tr>
+<td>유지보수</td>
+<td>가능</td>
+</tr>
+</tbody>
+</table></div>
+<p>도입 검토를 돕는 자료이며 법적 판단이나 보안 인증이 아닙니다. 공개 메타데이터는 불완전할 수 있습니다. DeepWiki 설명은 AI 생성 자료이며 검토 버전과 다를 수 있습니다.</p>
+<p>과거 판정: <code>조건부</code>. 현재 표는 동일한 저장 자료에 정책 v2를 적용한 결과다.</p>
+<h2>2. 이 소프트웨어는 무엇인가</h2>
+<p>Requests는 HTTP 메서드, 매개변수, JSON, 폼, 업로드, 스트리밍, 인증, 쿠키와 세션을 작은 API로 제공한다. 저장된 DeepWiki 설명에는 urllib3를 이용한 연결 풀과 keep-alive, TLS 검증, Basic/Digest 인증, 응답 디코딩이 포함돼 있다. 이 설명은 AI가 생성한 저장소 요약이며 검토 버전을 실행해 확인한 결과는 아니다. [출처: <code>data.json#/deepwiki</code>]</p>
+<p><code>Session.request</code>는 <code>Request</code>를 만들고 <code>PreparedRequest</code>로 준비하면서 쿠키, 헤더, 인증과 훅 같은 세션 설정을 합친다. <code>prepare_body</code>가 본문 형식을 처리하고, <code>merge_environment_settings</code>가 프록시와 TLS 설정을 반영한다. <code>Session.send</code>는 <code>HTTPAdapter</code>를 선택해 urllib3에 네트워크 작업을 위임한다. 반환된 <code>Response</code>에는 훅, 쿠키와 리다이렉트 처리가 이어진다. 사용자 정의 어댑터를 마운트할 수도 있다. [출처: 저장된 DeepWiki 요청 흐름 답변]</p>
+<p>과거 사용 예제는 <code>requests.get(url, params=..., auth=...)</code>이며 JSON 본문에는 <code>json=...</code>, 지속되는 설정에는 <code>Session</code>을 사용한다. 위키는 Python 3.10 이상과 PyPy 지원을 설명한다. 위키가 버전에 고정돼 있지 않으므로 실제 도입할 릴리스의 런타임 호환성을 별도로 확인해야 한다.</p>
+<h2>3. 외부 통신과 설정</h2>
+<p>핵심 기능은 애플리케이션이 지정한 목적지에 요청을 보내는 것이다. 호출 방식에 따라 URL, 헤더, 자격 증명, 쿠키와 본문이 전송될 수 있다. 확인한 위키 설명에서는 별도 제품 텔레메트리를 찾지 못했지만, 이 제한된 관찰만으로 모든 코드 경로에 추가 통신이 없다고 단정할 수는 없다. [출처: 저장된 DeepWiki 외부 통신 답변]</p>
+<p>저장된 설명은 <code>trust_env=True</code>를 기본값으로 제시한다. 프록시 환경 변수(<code>http_proxy</code>, <code>https_proxy</code>, <code>no_proxy</code>, <code>all_proxy</code>), <code>REQUESTS_CA_BUNDLE</code>, 대체값 <code>CURL_CA_BUNDLE</code>, <code>.netrc</code>가 요청에 영향을 줄 수 있다. 배포 환경을 점검하고 이러한 설정을 사용하지 않으려면 <code>Session.trust_env=False</code>를 검토한다. TLS 검증은 유지한다. 사설 CA가 필요하면 해당 릴리스의 <code>verify=&lt;path&gt;</code> 또는 CA 번들 설정을 확인한다. [출처: 저장된 DeepWiki 설정 답변]</p>
+<p>클라이언트 인증서와 개인 키는 파일 권한과 비밀 저장 방식을 따로 검토해야 한다. 과거 위키는 클라이언트 키가 암호화되지 않은 형태여야 한다고 설명했으나 여기서 직접 실행해 검증하지는 않았다. 호스트 변경 리다이렉트에서 인증 헤더를 제거한다는 주장은 당시 재질문에서 재현되지 않았으므로 검증된 보안 보장으로 취급하면 안 된다. 예제에는 실제 자격 증명 값이 없다.</p>
+<h2>4. 라이선스 검토</h2>
+<p><code>requests@2.34.2</code>: Apache-2.0.</p>
+<p>분류는 법적 판단이 아니다. <code>unknown</code>은 자동 승인하지 않는 항목이며, 메타데이터 누락·미지원 식별자·미해석 예외를 포함한다. 여러 라이선스의 관계가 명시되지 않은 목록은 보수적으로 AND처럼 검토한다. OR 선택지는 선택·적용 근거를 기록해야 한다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>패키지</th>
+<th>버전</th>
+<th>라이선스</th>
+<th>Category</th>
+<th>의존성 경로</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>certifi</td>
+<td>2026.10.23</td>
+<td>MPL-2.0</td>
+<td>weak-copyleft</td>
+<td>requests@2.34.2 → certifi@2026.10.23</td>
+</tr>
+<tr>
+<td>charset-normalizer</td>
+<td>3.5.2</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>requests@2.34.2 → charset-normalizer@3.5.2</td>
+</tr>
+<tr>
+<td>idna</td>
+<td>3.20.0</td>
+<td>BSD-3-Clause</td>
+<td>permissive</td>
+<td>requests@2.34.2 → idna@3.20.0</td>
+</tr>
+<tr>
+<td>urllib3</td>
+<td>2.8.0</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>requests@2.34.2 → urllib3@2.8.0</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5. 알려진 취약점</h2>
+<p>이 스냅샷에서 알려진 권고가 반환되지 않았습니다. 취약점이 없다는 보장은 아닙니다.</p>
+<p>별칭이 연결된 권고는 한 묶음으로 집계한다. 제목은 출처 원문이다. 점수 미상은 0점으로 바꾸지 않는다. 수정 버전 목록은 패키지·버전 분기를 대조하기 전에는 업그레이드 권고가 아니다.</p>
+<h2>6. 의존성</h2>
+<p>직접 의존성: 4 · 간접 의존성: 0 · graph version: <code>2.34.2</code></p>
+<p>저장된 그래프의 직접 의존성 네 가지는 역할이 다르다. certifi는 CA 인증서를, charset-normalizer는 문자 인코딩 탐지를, idna는 국제화 도메인 이름을, urllib3는 연결 풀과 HTTP 전송을 담당한다. 역할은 AI가 생성한 DeepWiki 설명에, 정확한 버전과 경로는 deps.dev 데이터에 근거한다. [출처: <code>data.json#/deepwiki</code>, <code>data.json#/get_dependencies</code>]</p>
+<p>선택적 extras를 켜면 검토 범위가 달라진다. 과거 설명은 <code>socks</code>에 PySocks, <code>use_chardet_on_py3</code>에 chardet이 추가되며, chardet이 설치되면 charset-normalizer보다 먼저 선택될 수 있다고 한다. 이 추가 패키지는 직접 의존성 네 개의 스냅샷에 포함되지 않는다. <code>security</code> extra는 비어 있다고 설명됐다. extras를 켜거나 이 동작에 의존하기 전에 정확한 패키지 메타데이터를 확인해야 한다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Parent</th>
+<th>Child</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>requests@2.34.2</td>
+<td>certifi@2026.10.23</td>
+</tr>
+<tr>
+<td>requests@2.34.2</td>
+<td>charset-normalizer@3.5.2</td>
+</tr>
+<tr>
+<td>requests@2.34.2</td>
+<td>idna@3.20.0</td>
+</tr>
+<tr>
+<td>requests@2.34.2</td>
+<td>urllib3@2.8.0</td>
+</tr>
+</tbody>
+</table></div>
+<h2>7. 유지보수</h2>
+<p>저장된 Scorecard 기준일은 2026-08-24로, 최초 검토일보다 85일 전이다. 현재 저장소를 측정한 결과가 아니다. Maintained 10, Code-Review 8, Security-Policy 10이며, Pinned-Dependencies는 5, Signed-Releases와 CII-Best-Practices는 0이다. Branch-Protection은 평가하지 못해 -1이고, 응답에는 Vulnerabilities 체크가 없다. PyPI attestation 링크와 Signed-Releases 점수는 서로 다른 근거를 다루며 과거 검토에서 차이를 해소하지 못했다. [출처: <code>data.json#/get_project/scorecard</code>]</p>
+<p>과거 설명은 psf 조직의 유지보수와 비공개 보안 권고 신고 절차를 제시한다. 응답·수정 목표도 언급하지만 이번에 독립적으로 확인하지 않았으며 서비스 보장으로 볼 수 없다. 보안 문서 링크에 관한 주장도 당시 재질문에서 재현되지 않았다. 실제 취약점을 신고할 때는 최신 upstream 보안 정책을 확인한다. [출처: 저장된 DeepWiki 유지보수 답변]</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>점수</th>
+<th>출처 상세</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code-Review</td>
+<td>8</td>
+<td>Found 11/13 approved changesets -- score normalized to 8</td>
+</tr>
+<tr>
+<td>Security-Policy</td>
+<td>10</td>
+<td>security policy file detected</td>
+</tr>
+<tr>
+<td>Dangerous-Workflow</td>
+<td>10</td>
+<td>no dangerous workflow patterns detected</td>
+</tr>
+<tr>
+<td>Maintained</td>
+<td>10</td>
+<td>26 commit(s) and 7 issue activity found in the last 90 days -- score normalized to 10</td>
+</tr>
+<tr>
+<td>Binary-Artifacts</td>
+<td>10</td>
+<td>no binaries found in the repo</td>
+</tr>
+<tr>
+<td>Token-Permissions</td>
+<td>10</td>
+<td>GitHub workflow tokens follow principle of least privilege</td>
+</tr>
+<tr>
+<td>Pinned-Dependencies</td>
+<td>5</td>
+<td>dependency not pinned by hash detected -- score normalized to 5</td>
+</tr>
+<tr>
+<td>CII-Best-Practices</td>
+<td>0</td>
+<td>no effort to earn an OpenSSF best practices badge detected</td>
+</tr>
+<tr>
+<td>Fuzzing</td>
+<td>10</td>
+<td>project is fuzzed</td>
+</tr>
+<tr>
+<td>License</td>
+<td>10</td>
+<td>license file detected</td>
+</tr>
+<tr>
+<td>Signed-Releases</td>
+<td>0</td>
+<td>Project has not signed or included provenance with any releases.</td>
+</tr>
+<tr>
+<td>Branch-Protection</td>
+<td>-1</td>
+<td>internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authenticatio…</td>
+</tr>
+<tr>
+<td>Packaging</td>
+<td>10</td>
+<td>packaging workflow detected</td>
+</tr>
+<tr>
+<td>SAST</td>
+<td>10</td>
+<td>SAST tool is run on all commits</td>
+</tr>
+</tbody>
+</table></div>
+<h2>8. 도입 조치</h2>
+<ol>
+<li>의도한 배포 방식에서 certifi의 MPL-2.0 의무에 관한 사람의 결정을 기록한다. certifi 파일 수정 여부, CA 번들 재배포 여부, 실제 배포 산출물을 확인한다. 분류 결과만으로 이 질문에 답할 수 없다.</li>
+<li>실제 환경의 lockfile을 근거 표의 모든 버전과 대조한다. 선택한 환경을 버전과 해시로 고정하고, 버전이나 extra가 바뀌면 다시 검토한다.</li>
+<li>프록시·CA 설정과 <code>.netrc</code> 동작을 점검한다. TLS 검증을 유지하고 클라이언트 키 파일은 배포 환경의 비밀 관리 절차로 보호한다.</li>
+<li>선택적 PySocks·chardet 의존성을 검토한 뒤 해당 extras를 활성화한다.</li>
+<li>운영 도입 결정 전에는 오래된 유지보수·취약점 자료를 갱신한다. 과거 보고서를 번역하는 것은 새 조회가 아니다.</li>
+</ol>
+<h2>9. 확인하지 못한 것</h2>
+<p>미확인 범위: 자동 점검상 추가 플래그 없음. 아래 서술의 한계는 별도로 남아 있다.</p>
+<p>기존 에이전트 근거 검토 결과는 WARN이다. 등급에 영향을 주는 불일치는 보고되지 않았으나 charset-normalizer 교체의 라이선스 관련 설명, 보안 문서 링크, 리다이렉트 인증 헤더 동작은 재현되지 않았다. 패키지 후보 개수는 15개에서 14개로 수정됐다. 일부 위키 질문과 저장소 목차는 다시 확인하지 않았다.</p>
+<p>그래프를 실제 설치 환경과 대조하거나 패키지 배포물에서 독립적으로 재구성하지 않았다. 위키는 Requests 2.34.2에 고정돼 있지 않다. Scorecard는 자료 수집 당시에도 85일 전 결과였다. 이 예제를 만드는 과정에서는 최신 취약점·라이선스를 다시 조회하지 않는다.</p>
+<h2>10. 근거와 검증</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>주장</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>라이선스</td>
+<td>data.json#/lookup_package/licenses</td>
+</tr>
+<tr>
+<td>의존성</td>
+<td>data.json#/get_dependencies</td>
+</tr>
+<tr>
+<td>알려진 취약점</td>
+<td>data.json#/advisories</td>
+</tr>
+<tr>
+<td>유지보수</td>
+<td>data.json#/get_project/scorecard</td>
+</tr>
+<tr>
+<td>DeepWiki</td>
+<td>data.json#/deepwiki</td>
+</tr>
+</tbody>
+</table></div>
+<p>검증 상태: <strong>WARN</strong>. 원본 JSON 해시와 정책 재계산·언어별 수치 표를 확인했다. 과거 외부 응답의 진위와 위키 서술 전체를 새로 확인한 것은 아니다.</p>
+<p>SHA-256 (<code>data.json</code>): <code>af943908340f5c6db720679a8f4f2473b43e91cfc39bf9a332f838c4648ddb3d</code></p>
+<p><a href="https://deps.dev/">deps.dev</a> · <a href="https://osv.dev/">OSV</a> · <a href="https://deepwiki.com/psf/requests">DeepWiki</a></p>
+<p>출처·이용 조건은 <a href="../../NOTICE.md">NOTICE</a>를 참고한다.</p>
+</article></section><section class="sec" id="evidence"><h2>근거 자료</h2><p class="notice">도입 검토를 돕는 자료이며 법적 판단이나 보안 인증이 아닙니다. 공개 메타데이터는 불완전할 수 있습니다. DeepWiki 설명은 AI 생성 자료이며 검토 버전과 다를 수 있습니다.</p><details class="details"><summary>판정 근거</summary><pre>{
+  &quot;policy&quot;: &quot;oss-gate.policy/2&quot;,
+  &quot;overall&quot;: &quot;conditional&quot;,
+  &quot;areas&quot;: {
+    &quot;license&quot;: &quot;conditional&quot;,
+    &quot;vulns&quot;: &quot;allow&quot;,
+    &quot;deps&quot;: &quot;allow&quot;,
+    &quot;maintenance&quot;: &quot;allow&quot;
+  },
+  &quot;coverage_gaps&quot;: [],
+  &quot;findings&quot;: [
+    {
+      &quot;area&quot;: &quot;license&quot;,
+      &quot;code&quot;: &quot;root_license&quot;,
+      &quot;package&quot;: &quot;requests@2.34.2&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;category&quot;: &quot;permissive&quot;
+    },
+    {
+      &quot;area&quot;: &quot;license&quot;,
+      &quot;code&quot;: &quot;dependency_license&quot;,
+      &quot;package&quot;: &quot;certifi@2026.10.23&quot;,
+      &quot;licenses&quot;: [
+        &quot;MPL-2.0&quot;
+      ],
+      &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;path&quot;: [
+        &quot;requests@2.34.2&quot;,
+        &quot;certifi@2026.10.23&quot;
+      ]
+    },
+    {
+      &quot;area&quot;: &quot;maintenance&quot;,
+      &quot;code&quot;: &quot;scorecard&quot;,
+      &quot;score&quot;: 8.2,
+      &quot;date&quot;: &quot;2026-08-24T00:00:00Z&quot;
+    }
+  ],
+  &quot;advisory_count&quot;: 0,
+  &quot;high_critical_count&quot;: 0,
+  &quot;severity_unknown_count&quot;: 0
+}</pre></details><p class="meta">data.json · SHA-256 af943908340f5c6db720679a8f4f2473b43e91cfc39bf9a332f838c4648ddb3d</p></section></main></div><script>document.querySelectorAll('[data-print]').forEach(b=>b.addEventListener('click',()=>window.print()));</script></body></html>
