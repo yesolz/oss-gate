@@ -930,10 +930,18 @@ def _get_advisory(adv_id: str) -> dict:
         note = "no ecosystem ranges; only GIT ranges" if affected else "no affected ranges available"
     alias_rec = alias_rec or {}
     score, score_source = dd.get("cvss3Score"), None
-    if isinstance(score, (int, float)) and not isinstance(score, bool):
+    vector_score = cvss3_base_score(vector)
+    # deps.dev may return zero with an empty vector when CVSS v3 is absent.
+    # Only a valid zero-impact vector can establish a real zero score.
+    if (
+        isinstance(score, (int, float))
+        and not isinstance(score, bool)
+        and 0 <= score <= 10
+        and (score > 0 or vector_score == 0)
+    ):
         score_source = "deps.dev"
     else:
-        score = cvss3_base_score(vector)
+        score = vector_score
         score_source = "computed_from_vector" if score is not None else None
     rid = _as_dict(dd.get("advisoryKey")).get("id") or osv.get("id") or aid
     return {
