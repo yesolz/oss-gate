@@ -6,6 +6,8 @@ Use the `oss-review` skill with a public repository, package/version or supporte
 
 Package reviews use the `collect_review` MCP tool to save unique evidence folders. Supply an absolute workspace output root. `data.json` holds normalized evidence and policy results; `api-responses.json` preserves public JSON responses; `evidence-sha256.json` seals those files. DeepWiki material and agent verification are separate files. Exact raw DeepWiki capture depends on host tooling and must be labelled as transcription when appropriate.
 
+An initial package lookup failure returns a reason and next step without creating a review folder. A deps.dev 404 does not establish nonexistence. For npm/PyPI, public-registry checks distinguish unavailable analysis metadata, a missing package, a missing version, and an unverified result. Other ecosystems and private/custom registries are not checked. Transient failures retry once; a requested wait over two seconds stops automatic retry. The agent should explain the failure in the selected language and suggest checking the exact name/version or trying later. Registry existence cannot approve a review without analysis evidence.
+
 To render an existing bilingual review from a checkout:
 
 ```sh
