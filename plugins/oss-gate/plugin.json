@@ -1,6 +1,6 @@
 {
   "name": "oss-gate",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Evidence-backed open-source adoption reviews in your own agent. Korean and English reports, source snapshots, and local HTML.",
   "author": {
     "name": "yesolz",
