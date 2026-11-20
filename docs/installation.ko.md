@@ -35,6 +35,24 @@ codex plugin list --marketplace oss-gate
 
 삭제는 `codex plugin remove oss-gate@oss-gate`, 마켓플레이스 삭제는 `codex plugin marketplace remove oss-gate`입니다. 워크스페이스의 검토서는 남습니다.
 
+## CLI 전용 설치
+
+에이전트가 MCP 등록 없이 로컬 CLI로 실행하게 하려면 `oss-gate-cli`를 선택합니다. 기본 설치는 위의 `oss-gate`이며, 하나의 작업 흐름에는 한 종류를 선택하는 것을 권장합니다.
+
+```sh
+# 마켓플레이스를 추가한 뒤 Claude Code에서
+claude plugin install oss-gate-cli@oss-gate
+
+# 마켓플레이스를 추가한 뒤 Codex에서
+codex plugin add oss-gate-cli@oss-gate
+```
+
+새 세션에서 설치된 `oss-review` 스킬로 도입 검토를 요청합니다. Claude Code에서는 `/oss-gate-cli:oss-review`로 호출합니다. 분석·정책·보고서 템플릿은 기본 플러그인과 같습니다. 에이전트가 글을 작성하며 로컬 셸 실행과 uv가 필요합니다. DeepWiki를 요청하면 외부 서비스에 접속합니다. 모든 컨텍스트나 MCP 클라이언트 라이브러리 의존성이 없어지는 것은 아닙니다.
+
+CLI 전용을 설치해도 기존 `oss-gate`나 수동 등록한 MCP가 자동으로 꺼지지는 않습니다. 전환하려면 위의 삭제 명령으로 기본 플러그인을 제거하고 직접 등록한 OSS Gate MCP 항목만 정리한 뒤 다시 시작합니다. 기존 검토서는 워크스페이스에 남습니다.
+
+공개 전 로컬 후보는 체크아웃을 마켓플레이스로 추가한 뒤 `oss-gate-cli@oss-gate`를 설치해 시험할 수 있습니다. CLI 패키지는 별도의 `oss-gate` 설치나 형제 디렉터리에 의존하지 않습니다. 명령과 정책은 [사용자 설정 안내](customization.ko.md)를 참고하세요.
+
 ## Codex 수동 설정
 
 플러그인 설치를 지원하지 않는 클라이언트는 체크아웃을 유지하고 두 MCP를 직접 등록할 수 있습니다.

@@ -22,6 +22,8 @@ MCP를 사용할 때는 두 로컬 서버 `depsdev`와 `deepwiki` 각각의 환�
 
 | 항목 | 의미 |
 |---|---|
+| `network.allowed_repository_hosts` | 저장소 식별자의 정확한 호스트 허용 목록. 생략하면 기존 동작, 빈 목록이면 저장소 조회 차단 |
+| `network.npm_registry_url` | deps.dev 404 후 존재 확인에 사용할 HTTPS npm 미러 기본 주소 |
 | `network.services` | 허용할 서비스. 생략하면 기존 서비스 사용, 빈 목록이면 모두 차단 |
 | `network.deny_identifiers` | `npm:@internal/*`, `repo:company/*` 같은 식별자 패턴 차단 |
 | `network.allow_identifiers` | 명시한 식별자만 허용. 생략하면 허용 목록 검사 없음, 빈 목록이면 패키지·저장소 조회 차단 |
@@ -29,7 +31,7 @@ MCP를 사용할 때는 두 로컬 서버 `depsdev`와 `deepwiki` 각각의 환�
 | `review.require_communication_review` | 기본 false. 필요한 검토 자료가 없거나 불완전하면 조건부 |
 | `review.blocked_destinations` | 금지 목적지의 호스트 또는 `*.example.org` 형태 |
 
-식별자는 `npm:`, `pypi:`, `go:`, `maven:`, `cargo:`, `nuget:`, `rubygems:`, `repo:` 접두사를 사용합니다. 저장소 값은 `owner/repo`입니다. 차단 목록이 우선하며 `*`는 `/`도 포함할 수 있습니다. PyPI 이름의 구두점·대소문자와 npm·NuGet·저장소 이름의 대소문자는 비교 전에 정규화합니다. 허용 목록은 취약점 권고 ID에는 적용되지 않습니다.
+식별자는 `npm:`, `pypi:`, `go:`, `maven:`, `cargo:`, `nuget:`, `rubygems:`, `repo:` 접두사를 사용합니다. GitHub 저장소 값은 `owner/repo`이고, 다른 호스트는 `host/owner/repo` 형태로 호스트와 하위 그룹을 유지합니다. `repo:company/*`는 GitHub 조직, `repo:*.example.internal/*`는 사내 도메인의 하위 호스트에 대응합니다. 차단 목록이 우선하며 `*`는 `/`도 포함할 수 있습니다. PyPI 이름의 구두점·대소문자와 npm·NuGet·저장소 이름의 대소문자는 비교 전에 정규화합니다. 허용 목록은 취약점 권고 ID에는 적용되지 않습니다.
 
 공개 여부를 확인하려고 외부 조회하면 이미 이름을 전송한 셈입니다. 엄격한 환경에서는 로컬 허용 목록을 직접 정해야 합니다. 서버가 반환한 의존성도 전송 전에 검사합니다. OSV 요청 묶음에 차단된 이름이 있으면 묶음 전체를 보내지 않고 미확인으로 남깁니다.
 
@@ -65,3 +67,15 @@ CLI도 외부 서비스를 사용합니다. 최초 uv 실행에는 의존성 다
 OSS Gate를 통한 요청에만 적용됩니다. 다른 MCP, 셸, 브라우저, 모델 제공자로의 전송과 uv 초기 설치는 통제하지 않습니다. 코드·환경 변수·정책 파일을 변경할 수 있는 사용자는 우회할 수 있으므로 회사의 호스트·네트워크 통제도 필요합니다. 기존에 직접 연결한 원격 DeepWiki는 로컬 연결 모듈로 교체해야 합니다.
 
 보고서와 정책에는 조직 이름·검토자 정보가 포함될 수 있습니다. 공유 전에 확인하세요. 중앙 로그 서버, 자체 텔레메트리, 별도 모델 키는 추가하지 않습니다. 개발 세부 사항은 [실행 참조](../plugins/oss-gate/skills/oss-review/references/execution.md)에 있습니다.
+
+## 저장소 호스트와 npm 미러
+
+`allowed_repository_hosts`에는 `["github.com"]`처럼 정확한 호스트를 지정합니다. 대소문자, 마지막 점, IDNA 표기를 정규화합니다. 와일드카드·포트·URL 경로는 허용하지 않습니다. 이는 API 서버 주소와 별개로, 외부 서비스에 전달할 **저장소 식별자의 호스트**를 제한합니다. API에서 발견한 저장소에도 적용하며 기존 식별자 차단 규칙이 계속 우선합니다. 호스트를 허용해도 DeepWiki가 사내 GitHub를 지원하게 되는 것은 아닙니다.
+
+`npm_registry_url`은 `https://registry.example.internal/repository/npm/`처럼 HTTPS 주소에 기본 경로와 포트를 붙일 수 있습니다. [미러 예시](../plugins/oss-gate/policies/npm-mirror.example.json)는 자동 적용되지 않습니다. 기존 `npm` 서비스와 패키지 식별자 규칙이 적용되며 `plan`에서 선택된 주소를 로컬로 확인할 수 있습니다.
+
+미러는 deps.dev가 404를 반환했을 때만 패키지·버전 존재 확인에 사용합니다. 미러 장애 시 공개 npm으로 넘어가거나 리디렉션을 따르지 않습니다. 미러의 404는 `mirror_package_not_found` 또는 `mirror_version_not_found`로 구분하며, 동기화 지연·접근 정책의 영향일 수 있어 공개 npm에도 없다는 뜻이 아닙니다. 미러에서 발견되어도 deps.dev 분석 근거를 대신하거나 공개 패키지와 내용이 같음을 보증하지 않습니다.
+
+이번 구현은 npm 호환 JSON 응답을 제공하고 OSS Gate의 별도 인증정보 없이 조회 가능한 미러를 대상으로 합니다. 인증 오류는 미확인으로 남깁니다. URL에 인증정보를 넣을 수 없으며 `.npmrc`·인증정보를 자동으로 읽거나 TLS 검증을 끄지 않습니다. PyPI 미러와 완전한 폐쇄망 분석은 지원 범위에 포함되지 않습니다.
+
+MCP를 등록하지 않으려면 [설치 안내](installation.ko.md)의 `oss-gate-cli`를 선택하세요. 저장소 조회는 `project <repo> --out <새 JSON>`, 매니페스트 검사는 `audit <로컬에서 정리한 파일> --type requirements.txt --out <새 JSON>`으로 실행합니다. 나머지 명령과 동일하게 `uv run --frozen --project <플러그인 경로> python <플러그인 경로>/cli.py` 뒤에 붙입니다. 출력 폴더는 미리 존재해야 하며 원문 응답은 새 JSON 파일에 보존합니다.

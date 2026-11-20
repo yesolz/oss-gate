@@ -25,6 +25,9 @@ ALLOWED_FILES = {
 
 
 def build():
+    from build_cli_plugin import build as check_cli
+
+    check_cli(check=True)
     version = json.loads((ROOT / "plugins/oss-gate/plugin.json").read_text(encoding="utf-8"))["version"]
     if not re.fullmatch(r"\d+\.\d+\.\d+", version):
         raise ValueError("release version must have major.minor.patch form")

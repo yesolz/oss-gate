@@ -1,12 +1,12 @@
 """Lazy DeepWiki connection with the same optional outbound policy as collection."""
 
 import json
-import re
 
 import httpx
 from mcp import ClientSession
 from mcp.client.streamable_http import streamablehttp_client
 
+from .repository import parse_repository
 from .settings import PolicyBlocked, check, identifier, load_policy, policy_scope
 
 ENDPOINT = "https://mcp.deepwiki.com/mcp"
@@ -26,19 +26,20 @@ async def request(repo, action="ask_question", topic="overview", policy_path=Non
     """Only public owner/repo identifiers and fixed topic questions can leave here."""
     try:
         config = load_policy(policy_path)
-        if (
-            not isinstance(repo, str)
-            or not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repo)
-            or any(v in (".", "..") for v in repo.split("/"))
-        ):
-            raise ValueError("expected public owner/repo")
+        host, path = parse_repository(repo)
         if action not in ("ask_question", "read_wiki_structure", "read_wiki_contents") or topic not in QUESTIONS:
             raise ValueError("unknown DeepWiki action or topic")
-        args = {"repoName": repo}
+        args = {"repoName": path}
         if action == "ask_question":
             args["question"] = QUESTIONS[topic]
         with policy_scope(config):
-            check("deepwiki", [identifier("repo", repo)])
+            check("deepwiki", [identifier("repo", f"{host}/{path}")])
+            if host != "github.com":
+                return {
+                    "error": "DeepWiki supports public GitHub repositories only",
+                    "code": "unsupported_repository_host",
+                }
+            repo = path
             async with streamablehttp_client(
                 ENDPOINT, timeout=30, sse_read_timeout=90, httpx_client_factory=client_factory
             ) as (read, write, _):

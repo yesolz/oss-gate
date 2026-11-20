@@ -1,0 +1,9 @@
+{
+  "schema": "oss-gate.settings/1",
+  "name": "Example npm mirror policy",
+  "version": "1",
+  "network": {
+    "allowed_repository_hosts": ["github.com"],
+    "npm_registry_url": "https://registry.example.internal/repository/npm/"
+  }
+}

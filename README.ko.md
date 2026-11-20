@@ -92,6 +92,8 @@ uv run --frozen python scripts/build_site.py
 
 [기여 안내](CONTRIBUTING.md) · [보안](SECURITY.md) · [변경 기록](CHANGELOG.md) · [MIT 라이선스](LICENSE) · [외부 자료 출처](NOTICE.md)
 
-[릴리즈 검증 기록](docs/release-v0.3.0.md)
+[릴리즈 검증 기록](docs/release-v0.4.0.md)
 
 [선택적 정책과 CLI](docs/customization.ko.md): 일반 검토에는 별도 설정이 필요하지 않습니다.
+
+MCP 등록 없이 CLI로 실행하려면 [설치 안내](docs/installation.ko.md)에서 선택형 `oss-gate-cli` 패키지를 설치하세요.

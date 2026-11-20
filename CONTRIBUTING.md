@@ -10,6 +10,8 @@ The development/audit environment requires Python 3.11+. The installed plugin ru
 
 ```sh
 uv sync --frozen
+uv run --frozen python scripts/build_cli_plugin.py
+uv run --frozen python scripts/build_cli_plugin.py --check
 uv run --frozen ruff check .
 uv run --frozen python -m unittest discover -s tests -v
 uv run --frozen python scripts/smoke_mcp.py
@@ -25,3 +27,5 @@ Policy changes need tests that could catch false approval or lost uncertainty. R
 Update both runtime lockfiles when changing dependencies. Include a vulnerability audit and license inventory, and explain new outbound hosts or local side effects. Do not vendor credentials, generated private reviews, virtual environments or cloud deployment state. Review the actual release archive, not only the working tree.
 
 A pull request should explain the problem, resulting behavior and relevant validation. Keep commits focused. Do not change commit dates to establish priority; use release publication records and commit identity transparently.
+
+`plugins/oss-gate` is the maintained source. `plugins/oss-gate-cli` is a generated, self-contained distribution committed for marketplace installation; do not edit it directly. Regenerate it after changing common code, skills, policies, runtime locks or metadata. CI and release packaging reject stale generated files. The CLI-specific transport reference and metadata are owned by `scripts/build_cli_plugin.py`.

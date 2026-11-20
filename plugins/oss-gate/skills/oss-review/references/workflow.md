@@ -1,5 +1,7 @@
 # Review workflow
 
+Operation names below refer to shared analysis functions. Use the MCP or CLI mapping in `transport.md`; the CLI installation does not require MCP tools.
+
 ## 1. Resolve the target
 
 For a repository, call `get_project` and inspect `primary_package`, `packages`, and `relation_type`. A heuristic package candidate is not proof of identity. Prefer the package matching the repository and source relationship. Ask one concise question if the candidate is absent or ambiguous. In noninteractive mode, return the ambiguity instead of silently selecting a different software project.
@@ -12,7 +14,7 @@ For a manifest, read only the specified file, inspect for private entries/creden
 
 Call `collect_review(system, name, version, repo, output_root)` with an absolute output_root inside the user's chosen workspace, normally `<workspace>/reviews`. This MCP tool writes files locally, and does not upload local files. Read the returned `data.json`, `api-responses.json`, and `evidence-sha256.json`. They contain normalized fields, original public API JSON, and integrity hashes. Error JSON is retained; transport failures appear in normalized errors. These are evidence collected by code, not model-written substitutes.
 
-If collection returns `error`, stop the package-review flow and explain its `code`, `hint`, and any `registry_check` in the requested language. No review directory was created for an initial package lookup failure. A deps.dev 404 alone does not establish nonexistence: npm/PyPI public registries may confirm a package/version exists, report a public-registry miss, or remain unverified. Other ecosystems and private/custom registries are not checked. Do not replace the target, fabricate evidence, claim approval, or loop tool calls to bypass the bounded retry policy. Suggest an exact-version/name correction or a later retry as appropriate.
+If collection returns `error`, stop the package-review flow and explain its `code`, `hint`, and any `registry_check` in the requested language. No review directory was created for an initial package lookup failure. A deps.dev 404 alone does not establish nonexistence: npm/PyPI public registries may confirm a package/version exists, report a public-registry miss, or remain unverified. A configured npm mirror is used instead of public npm for this check; its absence result applies only to that mirror. Authentication failures remain unverified. Other ecosystems and PyPI mirrors are not checked. Do not replace the target, fabricate evidence, claim approval, or loop tool calls to bypass the bounded retry policy. Suggest an exact-version/name correction or a later retry as appropriate.
 
 The collector queries at most 200 dependency nodes and 200 advisory IDs. A cap is an explicit coverage gap. It does not substitute a different version's graph. `get_dependencies(..., fallback_to_previous=true)` is available for investigation only: label all resulting facts with the resolved version and never use them to approve the requested version.
 
@@ -22,7 +24,7 @@ The returned verdict is computed by the shared policy. Do not override it in pro
 
 ## 3. Explain the software with DeepWiki
 
-Use the local DeepWiki tools to read public repository structure and relevant pages. `ask_question` accepts `repoName` and a fixed `topic` (`overview`, `communication`, `dependencies`, `maintenance`), not a free-form question. The corresponding public-software questions cover:
+Use the configured execution mode for DeepWiki explanations. MCP offers public repository structure and pages; CLI `explain` saves a fixed-topic response. `ask_question` accepts `repoName` and a fixed `topic` (`overview`, `communication`, `dependencies`, `maintenance`), not a free-form question. The corresponding public-software questions cover:
 
 1. What does the project do, who uses it, and how does a typical request flow through it?
 2. What information leaves the user's environment? Which endpoints, telemetry, credential handling, defaults and environment variables are documented?

@@ -1,9 +1,11 @@
-"""Narrow existence checks against public registries, never substitute review evidence."""
+"""Narrow existence checks against a selected registry, never substitute review evidence."""
 
 import re
 from urllib.parse import quote
 
 import httpx
+
+from .settings import DEFAULT_NPM_REGISTRY, npm_registry_url
 
 
 def check_registry(system, name, version, get):
@@ -20,16 +22,19 @@ def check_registry(system, name, version, get):
             return None
         return re.sub(r"[-_.]+", "-", value).lower() if system == "pypi" else value
 
+    base = npm_registry_url() if system == "npm" else "https://pypi.org"
+    mirror = system == "npm" and base != DEFAULT_NPM_REGISTRY
     encoded = quote(name, safe="")
-    package_url = (
-        f"https://registry.npmjs.org/{encoded}" if system == "npm" else f"https://pypi.org/pypi/{encoded}/json"
-    )
+    package_url = f"{base}/{encoded}" if system == "npm" else f"https://pypi.org/pypi/{encoded}/json"
     version_url = (
         f"{package_url}/{quote(version, safe='')}"
         if system == "npm"
         else f"https://pypi.org/pypi/{encoded}/{quote(version, safe='')}/json"
     )
     result = {"registry": "npm" if system == "npm" else "PyPI", "status": "unverified", "checks": []}
+
+    if mirror:
+        result.update(source_kind="configured_mirror", registry_url=base)
 
     def probe(url, expected_version=""):
         check = {"url": url, "status": None}
@@ -39,6 +44,10 @@ def check_registry(system, name, version, get):
             check["status"] = response.status_code
             if response.status_code == 404:
                 return "missing"
+            if response.status_code in (401, 403):
+                check["reason"] = "Registry requires authentication or access permission; credentials are not loaded."
+                check["code"] = "registry_access_denied"
+                return "unknown"
             if response.status_code != 200:
                 check["reason"] = "Registry did not return successful metadata."
                 return "unknown"
@@ -65,7 +74,7 @@ def check_registry(system, name, version, get):
             return result
     state = probe(package_url)
     if state == "missing":
-        result["status"] = "package_not_found"
+        result["status"] = "mirror_package_not_found" if mirror else "package_not_found"
     elif state == "found":
-        result["status"] = "version_not_found" if version else "found"
+        result["status"] = ("mirror_version_not_found" if mirror else "version_not_found") if version else "found"
     return result
