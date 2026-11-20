@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.3
 
 - Show opening recommendations and readable analysis before detailed data, preserving quoted summaries, reference links and source context.
 - Distinguish supplemental analysis from automated verdicts and explain the verdict levels.

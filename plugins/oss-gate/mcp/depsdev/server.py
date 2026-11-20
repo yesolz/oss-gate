@@ -28,7 +28,7 @@ from urllib.parse import quote
 import httpx
 from mcp.server.fastmcp import FastMCP
 
-VERSION = "0.2.2"
+VERSION = "0.2.3"
 DEPSDEV_BASE = "https://api.deps.dev/v3"
 OSV_BASE = "https://api.osv.dev/v1"
 USER_AGENT = f"oss-gate-depsdev/{VERSION}"
