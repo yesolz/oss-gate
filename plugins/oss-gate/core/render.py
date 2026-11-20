@@ -56,8 +56,16 @@ LABELS = {
         "raw": "Original API responses",
         "fallback": "Graph version differs from the reviewed version. Treat dependency coverage as unverified.",
         "view": "Inspect findings",
-        "current": "Recomputed from the saved evidence",
+        "current": "Automated policy verdict",
         "generic": "Evidence-based document",
+        "supplemental": "Supplemental analysis",
+        "no_verdict": "No automated verdict",
+        "document_note": "Recommendations in this document are separate from an automated package verdict.",
+        "decision": "Decision in brief",
+        "context": "Review context",
+        "appendix": "Data and source details",
+        "grades": "How to read the verdict",
+        "grade_help": "Allow: meets the screening rules. Conditional: checks or actions remain. Hold: a policy blocker needs resolution. Unverified is an individual area's evidence status. PASS / WARN / FAIL describe the report's evidence check, not approval to adopt.",
     },
     "ko": {
         "title": "오픈소스 도입 검토서",
@@ -99,15 +107,28 @@ LABELS = {
         "raw": "API 원본 응답",
         "fallback": "의존성 그래프가 다른 버전의 자료입니다. 요청 버전의 의존성은 확인되지 않았습니다.",
         "view": "근거 펼치기",
-        "current": "저장된 근거에서 다시 계산한 판정",
+        "current": "자동 정책 판정",
         "generic": "근거 기반 문서",
+        "supplemental": "보완 분석",
+        "no_verdict": "자동 판정 없음",
+        "document_note": "이 문서의 권고는 자동 패키지 판정과 별도로 작성한 판단입니다.",
+        "decision": "결론부터 읽기",
+        "context": "검토 정보",
+        "appendix": "수치와 상세 근거",
+        "grades": "판정 읽는 법",
+        "grade_help": "가능: 현재 점검 기준을 통과했습니다. 조건부: 확인하거나 조치할 일이 남았습니다. 보류: 정책상 막는 항목을 해결해야 합니다. 확인 필요는 개별 항목의 근거 상태입니다. PASS / WARN / FAIL은 보고서의 근거 검증 상태이며 도입 승인이 아닙니다.",
     },
 }
 TOKENS = {"allow": "good", "conditional": "warn", "hold": "serious", "unknown": "neutral"}
-SCRIPT = "document.querySelectorAll('[data-print]').forEach(b=>b.addEventListener('click',()=>window.print()));"
+SCRIPT = """document.querySelectorAll('[data-print]').forEach(b=>b.addEventListener('click',()=>window.print()));
+const printContext = new Set();
+window.addEventListener('beforeprint',()=>{
+  document.querySelectorAll('details.context:not([open])').forEach(d=>{printContext.add(d);d.open=true;});
+});
+window.addEventListener('afterprint',()=>{printContext.forEach(d=>d.open=false);printContext.clear();});"""
 EXTRA_CSS = """
 html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spacing:.1em}
-.review-body{font-size:15px;line-height:1.9}.review-body h1{font-size:27px}.review-body h2{font-size:23px;margin:44px 0 16px}.review-body h3{font-size:18px;margin-top:28px}.review-body p{margin:14px 0}
+.review-body{font-size:16px;line-height:1.85}.review-body h1{font-size:27px}.review-body h2{font-size:23px;margin:44px 0 16px}.review-body h3{font-size:18px;margin-top:28px}.review-body p{margin:14px 0}
 .review-body ul,.review-body ol{padding-left:24px}.review-body li{margin:7px 0}.review-body pre{overflow:auto;padding:18px;background:var(--sheet-2);font:12px/1.7 var(--mono);white-space:pre}.review-body code{overflow-wrap:anywhere}.review-body blockquote{border-left:3px solid var(--accent);padding:8px 18px;margin:20px 0;background:var(--sheet-2)}
 .table-wrap{overflow-x:auto;width:100%}table{border-collapse:collapse;width:100%;font-size:13px}th,td{text-align:left;vertical-align:top;padding:12px 10px;border-bottom:1px solid var(--rule);overflow-wrap:anywhere}th{overflow-wrap:normal;word-break:normal;font-weight:600;color:var(--ink-2);background:var(--sheet-2)}
 .details{border-top:1px solid var(--rule);padding:14px 0}.details summary{cursor:pointer;font-weight:600}.details pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px;background:var(--sheet-2);padding:16px;max-height:500px;overflow:auto}
@@ -117,7 +138,12 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
 .node-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:20px 0}.node{border:1px solid var(--rule);border-top:3px solid var(--accent);padding:16px;font:13px var(--sans);overflow-wrap:anywhere}.node small{display:block;color:var(--ink-2);margin-top:8px}.node.warn{border-top-color:var(--warn)}.node.unknown{border-top-color:var(--muted)}
 .meta{font:11px/1.7 var(--mono);color:var(--muted);overflow-wrap:anywhere}.ledger{--cols:4}.fig{padding:16px 10px!important}.fig-val{font:600 30px var(--serif)}.fig-label{font-size:11px;color:var(--ink-2);margin-top:7px}.legend-note{font:12px/1.8 var(--sans);color:var(--ink-2)}
 :focus-visible{outline:3px solid var(--accent);outline-offset:4px}a{overflow-wrap:anywhere}summary{min-height:32px}.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:16px;background:white;padding:12px;z-index:99}
-@media(max-width:760px){.page{padding:20px 12px 60px}.sheet{padding:28px 20px}.cover-in{display:flex;gap:16px}.seal-wrap{align-self:center}.arows{width:100%}.ledger{grid-template-columns:repeat(2,1fr)}.fig{border-bottom:1px solid var(--rule)}.review-body h1{font-size:24px}.language{justify-content:center}.cover nav.toc{display:none}}
+.document-title{font:650 32px/1.45 var(--sans);letter-spacing:-.025em}.document-kind{font:600 13px var(--sans);color:var(--ink-2);margin:0 0 16px}
+.document-status{border-left:3px solid var(--axis);padding:4px 0 4px 16px}.document-status strong{font-size:16px}.document-status p,.grade-guide p{font:13px/1.7 var(--sans);color:var(--ink-2);margin:10px 0 0}
+.grade-guide{padding:0;border:0}.grade-guide summary{font-size:12px;color:var(--ink-2)}.context{margin-top:24px;color:var(--ink-2)}.context .review-body{font-size:13px}.brief blockquote{border:0;background:none;margin:0;padding:0}.brief p:first-child{margin-top:0}.brief p:last-child{margin-bottom:0}
+.appendix-title{margin-top:72px;padding-top:32px;border-top:3px solid var(--rule);font-size:26px}.sec#decision{margin-top:28px;padding-top:28px}.sec#review{margin-top:32px;padding-top:32px}.sec#review>h2{font-size:14px;color:var(--ink-2)}.sec#review .review-body>h2:first-child{margin-top:20px}
+@media(max-width:760px){.page{padding:20px 12px 60px}.sheet{padding:24px 20px}.cover-in{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px 18px}.cover .brand{grid-column:1;grid-row:1}.cover .language{grid-column:2;grid-row:1;justify-content:flex-end}.cover .seal-wrap{grid-column:1;grid-row:2;align-self:center;align-items:center}.cover .seal{--seal:100px!important}.cover .seal-v{font-size:20px!important}.cover .seal-k{font-size:10px}.cover .seal-d{font-size:9px}.cover .seal-cap{font:600 11px/1.5 var(--sans);text-align:center;margin:4px 0}.cover .arows{grid-column:2;grid-row:2;width:100%}.cover .arows a{font-size:11px}.cover .grade-guide{grid-column:1/-1;grid-row:3}.cover .actions{grid-column:1/-1;grid-row:4}.cover .document-status{grid-column:1/-1;grid-row:2}.document-title{font-size:27px}.review-body{font-size:15px}.ledger{grid-template-columns:repeat(2,1fr)}.fig{border-bottom:1px solid var(--rule)}.review-body h1{font-size:24px}.cover nav.toc{display:none}.pkg{font-size:34px}.desc{font-size:16px}}
+
 @media print{.actions,.language,.skip{display:none!important}.cover{position:static}.review-body h2{break-after:avoid}.node,.notice{break-inside:avoid}.table-wrap{overflow:visible}details{display:block}.page{padding:0}.sheet{padding:25px}a{color:inherit;text-decoration:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 """
@@ -141,7 +167,7 @@ def safe_url(value):
         return None
 
 
-def markdown(text):
+def markdown_engine():
     md = MarkdownIt("commonmark", {"html": False, "typographer": False}).enable("table")
 
     # Reports never fetch remote images. Retain the caption and URL as text.
@@ -149,8 +175,88 @@ def markdown(text):
         return '<span class="meta">' + esc(tokens[idx].content) + "</span>"
 
     md.renderer.rules["image"] = image_rule
-    result = md.render(text)
+    return md
+
+
+def rendered_tables(result):
     return result.replace("<table>", '<div class="table-wrap"><table>').replace("</table>", "</table></div>")
+
+
+def markdown(text):
+    return rendered_tables(markdown_engine().render(text))
+
+
+def narrative_parts(text):
+    """Move an existing opening summary forward, preserving every other source block.
+
+    Token boundaries keep fenced headings and nested quotes intact. All fragments
+    share the original reference definitions and the same safe Markdown renderer.
+    """
+    md, env = markdown_engine(), {}
+    tokens = md.parse(text, env)
+    boundary = next(
+        (i for i, t in enumerate(tokens) if t.type == "heading_open" and t.tag == "h2" and t.level == 0), len(tokens)
+    )
+    intro, rest = tokens[:boundary], tokens[boundary:]
+    # The document title is rendered once by the surrounding page header.
+    title = ""
+    if intro and intro[0].type == "heading_open" and intro[0].tag == "h1":
+        title = intro[1].content
+        intro = intro[3:]
+    # Historical examples start with a bold verdict; current templates use a quote.
+    start = next(
+        (
+            i
+            for i, t in enumerate(intro[:-1])
+            if t.type == "paragraph_open" and t.level == 0 and intro[i + 1].content.startswith("**")
+        ),
+        None,
+    )
+    if start is not None:
+        brief, context = intro[start:], intro[:start]
+    else:
+        start = next((i for i, t in enumerate(intro) if t.type == "blockquote_open" and t.level == 0), None)
+        if start is None:
+            brief, context = intro, []
+        else:
+            end = next(
+                i + 1
+                for i in range(start + 1, len(intro))
+                if intro[i].type == "blockquote_close" and intro[i].level == 0
+            )
+            brief, context = intro[start:end], intro[:start] + intro[end:]
+
+    def fragment(items):
+        return rendered_tables(md.renderer.render(items, md.options, env))
+
+    return title, fragment(brief), fragment(context), fragment(rest)
+
+
+def reading_sections(text, lang):
+    title, brief, context, rest = narrative_parts(text)
+    t = LABELS[lang]
+    body = section("decision", t["decision"], '<div class="review-body brief">' + brief + "</div>") if brief else ""
+    if context:
+        body += f'<details class="details context"><summary>{t["context"]}</summary><div class="review-body">{context}</div></details>'
+    if rest:
+        body += section("review", t["narrative"], '<article class="review-body">' + rest + "</article>")
+    return title, body
+
+
+def render_document(text, lang, kind="document"):
+    t = LABELS[lang]
+    title, reading = reading_sections(text, lang)
+    label = t["supplemental"] if kind == "supplemental" else t["generic"]
+    cover = (
+        f'<div class="brand"><span class="wordmark">OSS GATE</span><span class="brand-sub">{label}</span></div>'
+        + f'<div class="document-status"><strong>{t["no_verdict"]}</strong><p>{t["document_note"]}</p></div>'
+        + f'<div class="actions"><button data-print>{t["print"]}</button></div>'
+    )
+    body = (
+        f'<header class="doc-head"><p class="document-kind">{label}</p><h1 class="document-title">{esc(title or label)}</h1></header>'
+        + reading
+    )
+    return shell(title or label, lang, cover, body)
 
 
 def table(headers, rows):
@@ -208,8 +314,9 @@ def render(data, text, lang, available=("ko", "en"), digest="", raw=False):
         f'<a class="brand" href="#main"><span class="wordmark">OSS GATE</span><span class="brand-sub">{t["title"]}</span></a>'
         + language
         + stamp
+        + f'<details class="details grade-guide"><summary>{t["grades"]}</summary><p>{t["grade_help"]}</p></details>'
         + nav
-        + f'<nav class="toc"><a href="#review">{t["read"]}</a><a href="#evidence">{t["evidence"]}</a></nav>'
+        + f'<nav class="toc"><a href="#main">{t["decision"]}</a><a href="#appendix">{t["appendix"]}</a></nav>'
         + actions
     )
     body = f'<header class="doc-head"><p class="meta">{esc(target.get("system"))} / {esc(date)}</p><h1 class="pkg">{esc(name)}<span class="ver">{esc(version)}</span></h1><p class="desc">{t["title"]}</p></header>'
@@ -225,10 +332,9 @@ def render(data, text, lang, available=("ko", "en"), digest="", raw=False):
         ),
         (t["coverage"], len(verdict["coverage_gaps"])),
     ]
-    intro = text.split("\n## ", 1)[0]
-    summary_match = re.search(r"(?m)^\*\*.+", intro)
-    if summary_match:
-        body += '<div class="review-body">' + markdown(intro[summary_match.start() :]) + "</div>"
+    _, reading = reading_sections(text, lang)
+    body += reading
+    body += f'<h2 class="appendix-title" id="appendix">{t["appendix"]}</h2>'
     body += section(
         "summary",
         t["summary"],
@@ -307,7 +413,6 @@ def render(data, text, lang, available=("ko", "en"), digest="", raw=False):
             else f"<p>{t['missing']}</p>"
         ),
     )
-    body += section("review", t["narrative"], '<article class="review-body">' + markdown(text) + "</article>")
     body += section(
         "evidence",
         t["evidence"],
@@ -325,8 +430,16 @@ def main(argv=None):
     parser.add_argument("--language", choices=("ko", "en", "both"), default="ko")
     parser.add_argument("--out", type=Path)
     parser.add_argument("--no-webfonts", action="store_true", help="Compatibility option; reports always work offline")
+    parser.add_argument(
+        "--document-kind",
+        choices=("document", "supplemental"),
+        default="document",
+        help="Label standalone analysis without creating an automated verdict",
+    )
     parser.add_argument("--document", action="store_true", help="Render a standalone Markdown summary or proposal")
     args = parser.parse_args(argv)
+    if args.document_kind != "document" and not args.document:
+        parser.error("--document-kind requires --document")
     languages = ("ko", "en") if args.language == "both" else (args.language,)
     if args.out and (args.out.suffix.lower() != ".html" or args.out.is_symlink()):
         parser.error("--out must be a regular .html destination; evidence files cannot be overwritten")
@@ -336,14 +449,7 @@ def main(argv=None):
         if not args.out or len(languages) != 1:
             parser.error("--document requires --out and one language")
         text = args.source.read_text(encoding="utf-8")
-        title = next((line.lstrip("# ") for line in text.splitlines() if line.startswith("# ")), "OSS Gate")
-        label = LABELS[args.language]
-        content = shell(
-            title,
-            args.language,
-            f'<div class="brand"><span class="wordmark">OSS GATE</span><span class="brand-sub">{label["generic"]}</span></div><div class="actions"><button data-print>{label["print"]}</button></div>',
-            '<article class="review-body">' + markdown(text) + "</article>",
-        )
+        content = render_document(text, args.language, args.document_kind)
         args.out.write_text(content, encoding="utf-8", newline="\n")
         return 0
     data_path = args.source / "data.json" if args.source.is_dir() else args.source

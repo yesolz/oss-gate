@@ -1,12 +1,18 @@
 # Report template
 
-Write each document entirely in its selected language, except exact identifiers, source quotes and code. Use the following sections, translating headings naturally. Aim for a substantive 1,500 to 3,000 words when the evidence supports it; never pad an incomplete review with invented facts.
+Write each document entirely in its selected language, except exact identifiers, source quotes and code. Use the following sections, translating headings naturally. Use the length the decision needs. Prefer short, connected paragraphs and explain technical terms through their practical effect. Do not repeat the same disclaimer in every section or pad an incomplete review. Keep exact details in evidence tables and sources.
 
 # <package> <version>: adoption review
 
-Snapshot date, ecosystem, repository, policy version, verdict and verification status.
+Start with one blockquote containing three short paragraphs, before collection metadata. Use clear, approachable language; in Korean prefer polite explanations such as "확인이 필요해요" or "먼저 확인하세요" over repeated audit-style declarations. Use natural labels in the selected language: **Decision / Why / Next step**, or **결론 / 이유 / 지금 할 일**. Keep each paragraph to one or two sentences.
 
-> Summarize what it does, why this verdict follows, and what must happen before adoption in three short paragraphs. State important coverage gaps here.
+> **Decision:** State the exact target and the computed outcome. For supplemental runtime analysis, explicitly label this as a recommendation, not an automated verdict.
+>
+> **Why:** Explain what the software does and the specific finding that drives the decision in plain language. State any coverage gap that materially limits this conclusion.
+>
+> **Next step:** Name the most useful action the reader can take now, with an exact version or setting only when supported. Do not imply that a proposed fix has already been verified in their environment.
+
+After the opening, record snapshot date, ecosystem, repository, policy version, verdict and verification status. The renderer places this context separately from the opening summary. Keep detailed counts, full advisory IDs, hashes and collection mechanics in the relevant sections below. These instructions affect presentation, never the computed policy or preserved evidence.
 
 ## 1. Decision and scope
 

@@ -17,7 +17,7 @@ import server
 from collect import collect
 from core.licenses import classify_license
 from core.policy import advisory_groups, evaluate
-from core.render import render, safe_url, markdown, main
+from core.render import render, render_document, narrative_parts, safe_url, markdown, main
 from core.snapshot import new_run, seal, verify, write_json
 
 
@@ -52,14 +52,16 @@ class ApiRegression(unittest.TestCase):
         ]
         for score, raw_vector, severity, expected, source in cases:
             with self.subTest(score=score, vector=raw_vector, severity=severity):
-                with legacy_server.fake({
-                    legacy_server.ADV("PYSEC-example"): {
-                        "advisoryKey": {"id": "PYSEC-example"},
-                        "cvss3Score": score,
-                        "cvss3Vector": raw_vector,
-                    },
-                    legacy_server.OSVV("PYSEC-example"): {"id": "PYSEC-example", "severity": severity},
-                }):
+                with legacy_server.fake(
+                    {
+                        legacy_server.ADV("PYSEC-example"): {
+                            "advisoryKey": {"id": "PYSEC-example"},
+                            "cvss3Score": score,
+                            "cvss3Vector": raw_vector,
+                        },
+                        legacy_server.OSVV("PYSEC-example"): {"id": "PYSEC-example", "severity": severity},
+                    }
+                ):
                     advisory = server._get_advisory("PYSEC-example")
                 self.assertEqual(advisory["cvss3_score"], expected)
                 self.assertEqual(advisory["cvss3_score_source"], source)
@@ -225,6 +227,66 @@ class PolicyRegression(unittest.TestCase):
 
 
 class ReportRegression(unittest.TestCase):
+    def test_opening_summary_precedes_data_without_losing_context(self):
+        for opening in [
+            "**Verdict: hold**\n\nReader-friendly reason.",
+            "> **Decision:** hold.\n>\n> Reader-friendly reason.\n>\n> **Next step:** update after review.",
+        ]:
+            with self.subTest(opening=opening):
+                source = "# Demo\n\nSnapshot context.\n\n" + opening + "\n\n## Details\nUnique narrative detail."
+                page = render(clean(), source, "en")
+                self.assertEqual(page.count("Reader-friendly reason."), 1)
+                self.assertEqual(page.count("Unique narrative detail."), 1)
+                self.assertIn("Snapshot context.", page)
+                self.assertLess(page.index("Reader-friendly reason."), page.index('id="summary"'))
+                self.assertLess(page.index("Unique narrative detail."), page.index('id="dependencies"'))
+                # Model-authored wording cannot replace the deterministic seal.
+                self.assertIn('class="seal-v">Allow<', page)
+
+    def test_summary_split_preserves_references_fences_and_safe_markdown(self):
+        source = """# Demo
+
+Collected today.
+
+> See [official evidence][source].
+>
+> ```text
+> ## This is not a section boundary
+> ```
+
+## Actual section
+
+![remote](https://example.com/pixel)
+<script>bad()</script>
+
+[source]: https://example.com/advisory
+"""
+        title, brief, context, rest = narrative_parts(source)
+        self.assertEqual(title, "Demo")
+        self.assertIn('href="https://example.com/advisory"', brief)
+        self.assertIn("## This is not a section boundary", brief)
+        self.assertIn("Collected today.", context)
+        self.assertIn("Actual section", rest)
+        self.assertNotIn("<script>", rest)
+        self.assertNotIn("<img", rest)
+        for text in ["A plain summary.", "# Only a title", "## First section\nText.", ""]:
+            narrative_parts(text)
+
+    def test_supplemental_document_never_implies_automated_approval(self):
+        for lang, label in [("ko", "자동 판정 없음"), ("en", "No automated verdict")]:
+            page = render_document("# Runtime\n\n> **Decision:** Hold.\n\n## Evidence\nSource.", lang, "supplemental")
+            self.assertIn(label, page)
+            self.assertNotIn('class="seal ', page)
+            self.assertEqual(page.count("<h1"), 1)
+            self.assertIn("Source.", page)
+        with tempfile.TemporaryDirectory() as tmp:
+            source, out = Path(tmp) / "review.md", Path(tmp) / "report.html"
+            source.write_text("# Runtime\n\nScoped analysis.", encoding="utf-8")
+            main([str(source), "--document", "--document-kind", "supplemental", "--language", "en", "--out", str(out)])
+            self.assertIn("Supplemental analysis", out.read_text(encoding="utf-8"))
+            with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+                main([str(source), "--document-kind", "supplemental"])
+
     def test_untrusted_html_and_links(self):
         data = clean()
         data["target"]["name"] = "</title><script>alert(1)</script>"

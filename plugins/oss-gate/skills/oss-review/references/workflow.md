@@ -31,7 +31,7 @@ Store tool responses in `deepwiki.json` with tool name, repository, retrieval ti
 
 ## 4. Write the narrative
 
-Follow the report template. Explain facts in connected paragraphs with concrete implications. Include source references such as `data.json#/lookup_package/licenses`, `data.json#/get_dependencies/nodes/3`, an advisory ID, or a specific DeepWiki question/page. Include package versions and dependency paths when discussing obligations or risk.
+Follow the report template. Lead with the decision, its main reason and the next useful action. Explain facts in connected paragraphs with concrete implications. Keep the full evidence available without making the reader work through every raw table before understanding the recommendation. Include source references such as `data.json#/lookup_package/licenses`, `data.json#/get_dependencies/nodes/3`, an advisory ID, or a specific DeepWiki question/page. Include package versions and dependency paths when discussing obligations or risk.
 
 Keep all vulnerabilities in an evidence table, grouped by overlapping aliases. Distinguish the reviewed version from candidate fixed versions. Match ecosystem, affected package and version branch before recommending an upgrade. Never choose the smallest flattened `fixed_versions` entry across unrelated branches/packages.
 
@@ -44,3 +44,9 @@ Re-read evidence rather than the draft alone. Check names, exact versions, node 
 Write `verification.json` with status `PASS`, `WARN`, or `FAIL`, checked fields, mismatches and unresolved items. This is an agent evidence check, not an independent scanner. A grade-affecting mismatch or suspected evidence tampering blocks delivery as an approved review. Correct the draft, or explicitly deliver it as failed/incomplete. Do not mark PASS merely because the renderer succeeded.
 
 Verify the evidence hashes again, render the selected languages, and inspect the generated files. A fresh query is a new snapshot; never overwrite an earlier review to make a comparison look better.
+
+## Supplemental runtime analysis
+
+If the user asks to investigate a native runtime outside the supported package ecosystems, keep that scope explicit. Never substitute a similarly named registry package. A separately scoped analysis may use official advisories, releases and tagged source, with saved evidence and a clearly labelled recommendation. It is not a completed `collect_review` run and must not fabricate a package snapshot or an automatic verdict.
+
+Render that Markdown with `render.py <review.md> --document --document-kind supplemental --language <ko|en> --out <report.html>` through the locked plugin runtime. This labels the report as supplemental analysis without a verdict stamp. Ordinary comparisons, proposals and portfolio documents continue to use `--document`; they do not receive a new package verdict. A lookup error still follows the stop rule in section 2.
