@@ -63,7 +63,7 @@ def advisory_groups(advisories):
     return sorted(result, key=lambda g: (-(g["score"] if g["score"] is not None else -1), g["id"]))
 
 
-def evaluate(data):
+def _evaluate_base(data):
     """Return stable language-neutral grades, coverage gaps, and traceable reasons."""
     lp, gd = obj(data.get("lookup_package")), obj(data.get("get_dependencies"))
     target = obj(data.get("target"))
@@ -208,3 +208,10 @@ def evaluate(data):
         "high_critical_count": sum(g["score"] is not None and g["score"] >= 7 for g in groups),
         "severity_unknown_count": sum(g["score"] is None for g in groups),
     }
+
+
+def evaluate(data):
+    """Apply optional saved settings without changing default screening behavior."""
+    from .additional_policy import apply
+
+    return apply(data, _evaluate_base(data))

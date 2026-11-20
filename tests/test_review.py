@@ -13,8 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "plugins/oss-gate"))
 sys.path.insert(0, str(ROOT / "plugins/oss-gate/mcp/depsdev"))
 import legacy_server
-import server
-from collect import collect
+from core import api as server
+from core.collect import collect
 from core.licenses import classify_license
 from core.policy import advisory_groups, evaluate
 from core.render import render, render_document, narrative_parts, safe_url, markdown, main

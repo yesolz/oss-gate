@@ -9,7 +9,6 @@ import tempfile
 from pathlib import Path
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
-from mcp.client.streamable_http import streamablehttp_client
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -66,15 +65,50 @@ async def run(live=False):
                     assert snapshot["verdict"]["overall"] != "allow"
                     assert (Path(data["folder"]) / "api-responses.json").stat().st_size > 0
                     print("PASS: live collector, raw evidence, integrity hashes and non-approval of vulnerable pin")
-    if live:
-        async with streamablehttp_client("https://mcp.deepwiki.com/mcp") as (read, write, _):
-            async with ClientSession(read, write) as session:
-                await session.initialize()
-                names = {t.name for t in (await session.list_tools()).tools}
-                assert "read_wiki_structure" in names
+    params = StdioServerParameters(
+        command=uv, args=["run", "--frozen", "--project", str(plugin), "python", str(plugin / "mcp/deepwiki/server.py")]
+    )
+    async with stdio_client(params) as (read, write):
+        async with ClientSession(read, write) as session:
+            await session.initialize()
+            names = {t.name for t in (await session.list_tools()).tools}
+            assert names == {"read_wiki_structure", "read_wiki_contents", "ask_question"}
+            result = await session.call_tool("ask_question", {"repoName": "owner/repo", "topic": "invalid"})
+            assert json.loads(result.content[0].text)["code"] == "invalid_input"
+            print("PASS: local DeepWiki discovery and offline validation")
+            if live:
                 result = await session.call_tool("read_wiki_structure", {"repoName": "psf/requests"})
-                assert not result.isError
-                print("PASS: DeepWiki discovery and public repository structure")
+                data = json.loads(result.content[0].text)
+                assert not data.get("error") and not data.get("isError") and data["content"], data
+                print("PASS: controlled DeepWiki public repository structure")
+    with tempfile.TemporaryDirectory(prefix="oss-gate-policy-smoke-") as tmp:
+        policy = Path(tmp) / "settings.json"
+        policy.write_text(
+            json.dumps(
+                {
+                    "schema": "oss-gate.settings/1",
+                    "name": "Smoke policy",
+                    "version": "1",
+                    "network": {"services": []},
+                }
+            ),
+            encoding="utf-8",
+        )
+        for adapter, tool, arguments in [
+            ("depsdev", "lookup_package", {"system": "npm", "name": "demo", "version": "1.0.0"}),
+            ("deepwiki", "ask_question", {"repoName": "owner/repo"}),
+        ]:
+            params = StdioServerParameters(
+                command=uv,
+                args=["run", "--frozen", "--project", str(plugin), "python", str(plugin / f"mcp/{adapter}/server.py")],
+                env={"OSS_GATE_POLICY": str(policy)},
+            )
+            async with stdio_client(params) as (read, write):
+                async with ClientSession(read, write) as session:
+                    await session.initialize()
+                    result = await session.call_tool(tool, arguments)
+                    assert json.loads(result.content[0].text)["code"] == "policy_blocked"
+        print("PASS: both MCP adapters enforce launch-selected policy")
 
 
 if __name__ == "__main__":

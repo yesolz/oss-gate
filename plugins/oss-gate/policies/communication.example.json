@@ -1,0 +1,17 @@
+{
+  "schema": "oss-gate.communication/1",
+  "target": {"system": "npm", "name": "example-package", "version": "1.0.0"},
+  "status": "unverified",
+  "coverage": "partial",
+  "sources": [],
+  "observations": [
+    {
+      "destination": "https://telemetry.example.org/events",
+      "data": "Unknown; inspect the exact version before completing this record",
+      "purpose": "Unknown",
+      "default_enabled": null,
+      "required": null,
+      "can_disable": null
+    }
+  ]
+}

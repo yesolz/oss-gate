@@ -40,7 +40,7 @@ codex plugin list --marketplace oss-gate
 플러그인 설치를 지원하지 않는 클라이언트는 체크아웃을 유지하고 두 MCP를 직접 등록할 수 있습니다.
 
 ```sh
-codex mcp add oss-gate-deepwiki --url https://mcp.deepwiki.com/mcp
+codex mcp add oss-gate-deepwiki -- uv run --frozen --project /absolute/path/oss-gate/plugins/oss-gate python /absolute/path/oss-gate/plugins/oss-gate/mcp/deepwiki/server.py
 codex mcp add oss-gate-depsdev -- uv run --frozen --project /absolute/path/oss-gate/plugins/oss-gate python /absolute/path/oss-gate/plugins/oss-gate/mcp/depsdev/server.py
 ```
 
@@ -52,7 +52,7 @@ codex mcp add oss-gate-depsdev -- uv run --frozen --project /absolute/path/oss-g
 
 - depsdev는 공개 패키지·버전·저장소 식별자와 선택한 manifest 항목을 `api.deps.dev`, `api.osv.dev`에 보냅니다.
 - deps.dev의 패키지·버전 조회가 404일 때만 npm·PyPI의 공개 식별자를 `registry.npmjs.org` 또는 `pypi.org`에도 보내 존재 여부를 확인합니다. 레지스트리에서 찾았다는 사실만으로 검토를 승인하지 않습니다.
-- DeepWiki에는 공개 저장소 이름과 조사 질문이 전달됩니다. 모델 제공자는 해당 클라이언트 약관에 따라 대화·도구 문맥을 처리합니다.
+- 로컬 DeepWiki 연결 모듈은 호출할 때 공개 저장소 이름과 정해진 주제별 질문을 보냅니다. 도구 목록을 읽을 때는 외부에 연결하지 않습니다. 모델 제공자는 해당 클라이언트 약관에 따라 대화·도구 문맥을 처리합니다.
 - 수집기는 에이전트가 지정한 폴더에 파일을 씁니다. MCP 서버의 작업 위치와 혼동하지 않도록 워크스페이스 안의 절대 경로를 권장합니다.
 - 검토 대상 패키지를 설치하거나 실행하지 않습니다. 에이전트와 uv는 로컬 코드를 실행하므로 호스트의 일반 권한 체계가 적용됩니다. 전역 네트워크 차단 훅을 설치하지 않습니다.
 - 비공개 패키지 이름·자격 증명·내부 저장소 내용을 보내지 않습니다. manifest는 조회 전에 확인합니다.
@@ -60,3 +60,5 @@ codex mcp add oss-gate-depsdev -- uv run --frozen --project /absolute/path/oss-g
 `uv: command not found`는 데스크톱 앱의 PATH에서 uv를 찾지 못하는 경우입니다. 설치 후 앱을 다시 시작하거나 실제 uv 절대 경로를 설정합니다. 의존성 그래프 부재와 위키 미색인은 설치 실패가 아닌 조회 범위의 한계입니다. 시간 초과와 요청 제한도 미확인으로 남겨야 하며 0건으로 바꾸면 안 됩니다.
 
 공식 안내: [Claude 마켓플레이스](https://code.claude.com/docs/en/plugin-marketplaces), [OpenAI 플러그인](https://developers.openai.com/plugins/build/plugins), [Codex MCP](https://developers.openai.com/codex/mcp).
+
+[선택적 정책과 CLI](customization.ko.md). 기존에 직접 등록한 원격 DeepWiki 연결은 로컬 연결 모듈로 교체해야 이 통제를 적용할 수 있습니다. 설정을 바꾼 뒤 클라이언트를 다시 시작하세요.

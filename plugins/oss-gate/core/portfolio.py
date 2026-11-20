@@ -11,12 +11,14 @@ from .snapshot import load_review, sha256, write_json
 
 def aggregate(paths):
     selected, excluded = {}, []
+    policy_ids = set()
     for input_path in paths:
         path = Path(input_path)
         if path.is_dir():
             path = path / "data.json"
         try:
             data = load_review(path)
+            verdict = evaluate(data)
             target = data["target"]
             key = tuple(target[k] for k in ("system", "name", "version"))
             if any(not isinstance(v, str) or not v for v in key):
@@ -24,6 +26,7 @@ def aggregate(paths):
             timestamp = datetime.fromisoformat(data["generated_at"].replace("Z", "+00:00"))
             if timestamp.tzinfo is None:
                 raise ValueError("timestamp requires timezone")
+            policy_ids.add(verdict.get("additional_policy", {}).get("sha256"))
             previous = selected.get(key)
             if previous and timestamp <= previous[0]:
                 excluded.append({"path": str(path), "reason": "older_or_duplicate_snapshot"})
@@ -35,6 +38,8 @@ def aggregate(paths):
             excluded.append(
                 {"path": str(path), "reason": "missing_invalid_or_changed_evidence", "error_type": type(exc).__name__}
             )
+    if len(policy_ids) > 1:
+        raise ValueError("cannot aggregate reviews evaluated with different additional policies")
     items, all_advisories = [], {}
     counts = {"allow": 0, "conditional": 0, "hold": 0}
     for key in sorted(selected):
@@ -64,6 +69,7 @@ def aggregate(paths):
     return {
         "schema": "oss-gate.portfolio/1",
         "policy": POLICY_VERSION,
+        "additional_policy_sha256": next(iter(policy_ids), None),
         "items": items,
         "excluded": excluded,
         "counts": counts,
@@ -78,6 +84,8 @@ def compare(current, previous):
     """Compare exact targets under the same policy; absent items are not zero findings."""
     if current.get("policy") != previous.get("policy"):
         raise ValueError("recompute both portfolios with the same policy before comparing")
+    if current.get("additional_policy_sha256") != previous.get("additional_policy_sha256"):
+        raise ValueError("compare portfolios with the same additional policy")
 
     def indexed(portfolio):
         return {tuple(i["target"][k] for k in ("system", "name", "version")): i for i in portfolio["items"]}

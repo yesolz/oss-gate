@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0
+
+- Share collection and policy functions between thin MCP adapters and a local CLI; preserve default review behavior.
+- Support explicitly selected outbound rules and additive release-age/communication review conditions, with sealed policy provenance and a fixed evaluation clock.
+- Route DeepWiki through a lazy local adapter with fixed public-software questions and the same outbound checks.
+- Explain optional policy results in Korean and English reports and reject mixed-policy portfolio comparisons.
+
 ## 0.2.3
 
 - Show opening recommendations and readable analysis before detailed data, preserving quoted summaries, reference links and source context.

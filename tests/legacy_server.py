@@ -11,9 +11,9 @@ from urllib.parse import quote
 import httpx
 
 HERE = Path(__file__).resolve().parents[1] / "plugins/oss-gate/mcp/depsdev"
-sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parents[1]))
 
-import server  # noqa: E402
+from core import api as server  # noqa: E402
 
 DD, OSV = server.DEPSDEV_BASE, server.OSV_BASE
 _passed = 0

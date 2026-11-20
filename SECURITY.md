@@ -6,7 +6,7 @@ OSS Gate processes untrusted public metadata and AI-generated repository explana
 
 Use the repository's private [Report a vulnerability](https://github.com/yesolz/oss-gate/security/advisories/new) flow if available. If it is unavailable, open an issue asking for a private contact without including sensitive details. Do not post credentials, private package names, customer data or an unredacted private report in a public issue. There is no guaranteed response-time commitment.
 
-Only the latest published release is maintained. The old cloud prototype retained in Git history is unsupported and should not be deployed as a public review service.
+Only the latest published release is maintained. Archived workshop prototypes are unsupported and should not be deployed as public review services.
 
 ## Threat model
 
@@ -17,3 +17,11 @@ The code uses fixed public API bases, TLS verification, bounded queries and expl
 `collect_review` writes new files under the output root provided by its caller. Choose a workspace path you intend to use. New IDs avoid overwriting earlier runs. Markdown/HTML derivatives can be regenerated; sealed JSON should not be edited. Before sharing a report, inspect its source questions and metadata for private information.
 
 Dependency audit results are timestamped observations. No known advisory match is not a guarantee of safety. Keep the host, uv, Python and locked dependencies current, with regression checks for updates.
+
+## Optional local policy
+
+Explicitly selected settings can restrict service destinations and package/repository identifiers before outbound calls. Both bundled MCP adapters and CLI entry points apply these checks. No settings are discovered from the target repository. The local DeepWiki adapter sends fixed topic questions, connects only when called and does not follow redirects. Existing direct remote DeepWiki connections must be replaced to use these controls.
+
+These checks do not sandbox the host agent, protect a policy file from its owner, or govern other tools, model-provider traffic or dependency installation. Use host permissions and organization network controls when mandatory enforcement is required. Deny patterns cannot recognize every private identifier; strict setups need a locally defined allowlist. A blocked dependency may leave its entire OSV batch unqueried.
+
+Additional review policies preserve base restrictions. Communication assertions require explicit reviewer-provided provenance, but the program cannot independently verify the truth of that attribution or its completeness. Do not treat AI-generated statements or an empty observation list as proof of no network behavior. Saved reports can include organization settings, reviewer attribution and queries; inspect all files before sharing.

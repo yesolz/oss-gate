@@ -2,6 +2,8 @@
 
 The executable policy is `plugins/oss-gate/core/policy.py`, version `oss-gate.policy/2`. It consumes saved data and returns language-neutral outcomes. Korean and English rendering never independently decide a grade.
 
+Optional settings are described in [customization](customization.md). `core.additional_policy` applies explicitly selected conditions after the unchanged base policy. It can retain or increase restrictions, never erase them. The saved policy content, hash and evaluation time are sealed in the snapshot. Without `policy_context`, existing reports retain the base behavior. Additional rules currently cover a configurable release waiting period, reviewer-supplied communication evidence and explicitly blocked destinations. They do not infer maintenance abandonment or automatically validate an external-communication claim. Portfolios reject different additional-policy hashes rather than silently comparing unlike decisions.
+
 ## Screening rules
 
 | Area | Allow | Conditional | Hold | Unverified |

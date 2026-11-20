@@ -5,10 +5,18 @@ import json
 from pathlib import Path
 
 from core.policy import evaluate
+from core.settings import CURRENT, EVENTS, fingerprint
+from core.additional_policy import validate_communication
 from core.snapshot import new_run, seal, write_json
 
 
-def collect(server, system, name, version="", repo="", output_root="reviews"):
+def collect(server, system, name, version="", repo="", output_root="reviews", communication_path=""):
+    communication = None
+    if communication_path:
+        source = Path(communication_path)
+        if not source.is_absolute() or source.stat().st_size > 512_000:
+            raise ValueError("communication evidence requires an absolute path and at most 512000 bytes")
+        communication = validate_communication(json.loads(source.read_text(encoding="utf-8")))
     calls = []
     token = server._capture.set(calls)
     try:
@@ -51,6 +59,19 @@ def collect(server, system, name, version="", repo="", output_root="reviews"):
             "deepwiki": None,
             "evidence_note": "Normalized API fields. Unabridged successful JSON responses and HTTP error JSON are in api-responses.json. Network failures appear in normalized error fields.",
         }
+        if communication is not None:
+            if communication["target"] != {k: target[k] for k in ("system", "name", "version")}:
+                raise ValueError("communication evidence does not match the reviewed target")
+            data["communication"] = communication
+        config = CURRENT.get()
+        if config is not None:
+            data["policy_context"] = {
+                "schema": "oss-gate.policy-context/1",
+                "config": config,
+                "sha256": fingerprint(config),
+                "evaluated_at": data["generated_at"],
+            }
+            data["network_decisions"] = list(EVENTS.get() or [])
         data["verdict"] = evaluate(data)
         folder = new_run(output_root, target["name"], target["version"])
         write_json(folder / "data.json", data)

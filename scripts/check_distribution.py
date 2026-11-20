@@ -100,7 +100,7 @@ def check(root=ROOT):
     for relative, key in [
         ("pyproject.toml", "version"),
         ("plugins/oss-gate/pyproject.toml", "version"),
-        ("plugins/oss-gate/mcp/depsdev/server.py", "VERSION"),
+        ("plugins/oss-gate/core/api.py", "VERSION"),
     ]:
         match = re.search(rf'^{key} = "([^"]+)"', (root / relative).read_text(encoding="utf-8"), re.M)
         if not match or match[1] != manifest["version"]:

@@ -13,9 +13,10 @@ from unittest.mock import patch
 import httpx
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "plugins/oss-gate/mcp/depsdev"))
-import server
-from collect import collect
+sys.path.insert(0, str(ROOT / "plugins/oss-gate"))
+from core import api as server
+from core.collect import collect
+from core.service import invoke
 
 PKG = f"{server.DEPSDEV_BASE}/systems/pypi/packages/demo"
 VER = f"{PKG}/versions/1.0.0"
@@ -52,7 +53,7 @@ class LookupFailures(unittest.TestCase):
                 yield calls
 
     def lookup(self, system="pypi", name="demo", version="1.0.0"):
-        return json.loads(server.lookup_package(system, name, version))
+        return json.loads(invoke("lookup_package", system, name, version))
 
     def test_existing_registry_target_is_not_approved_or_saved(self):
         routes = {
