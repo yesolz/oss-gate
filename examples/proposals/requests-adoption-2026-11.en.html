@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-o6GNtSeaOq845XJA+POFkaVnz+cEtOLPtYXW1zfVXlI='; img-src data:; base-uri 'none'; form-action 'none'"><meta name="generator" content="OSS Gate 0.2.2"><title>Requests adoption proposal</title><style>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-P7o5K9rZzfDtdK3dC4Cf9WdUXHNGgX6rv48xkEcSukk='; img-src data:; base-uri 'none'; form-action 'none'"><meta name="generator" content="OSS Gate 0.2.3"><title>Requests adoption proposal</title><style>
 :root{
   color-scheme:light;
   --paper:#eceeeb;--sheet:#ffffff;--sheet-2:#f4f5f2;
@@ -304,7 +304,7 @@ details.pg .md,details.pg .structure{padding:10px 0 4px;font-size:14.5px;color:v
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 
 html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spacing:.1em}
-.review-body{font-size:15px;line-height:1.9}.review-body h1{font-size:27px}.review-body h2{font-size:23px;margin:44px 0 16px}.review-body h3{font-size:18px;margin-top:28px}.review-body p{margin:14px 0}
+.review-body{font-size:16px;line-height:1.85}.review-body h1{font-size:27px}.review-body h2{font-size:23px;margin:44px 0 16px}.review-body h3{font-size:18px;margin-top:28px}.review-body p{margin:14px 0}
 .review-body ul,.review-body ol{padding-left:24px}.review-body li{margin:7px 0}.review-body pre{overflow:auto;padding:18px;background:var(--sheet-2);font:12px/1.7 var(--mono);white-space:pre}.review-body code{overflow-wrap:anywhere}.review-body blockquote{border-left:3px solid var(--accent);padding:8px 18px;margin:20px 0;background:var(--sheet-2)}
 .table-wrap{overflow-x:auto;width:100%}table{border-collapse:collapse;width:100%;font-size:13px}th,td{text-align:left;vertical-align:top;padding:12px 10px;border-bottom:1px solid var(--rule);overflow-wrap:anywhere}th{overflow-wrap:normal;word-break:normal;font-weight:600;color:var(--ink-2);background:var(--sheet-2)}
 .details{border-top:1px solid var(--rule);padding:14px 0}.details summary{cursor:pointer;font-weight:600}.details pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px;background:var(--sheet-2);padding:16px;max-height:500px;overflow:auto}
@@ -314,15 +314,19 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
 .node-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:20px 0}.node{border:1px solid var(--rule);border-top:3px solid var(--accent);padding:16px;font:13px var(--sans);overflow-wrap:anywhere}.node small{display:block;color:var(--ink-2);margin-top:8px}.node.warn{border-top-color:var(--warn)}.node.unknown{border-top-color:var(--muted)}
 .meta{font:11px/1.7 var(--mono);color:var(--muted);overflow-wrap:anywhere}.ledger{--cols:4}.fig{padding:16px 10px!important}.fig-val{font:600 30px var(--serif)}.fig-label{font-size:11px;color:var(--ink-2);margin-top:7px}.legend-note{font:12px/1.8 var(--sans);color:var(--ink-2)}
 :focus-visible{outline:3px solid var(--accent);outline-offset:4px}a{overflow-wrap:anywhere}summary{min-height:32px}.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:16px;background:white;padding:12px;z-index:99}
-@media(max-width:760px){.page{padding:20px 12px 60px}.sheet{padding:28px 20px}.cover-in{display:flex;gap:16px}.seal-wrap{align-self:center}.arows{width:100%}.ledger{grid-template-columns:repeat(2,1fr)}.fig{border-bottom:1px solid var(--rule)}.review-body h1{font-size:24px}.language{justify-content:center}.cover nav.toc{display:none}}
+.document-title{font:650 32px/1.45 var(--sans);letter-spacing:-.025em}.document-kind{font:600 13px var(--sans);color:var(--ink-2);margin:0 0 16px}
+.document-status{border-left:3px solid var(--axis);padding:4px 0 4px 16px}.document-status strong{font-size:16px}.document-status p,.grade-guide p{font:13px/1.7 var(--sans);color:var(--ink-2);margin:10px 0 0}
+.grade-guide{padding:0;border:0}.grade-guide summary{font-size:12px;color:var(--ink-2)}.context{margin-top:24px;color:var(--ink-2)}.context .review-body{font-size:13px}.brief blockquote{border:0;background:none;margin:0;padding:0}.brief p:first-child{margin-top:0}.brief p:last-child{margin-bottom:0}
+.appendix-title{margin-top:72px;padding-top:32px;border-top:3px solid var(--rule);font-size:26px}.sec#decision{margin-top:28px;padding-top:28px}.sec#review{margin-top:32px;padding-top:32px}.sec#review>h2{font-size:14px;color:var(--ink-2)}.sec#review .review-body>h2:first-child{margin-top:20px}
+@media(max-width:760px){.page{padding:20px 12px 60px}.sheet{padding:24px 20px}.cover-in{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px 18px}.cover .brand{grid-column:1;grid-row:1}.cover .language{grid-column:2;grid-row:1;justify-content:flex-end}.cover .seal-wrap{grid-column:1;grid-row:2;align-self:center;align-items:center}.cover .seal{--seal:100px!important}.cover .seal-v{font-size:20px!important}.cover .seal-k{font-size:10px}.cover .seal-d{font-size:9px}.cover .seal-cap{font:600 11px/1.5 var(--sans);text-align:center;margin:4px 0}.cover .arows{grid-column:2;grid-row:2;width:100%}.cover .arows a{font-size:11px}.cover .grade-guide{grid-column:1/-1;grid-row:3}.cover .actions{grid-column:1/-1;grid-row:4}.cover .document-status{grid-column:1/-1;grid-row:2}.document-title{font-size:27px}.review-body{font-size:15px}.ledger{grid-template-columns:repeat(2,1fr)}.fig{border-bottom:1px solid var(--rule)}.review-body h1{font-size:24px}.cover nav.toc{display:none}.pkg{font-size:34px}.desc{font-size:16px}}
+
 @media print{.actions,.language,.skip{display:none!important}.cover{position:static}.review-body h2{break-after:avoid}.node,.notice{break-inside:avoid}.table-wrap{overflow:visible}details{display:block}.page{padding:0}.sheet{padding:25px}a{color:inherit;text-decoration:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
-</style></head><body><a class="skip" href="#main">Read the full review</a><div class="page"><aside class="cover"><div class="cover-in"><div class="brand"><span class="wordmark">OSS GATE</span><span class="brand-sub">Evidence-based document</span></div><div class="actions"><button data-print>Print / PDF</button></div></div></aside><main class="sheet" id="main"><article class="review-body"><h1>Requests adoption proposal</h1>
-<p>Evidence date: 2026-11-17 · Proposal example · Verification: <strong>WARN</strong></p>
-<blockquote>
+</style></head><body><a class="skip" href="#main">Read the full review</a><div class="page"><aside class="cover"><div class="cover-in"><div class="brand"><span class="wordmark">OSS GATE</span><span class="brand-sub">Evidence-based document</span></div><div class="document-status"><strong>No automated verdict</strong><p>Recommendations in this document are separate from an automated package verdict.</p></div><div class="actions"><button data-print>Print / PDF</button></div></div></aside><main class="sheet" id="main"><header class="doc-head"><p class="document-kind">Evidence-based document</p><h1 class="document-title">Requests adoption proposal</h1></header><section class="sec" id="decision"><h2>Decision in brief</h2><div class="review-body brief"><blockquote>
 <p>This proposal uses a historical Requests 2.34.2 snapshot. It does not document an actual team's approval, production environment, legal response or current security posture.</p>
 </blockquote>
-<h2>1. Context and intended users</h2>
+</div></section><details class="details context"><summary>Review context</summary><div class="review-body"><p>Evidence date: 2026-11-17 · Proposal example · Verification: <strong>WARN</strong></p>
+</div></details><section class="sec" id="review"><h2>Adoption review</h2><article class="review-body"><h2>1. Context and intended users</h2>
 <p>Assume a Python service needs to call external HTTP APIs. A “backend API team” is an illustrative audience, not a verified organizational requirement. Requests 2.34.2 is conditional under policy v2. The outstanding adoption question is certifi@2026.10.23, its MPL-2.0 obligations, and the actual modifications/distribution. [Evidence 1, 2]</p>
 <p>The package itself declares Apache-2.0. The saved graph has four direct dependencies, certifi, charset-normalizer, idna and urllib3, and no transitive dependencies. It has not been established that this graph matches any particular service's installed environment. [Evidence 2]</p>
 <h2>2. Proposed adoption conditions</h2>
@@ -404,4 +408,9 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
 </tbody>
 </table></div>
 <p>Verification is WARN. Proposals are separated from evidence and numerical claims are checked against saved data, but the real environment, legal obligations and current vulnerability state have not been freshly verified. Use the <a href="../snapshot-sha256.json">hash manifest</a> to check source integrity.</p>
-</article></main></div><script>document.querySelectorAll('[data-print]').forEach(b=>b.addEventListener('click',()=>window.print()));</script></body></html>
+</article></section></main></div><script>document.querySelectorAll('[data-print]').forEach(b=>b.addEventListener('click',()=>window.print()));
+const printContext = new Set();
+window.addEventListener('beforeprint',()=>{
+  document.querySelectorAll('details.context:not([open])').forEach(d=>{printContext.add(d);d.open=true;});
+});
+window.addEventListener('afterprint',()=>{printContext.forEach(d=>d.open=false);printContext.clear();});</script></body></html>

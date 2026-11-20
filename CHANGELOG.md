@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.3
+
+- Show opening recommendations and readable analysis before detailed data, preserving quoted summaries, reference links and source context.
+- Distinguish supplemental analysis from automated verdicts and explain the verdict levels.
+- Shorten report-writing guidance around the decision, its reason and the next action; refresh bilingual example HTML.
+- Keep review context available in print output and compact verdict information on narrow screens.
+
 ## 0.2.2
 
 - Preserve unknown CVSS v3 severity when an upstream advisory supplies a zero score without a valid zero-impact vector. Recover scores from valid vectors and reject out-of-range scores.

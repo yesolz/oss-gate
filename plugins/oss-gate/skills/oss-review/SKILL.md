@@ -30,6 +30,6 @@ Use the plugin's locked runtime to render:
 uv run --frozen --project "<plugin-root>" python "<plugin-root>/render.py" "<review-directory>" --language both
 ```
 
-Resolve `<plugin-root>` from this skill's location (`../..`), not a hardcoded home directory. Render only the selected languages. If a narrative is missing, write it first. The renderer never translates on its own. HTML creation failure must be reported; keep the Markdown and evidence.
+Resolve `<plugin-root>` from this skill's location (`../..`), not a hardcoded home directory. Render only the selected languages. If a narrative is missing, write it first. The renderer never translates on its own. It shows the opening decision, reason and next step before the narrative and detailed data. Supplemental runtime analysis uses the explicitly labelled document mode in the workflow; it never receives an automated verdict stamp. HTML creation failure must be reported; keep the Markdown and evidence.
 
 Return the verdict and key reason, selected language(s), all generated file paths, and material coverage gaps. State the snapshot date. Do not claim that absence of known findings proves safety. Do not use em dashes in authored prose; preserve exact source strings and identifiers.

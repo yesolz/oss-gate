@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-o6GNtSeaOq845XJA+POFkaVnz+cEtOLPtYXW1zfVXlI='; img-src data:; base-uri 'none'; form-action 'none'"><meta name="generator" content="OSS Gate 0.2.2"><title>next 15.1.0 | OSS Gate</title><style>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-P7o5K9rZzfDtdK3dC4Cf9WdUXHNGgX6rv48xkEcSukk='; img-src data:; base-uri 'none'; form-action 'none'"><meta name="generator" content="OSS Gate 0.2.3"><title>next 15.1.0 | OSS Gate</title><style>
 :root{
   color-scheme:light;
   --paper:#eceeeb;--sheet:#ffffff;--sheet-2:#f4f5f2;
@@ -304,7 +304,7 @@ details.pg .md,details.pg .structure{padding:10px 0 4px;font-size:14.5px;color:v
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 
 html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spacing:.1em}
-.review-body{font-size:15px;line-height:1.9}.review-body h1{font-size:27px}.review-body h2{font-size:23px;margin:44px 0 16px}.review-body h3{font-size:18px;margin-top:28px}.review-body p{margin:14px 0}
+.review-body{font-size:16px;line-height:1.85}.review-body h1{font-size:27px}.review-body h2{font-size:23px;margin:44px 0 16px}.review-body h3{font-size:18px;margin-top:28px}.review-body p{margin:14px 0}
 .review-body ul,.review-body ol{padding-left:24px}.review-body li{margin:7px 0}.review-body pre{overflow:auto;padding:18px;background:var(--sheet-2);font:12px/1.7 var(--mono);white-space:pre}.review-body code{overflow-wrap:anywhere}.review-body blockquote{border-left:3px solid var(--accent);padding:8px 18px;margin:20px 0;background:var(--sheet-2)}
 .table-wrap{overflow-x:auto;width:100%}table{border-collapse:collapse;width:100%;font-size:13px}th,td{text-align:left;vertical-align:top;padding:12px 10px;border-bottom:1px solid var(--rule);overflow-wrap:anywhere}th{overflow-wrap:normal;word-break:normal;font-weight:600;color:var(--ink-2);background:var(--sheet-2)}
 .details{border-top:1px solid var(--rule);padding:14px 0}.details summary{cursor:pointer;font-weight:600}.details pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px;background:var(--sheet-2);padding:16px;max-height:500px;overflow:auto}
@@ -314,12 +314,1076 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
 .node-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:20px 0}.node{border:1px solid var(--rule);border-top:3px solid var(--accent);padding:16px;font:13px var(--sans);overflow-wrap:anywhere}.node small{display:block;color:var(--ink-2);margin-top:8px}.node.warn{border-top-color:var(--warn)}.node.unknown{border-top-color:var(--muted)}
 .meta{font:11px/1.7 var(--mono);color:var(--muted);overflow-wrap:anywhere}.ledger{--cols:4}.fig{padding:16px 10px!important}.fig-val{font:600 30px var(--serif)}.fig-label{font-size:11px;color:var(--ink-2);margin-top:7px}.legend-note{font:12px/1.8 var(--sans);color:var(--ink-2)}
 :focus-visible{outline:3px solid var(--accent);outline-offset:4px}a{overflow-wrap:anywhere}summary{min-height:32px}.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:16px;background:white;padding:12px;z-index:99}
-@media(max-width:760px){.page{padding:20px 12px 60px}.sheet{padding:28px 20px}.cover-in{display:flex;gap:16px}.seal-wrap{align-self:center}.arows{width:100%}.ledger{grid-template-columns:repeat(2,1fr)}.fig{border-bottom:1px solid var(--rule)}.review-body h1{font-size:24px}.language{justify-content:center}.cover nav.toc{display:none}}
+.document-title{font:650 32px/1.45 var(--sans);letter-spacing:-.025em}.document-kind{font:600 13px var(--sans);color:var(--ink-2);margin:0 0 16px}
+.document-status{border-left:3px solid var(--axis);padding:4px 0 4px 16px}.document-status strong{font-size:16px}.document-status p,.grade-guide p{font:13px/1.7 var(--sans);color:var(--ink-2);margin:10px 0 0}
+.grade-guide{padding:0;border:0}.grade-guide summary{font-size:12px;color:var(--ink-2)}.context{margin-top:24px;color:var(--ink-2)}.context .review-body{font-size:13px}.brief blockquote{border:0;background:none;margin:0;padding:0}.brief p:first-child{margin-top:0}.brief p:last-child{margin-bottom:0}
+.appendix-title{margin-top:72px;padding-top:32px;border-top:3px solid var(--rule);font-size:26px}.sec#decision{margin-top:28px;padding-top:28px}.sec#review{margin-top:32px;padding-top:32px}.sec#review>h2{font-size:14px;color:var(--ink-2)}.sec#review .review-body>h2:first-child{margin-top:20px}
+@media(max-width:760px){.page{padding:20px 12px 60px}.sheet{padding:24px 20px}.cover-in{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px 18px}.cover .brand{grid-column:1;grid-row:1}.cover .language{grid-column:2;grid-row:1;justify-content:flex-end}.cover .seal-wrap{grid-column:1;grid-row:2;align-self:center;align-items:center}.cover .seal{--seal:100px!important}.cover .seal-v{font-size:20px!important}.cover .seal-k{font-size:10px}.cover .seal-d{font-size:9px}.cover .seal-cap{font:600 11px/1.5 var(--sans);text-align:center;margin:4px 0}.cover .arows{grid-column:2;grid-row:2;width:100%}.cover .arows a{font-size:11px}.cover .grade-guide{grid-column:1/-1;grid-row:3}.cover .actions{grid-column:1/-1;grid-row:4}.cover .document-status{grid-column:1/-1;grid-row:2}.document-title{font-size:27px}.review-body{font-size:15px}.ledger{grid-template-columns:repeat(2,1fr)}.fig{border-bottom:1px solid var(--rule)}.review-body h1{font-size:24px}.cover nav.toc{display:none}.pkg{font-size:34px}.desc{font-size:16px}}
+
 @media print{.actions,.language,.skip{display:none!important}.cover{position:static}.review-body h2{break-after:avoid}.node,.notice{break-inside:avoid}.table-wrap{overflow:visible}details{display:block}.page{padding:0}.sheet{padding:25px}a{color:inherit;text-decoration:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
-</style></head><body><a class="skip" href="#main">Read the full review</a><div class="page"><aside class="cover"><div class="cover-in"><a class="brand" href="#main"><span class="wordmark">OSS GATE</span><span class="brand-sub">Open-source adoption review</span></a><nav class="language" aria-label="Language"><a href="report.ko.html" lang="ko" >한국어</a><a href="report.en.html" lang="en" aria-current=page>English</a></nav><div class="seal-wrap"><div class="seal st-serious" style="--seal:160px"><svg class="seal-ring" viewBox="0 0 160 160" aria-hidden="true"><circle cx="80" cy="80" r="76" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="80" cy="80" r="69" fill="none" stroke="currentColor"/></svg><div class="seal-text"><span class="seal-k">Verdict</span><span class="seal-v">Hold</span><span class="seal-d">2026-11-17</span></div></div><p class="seal-cap">Recomputed from the saved evidence</p></div><nav class="arows"><a href="#dependencies"><span class="area-label">License</span><strong class="st-serious">Hold</strong></a><a href="#vulnerabilities"><span class="area-label">Known vulnerabilities</span><strong class="st-serious">Hold</strong></a><a href="#dependencies"><span class="area-label">Dependencies</span><strong class="st-serious">Hold</strong></a><a href="#maintenance"><span class="area-label">Maintenance</span><strong class="st-warn">Conditional</strong></a></nav><nav class="toc"><a href="#review">Read the full review</a><a href="#evidence">Evidence</a></nav><div class="actions"><button data-print>Print / PDF</button><a href="review.en.md" download>Markdown</a><a href="data.json" download>Evidence JSON</a></div></div></aside><main class="sheet" id="main"><header class="doc-head"><p class="meta">npm / 2026-11-17</p><h1 class="pkg">next<span class="ver">15.1.0</span></h1><p class="desc">Open-source adoption review</p></header><p class="notice">Historical example. The source snapshot is preserved; the verdict shown here is reassessed using policy v2. This is not a live scan.</p><div class="review-body"><p><strong>Verdict: Hold</strong></p>
+</style></head><body><a class="skip" href="#main">Read the full review</a><div class="page"><aside class="cover"><div class="cover-in"><a class="brand" href="#main"><span class="wordmark">OSS GATE</span><span class="brand-sub">Open-source adoption review</span></a><nav class="language" aria-label="Language"><a href="report.ko.html" lang="ko" >한국어</a><a href="report.en.html" lang="en" aria-current=page>English</a></nav><div class="seal-wrap"><div class="seal st-serious" style="--seal:160px"><svg class="seal-ring" viewBox="0 0 160 160" aria-hidden="true"><circle cx="80" cy="80" r="76" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="80" cy="80" r="69" fill="none" stroke="currentColor"/></svg><div class="seal-text"><span class="seal-k">Verdict</span><span class="seal-v">Hold</span><span class="seal-d">2026-11-17</span></div></div><p class="seal-cap">Automated policy verdict</p></div><details class="details grade-guide"><summary>How to read the verdict</summary><p>Allow: meets the screening rules. Conditional: checks or actions remain. Hold: a policy blocker needs resolution. Unverified is an individual area's evidence status. PASS / WARN / FAIL describe the report's evidence check, not approval to adopt.</p></details><nav class="arows"><a href="#dependencies"><span class="area-label">License</span><strong class="st-serious">Hold</strong></a><a href="#vulnerabilities"><span class="area-label">Known vulnerabilities</span><strong class="st-serious">Hold</strong></a><a href="#dependencies"><span class="area-label">Dependencies</span><strong class="st-serious">Hold</strong></a><a href="#maintenance"><span class="area-label">Maintenance</span><strong class="st-warn">Conditional</strong></a></nav><nav class="toc"><a href="#main">Decision in brief</a><a href="#appendix">Data and source details</a></nav><div class="actions"><button data-print>Print / PDF</button><a href="review.en.md" download>Markdown</a><a href="data.json" download>Evidence JSON</a></div></div></aside><main class="sheet" id="main"><header class="doc-head"><p class="meta">npm / 2026-11-17</p><h1 class="pkg">next<span class="ver">15.1.0</span></h1><p class="desc">Open-source adoption review</p></header><p class="notice">Historical example. The source snapshot is preserved; the verdict shown here is reassessed using policy v2. This is not a live scan.</p><section class="sec" id="decision"><h2>Decision in brief</h2><div class="review-body brief"><p><strong>Verdict: Hold</strong></p>
 <p>Next.js combines React routing, server rendering, server features and build tooling. Both saved versions require adoption review because of dependency-license questions. Version 15.1.0 additionally has known high-severity vulnerabilities in the package and its dependency graph. These dated examples show how the same framework can present different findings by version; neither report is a recommendation to install an old release today.</p>
-</div><section class="sec" id="summary"><h2>At a glance</h2><div class="ledger"><div class="fig"><div class="fig-val">16</div><div class="fig-label">Direct</div></div><div class="fig"><div class="fig-val">34</div><div class="fig-label">Transitive</div></div><div class="fig"><div class="fig-val">42</div><div class="fig-label">Advisory groups</div></div><div class="fig"><div class="fig-val">0</div><div class="fig-label">Coverage gaps</div></div></div></section><section class="sec" id="dependencies"><h2>Resolved dependency graph</h2><div class="node-grid"><div class="node warn"><strong>next</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/env</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/swc-darwin-arm64</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/swc-darwin-x64</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/swc-linux-arm64-gnu</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/swc-linux-arm64-musl</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/swc-linux-x64-gnu</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/swc-linux-x64-musl</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/swc-win32-arm64-msvc</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/swc-win32-x64-msvc</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@swc/counter</strong><small>0.1.3</small><small>Apache-2.0</small></div><div class="node "><strong>@swc/helpers</strong><small>0.5.15</small><small>Apache-2.0</small></div><div class="node warn"><strong>busboy</strong><small>1.6.0</small><small>Not measured</small></div><div class="node warn"><strong>caniuse-lite</strong><small>1.0.30001823</small><small>CC-BY-4.0</small></div><div class="node warn"><strong>postcss</strong><small>8.4.31</small><small>MIT</small></div><div class="node warn"><strong>sharp</strong><small>0.33.5</small><small>Apache-2.0</small></div><div class="node "><strong>styled-jsx</strong><small>5.1.6</small><small>MIT</small></div></div><p class="legend-note">The table below includes every returned node. A registry graph is not a scan of your installed environment.</p><div class="table-wrap"><table><thead><tr><th scope="col">Package</th><th scope="col">Version</th><th scope="col">Relation</th><th scope="col">License</th><th scope="col">Known vulnerabilities</th><th scope="col">Dependency path</th></tr></thead><tbody><tr><td>next</td><td>15.1.0</td><td>SELF</td><td>MIT</td><td>35</td><td>next@15.1.0</td></tr><tr><td>@emnapi/runtime</td><td>1.11.3</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-wasm32@0.33.5 → @emnapi/runtime@1.11.3</td></tr><tr><td>@img/sharp-darwin-arm64</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-darwin-arm64@0.33.5</td></tr><tr><td>@img/sharp-darwin-x64</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-darwin-x64@0.33.5</td></tr><tr><td>@img/sharp-libvips-darwin-arm64</td><td>1.0.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-darwin-arm64@1.0.4</td></tr><tr><td>@img/sharp-libvips-darwin-x64</td><td>1.0.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-darwin-x64@1.0.4</td></tr><tr><td>@img/sharp-libvips-linux-arm</td><td>1.0.5</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linux-arm@1.0.5</td></tr><tr><td>@img/sharp-libvips-linux-arm64</td><td>1.0.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linux-arm64@1.0.4</td></tr><tr><td>@img/sharp-libvips-linux-s390x</td><td>1.0.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linux-s390x@1.0.4</td></tr><tr><td>@img/sharp-libvips-linux-x64</td><td>1.0.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linux-x64@1.0.4</td></tr><tr><td>@img/sharp-libvips-linuxmusl-arm64</td><td>1.0.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linuxmusl-arm64@1.0.4</td></tr><tr><td>@img/sharp-libvips-linuxmusl-x64</td><td>1.0.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linuxmusl-x64@1.0.4</td></tr><tr><td>@img/sharp-linux-arm</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linux-arm@0.33.5</td></tr><tr><td>@img/sharp-linux-arm64</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linux-arm64@0.33.5</td></tr><tr><td>@img/sharp-linux-s390x</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linux-s390x@0.33.5</td></tr><tr><td>@img/sharp-linux-x64</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linux-x64@0.33.5</td></tr><tr><td>@img/sharp-linuxmusl-arm64</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linuxmusl-arm64@0.33.5</td></tr><tr><td>@img/sharp-linuxmusl-x64</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linuxmusl-x64@0.33.5</td></tr><tr><td>@img/sharp-wasm32</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0 AND LGPL-3.0-or-later AND MIT</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-wasm32@0.33.5</td></tr><tr><td>@img/sharp-win32-ia32</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0 AND LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-win32-ia32@0.33.5</td></tr><tr><td>@img/sharp-win32-x64</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0 AND LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-win32-x64@0.33.5</td></tr><tr><td>@next/env</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/env@15.1.0</td></tr><tr><td>@next/swc-darwin-arm64</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/swc-darwin-arm64@15.1.0</td></tr><tr><td>@next/swc-darwin-x64</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/swc-darwin-x64@15.1.0</td></tr><tr><td>@next/swc-linux-arm64-gnu</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/swc-linux-arm64-gnu@15.1.0</td></tr><tr><td>@next/swc-linux-arm64-musl</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/swc-linux-arm64-musl@15.1.0</td></tr><tr><td>@next/swc-linux-x64-gnu</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/swc-linux-x64-gnu@15.1.0</td></tr><tr><td>@next/swc-linux-x64-musl</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/swc-linux-x64-musl@15.1.0</td></tr><tr><td>@next/swc-win32-arm64-msvc</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/swc-win32-arm64-msvc@15.1.0</td></tr><tr><td>@next/swc-win32-x64-msvc</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/swc-win32-x64-msvc@15.1.0</td></tr><tr><td>@swc/counter</td><td>0.1.3</td><td>DIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → @swc/counter@0.1.3</td></tr><tr><td>@swc/helpers</td><td>0.5.15</td><td>DIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → @swc/helpers@0.5.15</td></tr><tr><td>busboy</td><td>1.6.0</td><td>DIRECT</td><td>Not measured</td><td>0</td><td>next@15.1.0 → busboy@1.6.0</td></tr><tr><td>caniuse-lite</td><td>1.0.30001823</td><td>DIRECT</td><td>CC-BY-4.0</td><td>0</td><td>next@15.1.0 → caniuse-lite@1.0.30001823</td></tr><tr><td>client-only</td><td>0.0.1</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → styled-jsx@5.1.6 → client-only@0.0.1</td></tr><tr><td>color</td><td>4.2.3</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → color@4.2.3</td></tr><tr><td>color-convert</td><td>2.0.1</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-convert@2.0.1</td></tr><tr><td>color-name</td><td>1.1.4</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-convert@2.0.1 → color-name@1.1.4</td></tr><tr><td>color-string</td><td>1.9.1</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-string@1.9.1</td></tr><tr><td>detect-libc</td><td>2.1.2</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → detect-libc@2.1.2</td></tr><tr><td>is-arrayish</td><td>0.3.4</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-string@1.9.1 → simple-swizzle@0.2.4 → is-arrayish@0.3.4</td></tr><tr><td>nanoid</td><td>3.3.20</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → postcss@8.4.31 → nanoid@3.3.20</td></tr><tr><td>picocolors</td><td>1.1.1</td><td>INDIRECT</td><td>ISC</td><td>0</td><td>next@15.1.0 → postcss@8.4.31 → picocolors@1.1.1</td></tr><tr><td>postcss</td><td>8.4.31</td><td>DIRECT</td><td>MIT</td><td>4</td><td>next@15.1.0 → postcss@8.4.31</td></tr><tr><td>semver</td><td>7.8.6</td><td>INDIRECT</td><td>ISC</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → semver@7.8.6</td></tr><tr><td>sharp</td><td>0.33.5</td><td>DIRECT</td><td>Apache-2.0</td><td>3</td><td>next@15.1.0 → sharp@0.33.5</td></tr><tr><td>simple-swizzle</td><td>0.2.4</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-string@1.9.1 → simple-swizzle@0.2.4</td></tr><tr><td>source-map-js</td><td>1.2.2</td><td>INDIRECT</td><td>BSD-3-Clause</td><td>0</td><td>next@15.1.0 → postcss@8.4.31 → source-map-js@1.2.2</td></tr><tr><td>streamsearch</td><td>1.1.0</td><td>INDIRECT</td><td>Not measured</td><td>0</td><td>next@15.1.0 → busboy@1.6.0 → streamsearch@1.1.0</td></tr><tr><td>styled-jsx</td><td>5.1.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → styled-jsx@5.1.6</td></tr><tr><td>tslib</td><td>2.9.1</td><td>INDIRECT</td><td>0BSD</td><td>0</td><td>next@15.1.0 → @swc/helpers@0.5.15 → tslib@2.9.1</td></tr></tbody></table></div></section><section class="sec" id="vulnerabilities"><h2>Known vulnerabilities</h2><div class="table-wrap"><table><thead><tr><th scope="col">ID</th><th scope="col">Score</th><th scope="col">Source details</th></tr></thead><tbody><tr><td>GHSA-9qr9-h5gf-34mp</td><td>10</td><td>Next.js is vulnerable to RCE in React flight protocol</td></tr><tr><td>GHSA-f82v-jwr5-mffw</td><td>9.1</td><td>Authorization Bypass in Next.js Middleware</td></tr><tr><td>GHSA-p293-qw3h-jr36</td><td>9</td><td>Next.js: Unauthenticated Remote Code Execution on windows-hosted servers</td></tr><tr><td>GHSA-c4j6-fc7j-m34r</td><td>8.6</td><td>Next.js vulnerable to server-side request forgery in applications using WebSocket upgrades</td></tr><tr><td>GHSA-36qx-fr4f-26g5</td><td>7.5</td><td>Next.js has a Middleware / Proxy bypass in Pages Router applications using i18n</td></tr><tr><td>GHSA-67rr-84xm-4c7r</td><td>7.5</td><td>Next.JS vulnerability can lead to DoS via cache poisoning </td></tr><tr><td>GHSA-6g55-p6wh-862q</td><td>7.5</td><td>PostCSS: Arbitrary file read and information disclosure via attacker-controlled sourceMappingURL in CSS comments</td></tr><tr><td>GHSA-8h8q-6873-q5fj</td><td>7.5</td><td>Next.js Vulnerable to Denial of Service with Server Components</td></tr><tr><td>GHSA-mg66-mrh9-m8jx</td><td>7.5</td><td>Next.js vulnerable to Denial of Service via connection exhaustion in applications using Cache Components</td></tr><tr><td>GHSA-q4gf-8mx6-v5v3</td><td>7.5</td><td>Next.js has a Denial of Service with Server Components</td></tr><tr><td>GHSA-r28c-9q8g-f849</td><td>7.5</td><td>PostCSS: Path Traversal in Previous Source Map Auto-Loading (sourceMappingURL) leads to Arbitrary .map File Disclosure</td></tr><tr><td>GHSA-4342-x723-ch2f</td><td>6.5</td><td>Next.js Improper Middleware Redirect Handling Leads to SSRF</td></tr><tr><td>GHSA-g5qg-72qw-gw5v</td><td>6.2</td><td>Next.js Affected by Cache Key Confusion for Image Optimization API Routes</td></tr><tr><td>GHSA-gx5p-jg67-6x7h</td><td>6.1</td><td>Next.js has cross-site scripting in beforeInteractive scripts with untrusted input</td></tr><tr><td>GHSA-qx2v-qp2m-jg93</td><td>6.1</td><td>PostCSS has XSS via Unescaped &lt;/style&gt; in its CSS Stringify Output</td></tr><tr><td>GHSA-9g9p-9gw9-jx7f</td><td>5.9</td><td>Next.js self-hosted applications vulnerable to DoS via Image Optimizer remotePatterns configuration</td></tr><tr><td>GHSA-h64f-5h5j-jqjh</td><td>5.9</td><td>Next.js has a Denial of Service in the Image Optimization API</td></tr><tr><td>GHSA-wfc6-r584-vfw7</td><td>5.4</td><td>Next.js vulnerable to cache poisoning in React Server Component responses</td></tr><tr><td>GHSA-4jqv-mc3x-m676</td><td>5.3</td><td>Next.js has cache poisoning of SSG and ISR pages in self-hosted applications</td></tr><tr><td>GHSA-7m27-7ghc-44w9</td><td>5.3</td><td>Next.js Allows a Denial of Service (DoS) with Server Actions</td></tr><tr><td>GHSA-mcj8-r9mp-w47p</td><td>4.8</td><td>Next.js has cache poisoning in SSG/ISR rendering that leads to cross-user content substitution and persistent denial of service</td></tr><tr><td>GHSA-ffhc-5mcf-pf4q</td><td>4.7</td><td>Next.js vulnerable to cross-site scripting in App Router applications using CSP nonces</td></tr><tr><td>GHSA-xv57-4mr9-wg8v</td><td>4.3</td><td>Next.js Content Injection Vulnerability for Image Optimization</td></tr><tr><td>GHSA-3g8h-86w9-wvmq</td><td>3.7</td><td>Next.js&#x27;s Middleware / Proxy redirects can be cache-poisoned</td></tr><tr><td>GHSA-qpjv-v59x-3qc4</td><td>3.7</td><td>Next.js Race Condition to Cache Poisoning</td></tr><tr><td>GHSA-vfv6-92ff-j949</td><td>3.7</td><td>Next.js vulnerable to cache poisoning via collisions in React Server Component cache-busting</td></tr><tr><td>GHSA-2464-fhr4-w9xw</td><td>0</td><td>Next.js: Unauthenticated Remote Code Execution in Image Optimization API when SVG files are used</td></tr><tr><td>GHSA-2xp9-vwfh-vxw4</td><td>0</td><td>Next.js: Unauthenticated Remote Code Execution in Image Optimization API when AVIF files are used</td></tr><tr><td>GHSA-3x4c-7xq6-9pq8</td><td>0</td><td>Next.js: Unbounded next/image disk cache growth can exhaust storage</td></tr><tr><td>GHSA-4633-3j49-mh5q</td><td>0</td><td>Next.js: Cache confusion of response bodies for requests with bodies containing invalid UTF-8 byte sequences</td></tr><tr><td>GHSA-4c39-4ccg-62r3</td><td>0</td><td>Next.js: Unbounded Server Action payload in Edge runtime</td></tr><tr><td>GHSA-68g3-v927-f742</td><td>0</td><td>Next.js: Cache confusion of response bodies for requests with bodies</td></tr><tr><td>GHSA-89xv-2m56-2m9x</td><td>0</td><td>Next.js: Server-Side Request Forgery in Server Actions on custom servers</td></tr><tr><td>GHSA-955p-x3mx-jcvp</td><td>0</td><td>Next.js: Unauthenticated disclosure of internal Server Function endpoints</td></tr><tr><td>GHSA-f88m-g3jw-g9cj</td><td>0</td><td>sharp inherited vulnerabilities in libvips: CVE-2026-33327, CVE-2026-33328, CVE-2026-35590, CVE-2026-35591</td></tr><tr><td>GHSA-fxqj-rqcc-2cmp</td><td>0</td><td>PostCSS: incomplete fix of GHSA-6g55-p6wh-862q — attacker-controlled sourceMappingURL reads arbitrary .map files when `from` is unset</td></tr><tr><td>GHSA-ggv3-7p47-pfv8</td><td>0</td><td>Next.js: HTTP request smuggling in rewrites</td></tr><tr><td>GHSA-m99w-x7hq-7vfj</td><td>0</td><td>Next.js: Denial of Service in App Router using Server Actions</td></tr><tr><td>GHSA-p3m5-59mp-jv5r</td><td>0</td><td>Next.js: Denial of Service in App Router using Server Actions</td></tr><tr><td>GHSA-p9j2-gv94-2wf4</td><td>0</td><td>Next.js: Server-Side Request Forgery in rewrites via attacker-controlled destination hostname</td></tr><tr><td>GHSA-rgj7-g3m4-5g8c</td><td>0</td><td>sharp: Vulnerabilities in libheif: GHSA-g89c-p67h-r497 and GHSA-2jg2-4ch7-h545</td></tr><tr><td>GHSA-wq5f-xc86-pv6w</td><td>0</td><td>sharp : Vulnerability in librsvg dependency CVE-2026-96889</td></tr></tbody></table></div><details class="details"><summary>GHSA-9qr9-h5gf-34mp · Source details</summary><pre>{
+</div></section><details class="details context"><summary>Review context</summary><div class="review-body"><p>Snapshot date: 2026-11-17T00:00:00Z · npm · vercel/next.js · oss-gate.policy/2</p>
+<blockquote>
+<p>Historical example. The source snapshot is preserved; the verdict shown here is reassessed using policy v2. This is not a live scan.</p>
+</blockquote>
+</div></details><section class="sec" id="review"><h2>Adoption review</h2><article class="review-body"><h2>1. Decision and scope</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>License</td>
+<td>Hold</td>
+</tr>
+<tr>
+<td>Known vulnerabilities</td>
+<td>Hold</td>
+</tr>
+<tr>
+<td>Dependencies</td>
+<td>Hold</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>Conditional</td>
+</tr>
+</tbody>
+</table></div>
+<p>A screening aid, not a legal opinion or security certification. Public metadata can be incomplete. DeepWiki narratives are AI-generated and may not describe the reviewed version.</p>
+<p>Historical verdict: <code>Hold</code>. The table above applies policy v2 to the same saved evidence.</p>
+<h2>2. What the software does</h2>
+<p>The historical DeepWiki narrative describes App Router and Pages Router, server-rendered React applications and integrated compilation/build tooling. It discusses Turbopack, caching and partial prerendering, but the repository wiki is not bound to the requested package version. In particular, descriptions of newer Next.js behavior must not be assumed to apply to 15.1.0. [Source: historical review narrative; saved <code>data.json#/deepwiki</code> where available]</p>
+<p>The repository is described as a pnpm monorepo with the framework in <code>packages/next</code>, native code in <code>crates</code> and Turbopack sources in <code>turbopack</code>. CLI entry points include <code>next-dev.ts</code>, <code>next-build.ts</code> and <code>next-start.ts</code>. The request-flow explanation goes through <code>router-server.ts</code>, <code>resolveRoutes</code>, <code>BaseServer</code>, route matching and an App/Page module or route handler. Request-scoped URL, header and cookie data are used during rendering. The full Edge Proxy conversion path was not established by the excerpts.</p>
+<p>The compilation explanation describes Rust SWC transforms, including server actions and React Server Components, with NAPI bindings and a separate WASM build. Native package selection and some runtime loading details were not confirmed. The original getting-started narrative gave <code>pnpm create next-app@latest my-app --yes</code>, followed by <code>pnpm dev</code>, and mentioned Node.js 20.9 or later. This reflects the wiki at collection time, not a verified compatibility requirement for both historical versions. The default options and bundler behavior need exact-release confirmation.</p>
+<h2>3. External communication and configuration</h2>
+<p>The saved narrative describes telemetry POSTs to <code>https://telemetry.nextjs.org/api/v1/record</code>, with anonymous/project/session identifiers, metadata and event fields. It gives <code>NEXT_TELEMETRY_DISABLED=1</code> or <code>next telemetry disable</code> as controls. A historical claim about a five-second timeout was not reproduced in the 15.1.0 recheck. Disabling telemetry does not establish that all possible network traffic is disabled. [Source: historical DeepWiki communication narrative]</p>
+<p>The narrative also mentions <code>experimental.agentUpgrade</code> and <code>assessUpgrade</code>, but its destination and transmitted data were not established. Later wiki material describes opt-in feedback submission after user review. These behaviors are not proven to exist in the exact reviewed releases. OpenTelemetry is described through <code>instrumentation.ts</code> and an application-selected collector; do not confuse it with the framework's telemetry endpoint. The historical <code>NEXT_OTEL_FETCH_DISABLED</code> claim was not reproduced in one recheck, so verify it before using it as a control.</p>
+<p>Configuration descriptions include <code>next.config.js</code>, <code>next.config.ts</code> and <code>.env</code> variants. <code>NEXT_PUBLIC_</code> values are described as being embedded in browser bundles at build time; secrets must not use that prefix. The narrative mentions <code>SESSION_SECRET</code>, <code>server-only</code> and <code>NEXT_SERVER_ACTIONS_ENCRYPTION_KEY</code>. A claim that a generated encryption key is stored in <code>.rscinfo</code> was not reproduced and is not asserted here as fact. Actual secret values and private environment files are not part of this report.</p>
+<h2>4. License review</h2>
+<p><code>next@15.1.0</code>: MIT.</p>
+<p>Categories are screening outcomes, not legal conclusions. <code>unknown</code> includes missing metadata, unsupported identifiers and uninterpreted exceptions. A list with an unspecified relationship is conservatively reviewed as AND; an OR choice must be selected and documented.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Version</th>
+<th>License</th>
+<th>Category</th>
+<th>Dependency path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@emnapi/runtime</td>
+<td>1.11.3</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-wasm32@0.33.5 → @emnapi/runtime@1.11.3</td>
+</tr>
+<tr>
+<td>@img/sharp-darwin-arm64</td>
+<td>0.33.5</td>
+<td>Apache-2.0</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-darwin-arm64@0.33.5</td>
+</tr>
+<tr>
+<td>@img/sharp-darwin-x64</td>
+<td>0.33.5</td>
+<td>Apache-2.0</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-darwin-x64@0.33.5</td>
+</tr>
+<tr>
+<td>@img/sharp-libvips-darwin-arm64</td>
+<td>1.0.4</td>
+<td>LGPL-3.0-or-later</td>
+<td>weak-copyleft</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-darwin-arm64@1.0.4</td>
+</tr>
+<tr>
+<td>@img/sharp-libvips-darwin-x64</td>
+<td>1.0.4</td>
+<td>LGPL-3.0-or-later</td>
+<td>weak-copyleft</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-darwin-x64@1.0.4</td>
+</tr>
+<tr>
+<td>@img/sharp-libvips-linux-arm</td>
+<td>1.0.5</td>
+<td>LGPL-3.0-or-later</td>
+<td>weak-copyleft</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linux-arm@1.0.5</td>
+</tr>
+<tr>
+<td>@img/sharp-libvips-linux-arm64</td>
+<td>1.0.4</td>
+<td>LGPL-3.0-or-later</td>
+<td>weak-copyleft</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linux-arm64@1.0.4</td>
+</tr>
+<tr>
+<td>@img/sharp-libvips-linux-s390x</td>
+<td>1.0.4</td>
+<td>LGPL-3.0-or-later</td>
+<td>weak-copyleft</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linux-s390x@1.0.4</td>
+</tr>
+<tr>
+<td>@img/sharp-libvips-linux-x64</td>
+<td>1.0.4</td>
+<td>LGPL-3.0-or-later</td>
+<td>weak-copyleft</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linux-x64@1.0.4</td>
+</tr>
+<tr>
+<td>@img/sharp-libvips-linuxmusl-arm64</td>
+<td>1.0.4</td>
+<td>LGPL-3.0-or-later</td>
+<td>weak-copyleft</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linuxmusl-arm64@1.0.4</td>
+</tr>
+<tr>
+<td>@img/sharp-libvips-linuxmusl-x64</td>
+<td>1.0.4</td>
+<td>LGPL-3.0-or-later</td>
+<td>weak-copyleft</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linuxmusl-x64@1.0.4</td>
+</tr>
+<tr>
+<td>@img/sharp-linux-arm</td>
+<td>0.33.5</td>
+<td>Apache-2.0</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linux-arm@0.33.5</td>
+</tr>
+<tr>
+<td>@img/sharp-linux-arm64</td>
+<td>0.33.5</td>
+<td>Apache-2.0</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linux-arm64@0.33.5</td>
+</tr>
+<tr>
+<td>@img/sharp-linux-s390x</td>
+<td>0.33.5</td>
+<td>Apache-2.0</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linux-s390x@0.33.5</td>
+</tr>
+<tr>
+<td>@img/sharp-linux-x64</td>
+<td>0.33.5</td>
+<td>Apache-2.0</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linux-x64@0.33.5</td>
+</tr>
+<tr>
+<td>@img/sharp-linuxmusl-arm64</td>
+<td>0.33.5</td>
+<td>Apache-2.0</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linuxmusl-arm64@0.33.5</td>
+</tr>
+<tr>
+<td>@img/sharp-linuxmusl-x64</td>
+<td>0.33.5</td>
+<td>Apache-2.0</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linuxmusl-x64@0.33.5</td>
+</tr>
+<tr>
+<td>@img/sharp-wasm32</td>
+<td>0.33.5</td>
+<td>Apache-2.0 AND LGPL-3.0-or-later AND MIT</td>
+<td>weak-copyleft</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-wasm32@0.33.5</td>
+</tr>
+<tr>
+<td>@img/sharp-win32-ia32</td>
+<td>0.33.5</td>
+<td>Apache-2.0 AND LGPL-3.0-or-later</td>
+<td>weak-copyleft</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-win32-ia32@0.33.5</td>
+</tr>
+<tr>
+<td>@img/sharp-win32-x64</td>
+<td>0.33.5</td>
+<td>Apache-2.0 AND LGPL-3.0-or-later</td>
+<td>weak-copyleft</td>
+<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-win32-x64@0.33.5</td>
+</tr>
+<tr>
+<td>@next/env</td>
+<td>15.1.0</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → @next/env@15.1.0</td>
+</tr>
+<tr>
+<td>@next/swc-darwin-arm64</td>
+<td>15.1.0</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → @next/swc-darwin-arm64@15.1.0</td>
+</tr>
+<tr>
+<td>@next/swc-darwin-x64</td>
+<td>15.1.0</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → @next/swc-darwin-x64@15.1.0</td>
+</tr>
+<tr>
+<td>@next/swc-linux-arm64-gnu</td>
+<td>15.1.0</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → @next/swc-linux-arm64-gnu@15.1.0</td>
+</tr>
+<tr>
+<td>@next/swc-linux-arm64-musl</td>
+<td>15.1.0</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → @next/swc-linux-arm64-musl@15.1.0</td>
+</tr>
+<tr>
+<td>@next/swc-linux-x64-gnu</td>
+<td>15.1.0</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → @next/swc-linux-x64-gnu@15.1.0</td>
+</tr>
+<tr>
+<td>@next/swc-linux-x64-musl</td>
+<td>15.1.0</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → @next/swc-linux-x64-musl@15.1.0</td>
+</tr>
+<tr>
+<td>@next/swc-win32-arm64-msvc</td>
+<td>15.1.0</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → @next/swc-win32-arm64-msvc@15.1.0</td>
+</tr>
+<tr>
+<td>@next/swc-win32-x64-msvc</td>
+<td>15.1.0</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → @next/swc-win32-x64-msvc@15.1.0</td>
+</tr>
+<tr>
+<td>@swc/counter</td>
+<td>0.1.3</td>
+<td>Apache-2.0</td>
+<td>permissive</td>
+<td>next@15.1.0 → @swc/counter@0.1.3</td>
+</tr>
+<tr>
+<td>@swc/helpers</td>
+<td>0.5.15</td>
+<td>Apache-2.0</td>
+<td>permissive</td>
+<td>next@15.1.0 → @swc/helpers@0.5.15</td>
+</tr>
+<tr>
+<td>busboy</td>
+<td>1.6.0</td>
+<td>Not measured</td>
+<td>unknown</td>
+<td>next@15.1.0 → busboy@1.6.0</td>
+</tr>
+<tr>
+<td>caniuse-lite</td>
+<td>1.0.30001823</td>
+<td>CC-BY-4.0</td>
+<td>unknown</td>
+<td>next@15.1.0 → caniuse-lite@1.0.30001823</td>
+</tr>
+<tr>
+<td>client-only</td>
+<td>0.0.1</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → styled-jsx@5.1.6 → client-only@0.0.1</td>
+</tr>
+<tr>
+<td>color</td>
+<td>4.2.3</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → color@4.2.3</td>
+</tr>
+<tr>
+<td>color-convert</td>
+<td>2.0.1</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-convert@2.0.1</td>
+</tr>
+<tr>
+<td>color-name</td>
+<td>1.1.4</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-convert@2.0.1 → color-name@1.1.4</td>
+</tr>
+<tr>
+<td>color-string</td>
+<td>1.9.1</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-string@1.9.1</td>
+</tr>
+<tr>
+<td>detect-libc</td>
+<td>2.1.2</td>
+<td>Apache-2.0</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → detect-libc@2.1.2</td>
+</tr>
+<tr>
+<td>is-arrayish</td>
+<td>0.3.4</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-string@1.9.1 → simple-swizzle@0.2.4 → is-arrayish@0.3.4</td>
+</tr>
+<tr>
+<td>nanoid</td>
+<td>3.3.20</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → postcss@8.4.31 → nanoid@3.3.20</td>
+</tr>
+<tr>
+<td>picocolors</td>
+<td>1.1.1</td>
+<td>ISC</td>
+<td>permissive</td>
+<td>next@15.1.0 → postcss@8.4.31 → picocolors@1.1.1</td>
+</tr>
+<tr>
+<td>postcss</td>
+<td>8.4.31</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → postcss@8.4.31</td>
+</tr>
+<tr>
+<td>semver</td>
+<td>7.8.6</td>
+<td>ISC</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → semver@7.8.6</td>
+</tr>
+<tr>
+<td>sharp</td>
+<td>0.33.5</td>
+<td>Apache-2.0</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5</td>
+</tr>
+<tr>
+<td>simple-swizzle</td>
+<td>0.2.4</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-string@1.9.1 → simple-swizzle@0.2.4</td>
+</tr>
+<tr>
+<td>source-map-js</td>
+<td>1.2.2</td>
+<td>BSD-3-Clause</td>
+<td>permissive</td>
+<td>next@15.1.0 → postcss@8.4.31 → source-map-js@1.2.2</td>
+</tr>
+<tr>
+<td>streamsearch</td>
+<td>1.1.0</td>
+<td>Not measured</td>
+<td>unknown</td>
+<td>next@15.1.0 → busboy@1.6.0 → streamsearch@1.1.0</td>
+</tr>
+<tr>
+<td>styled-jsx</td>
+<td>5.1.6</td>
+<td>MIT</td>
+<td>permissive</td>
+<td>next@15.1.0 → styled-jsx@5.1.6</td>
+</tr>
+<tr>
+<td>tslib</td>
+<td>2.9.1</td>
+<td>0BSD</td>
+<td>permissive</td>
+<td>next@15.1.0 → @swc/helpers@0.5.15 → tslib@2.9.1</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5. Known vulnerabilities</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Score</th>
+<th>Aliases</th>
+<th>Source details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GHSA-9qr9-h5gf-34mp</td>
+<td>10</td>
+<td>GHSA-9qr9-h5gf-34mp</td>
+<td>Next.js is vulnerable to RCE in React flight protocol</td>
+</tr>
+<tr>
+<td>GHSA-f82v-jwr5-mffw</td>
+<td>9.1</td>
+<td>CVE-2025-29927, GHSA-f82v-jwr5-mffw</td>
+<td>Authorization Bypass in Next.js Middleware</td>
+</tr>
+<tr>
+<td>GHSA-p293-qw3h-jr36</td>
+<td>9</td>
+<td>CVE-2026-75604, GHSA-p293-qw3h-jr36</td>
+<td>Next.js: Unauthenticated Remote Code Execution on windows-hosted servers</td>
+</tr>
+<tr>
+<td>GHSA-c4j6-fc7j-m34r</td>
+<td>8.6</td>
+<td>CVE-2026-44578, GHSA-c4j6-fc7j-m34r</td>
+<td>Next.js vulnerable to server-side request forgery in applications using WebSocket upgrades</td>
+</tr>
+<tr>
+<td>GHSA-36qx-fr4f-26g5</td>
+<td>7.5</td>
+<td>CVE-2026-44573, GHSA-36qx-fr4f-26g5</td>
+<td>Next.js has a Middleware / Proxy bypass in Pages Router applications using i18n</td>
+</tr>
+<tr>
+<td>GHSA-67rr-84xm-4c7r</td>
+<td>7.5</td>
+<td>CVE-2025-49826, GHSA-67rr-84xm-4c7r</td>
+<td>Next.JS vulnerability can lead to DoS via cache poisoning</td>
+</tr>
+<tr>
+<td>GHSA-6g55-p6wh-862q</td>
+<td>7.5</td>
+<td>CVE-2026-45623, GHSA-6g55-p6wh-862q</td>
+<td>PostCSS: Arbitrary file read and information disclosure via attacker-controlled sourceMappingURL in CSS comments</td>
+</tr>
+<tr>
+<td>GHSA-8h8q-6873-q5fj</td>
+<td>7.5</td>
+<td>GHSA-8h8q-6873-q5fj</td>
+<td>Next.js Vulnerable to Denial of Service with Server Components</td>
+</tr>
+<tr>
+<td>GHSA-mg66-mrh9-m8jx</td>
+<td>7.5</td>
+<td>CVE-2026-44579, GHSA-mg66-mrh9-m8jx</td>
+<td>Next.js vulnerable to Denial of Service via connection exhaustion in applications using Cache Components</td>
+</tr>
+<tr>
+<td>GHSA-q4gf-8mx6-v5v3</td>
+<td>7.5</td>
+<td>GHSA-q4gf-8mx6-v5v3</td>
+<td>Next.js has a Denial of Service with Server Components</td>
+</tr>
+<tr>
+<td>GHSA-r28c-9q8g-f849</td>
+<td>7.5</td>
+<td>CVE-2026-73646, GHSA-r28c-9q8g-f849</td>
+<td>PostCSS: Path Traversal in Previous Source Map Auto-Loading (sourceMappingURL) leads to Arbitrary .map File Disclosure</td>
+</tr>
+<tr>
+<td>GHSA-4342-x723-ch2f</td>
+<td>6.5</td>
+<td>CVE-2025-57822, GHSA-4342-x723-ch2f</td>
+<td>Next.js Improper Middleware Redirect Handling Leads to SSRF</td>
+</tr>
+<tr>
+<td>GHSA-g5qg-72qw-gw5v</td>
+<td>6.2</td>
+<td>CVE-2025-57752, GHSA-g5qg-72qw-gw5v</td>
+<td>Next.js Affected by Cache Key Confusion for Image Optimization API Routes</td>
+</tr>
+<tr>
+<td>GHSA-gx5p-jg67-6x7h</td>
+<td>6.1</td>
+<td>CVE-2026-44580, GHSA-gx5p-jg67-6x7h</td>
+<td>Next.js has cross-site scripting in beforeInteractive scripts with untrusted input</td>
+</tr>
+<tr>
+<td>GHSA-qx2v-qp2m-jg93</td>
+<td>6.1</td>
+<td>CVE-2026-41305, GHSA-qx2v-qp2m-jg93</td>
+<td>PostCSS has XSS via Unescaped &lt;/style&gt; in its CSS Stringify Output</td>
+</tr>
+<tr>
+<td>GHSA-9g9p-9gw9-jx7f</td>
+<td>5.9</td>
+<td>CVE-2025-59471, GHSA-9g9p-9gw9-jx7f</td>
+<td>Next.js self-hosted applications vulnerable to DoS via Image Optimizer remotePatterns configuration</td>
+</tr>
+<tr>
+<td>GHSA-h64f-5h5j-jqjh</td>
+<td>5.9</td>
+<td>CVE-2026-44577, GHSA-h64f-5h5j-jqjh</td>
+<td>Next.js has a Denial of Service in the Image Optimization API</td>
+</tr>
+<tr>
+<td>GHSA-wfc6-r584-vfw7</td>
+<td>5.4</td>
+<td>CVE-2026-44576, GHSA-wfc6-r584-vfw7</td>
+<td>Next.js vulnerable to cache poisoning in React Server Component responses</td>
+</tr>
+<tr>
+<td>GHSA-4jqv-mc3x-m676</td>
+<td>5.3</td>
+<td>CVE-2026-94543, GHSA-4jqv-mc3x-m676</td>
+<td>Next.js has cache poisoning of SSG and ISR pages in self-hosted applications</td>
+</tr>
+<tr>
+<td>GHSA-7m27-7ghc-44w9</td>
+<td>5.3</td>
+<td>CVE-2024-56332, GHSA-7m27-7ghc-44w9</td>
+<td>Next.js Allows a Denial of Service (DoS) with Server Actions</td>
+</tr>
+<tr>
+<td>GHSA-mcj8-r9mp-w47p</td>
+<td>4.8</td>
+<td>CVE-2026-94484, GHSA-mcj8-r9mp-w47p</td>
+<td>Next.js has cache poisoning in SSG/ISR rendering that leads to cross-user content substitution and persistent denial of service</td>
+</tr>
+<tr>
+<td>GHSA-ffhc-5mcf-pf4q</td>
+<td>4.7</td>
+<td>CVE-2026-44581, GHSA-ffhc-5mcf-pf4q</td>
+<td>Next.js vulnerable to cross-site scripting in App Router applications using CSP nonces</td>
+</tr>
+<tr>
+<td>GHSA-xv57-4mr9-wg8v</td>
+<td>4.3</td>
+<td>CVE-2025-55173, GHSA-xv57-4mr9-wg8v</td>
+<td>Next.js Content Injection Vulnerability for Image Optimization</td>
+</tr>
+<tr>
+<td>GHSA-3g8h-86w9-wvmq</td>
+<td>3.7</td>
+<td>CVE-2026-44572, GHSA-3g8h-86w9-wvmq</td>
+<td>Next.js's Middleware / Proxy redirects can be cache-poisoned</td>
+</tr>
+<tr>
+<td>GHSA-qpjv-v59x-3qc4</td>
+<td>3.7</td>
+<td>CVE-2025-32421, GHSA-qpjv-v59x-3qc4</td>
+<td>Next.js Race Condition to Cache Poisoning</td>
+</tr>
+<tr>
+<td>GHSA-vfv6-92ff-j949</td>
+<td>3.7</td>
+<td>CVE-2026-44582, GHSA-vfv6-92ff-j949</td>
+<td>Next.js vulnerable to cache poisoning via collisions in React Server Component cache-busting</td>
+</tr>
+<tr>
+<td>GHSA-2464-fhr4-w9xw</td>
+<td>0</td>
+<td>GHSA-2464-fhr4-w9xw</td>
+<td>Next.js: Unauthenticated Remote Code Execution in Image Optimization API when SVG files are used</td>
+</tr>
+<tr>
+<td>GHSA-2xp9-vwfh-vxw4</td>
+<td>0</td>
+<td>GHSA-2xp9-vwfh-vxw4</td>
+<td>Next.js: Unauthenticated Remote Code Execution in Image Optimization API when AVIF files are used</td>
+</tr>
+<tr>
+<td>GHSA-3x4c-7xq6-9pq8</td>
+<td>0</td>
+<td>CVE-2026-27980, GHSA-3x4c-7xq6-9pq8</td>
+<td>Next.js: Unbounded next/image disk cache growth can exhaust storage</td>
+</tr>
+<tr>
+<td>GHSA-4633-3j49-mh5q</td>
+<td>0</td>
+<td>CVE-2026-64647, GHSA-4633-3j49-mh5q</td>
+<td>Next.js: Cache confusion of response bodies for requests with bodies containing invalid UTF-8 byte sequences</td>
+</tr>
+<tr>
+<td>GHSA-4c39-4ccg-62r3</td>
+<td>0</td>
+<td>CVE-2026-64646, GHSA-4c39-4ccg-62r3</td>
+<td>Next.js: Unbounded Server Action payload in Edge runtime</td>
+</tr>
+<tr>
+<td>GHSA-68g3-v927-f742</td>
+<td>0</td>
+<td>CVE-2026-64648, GHSA-68g3-v927-f742</td>
+<td>Next.js: Cache confusion of response bodies for requests with bodies</td>
+</tr>
+<tr>
+<td>GHSA-89xv-2m56-2m9x</td>
+<td>0</td>
+<td>CVE-2026-64649, GHSA-89xv-2m56-2m9x</td>
+<td>Next.js: Server-Side Request Forgery in Server Actions on custom servers</td>
+</tr>
+<tr>
+<td>GHSA-955p-x3mx-jcvp</td>
+<td>0</td>
+<td>CVE-2026-64643, GHSA-955p-x3mx-jcvp</td>
+<td>Next.js: Unauthenticated disclosure of internal Server Function endpoints</td>
+</tr>
+<tr>
+<td>GHSA-f88m-g3jw-g9cj</td>
+<td>0</td>
+<td>CVE-2026-114113, GHSA-f88m-g3jw-g9cj</td>
+<td>sharp inherited vulnerabilities in libvips: CVE-2026-33327, CVE-2026-33328, CVE-2026-35590, CVE-2026-35591</td>
+</tr>
+<tr>
+<td>GHSA-fxqj-rqcc-2cmp</td>
+<td>0</td>
+<td>CVE-2026-69153, GHSA-fxqj-rqcc-2cmp</td>
+<td>PostCSS: incomplete fix of GHSA-6g55-p6wh-862q — attacker-controlled sourceMappingURL reads arbitrary .map files when <code>from</code> is unset</td>
+</tr>
+<tr>
+<td>GHSA-ggv3-7p47-pfv8</td>
+<td>0</td>
+<td>CVE-2026-29057, GHSA-ggv3-7p47-pfv8</td>
+<td>Next.js: HTTP request smuggling in rewrites</td>
+</tr>
+<tr>
+<td>GHSA-m99w-x7hq-7vfj</td>
+<td>0</td>
+<td>CVE-2026-64641, GHSA-m99w-x7hq-7vfj</td>
+<td>Next.js: Denial of Service in App Router using Server Actions</td>
+</tr>
+<tr>
+<td>GHSA-p3m5-59mp-jv5r</td>
+<td>0</td>
+<td>CVE-2026-94482, GHSA-p3m5-59mp-jv5r</td>
+<td>Next.js: Denial of Service in App Router using Server Actions</td>
+</tr>
+<tr>
+<td>GHSA-p9j2-gv94-2wf4</td>
+<td>0</td>
+<td>CVE-2026-64645, GHSA-p9j2-gv94-2wf4</td>
+<td>Next.js: Server-Side Request Forgery in rewrites via attacker-controlled destination hostname</td>
+</tr>
+<tr>
+<td>GHSA-rgj7-g3m4-5g8c</td>
+<td>0</td>
+<td>CVE-2026-114112, GHSA-rgj7-g3m4-5g8c</td>
+<td>sharp: Vulnerabilities in libheif: GHSA-g89c-p67h-r497 and GHSA-2jg2-4ch7-h545</td>
+</tr>
+<tr>
+<td>GHSA-wq5f-xc86-pv6w</td>
+<td>0</td>
+<td>CVE-2026-114111, GHSA-wq5f-xc86-pv6w</td>
+<td>sharp : Vulnerability in librsvg dependency CVE-2026-96889</td>
+</tr>
+</tbody>
+</table></div>
+<p>Connected aliases count as one group. Titles are source text. Missing severity is not a zero score. A list of fixed versions is not an upgrade recommendation until the affected package and branch have been matched.</p>
+<h2>6. Dependencies</h2>
+<p>Direct: 16 · Transitive: 34 · graph version: <code>15.1.0</code></p>
+<p>The role descriptions identify <code>@next/env</code> for environment loading, platform-specific <code>@next/swc-*</code> packages for native transforms, <code>@swc/helpers</code> for generated-code helpers, caniuse-lite for browser-support data, postcss for CSS processing, sharp for image optimization, and styled-jsx for scoped styling. The 15.1.0 narrative also identifies busboy for multipart request parsing and leaves the role of <code>@swc/counter</code> unverified. These are AI-generated explanations, distinct from the graph's package/version facts.</p>
+<p>The resolved graph contains platform-specific image and compiler packages. It does not prove that all of them are installed on one operating system or distributed in a particular application bundle. Trace the actual lockfile, build and deployment artifacts before deciding which license obligations apply. Optional extras and installation conditions can change the effective dependency set.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Parent</th>
+<th>Child</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>next@15.1.0</td>
+<td>@next/env@15.1.0</td>
+</tr>
+<tr>
+<td>next@15.1.0</td>
+<td>@next/swc-darwin-arm64@15.1.0</td>
+</tr>
+<tr>
+<td>next@15.1.0</td>
+<td>@next/swc-darwin-x64@15.1.0</td>
+</tr>
+<tr>
+<td>next@15.1.0</td>
+<td>@next/swc-linux-arm64-gnu@15.1.0</td>
+</tr>
+<tr>
+<td>next@15.1.0</td>
+<td>@next/swc-linux-arm64-musl@15.1.0</td>
+</tr>
+<tr>
+<td>next@15.1.0</td>
+<td>@next/swc-linux-x64-gnu@15.1.0</td>
+</tr>
+<tr>
+<td>next@15.1.0</td>
+<td>@next/swc-linux-x64-musl@15.1.0</td>
+</tr>
+<tr>
+<td>next@15.1.0</td>
+<td>@next/swc-win32-arm64-msvc@15.1.0</td>
+</tr>
+<tr>
+<td>next@15.1.0</td>
+<td>@next/swc-win32-x64-msvc@15.1.0</td>
+</tr>
+<tr>
+<td>next@15.1.0</td>
+<td>@swc/counter@0.1.3</td>
+</tr>
+<tr>
+<td>next@15.1.0</td>
+<td>@swc/helpers@0.5.15</td>
+</tr>
+<tr>
+<td>next@15.1.0</td>
+<td>busboy@1.6.0</td>
+</tr>
+<tr>
+<td>next@15.1.0</td>
+<td>caniuse-lite@1.0.30001823</td>
+</tr>
+<tr>
+<td>next@15.1.0</td>
+<td>postcss@8.4.31</td>
+</tr>
+<tr>
+<td>next@15.1.0</td>
+<td>sharp@0.33.5</td>
+</tr>
+<tr>
+<td>next@15.1.0</td>
+<td>styled-jsx@5.1.6</td>
+</tr>
+<tr>
+<td>@emnapi/runtime@1.11.3</td>
+<td>tslib@2.9.1</td>
+</tr>
+<tr>
+<td>@img/sharp-darwin-arm64@0.33.5</td>
+<td>@img/sharp-libvips-darwin-arm64@1.0.4</td>
+</tr>
+<tr>
+<td>@img/sharp-darwin-x64@0.33.5</td>
+<td>@img/sharp-libvips-darwin-x64@1.0.4</td>
+</tr>
+<tr>
+<td>@img/sharp-linux-arm@0.33.5</td>
+<td>@img/sharp-libvips-linux-arm@1.0.5</td>
+</tr>
+<tr>
+<td>@img/sharp-linux-arm64@0.33.5</td>
+<td>@img/sharp-libvips-linux-arm64@1.0.4</td>
+</tr>
+<tr>
+<td>@img/sharp-linux-s390x@0.33.5</td>
+<td>@img/sharp-libvips-linux-s390x@1.0.4</td>
+</tr>
+<tr>
+<td>@img/sharp-linux-x64@0.33.5</td>
+<td>@img/sharp-libvips-linux-x64@1.0.4</td>
+</tr>
+<tr>
+<td>@img/sharp-linuxmusl-arm64@0.33.5</td>
+<td>@img/sharp-libvips-linuxmusl-arm64@1.0.4</td>
+</tr>
+<tr>
+<td>@img/sharp-linuxmusl-x64@0.33.5</td>
+<td>@img/sharp-libvips-linuxmusl-x64@1.0.4</td>
+</tr>
+<tr>
+<td>@img/sharp-wasm32@0.33.5</td>
+<td>@emnapi/runtime@1.11.3</td>
+</tr>
+<tr>
+<td>@swc/helpers@0.5.15</td>
+<td>tslib@2.9.1</td>
+</tr>
+<tr>
+<td>busboy@1.6.0</td>
+<td>streamsearch@1.1.0</td>
+</tr>
+<tr>
+<td>color@4.2.3</td>
+<td>color-convert@2.0.1</td>
+</tr>
+<tr>
+<td>color@4.2.3</td>
+<td>color-string@1.9.1</td>
+</tr>
+<tr>
+<td>color-convert@2.0.1</td>
+<td>color-name@1.1.4</td>
+</tr>
+<tr>
+<td>color-string@1.9.1</td>
+<td>color-name@1.1.4</td>
+</tr>
+<tr>
+<td>color-string@1.9.1</td>
+<td>simple-swizzle@0.2.4</td>
+</tr>
+<tr>
+<td>postcss@8.4.31</td>
+<td>nanoid@3.3.20</td>
+</tr>
+<tr>
+<td>postcss@8.4.31</td>
+<td>picocolors@1.1.1</td>
+</tr>
+<tr>
+<td>postcss@8.4.31</td>
+<td>source-map-js@1.2.2</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-darwin-arm64@0.33.5</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-darwin-x64@0.33.5</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-libvips-darwin-arm64@1.0.4</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-libvips-darwin-x64@1.0.4</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-libvips-linux-arm@1.0.5</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-libvips-linux-arm64@1.0.4</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-libvips-linux-s390x@1.0.4</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-libvips-linux-x64@1.0.4</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-libvips-linuxmusl-arm64@1.0.4</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-libvips-linuxmusl-x64@1.0.4</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-linux-arm@0.33.5</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-linux-arm64@0.33.5</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-linux-s390x@0.33.5</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-linux-x64@0.33.5</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-linuxmusl-arm64@0.33.5</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-linuxmusl-x64@0.33.5</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-wasm32@0.33.5</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-win32-ia32@0.33.5</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>@img/sharp-win32-x64@0.33.5</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>color@4.2.3</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>detect-libc@2.1.2</td>
+</tr>
+<tr>
+<td>sharp@0.33.5</td>
+<td>semver@7.8.6</td>
+</tr>
+<tr>
+<td>simple-swizzle@0.2.4</td>
+<td>is-arrayish@0.3.4</td>
+</tr>
+<tr>
+<td>styled-jsx@5.1.6</td>
+<td>client-only@0.0.1</td>
+</tr>
+</tbody>
+</table></div>
+<h2>7. Maintenance</h2>
+<p>The saved Scorecard total is 6.2, dated 2026-08-24. Policy v2 therefore marks maintenance conditional, even though the Maintained check is 10. A strong activity score does not erase the other measured practices. Code-Review is 9 and Security-Policy is 10; the response also includes low scores for pinned dependencies, token permissions, binary artifacts and static analysis. Branch-Protection and Signed-Releases are unevaluated (-1), and the Vulnerabilities check is absent. [Source: <code>data.json#/get_project/scorecard</code>]</p>
+<p>The historical narrative attributes the project to Vercel, describes maintainer review and stable/canary release channels, and points security reports to Vercel's private HackerOne process. It does not establish a guaranteed stable-release cadence or independently verify the current reporting process. Refer to upstream's current security policy for a real disclosure.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Score</th>
+<th>Source details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code-Review</td>
+<td>9</td>
+<td>Found 27/29 approved changesets -- score normalized to 9</td>
+</tr>
+<tr>
+<td>Maintained</td>
+<td>10</td>
+<td>30 commit(s) and 4 issue activity found in the last 90 days -- score normalized to 10</td>
+</tr>
+<tr>
+<td>CII-Best-Practices</td>
+<td>0</td>
+<td>no effort to earn an OpenSSF best practices badge detected</td>
+</tr>
+<tr>
+<td>Dangerous-Workflow</td>
+<td>10</td>
+<td>no dangerous workflow patterns detected</td>
+</tr>
+<tr>
+<td>License</td>
+<td>10</td>
+<td>license file detected</td>
+</tr>
+<tr>
+<td>Token-Permissions</td>
+<td>0</td>
+<td>detected GitHub workflow tokens with excessive permissions</td>
+</tr>
+<tr>
+<td>Branch-Protection</td>
+<td>-1</td>
+<td>internal error: error during branchesHandler.setup: internal error: githubv4.Query: Resource not accessible by integration</td>
+</tr>
+<tr>
+<td>Signed-Releases</td>
+<td>-1</td>
+<td>no releases found</td>
+</tr>
+<tr>
+<td>Security-Policy</td>
+<td>10</td>
+<td>security policy file detected</td>
+</tr>
+<tr>
+<td>Packaging</td>
+<td>10</td>
+<td>packaging workflow detected</td>
+</tr>
+<tr>
+<td>Binary-Artifacts</td>
+<td>0</td>
+<td>binaries present in source code</td>
+</tr>
+<tr>
+<td>Pinned-Dependencies</td>
+<td>4</td>
+<td>dependency not pinned by hash detected -- score normalized to 4</td>
+</tr>
+<tr>
+<td>Fuzzing</td>
+<td>10</td>
+<td>project is fuzzed</td>
+</tr>
+<tr>
+<td>SAST</td>
+<td>0</td>
+<td>SAST tool is not run on all commits -- score normalized to 0</td>
+</tr>
+</tbody>
+</table></div>
+<h2>8. Adoption actions</h2>
+<ol>
+<li>For 15.1.0, treat known high-severity findings as blockers for the reviewed version. Match each advisory's ecosystem, affected package and branch before selecting a replacement. The existence of a fixed version does not make 15.1.0 safe.</li>
+<li>Verify the actual resolved postcss and sharp versions after any framework upgrade. Re-run the review and relevant application tests; do not infer remediation solely from a framework version number or the flattened fixed-version list.</li>
+<li>Inspect caniuse-lite's CC-BY-4.0 attribution conditions and the LGPL obligations of the sharp/libvips artifacts actually shipped. CC-BY-4.0 is a recognized data license; its <code>unknown</code> screening category means this policy does not automatically approve it, not that the package has no license.</li>
+<li>For 15.1.0, inspect the exact busboy and streamsearch license files because their saved metadata arrays are empty. Empty metadata is not proof of license absence.</li>
+<li>Review telemetry configuration, browser-exposed environment variables and image-processing features against the exact release and deployment. Do not rely on wiki claims that were not reproduced.</li>
+<li>Record unresolved maintenance practices and obtain current evidence before production approval. Preserve this snapshot when translating or comparing versions.</li>
+</ol>
+<h2>9. Unknowns and limitations</h2>
+<p>Coverage gaps: No additional machine coverage flag. Narrative limitations below still apply.</p>
+<p>The original report used an agent verification status of WARN. Some DeepWiki claims were not reproduced, including <code>.rscinfo</code> key storage and particular telemetry/default settings. Several other sections were not rechecked. The repository wiki can describe a newer major version, so it cannot establish version-specific runtime behavior by itself.</p>
+<p>For 15.1.0, the old <code>data.json</code> has <code>deepwiki: null</code>; its narrative survived in the historical Markdown, but there is no corresponding saved raw wiki block to verify. Treat the explanatory paragraphs as inherited, unverified context. For 16.4.6, a saved wiki block exists, but version applicability is still unverified. In both cases the public-registry graph was not compared with a real installed application, and the original Scorecard was 85 days old at collection time.</p>
+<h2>10. Evidence and verification</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Claim</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>License</td>
+<td>data.json#/lookup_package/licenses</td>
+</tr>
+<tr>
+<td>Dependencies</td>
+<td>data.json#/get_dependencies</td>
+</tr>
+<tr>
+<td>Known vulnerabilities</td>
+<td>data.json#/advisories</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>data.json#/get_project/scorecard</td>
+</tr>
+<tr>
+<td>DeepWiki</td>
+<td>Unavailable in the historical JSON</td>
+</tr>
+</tbody>
+</table></div>
+<p>Verification status: <strong>WARN</strong>. The original JSON hash, policy calculation and bilingual numerical tables are checked. This does not freshly authenticate the old external responses or verify every wiki assertion.</p>
+<p>SHA-256 (<code>data.json</code>): <code>dfabfde8c552992dac2f736f4223f55cd06a4b5c7c4b24817e474eeaa627d873</code></p>
+<p><a href="https://deps.dev/">deps.dev</a> · <a href="https://osv.dev/">OSV</a> · <a href="https://deepwiki.com/vercel/next.js">DeepWiki</a></p>
+<p>See <a href="../../NOTICE.md">NOTICE</a> for source attribution and terms.</p>
+</article></section><h2 class="appendix-title" id="appendix">Data and source details</h2><section class="sec" id="summary"><h2>At a glance</h2><div class="ledger"><div class="fig"><div class="fig-val">16</div><div class="fig-label">Direct</div></div><div class="fig"><div class="fig-val">34</div><div class="fig-label">Transitive</div></div><div class="fig"><div class="fig-val">42</div><div class="fig-label">Advisory groups</div></div><div class="fig"><div class="fig-val">0</div><div class="fig-label">Coverage gaps</div></div></div></section><section class="sec" id="dependencies"><h2>Resolved dependency graph</h2><div class="node-grid"><div class="node warn"><strong>next</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/env</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/swc-darwin-arm64</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/swc-darwin-x64</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/swc-linux-arm64-gnu</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/swc-linux-arm64-musl</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/swc-linux-x64-gnu</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/swc-linux-x64-musl</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/swc-win32-arm64-msvc</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@next/swc-win32-x64-msvc</strong><small>15.1.0</small><small>MIT</small></div><div class="node "><strong>@swc/counter</strong><small>0.1.3</small><small>Apache-2.0</small></div><div class="node "><strong>@swc/helpers</strong><small>0.5.15</small><small>Apache-2.0</small></div><div class="node warn"><strong>busboy</strong><small>1.6.0</small><small>Not measured</small></div><div class="node warn"><strong>caniuse-lite</strong><small>1.0.30001823</small><small>CC-BY-4.0</small></div><div class="node warn"><strong>postcss</strong><small>8.4.31</small><small>MIT</small></div><div class="node warn"><strong>sharp</strong><small>0.33.5</small><small>Apache-2.0</small></div><div class="node "><strong>styled-jsx</strong><small>5.1.6</small><small>MIT</small></div></div><p class="legend-note">The table below includes every returned node. A registry graph is not a scan of your installed environment.</p><div class="table-wrap"><table><thead><tr><th scope="col">Package</th><th scope="col">Version</th><th scope="col">Relation</th><th scope="col">License</th><th scope="col">Known vulnerabilities</th><th scope="col">Dependency path</th></tr></thead><tbody><tr><td>next</td><td>15.1.0</td><td>SELF</td><td>MIT</td><td>35</td><td>next@15.1.0</td></tr><tr><td>@emnapi/runtime</td><td>1.11.3</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-wasm32@0.33.5 → @emnapi/runtime@1.11.3</td></tr><tr><td>@img/sharp-darwin-arm64</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-darwin-arm64@0.33.5</td></tr><tr><td>@img/sharp-darwin-x64</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-darwin-x64@0.33.5</td></tr><tr><td>@img/sharp-libvips-darwin-arm64</td><td>1.0.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-darwin-arm64@1.0.4</td></tr><tr><td>@img/sharp-libvips-darwin-x64</td><td>1.0.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-darwin-x64@1.0.4</td></tr><tr><td>@img/sharp-libvips-linux-arm</td><td>1.0.5</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linux-arm@1.0.5</td></tr><tr><td>@img/sharp-libvips-linux-arm64</td><td>1.0.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linux-arm64@1.0.4</td></tr><tr><td>@img/sharp-libvips-linux-s390x</td><td>1.0.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linux-s390x@1.0.4</td></tr><tr><td>@img/sharp-libvips-linux-x64</td><td>1.0.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linux-x64@1.0.4</td></tr><tr><td>@img/sharp-libvips-linuxmusl-arm64</td><td>1.0.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linuxmusl-arm64@1.0.4</td></tr><tr><td>@img/sharp-libvips-linuxmusl-x64</td><td>1.0.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linuxmusl-x64@1.0.4</td></tr><tr><td>@img/sharp-linux-arm</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linux-arm@0.33.5</td></tr><tr><td>@img/sharp-linux-arm64</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linux-arm64@0.33.5</td></tr><tr><td>@img/sharp-linux-s390x</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linux-s390x@0.33.5</td></tr><tr><td>@img/sharp-linux-x64</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linux-x64@0.33.5</td></tr><tr><td>@img/sharp-linuxmusl-arm64</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linuxmusl-arm64@0.33.5</td></tr><tr><td>@img/sharp-linuxmusl-x64</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linuxmusl-x64@0.33.5</td></tr><tr><td>@img/sharp-wasm32</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0 AND LGPL-3.0-or-later AND MIT</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-wasm32@0.33.5</td></tr><tr><td>@img/sharp-win32-ia32</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0 AND LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-win32-ia32@0.33.5</td></tr><tr><td>@img/sharp-win32-x64</td><td>0.33.5</td><td>INDIRECT</td><td>Apache-2.0 AND LGPL-3.0-or-later</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → @img/sharp-win32-x64@0.33.5</td></tr><tr><td>@next/env</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/env@15.1.0</td></tr><tr><td>@next/swc-darwin-arm64</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/swc-darwin-arm64@15.1.0</td></tr><tr><td>@next/swc-darwin-x64</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/swc-darwin-x64@15.1.0</td></tr><tr><td>@next/swc-linux-arm64-gnu</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/swc-linux-arm64-gnu@15.1.0</td></tr><tr><td>@next/swc-linux-arm64-musl</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/swc-linux-arm64-musl@15.1.0</td></tr><tr><td>@next/swc-linux-x64-gnu</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/swc-linux-x64-gnu@15.1.0</td></tr><tr><td>@next/swc-linux-x64-musl</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/swc-linux-x64-musl@15.1.0</td></tr><tr><td>@next/swc-win32-arm64-msvc</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/swc-win32-arm64-msvc@15.1.0</td></tr><tr><td>@next/swc-win32-x64-msvc</td><td>15.1.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → @next/swc-win32-x64-msvc@15.1.0</td></tr><tr><td>@swc/counter</td><td>0.1.3</td><td>DIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → @swc/counter@0.1.3</td></tr><tr><td>@swc/helpers</td><td>0.5.15</td><td>DIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → @swc/helpers@0.5.15</td></tr><tr><td>busboy</td><td>1.6.0</td><td>DIRECT</td><td>Not measured</td><td>0</td><td>next@15.1.0 → busboy@1.6.0</td></tr><tr><td>caniuse-lite</td><td>1.0.30001823</td><td>DIRECT</td><td>CC-BY-4.0</td><td>0</td><td>next@15.1.0 → caniuse-lite@1.0.30001823</td></tr><tr><td>client-only</td><td>0.0.1</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → styled-jsx@5.1.6 → client-only@0.0.1</td></tr><tr><td>color</td><td>4.2.3</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → color@4.2.3</td></tr><tr><td>color-convert</td><td>2.0.1</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-convert@2.0.1</td></tr><tr><td>color-name</td><td>1.1.4</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-convert@2.0.1 → color-name@1.1.4</td></tr><tr><td>color-string</td><td>1.9.1</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-string@1.9.1</td></tr><tr><td>detect-libc</td><td>2.1.2</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → detect-libc@2.1.2</td></tr><tr><td>is-arrayish</td><td>0.3.4</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-string@1.9.1 → simple-swizzle@0.2.4 → is-arrayish@0.3.4</td></tr><tr><td>nanoid</td><td>3.3.20</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → postcss@8.4.31 → nanoid@3.3.20</td></tr><tr><td>picocolors</td><td>1.1.1</td><td>INDIRECT</td><td>ISC</td><td>0</td><td>next@15.1.0 → postcss@8.4.31 → picocolors@1.1.1</td></tr><tr><td>postcss</td><td>8.4.31</td><td>DIRECT</td><td>MIT</td><td>4</td><td>next@15.1.0 → postcss@8.4.31</td></tr><tr><td>semver</td><td>7.8.6</td><td>INDIRECT</td><td>ISC</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → semver@7.8.6</td></tr><tr><td>sharp</td><td>0.33.5</td><td>DIRECT</td><td>Apache-2.0</td><td>3</td><td>next@15.1.0 → sharp@0.33.5</td></tr><tr><td>simple-swizzle</td><td>0.2.4</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-string@1.9.1 → simple-swizzle@0.2.4</td></tr><tr><td>source-map-js</td><td>1.2.2</td><td>INDIRECT</td><td>BSD-3-Clause</td><td>0</td><td>next@15.1.0 → postcss@8.4.31 → source-map-js@1.2.2</td></tr><tr><td>streamsearch</td><td>1.1.0</td><td>INDIRECT</td><td>Not measured</td><td>0</td><td>next@15.1.0 → busboy@1.6.0 → streamsearch@1.1.0</td></tr><tr><td>styled-jsx</td><td>5.1.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@15.1.0 → styled-jsx@5.1.6</td></tr><tr><td>tslib</td><td>2.9.1</td><td>INDIRECT</td><td>0BSD</td><td>0</td><td>next@15.1.0 → @swc/helpers@0.5.15 → tslib@2.9.1</td></tr></tbody></table></div></section><section class="sec" id="vulnerabilities"><h2>Known vulnerabilities</h2><div class="table-wrap"><table><thead><tr><th scope="col">ID</th><th scope="col">Score</th><th scope="col">Source details</th></tr></thead><tbody><tr><td>GHSA-9qr9-h5gf-34mp</td><td>10</td><td>Next.js is vulnerable to RCE in React flight protocol</td></tr><tr><td>GHSA-f82v-jwr5-mffw</td><td>9.1</td><td>Authorization Bypass in Next.js Middleware</td></tr><tr><td>GHSA-p293-qw3h-jr36</td><td>9</td><td>Next.js: Unauthenticated Remote Code Execution on windows-hosted servers</td></tr><tr><td>GHSA-c4j6-fc7j-m34r</td><td>8.6</td><td>Next.js vulnerable to server-side request forgery in applications using WebSocket upgrades</td></tr><tr><td>GHSA-36qx-fr4f-26g5</td><td>7.5</td><td>Next.js has a Middleware / Proxy bypass in Pages Router applications using i18n</td></tr><tr><td>GHSA-67rr-84xm-4c7r</td><td>7.5</td><td>Next.JS vulnerability can lead to DoS via cache poisoning </td></tr><tr><td>GHSA-6g55-p6wh-862q</td><td>7.5</td><td>PostCSS: Arbitrary file read and information disclosure via attacker-controlled sourceMappingURL in CSS comments</td></tr><tr><td>GHSA-8h8q-6873-q5fj</td><td>7.5</td><td>Next.js Vulnerable to Denial of Service with Server Components</td></tr><tr><td>GHSA-mg66-mrh9-m8jx</td><td>7.5</td><td>Next.js vulnerable to Denial of Service via connection exhaustion in applications using Cache Components</td></tr><tr><td>GHSA-q4gf-8mx6-v5v3</td><td>7.5</td><td>Next.js has a Denial of Service with Server Components</td></tr><tr><td>GHSA-r28c-9q8g-f849</td><td>7.5</td><td>PostCSS: Path Traversal in Previous Source Map Auto-Loading (sourceMappingURL) leads to Arbitrary .map File Disclosure</td></tr><tr><td>GHSA-4342-x723-ch2f</td><td>6.5</td><td>Next.js Improper Middleware Redirect Handling Leads to SSRF</td></tr><tr><td>GHSA-g5qg-72qw-gw5v</td><td>6.2</td><td>Next.js Affected by Cache Key Confusion for Image Optimization API Routes</td></tr><tr><td>GHSA-gx5p-jg67-6x7h</td><td>6.1</td><td>Next.js has cross-site scripting in beforeInteractive scripts with untrusted input</td></tr><tr><td>GHSA-qx2v-qp2m-jg93</td><td>6.1</td><td>PostCSS has XSS via Unescaped &lt;/style&gt; in its CSS Stringify Output</td></tr><tr><td>GHSA-9g9p-9gw9-jx7f</td><td>5.9</td><td>Next.js self-hosted applications vulnerable to DoS via Image Optimizer remotePatterns configuration</td></tr><tr><td>GHSA-h64f-5h5j-jqjh</td><td>5.9</td><td>Next.js has a Denial of Service in the Image Optimization API</td></tr><tr><td>GHSA-wfc6-r584-vfw7</td><td>5.4</td><td>Next.js vulnerable to cache poisoning in React Server Component responses</td></tr><tr><td>GHSA-4jqv-mc3x-m676</td><td>5.3</td><td>Next.js has cache poisoning of SSG and ISR pages in self-hosted applications</td></tr><tr><td>GHSA-7m27-7ghc-44w9</td><td>5.3</td><td>Next.js Allows a Denial of Service (DoS) with Server Actions</td></tr><tr><td>GHSA-mcj8-r9mp-w47p</td><td>4.8</td><td>Next.js has cache poisoning in SSG/ISR rendering that leads to cross-user content substitution and persistent denial of service</td></tr><tr><td>GHSA-ffhc-5mcf-pf4q</td><td>4.7</td><td>Next.js vulnerable to cross-site scripting in App Router applications using CSP nonces</td></tr><tr><td>GHSA-xv57-4mr9-wg8v</td><td>4.3</td><td>Next.js Content Injection Vulnerability for Image Optimization</td></tr><tr><td>GHSA-3g8h-86w9-wvmq</td><td>3.7</td><td>Next.js&#x27;s Middleware / Proxy redirects can be cache-poisoned</td></tr><tr><td>GHSA-qpjv-v59x-3qc4</td><td>3.7</td><td>Next.js Race Condition to Cache Poisoning</td></tr><tr><td>GHSA-vfv6-92ff-j949</td><td>3.7</td><td>Next.js vulnerable to cache poisoning via collisions in React Server Component cache-busting</td></tr><tr><td>GHSA-2464-fhr4-w9xw</td><td>0</td><td>Next.js: Unauthenticated Remote Code Execution in Image Optimization API when SVG files are used</td></tr><tr><td>GHSA-2xp9-vwfh-vxw4</td><td>0</td><td>Next.js: Unauthenticated Remote Code Execution in Image Optimization API when AVIF files are used</td></tr><tr><td>GHSA-3x4c-7xq6-9pq8</td><td>0</td><td>Next.js: Unbounded next/image disk cache growth can exhaust storage</td></tr><tr><td>GHSA-4633-3j49-mh5q</td><td>0</td><td>Next.js: Cache confusion of response bodies for requests with bodies containing invalid UTF-8 byte sequences</td></tr><tr><td>GHSA-4c39-4ccg-62r3</td><td>0</td><td>Next.js: Unbounded Server Action payload in Edge runtime</td></tr><tr><td>GHSA-68g3-v927-f742</td><td>0</td><td>Next.js: Cache confusion of response bodies for requests with bodies</td></tr><tr><td>GHSA-89xv-2m56-2m9x</td><td>0</td><td>Next.js: Server-Side Request Forgery in Server Actions on custom servers</td></tr><tr><td>GHSA-955p-x3mx-jcvp</td><td>0</td><td>Next.js: Unauthenticated disclosure of internal Server Function endpoints</td></tr><tr><td>GHSA-f88m-g3jw-g9cj</td><td>0</td><td>sharp inherited vulnerabilities in libvips: CVE-2026-33327, CVE-2026-33328, CVE-2026-35590, CVE-2026-35591</td></tr><tr><td>GHSA-fxqj-rqcc-2cmp</td><td>0</td><td>PostCSS: incomplete fix of GHSA-6g55-p6wh-862q — attacker-controlled sourceMappingURL reads arbitrary .map files when `from` is unset</td></tr><tr><td>GHSA-ggv3-7p47-pfv8</td><td>0</td><td>Next.js: HTTP request smuggling in rewrites</td></tr><tr><td>GHSA-m99w-x7hq-7vfj</td><td>0</td><td>Next.js: Denial of Service in App Router using Server Actions</td></tr><tr><td>GHSA-p3m5-59mp-jv5r</td><td>0</td><td>Next.js: Denial of Service in App Router using Server Actions</td></tr><tr><td>GHSA-p9j2-gv94-2wf4</td><td>0</td><td>Next.js: Server-Side Request Forgery in rewrites via attacker-controlled destination hostname</td></tr><tr><td>GHSA-rgj7-g3m4-5g8c</td><td>0</td><td>sharp: Vulnerabilities in libheif: GHSA-g89c-p67h-r497 and GHSA-2jg2-4ch7-h545</td></tr><tr><td>GHSA-wq5f-xc86-pv6w</td><td>0</td><td>sharp : Vulnerability in librsvg dependency CVE-2026-96889</td></tr></tbody></table></div><details class="details"><summary>GHSA-9qr9-h5gf-34mp · Source details</summary><pre>{
   &quot;id&quot;: &quot;GHSA-9qr9-h5gf-34mp&quot;,
   &quot;aliases&quot;: [
     &quot;GHSA-9qr9-h5gf-34mp&quot;
@@ -4506,1069 +5570,7 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
       &quot;source_errors&quot;: null
     }
   ]
-}</pre></details></section><section class="sec" id="maintenance"><h2>Maintenance</h2><p class="meta">Scorecard · 2026-08-24T00:00:00Z · 6.2/10</p><div class="table-wrap"><table><thead><tr><th scope="col">Check</th><th scope="col">Score</th><th scope="col">Source details</th></tr></thead><tbody><tr><td>Code-Review</td><td>9</td><td>Found 27/29 approved changesets -- score normalized to 9</td></tr><tr><td>Maintained</td><td>10</td><td>30 commit(s) and 4 issue activity found in the last 90 days -- score normalized to 10</td></tr><tr><td>CII-Best-Practices</td><td>0</td><td>no effort to earn an OpenSSF best practices badge detected</td></tr><tr><td>Dangerous-Workflow</td><td>10</td><td>no dangerous workflow patterns detected</td></tr><tr><td>License</td><td>10</td><td>license file detected</td></tr><tr><td>Token-Permissions</td><td>0</td><td>detected GitHub workflow tokens with excessive permissions</td></tr><tr><td>Branch-Protection</td><td>-1</td><td>internal error: error during branchesHandler.setup: internal error: githubv4.Query: Resource not accessible by integration</td></tr><tr><td>Signed-Releases</td><td>-1</td><td>no releases found</td></tr><tr><td>Security-Policy</td><td>10</td><td>security policy file detected</td></tr><tr><td>Packaging</td><td>10</td><td>packaging workflow detected</td></tr><tr><td>Binary-Artifacts</td><td>0</td><td>binaries present in source code</td></tr><tr><td>Pinned-Dependencies</td><td>4</td><td>dependency not pinned by hash detected -- score normalized to 4</td></tr><tr><td>Fuzzing</td><td>10</td><td>project is fuzzed</td></tr><tr><td>SAST</td><td>0</td><td>SAST tool is not run on all commits -- score normalized to 0</td></tr></tbody></table></div></section><section class="sec" id="review"><h2>Adoption review</h2><article class="review-body"><h1>next 15.1.0: Open-source adoption review</h1>
-<p>Snapshot date: 2026-11-17T00:00:00Z · npm · vercel/next.js · oss-gate.policy/2</p>
-<blockquote>
-<p>Historical example. The source snapshot is preserved; the verdict shown here is reassessed using policy v2. This is not a live scan.</p>
-</blockquote>
-<p><strong>Verdict: Hold</strong></p>
-<p>Next.js combines React routing, server rendering, server features and build tooling. Both saved versions require adoption review because of dependency-license questions. Version 15.1.0 additionally has known high-severity vulnerabilities in the package and its dependency graph. These dated examples show how the same framework can present different findings by version; neither report is a recommendation to install an old release today.</p>
-<h2>1. Decision and scope</h2>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>Area</th>
-<th>Verdict</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>License</td>
-<td>Hold</td>
-</tr>
-<tr>
-<td>Known vulnerabilities</td>
-<td>Hold</td>
-</tr>
-<tr>
-<td>Dependencies</td>
-<td>Hold</td>
-</tr>
-<tr>
-<td>Maintenance</td>
-<td>Conditional</td>
-</tr>
-</tbody>
-</table></div>
-<p>A screening aid, not a legal opinion or security certification. Public metadata can be incomplete. DeepWiki narratives are AI-generated and may not describe the reviewed version.</p>
-<p>Historical verdict: <code>Hold</code>. The table above applies policy v2 to the same saved evidence.</p>
-<h2>2. What the software does</h2>
-<p>The historical DeepWiki narrative describes App Router and Pages Router, server-rendered React applications and integrated compilation/build tooling. It discusses Turbopack, caching and partial prerendering, but the repository wiki is not bound to the requested package version. In particular, descriptions of newer Next.js behavior must not be assumed to apply to 15.1.0. [Source: historical review narrative; saved <code>data.json#/deepwiki</code> where available]</p>
-<p>The repository is described as a pnpm monorepo with the framework in <code>packages/next</code>, native code in <code>crates</code> and Turbopack sources in <code>turbopack</code>. CLI entry points include <code>next-dev.ts</code>, <code>next-build.ts</code> and <code>next-start.ts</code>. The request-flow explanation goes through <code>router-server.ts</code>, <code>resolveRoutes</code>, <code>BaseServer</code>, route matching and an App/Page module or route handler. Request-scoped URL, header and cookie data are used during rendering. The full Edge Proxy conversion path was not established by the excerpts.</p>
-<p>The compilation explanation describes Rust SWC transforms, including server actions and React Server Components, with NAPI bindings and a separate WASM build. Native package selection and some runtime loading details were not confirmed. The original getting-started narrative gave <code>pnpm create next-app@latest my-app --yes</code>, followed by <code>pnpm dev</code>, and mentioned Node.js 20.9 or later. This reflects the wiki at collection time, not a verified compatibility requirement for both historical versions. The default options and bundler behavior need exact-release confirmation.</p>
-<h2>3. External communication and configuration</h2>
-<p>The saved narrative describes telemetry POSTs to <code>https://telemetry.nextjs.org/api/v1/record</code>, with anonymous/project/session identifiers, metadata and event fields. It gives <code>NEXT_TELEMETRY_DISABLED=1</code> or <code>next telemetry disable</code> as controls. A historical claim about a five-second timeout was not reproduced in the 15.1.0 recheck. Disabling telemetry does not establish that all possible network traffic is disabled. [Source: historical DeepWiki communication narrative]</p>
-<p>The narrative also mentions <code>experimental.agentUpgrade</code> and <code>assessUpgrade</code>, but its destination and transmitted data were not established. Later wiki material describes opt-in feedback submission after user review. These behaviors are not proven to exist in the exact reviewed releases. OpenTelemetry is described through <code>instrumentation.ts</code> and an application-selected collector; do not confuse it with the framework's telemetry endpoint. The historical <code>NEXT_OTEL_FETCH_DISABLED</code> claim was not reproduced in one recheck, so verify it before using it as a control.</p>
-<p>Configuration descriptions include <code>next.config.js</code>, <code>next.config.ts</code> and <code>.env</code> variants. <code>NEXT_PUBLIC_</code> values are described as being embedded in browser bundles at build time; secrets must not use that prefix. The narrative mentions <code>SESSION_SECRET</code>, <code>server-only</code> and <code>NEXT_SERVER_ACTIONS_ENCRYPTION_KEY</code>. A claim that a generated encryption key is stored in <code>.rscinfo</code> was not reproduced and is not asserted here as fact. Actual secret values and private environment files are not part of this report.</p>
-<h2>4. License review</h2>
-<p><code>next@15.1.0</code>: MIT.</p>
-<p>Categories are screening outcomes, not legal conclusions. <code>unknown</code> includes missing metadata, unsupported identifiers and uninterpreted exceptions. A list with an unspecified relationship is conservatively reviewed as AND; an OR choice must be selected and documented.</p>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>Package</th>
-<th>Version</th>
-<th>License</th>
-<th>Category</th>
-<th>Dependency path</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>@emnapi/runtime</td>
-<td>1.11.3</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-wasm32@0.33.5 → @emnapi/runtime@1.11.3</td>
-</tr>
-<tr>
-<td>@img/sharp-darwin-arm64</td>
-<td>0.33.5</td>
-<td>Apache-2.0</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-darwin-arm64@0.33.5</td>
-</tr>
-<tr>
-<td>@img/sharp-darwin-x64</td>
-<td>0.33.5</td>
-<td>Apache-2.0</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-darwin-x64@0.33.5</td>
-</tr>
-<tr>
-<td>@img/sharp-libvips-darwin-arm64</td>
-<td>1.0.4</td>
-<td>LGPL-3.0-or-later</td>
-<td>weak-copyleft</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-darwin-arm64@1.0.4</td>
-</tr>
-<tr>
-<td>@img/sharp-libvips-darwin-x64</td>
-<td>1.0.4</td>
-<td>LGPL-3.0-or-later</td>
-<td>weak-copyleft</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-darwin-x64@1.0.4</td>
-</tr>
-<tr>
-<td>@img/sharp-libvips-linux-arm</td>
-<td>1.0.5</td>
-<td>LGPL-3.0-or-later</td>
-<td>weak-copyleft</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linux-arm@1.0.5</td>
-</tr>
-<tr>
-<td>@img/sharp-libvips-linux-arm64</td>
-<td>1.0.4</td>
-<td>LGPL-3.0-or-later</td>
-<td>weak-copyleft</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linux-arm64@1.0.4</td>
-</tr>
-<tr>
-<td>@img/sharp-libvips-linux-s390x</td>
-<td>1.0.4</td>
-<td>LGPL-3.0-or-later</td>
-<td>weak-copyleft</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linux-s390x@1.0.4</td>
-</tr>
-<tr>
-<td>@img/sharp-libvips-linux-x64</td>
-<td>1.0.4</td>
-<td>LGPL-3.0-or-later</td>
-<td>weak-copyleft</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linux-x64@1.0.4</td>
-</tr>
-<tr>
-<td>@img/sharp-libvips-linuxmusl-arm64</td>
-<td>1.0.4</td>
-<td>LGPL-3.0-or-later</td>
-<td>weak-copyleft</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linuxmusl-arm64@1.0.4</td>
-</tr>
-<tr>
-<td>@img/sharp-libvips-linuxmusl-x64</td>
-<td>1.0.4</td>
-<td>LGPL-3.0-or-later</td>
-<td>weak-copyleft</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-libvips-linuxmusl-x64@1.0.4</td>
-</tr>
-<tr>
-<td>@img/sharp-linux-arm</td>
-<td>0.33.5</td>
-<td>Apache-2.0</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linux-arm@0.33.5</td>
-</tr>
-<tr>
-<td>@img/sharp-linux-arm64</td>
-<td>0.33.5</td>
-<td>Apache-2.0</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linux-arm64@0.33.5</td>
-</tr>
-<tr>
-<td>@img/sharp-linux-s390x</td>
-<td>0.33.5</td>
-<td>Apache-2.0</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linux-s390x@0.33.5</td>
-</tr>
-<tr>
-<td>@img/sharp-linux-x64</td>
-<td>0.33.5</td>
-<td>Apache-2.0</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linux-x64@0.33.5</td>
-</tr>
-<tr>
-<td>@img/sharp-linuxmusl-arm64</td>
-<td>0.33.5</td>
-<td>Apache-2.0</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linuxmusl-arm64@0.33.5</td>
-</tr>
-<tr>
-<td>@img/sharp-linuxmusl-x64</td>
-<td>0.33.5</td>
-<td>Apache-2.0</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-linuxmusl-x64@0.33.5</td>
-</tr>
-<tr>
-<td>@img/sharp-wasm32</td>
-<td>0.33.5</td>
-<td>Apache-2.0 AND LGPL-3.0-or-later AND MIT</td>
-<td>weak-copyleft</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-wasm32@0.33.5</td>
-</tr>
-<tr>
-<td>@img/sharp-win32-ia32</td>
-<td>0.33.5</td>
-<td>Apache-2.0 AND LGPL-3.0-or-later</td>
-<td>weak-copyleft</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-win32-ia32@0.33.5</td>
-</tr>
-<tr>
-<td>@img/sharp-win32-x64</td>
-<td>0.33.5</td>
-<td>Apache-2.0 AND LGPL-3.0-or-later</td>
-<td>weak-copyleft</td>
-<td>next@15.1.0 → sharp@0.33.5 → @img/sharp-win32-x64@0.33.5</td>
-</tr>
-<tr>
-<td>@next/env</td>
-<td>15.1.0</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → @next/env@15.1.0</td>
-</tr>
-<tr>
-<td>@next/swc-darwin-arm64</td>
-<td>15.1.0</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → @next/swc-darwin-arm64@15.1.0</td>
-</tr>
-<tr>
-<td>@next/swc-darwin-x64</td>
-<td>15.1.0</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → @next/swc-darwin-x64@15.1.0</td>
-</tr>
-<tr>
-<td>@next/swc-linux-arm64-gnu</td>
-<td>15.1.0</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → @next/swc-linux-arm64-gnu@15.1.0</td>
-</tr>
-<tr>
-<td>@next/swc-linux-arm64-musl</td>
-<td>15.1.0</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → @next/swc-linux-arm64-musl@15.1.0</td>
-</tr>
-<tr>
-<td>@next/swc-linux-x64-gnu</td>
-<td>15.1.0</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → @next/swc-linux-x64-gnu@15.1.0</td>
-</tr>
-<tr>
-<td>@next/swc-linux-x64-musl</td>
-<td>15.1.0</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → @next/swc-linux-x64-musl@15.1.0</td>
-</tr>
-<tr>
-<td>@next/swc-win32-arm64-msvc</td>
-<td>15.1.0</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → @next/swc-win32-arm64-msvc@15.1.0</td>
-</tr>
-<tr>
-<td>@next/swc-win32-x64-msvc</td>
-<td>15.1.0</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → @next/swc-win32-x64-msvc@15.1.0</td>
-</tr>
-<tr>
-<td>@swc/counter</td>
-<td>0.1.3</td>
-<td>Apache-2.0</td>
-<td>permissive</td>
-<td>next@15.1.0 → @swc/counter@0.1.3</td>
-</tr>
-<tr>
-<td>@swc/helpers</td>
-<td>0.5.15</td>
-<td>Apache-2.0</td>
-<td>permissive</td>
-<td>next@15.1.0 → @swc/helpers@0.5.15</td>
-</tr>
-<tr>
-<td>busboy</td>
-<td>1.6.0</td>
-<td>Not measured</td>
-<td>unknown</td>
-<td>next@15.1.0 → busboy@1.6.0</td>
-</tr>
-<tr>
-<td>caniuse-lite</td>
-<td>1.0.30001823</td>
-<td>CC-BY-4.0</td>
-<td>unknown</td>
-<td>next@15.1.0 → caniuse-lite@1.0.30001823</td>
-</tr>
-<tr>
-<td>client-only</td>
-<td>0.0.1</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → styled-jsx@5.1.6 → client-only@0.0.1</td>
-</tr>
-<tr>
-<td>color</td>
-<td>4.2.3</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → color@4.2.3</td>
-</tr>
-<tr>
-<td>color-convert</td>
-<td>2.0.1</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-convert@2.0.1</td>
-</tr>
-<tr>
-<td>color-name</td>
-<td>1.1.4</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-convert@2.0.1 → color-name@1.1.4</td>
-</tr>
-<tr>
-<td>color-string</td>
-<td>1.9.1</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-string@1.9.1</td>
-</tr>
-<tr>
-<td>detect-libc</td>
-<td>2.1.2</td>
-<td>Apache-2.0</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → detect-libc@2.1.2</td>
-</tr>
-<tr>
-<td>is-arrayish</td>
-<td>0.3.4</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-string@1.9.1 → simple-swizzle@0.2.4 → is-arrayish@0.3.4</td>
-</tr>
-<tr>
-<td>nanoid</td>
-<td>3.3.20</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → postcss@8.4.31 → nanoid@3.3.20</td>
-</tr>
-<tr>
-<td>picocolors</td>
-<td>1.1.1</td>
-<td>ISC</td>
-<td>permissive</td>
-<td>next@15.1.0 → postcss@8.4.31 → picocolors@1.1.1</td>
-</tr>
-<tr>
-<td>postcss</td>
-<td>8.4.31</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → postcss@8.4.31</td>
-</tr>
-<tr>
-<td>semver</td>
-<td>7.8.6</td>
-<td>ISC</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → semver@7.8.6</td>
-</tr>
-<tr>
-<td>sharp</td>
-<td>0.33.5</td>
-<td>Apache-2.0</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5</td>
-</tr>
-<tr>
-<td>simple-swizzle</td>
-<td>0.2.4</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-string@1.9.1 → simple-swizzle@0.2.4</td>
-</tr>
-<tr>
-<td>source-map-js</td>
-<td>1.2.2</td>
-<td>BSD-3-Clause</td>
-<td>permissive</td>
-<td>next@15.1.0 → postcss@8.4.31 → source-map-js@1.2.2</td>
-</tr>
-<tr>
-<td>streamsearch</td>
-<td>1.1.0</td>
-<td>Not measured</td>
-<td>unknown</td>
-<td>next@15.1.0 → busboy@1.6.0 → streamsearch@1.1.0</td>
-</tr>
-<tr>
-<td>styled-jsx</td>
-<td>5.1.6</td>
-<td>MIT</td>
-<td>permissive</td>
-<td>next@15.1.0 → styled-jsx@5.1.6</td>
-</tr>
-<tr>
-<td>tslib</td>
-<td>2.9.1</td>
-<td>0BSD</td>
-<td>permissive</td>
-<td>next@15.1.0 → @swc/helpers@0.5.15 → tslib@2.9.1</td>
-</tr>
-</tbody>
-</table></div>
-<h2>5. Known vulnerabilities</h2>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>ID</th>
-<th>Score</th>
-<th>Aliases</th>
-<th>Source details</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GHSA-9qr9-h5gf-34mp</td>
-<td>10</td>
-<td>GHSA-9qr9-h5gf-34mp</td>
-<td>Next.js is vulnerable to RCE in React flight protocol</td>
-</tr>
-<tr>
-<td>GHSA-f82v-jwr5-mffw</td>
-<td>9.1</td>
-<td>CVE-2025-29927, GHSA-f82v-jwr5-mffw</td>
-<td>Authorization Bypass in Next.js Middleware</td>
-</tr>
-<tr>
-<td>GHSA-p293-qw3h-jr36</td>
-<td>9</td>
-<td>CVE-2026-75604, GHSA-p293-qw3h-jr36</td>
-<td>Next.js: Unauthenticated Remote Code Execution on windows-hosted servers</td>
-</tr>
-<tr>
-<td>GHSA-c4j6-fc7j-m34r</td>
-<td>8.6</td>
-<td>CVE-2026-44578, GHSA-c4j6-fc7j-m34r</td>
-<td>Next.js vulnerable to server-side request forgery in applications using WebSocket upgrades</td>
-</tr>
-<tr>
-<td>GHSA-36qx-fr4f-26g5</td>
-<td>7.5</td>
-<td>CVE-2026-44573, GHSA-36qx-fr4f-26g5</td>
-<td>Next.js has a Middleware / Proxy bypass in Pages Router applications using i18n</td>
-</tr>
-<tr>
-<td>GHSA-67rr-84xm-4c7r</td>
-<td>7.5</td>
-<td>CVE-2025-49826, GHSA-67rr-84xm-4c7r</td>
-<td>Next.JS vulnerability can lead to DoS via cache poisoning</td>
-</tr>
-<tr>
-<td>GHSA-6g55-p6wh-862q</td>
-<td>7.5</td>
-<td>CVE-2026-45623, GHSA-6g55-p6wh-862q</td>
-<td>PostCSS: Arbitrary file read and information disclosure via attacker-controlled sourceMappingURL in CSS comments</td>
-</tr>
-<tr>
-<td>GHSA-8h8q-6873-q5fj</td>
-<td>7.5</td>
-<td>GHSA-8h8q-6873-q5fj</td>
-<td>Next.js Vulnerable to Denial of Service with Server Components</td>
-</tr>
-<tr>
-<td>GHSA-mg66-mrh9-m8jx</td>
-<td>7.5</td>
-<td>CVE-2026-44579, GHSA-mg66-mrh9-m8jx</td>
-<td>Next.js vulnerable to Denial of Service via connection exhaustion in applications using Cache Components</td>
-</tr>
-<tr>
-<td>GHSA-q4gf-8mx6-v5v3</td>
-<td>7.5</td>
-<td>GHSA-q4gf-8mx6-v5v3</td>
-<td>Next.js has a Denial of Service with Server Components</td>
-</tr>
-<tr>
-<td>GHSA-r28c-9q8g-f849</td>
-<td>7.5</td>
-<td>CVE-2026-73646, GHSA-r28c-9q8g-f849</td>
-<td>PostCSS: Path Traversal in Previous Source Map Auto-Loading (sourceMappingURL) leads to Arbitrary .map File Disclosure</td>
-</tr>
-<tr>
-<td>GHSA-4342-x723-ch2f</td>
-<td>6.5</td>
-<td>CVE-2025-57822, GHSA-4342-x723-ch2f</td>
-<td>Next.js Improper Middleware Redirect Handling Leads to SSRF</td>
-</tr>
-<tr>
-<td>GHSA-g5qg-72qw-gw5v</td>
-<td>6.2</td>
-<td>CVE-2025-57752, GHSA-g5qg-72qw-gw5v</td>
-<td>Next.js Affected by Cache Key Confusion for Image Optimization API Routes</td>
-</tr>
-<tr>
-<td>GHSA-gx5p-jg67-6x7h</td>
-<td>6.1</td>
-<td>CVE-2026-44580, GHSA-gx5p-jg67-6x7h</td>
-<td>Next.js has cross-site scripting in beforeInteractive scripts with untrusted input</td>
-</tr>
-<tr>
-<td>GHSA-qx2v-qp2m-jg93</td>
-<td>6.1</td>
-<td>CVE-2026-41305, GHSA-qx2v-qp2m-jg93</td>
-<td>PostCSS has XSS via Unescaped &lt;/style&gt; in its CSS Stringify Output</td>
-</tr>
-<tr>
-<td>GHSA-9g9p-9gw9-jx7f</td>
-<td>5.9</td>
-<td>CVE-2025-59471, GHSA-9g9p-9gw9-jx7f</td>
-<td>Next.js self-hosted applications vulnerable to DoS via Image Optimizer remotePatterns configuration</td>
-</tr>
-<tr>
-<td>GHSA-h64f-5h5j-jqjh</td>
-<td>5.9</td>
-<td>CVE-2026-44577, GHSA-h64f-5h5j-jqjh</td>
-<td>Next.js has a Denial of Service in the Image Optimization API</td>
-</tr>
-<tr>
-<td>GHSA-wfc6-r584-vfw7</td>
-<td>5.4</td>
-<td>CVE-2026-44576, GHSA-wfc6-r584-vfw7</td>
-<td>Next.js vulnerable to cache poisoning in React Server Component responses</td>
-</tr>
-<tr>
-<td>GHSA-4jqv-mc3x-m676</td>
-<td>5.3</td>
-<td>CVE-2026-94543, GHSA-4jqv-mc3x-m676</td>
-<td>Next.js has cache poisoning of SSG and ISR pages in self-hosted applications</td>
-</tr>
-<tr>
-<td>GHSA-7m27-7ghc-44w9</td>
-<td>5.3</td>
-<td>CVE-2024-56332, GHSA-7m27-7ghc-44w9</td>
-<td>Next.js Allows a Denial of Service (DoS) with Server Actions</td>
-</tr>
-<tr>
-<td>GHSA-mcj8-r9mp-w47p</td>
-<td>4.8</td>
-<td>CVE-2026-94484, GHSA-mcj8-r9mp-w47p</td>
-<td>Next.js has cache poisoning in SSG/ISR rendering that leads to cross-user content substitution and persistent denial of service</td>
-</tr>
-<tr>
-<td>GHSA-ffhc-5mcf-pf4q</td>
-<td>4.7</td>
-<td>CVE-2026-44581, GHSA-ffhc-5mcf-pf4q</td>
-<td>Next.js vulnerable to cross-site scripting in App Router applications using CSP nonces</td>
-</tr>
-<tr>
-<td>GHSA-xv57-4mr9-wg8v</td>
-<td>4.3</td>
-<td>CVE-2025-55173, GHSA-xv57-4mr9-wg8v</td>
-<td>Next.js Content Injection Vulnerability for Image Optimization</td>
-</tr>
-<tr>
-<td>GHSA-3g8h-86w9-wvmq</td>
-<td>3.7</td>
-<td>CVE-2026-44572, GHSA-3g8h-86w9-wvmq</td>
-<td>Next.js's Middleware / Proxy redirects can be cache-poisoned</td>
-</tr>
-<tr>
-<td>GHSA-qpjv-v59x-3qc4</td>
-<td>3.7</td>
-<td>CVE-2025-32421, GHSA-qpjv-v59x-3qc4</td>
-<td>Next.js Race Condition to Cache Poisoning</td>
-</tr>
-<tr>
-<td>GHSA-vfv6-92ff-j949</td>
-<td>3.7</td>
-<td>CVE-2026-44582, GHSA-vfv6-92ff-j949</td>
-<td>Next.js vulnerable to cache poisoning via collisions in React Server Component cache-busting</td>
-</tr>
-<tr>
-<td>GHSA-2464-fhr4-w9xw</td>
-<td>0</td>
-<td>GHSA-2464-fhr4-w9xw</td>
-<td>Next.js: Unauthenticated Remote Code Execution in Image Optimization API when SVG files are used</td>
-</tr>
-<tr>
-<td>GHSA-2xp9-vwfh-vxw4</td>
-<td>0</td>
-<td>GHSA-2xp9-vwfh-vxw4</td>
-<td>Next.js: Unauthenticated Remote Code Execution in Image Optimization API when AVIF files are used</td>
-</tr>
-<tr>
-<td>GHSA-3x4c-7xq6-9pq8</td>
-<td>0</td>
-<td>CVE-2026-27980, GHSA-3x4c-7xq6-9pq8</td>
-<td>Next.js: Unbounded next/image disk cache growth can exhaust storage</td>
-</tr>
-<tr>
-<td>GHSA-4633-3j49-mh5q</td>
-<td>0</td>
-<td>CVE-2026-64647, GHSA-4633-3j49-mh5q</td>
-<td>Next.js: Cache confusion of response bodies for requests with bodies containing invalid UTF-8 byte sequences</td>
-</tr>
-<tr>
-<td>GHSA-4c39-4ccg-62r3</td>
-<td>0</td>
-<td>CVE-2026-64646, GHSA-4c39-4ccg-62r3</td>
-<td>Next.js: Unbounded Server Action payload in Edge runtime</td>
-</tr>
-<tr>
-<td>GHSA-68g3-v927-f742</td>
-<td>0</td>
-<td>CVE-2026-64648, GHSA-68g3-v927-f742</td>
-<td>Next.js: Cache confusion of response bodies for requests with bodies</td>
-</tr>
-<tr>
-<td>GHSA-89xv-2m56-2m9x</td>
-<td>0</td>
-<td>CVE-2026-64649, GHSA-89xv-2m56-2m9x</td>
-<td>Next.js: Server-Side Request Forgery in Server Actions on custom servers</td>
-</tr>
-<tr>
-<td>GHSA-955p-x3mx-jcvp</td>
-<td>0</td>
-<td>CVE-2026-64643, GHSA-955p-x3mx-jcvp</td>
-<td>Next.js: Unauthenticated disclosure of internal Server Function endpoints</td>
-</tr>
-<tr>
-<td>GHSA-f88m-g3jw-g9cj</td>
-<td>0</td>
-<td>CVE-2026-114113, GHSA-f88m-g3jw-g9cj</td>
-<td>sharp inherited vulnerabilities in libvips: CVE-2026-33327, CVE-2026-33328, CVE-2026-35590, CVE-2026-35591</td>
-</tr>
-<tr>
-<td>GHSA-fxqj-rqcc-2cmp</td>
-<td>0</td>
-<td>CVE-2026-69153, GHSA-fxqj-rqcc-2cmp</td>
-<td>PostCSS: incomplete fix of GHSA-6g55-p6wh-862q — attacker-controlled sourceMappingURL reads arbitrary .map files when <code>from</code> is unset</td>
-</tr>
-<tr>
-<td>GHSA-ggv3-7p47-pfv8</td>
-<td>0</td>
-<td>CVE-2026-29057, GHSA-ggv3-7p47-pfv8</td>
-<td>Next.js: HTTP request smuggling in rewrites</td>
-</tr>
-<tr>
-<td>GHSA-m99w-x7hq-7vfj</td>
-<td>0</td>
-<td>CVE-2026-64641, GHSA-m99w-x7hq-7vfj</td>
-<td>Next.js: Denial of Service in App Router using Server Actions</td>
-</tr>
-<tr>
-<td>GHSA-p3m5-59mp-jv5r</td>
-<td>0</td>
-<td>CVE-2026-94482, GHSA-p3m5-59mp-jv5r</td>
-<td>Next.js: Denial of Service in App Router using Server Actions</td>
-</tr>
-<tr>
-<td>GHSA-p9j2-gv94-2wf4</td>
-<td>0</td>
-<td>CVE-2026-64645, GHSA-p9j2-gv94-2wf4</td>
-<td>Next.js: Server-Side Request Forgery in rewrites via attacker-controlled destination hostname</td>
-</tr>
-<tr>
-<td>GHSA-rgj7-g3m4-5g8c</td>
-<td>0</td>
-<td>CVE-2026-114112, GHSA-rgj7-g3m4-5g8c</td>
-<td>sharp: Vulnerabilities in libheif: GHSA-g89c-p67h-r497 and GHSA-2jg2-4ch7-h545</td>
-</tr>
-<tr>
-<td>GHSA-wq5f-xc86-pv6w</td>
-<td>0</td>
-<td>CVE-2026-114111, GHSA-wq5f-xc86-pv6w</td>
-<td>sharp : Vulnerability in librsvg dependency CVE-2026-96889</td>
-</tr>
-</tbody>
-</table></div>
-<p>Connected aliases count as one group. Titles are source text. Missing severity is not a zero score. A list of fixed versions is not an upgrade recommendation until the affected package and branch have been matched.</p>
-<h2>6. Dependencies</h2>
-<p>Direct: 16 · Transitive: 34 · graph version: <code>15.1.0</code></p>
-<p>The role descriptions identify <code>@next/env</code> for environment loading, platform-specific <code>@next/swc-*</code> packages for native transforms, <code>@swc/helpers</code> for generated-code helpers, caniuse-lite for browser-support data, postcss for CSS processing, sharp for image optimization, and styled-jsx for scoped styling. The 15.1.0 narrative also identifies busboy for multipart request parsing and leaves the role of <code>@swc/counter</code> unverified. These are AI-generated explanations, distinct from the graph's package/version facts.</p>
-<p>The resolved graph contains platform-specific image and compiler packages. It does not prove that all of them are installed on one operating system or distributed in a particular application bundle. Trace the actual lockfile, build and deployment artifacts before deciding which license obligations apply. Optional extras and installation conditions can change the effective dependency set.</p>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>Parent</th>
-<th>Child</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>next@15.1.0</td>
-<td>@next/env@15.1.0</td>
-</tr>
-<tr>
-<td>next@15.1.0</td>
-<td>@next/swc-darwin-arm64@15.1.0</td>
-</tr>
-<tr>
-<td>next@15.1.0</td>
-<td>@next/swc-darwin-x64@15.1.0</td>
-</tr>
-<tr>
-<td>next@15.1.0</td>
-<td>@next/swc-linux-arm64-gnu@15.1.0</td>
-</tr>
-<tr>
-<td>next@15.1.0</td>
-<td>@next/swc-linux-arm64-musl@15.1.0</td>
-</tr>
-<tr>
-<td>next@15.1.0</td>
-<td>@next/swc-linux-x64-gnu@15.1.0</td>
-</tr>
-<tr>
-<td>next@15.1.0</td>
-<td>@next/swc-linux-x64-musl@15.1.0</td>
-</tr>
-<tr>
-<td>next@15.1.0</td>
-<td>@next/swc-win32-arm64-msvc@15.1.0</td>
-</tr>
-<tr>
-<td>next@15.1.0</td>
-<td>@next/swc-win32-x64-msvc@15.1.0</td>
-</tr>
-<tr>
-<td>next@15.1.0</td>
-<td>@swc/counter@0.1.3</td>
-</tr>
-<tr>
-<td>next@15.1.0</td>
-<td>@swc/helpers@0.5.15</td>
-</tr>
-<tr>
-<td>next@15.1.0</td>
-<td>busboy@1.6.0</td>
-</tr>
-<tr>
-<td>next@15.1.0</td>
-<td>caniuse-lite@1.0.30001823</td>
-</tr>
-<tr>
-<td>next@15.1.0</td>
-<td>postcss@8.4.31</td>
-</tr>
-<tr>
-<td>next@15.1.0</td>
-<td>sharp@0.33.5</td>
-</tr>
-<tr>
-<td>next@15.1.0</td>
-<td>styled-jsx@5.1.6</td>
-</tr>
-<tr>
-<td>@emnapi/runtime@1.11.3</td>
-<td>tslib@2.9.1</td>
-</tr>
-<tr>
-<td>@img/sharp-darwin-arm64@0.33.5</td>
-<td>@img/sharp-libvips-darwin-arm64@1.0.4</td>
-</tr>
-<tr>
-<td>@img/sharp-darwin-x64@0.33.5</td>
-<td>@img/sharp-libvips-darwin-x64@1.0.4</td>
-</tr>
-<tr>
-<td>@img/sharp-linux-arm@0.33.5</td>
-<td>@img/sharp-libvips-linux-arm@1.0.5</td>
-</tr>
-<tr>
-<td>@img/sharp-linux-arm64@0.33.5</td>
-<td>@img/sharp-libvips-linux-arm64@1.0.4</td>
-</tr>
-<tr>
-<td>@img/sharp-linux-s390x@0.33.5</td>
-<td>@img/sharp-libvips-linux-s390x@1.0.4</td>
-</tr>
-<tr>
-<td>@img/sharp-linux-x64@0.33.5</td>
-<td>@img/sharp-libvips-linux-x64@1.0.4</td>
-</tr>
-<tr>
-<td>@img/sharp-linuxmusl-arm64@0.33.5</td>
-<td>@img/sharp-libvips-linuxmusl-arm64@1.0.4</td>
-</tr>
-<tr>
-<td>@img/sharp-linuxmusl-x64@0.33.5</td>
-<td>@img/sharp-libvips-linuxmusl-x64@1.0.4</td>
-</tr>
-<tr>
-<td>@img/sharp-wasm32@0.33.5</td>
-<td>@emnapi/runtime@1.11.3</td>
-</tr>
-<tr>
-<td>@swc/helpers@0.5.15</td>
-<td>tslib@2.9.1</td>
-</tr>
-<tr>
-<td>busboy@1.6.0</td>
-<td>streamsearch@1.1.0</td>
-</tr>
-<tr>
-<td>color@4.2.3</td>
-<td>color-convert@2.0.1</td>
-</tr>
-<tr>
-<td>color@4.2.3</td>
-<td>color-string@1.9.1</td>
-</tr>
-<tr>
-<td>color-convert@2.0.1</td>
-<td>color-name@1.1.4</td>
-</tr>
-<tr>
-<td>color-string@1.9.1</td>
-<td>color-name@1.1.4</td>
-</tr>
-<tr>
-<td>color-string@1.9.1</td>
-<td>simple-swizzle@0.2.4</td>
-</tr>
-<tr>
-<td>postcss@8.4.31</td>
-<td>nanoid@3.3.20</td>
-</tr>
-<tr>
-<td>postcss@8.4.31</td>
-<td>picocolors@1.1.1</td>
-</tr>
-<tr>
-<td>postcss@8.4.31</td>
-<td>source-map-js@1.2.2</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-darwin-arm64@0.33.5</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-darwin-x64@0.33.5</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-libvips-darwin-arm64@1.0.4</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-libvips-darwin-x64@1.0.4</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-libvips-linux-arm@1.0.5</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-libvips-linux-arm64@1.0.4</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-libvips-linux-s390x@1.0.4</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-libvips-linux-x64@1.0.4</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-libvips-linuxmusl-arm64@1.0.4</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-libvips-linuxmusl-x64@1.0.4</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-linux-arm@0.33.5</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-linux-arm64@0.33.5</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-linux-s390x@0.33.5</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-linux-x64@0.33.5</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-linuxmusl-arm64@0.33.5</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-linuxmusl-x64@0.33.5</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-wasm32@0.33.5</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-win32-ia32@0.33.5</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>@img/sharp-win32-x64@0.33.5</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>color@4.2.3</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>detect-libc@2.1.2</td>
-</tr>
-<tr>
-<td>sharp@0.33.5</td>
-<td>semver@7.8.6</td>
-</tr>
-<tr>
-<td>simple-swizzle@0.2.4</td>
-<td>is-arrayish@0.3.4</td>
-</tr>
-<tr>
-<td>styled-jsx@5.1.6</td>
-<td>client-only@0.0.1</td>
-</tr>
-</tbody>
-</table></div>
-<h2>7. Maintenance</h2>
-<p>The saved Scorecard total is 6.2, dated 2026-08-24. Policy v2 therefore marks maintenance conditional, even though the Maintained check is 10. A strong activity score does not erase the other measured practices. Code-Review is 9 and Security-Policy is 10; the response also includes low scores for pinned dependencies, token permissions, binary artifacts and static analysis. Branch-Protection and Signed-Releases are unevaluated (-1), and the Vulnerabilities check is absent. [Source: <code>data.json#/get_project/scorecard</code>]</p>
-<p>The historical narrative attributes the project to Vercel, describes maintainer review and stable/canary release channels, and points security reports to Vercel's private HackerOne process. It does not establish a guaranteed stable-release cadence or independently verify the current reporting process. Refer to upstream's current security policy for a real disclosure.</p>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>Check</th>
-<th>Score</th>
-<th>Source details</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Code-Review</td>
-<td>9</td>
-<td>Found 27/29 approved changesets -- score normalized to 9</td>
-</tr>
-<tr>
-<td>Maintained</td>
-<td>10</td>
-<td>30 commit(s) and 4 issue activity found in the last 90 days -- score normalized to 10</td>
-</tr>
-<tr>
-<td>CII-Best-Practices</td>
-<td>0</td>
-<td>no effort to earn an OpenSSF best practices badge detected</td>
-</tr>
-<tr>
-<td>Dangerous-Workflow</td>
-<td>10</td>
-<td>no dangerous workflow patterns detected</td>
-</tr>
-<tr>
-<td>License</td>
-<td>10</td>
-<td>license file detected</td>
-</tr>
-<tr>
-<td>Token-Permissions</td>
-<td>0</td>
-<td>detected GitHub workflow tokens with excessive permissions</td>
-</tr>
-<tr>
-<td>Branch-Protection</td>
-<td>-1</td>
-<td>internal error: error during branchesHandler.setup: internal error: githubv4.Query: Resource not accessible by integration</td>
-</tr>
-<tr>
-<td>Signed-Releases</td>
-<td>-1</td>
-<td>no releases found</td>
-</tr>
-<tr>
-<td>Security-Policy</td>
-<td>10</td>
-<td>security policy file detected</td>
-</tr>
-<tr>
-<td>Packaging</td>
-<td>10</td>
-<td>packaging workflow detected</td>
-</tr>
-<tr>
-<td>Binary-Artifacts</td>
-<td>0</td>
-<td>binaries present in source code</td>
-</tr>
-<tr>
-<td>Pinned-Dependencies</td>
-<td>4</td>
-<td>dependency not pinned by hash detected -- score normalized to 4</td>
-</tr>
-<tr>
-<td>Fuzzing</td>
-<td>10</td>
-<td>project is fuzzed</td>
-</tr>
-<tr>
-<td>SAST</td>
-<td>0</td>
-<td>SAST tool is not run on all commits -- score normalized to 0</td>
-</tr>
-</tbody>
-</table></div>
-<h2>8. Adoption actions</h2>
-<ol>
-<li>For 15.1.0, treat known high-severity findings as blockers for the reviewed version. Match each advisory's ecosystem, affected package and branch before selecting a replacement. The existence of a fixed version does not make 15.1.0 safe.</li>
-<li>Verify the actual resolved postcss and sharp versions after any framework upgrade. Re-run the review and relevant application tests; do not infer remediation solely from a framework version number or the flattened fixed-version list.</li>
-<li>Inspect caniuse-lite's CC-BY-4.0 attribution conditions and the LGPL obligations of the sharp/libvips artifacts actually shipped. CC-BY-4.0 is a recognized data license; its <code>unknown</code> screening category means this policy does not automatically approve it, not that the package has no license.</li>
-<li>For 15.1.0, inspect the exact busboy and streamsearch license files because their saved metadata arrays are empty. Empty metadata is not proof of license absence.</li>
-<li>Review telemetry configuration, browser-exposed environment variables and image-processing features against the exact release and deployment. Do not rely on wiki claims that were not reproduced.</li>
-<li>Record unresolved maintenance practices and obtain current evidence before production approval. Preserve this snapshot when translating or comparing versions.</li>
-</ol>
-<h2>9. Unknowns and limitations</h2>
-<p>Coverage gaps: No additional machine coverage flag. Narrative limitations below still apply.</p>
-<p>The original report used an agent verification status of WARN. Some DeepWiki claims were not reproduced, including <code>.rscinfo</code> key storage and particular telemetry/default settings. Several other sections were not rechecked. The repository wiki can describe a newer major version, so it cannot establish version-specific runtime behavior by itself.</p>
-<p>For 15.1.0, the old <code>data.json</code> has <code>deepwiki: null</code>; its narrative survived in the historical Markdown, but there is no corresponding saved raw wiki block to verify. Treat the explanatory paragraphs as inherited, unverified context. For 16.4.6, a saved wiki block exists, but version applicability is still unverified. In both cases the public-registry graph was not compared with a real installed application, and the original Scorecard was 85 days old at collection time.</p>
-<h2>10. Evidence and verification</h2>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>Claim</th>
-<th>Source</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>License</td>
-<td>data.json#/lookup_package/licenses</td>
-</tr>
-<tr>
-<td>Dependencies</td>
-<td>data.json#/get_dependencies</td>
-</tr>
-<tr>
-<td>Known vulnerabilities</td>
-<td>data.json#/advisories</td>
-</tr>
-<tr>
-<td>Maintenance</td>
-<td>data.json#/get_project/scorecard</td>
-</tr>
-<tr>
-<td>DeepWiki</td>
-<td>Unavailable in the historical JSON</td>
-</tr>
-</tbody>
-</table></div>
-<p>Verification status: <strong>WARN</strong>. The original JSON hash, policy calculation and bilingual numerical tables are checked. This does not freshly authenticate the old external responses or verify every wiki assertion.</p>
-<p>SHA-256 (<code>data.json</code>): <code>dfabfde8c552992dac2f736f4223f55cd06a4b5c7c4b24817e474eeaa627d873</code></p>
-<p><a href="https://deps.dev/">deps.dev</a> · <a href="https://osv.dev/">OSV</a> · <a href="https://deepwiki.com/vercel/next.js">DeepWiki</a></p>
-<p>See <a href="../../NOTICE.md">NOTICE</a> for source attribution and terms.</p>
-</article></section><section class="sec" id="evidence"><h2>Evidence</h2><p class="notice">A screening aid, not a legal opinion or security certification. Public metadata can be incomplete. DeepWiki narratives are AI-generated and may not describe the reviewed version.</p><details class="details"><summary>Policy findings</summary><pre>{
+}</pre></details></section><section class="sec" id="maintenance"><h2>Maintenance</h2><p class="meta">Scorecard · 2026-08-24T00:00:00Z · 6.2/10</p><div class="table-wrap"><table><thead><tr><th scope="col">Check</th><th scope="col">Score</th><th scope="col">Source details</th></tr></thead><tbody><tr><td>Code-Review</td><td>9</td><td>Found 27/29 approved changesets -- score normalized to 9</td></tr><tr><td>Maintained</td><td>10</td><td>30 commit(s) and 4 issue activity found in the last 90 days -- score normalized to 10</td></tr><tr><td>CII-Best-Practices</td><td>0</td><td>no effort to earn an OpenSSF best practices badge detected</td></tr><tr><td>Dangerous-Workflow</td><td>10</td><td>no dangerous workflow patterns detected</td></tr><tr><td>License</td><td>10</td><td>license file detected</td></tr><tr><td>Token-Permissions</td><td>0</td><td>detected GitHub workflow tokens with excessive permissions</td></tr><tr><td>Branch-Protection</td><td>-1</td><td>internal error: error during branchesHandler.setup: internal error: githubv4.Query: Resource not accessible by integration</td></tr><tr><td>Signed-Releases</td><td>-1</td><td>no releases found</td></tr><tr><td>Security-Policy</td><td>10</td><td>security policy file detected</td></tr><tr><td>Packaging</td><td>10</td><td>packaging workflow detected</td></tr><tr><td>Binary-Artifacts</td><td>0</td><td>binaries present in source code</td></tr><tr><td>Pinned-Dependencies</td><td>4</td><td>dependency not pinned by hash detected -- score normalized to 4</td></tr><tr><td>Fuzzing</td><td>10</td><td>project is fuzzed</td></tr><tr><td>SAST</td><td>0</td><td>SAST tool is not run on all commits -- score normalized to 0</td></tr></tbody></table></div></section><section class="sec" id="evidence"><h2>Evidence</h2><p class="notice">A screening aid, not a legal opinion or security certification. Public metadata can be incomplete. DeepWiki narratives are AI-generated and may not describe the reviewed version.</p><details class="details"><summary>Policy findings</summary><pre>{
   &quot;policy&quot;: &quot;oss-gate.policy/2&quot;,
   &quot;overall&quot;: &quot;hold&quot;,
   &quot;areas&quot;: {
@@ -6040,4 +6042,9 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
   &quot;advisory_count&quot;: 42,
   &quot;high_critical_count&quot;: 11,
   &quot;severity_unknown_count&quot;: 0
-}</pre></details><p class="meta">data.json · SHA-256 dfabfde8c552992dac2f736f4223f55cd06a4b5c7c4b24817e474eeaa627d873</p></section></main></div><script>document.querySelectorAll('[data-print]').forEach(b=>b.addEventListener('click',()=>window.print()));</script></body></html>
+}</pre></details><p class="meta">data.json · SHA-256 dfabfde8c552992dac2f736f4223f55cd06a4b5c7c4b24817e474eeaa627d873</p></section></main></div><script>document.querySelectorAll('[data-print]').forEach(b=>b.addEventListener('click',()=>window.print()));
+const printContext = new Set();
+window.addEventListener('beforeprint',()=>{
+  document.querySelectorAll('details.context:not([open])').forEach(d=>{printContext.add(d);d.open=true;});
+});
+window.addEventListener('afterprint',()=>{printContext.forEach(d=>d.open=false);printContext.clear();});</script></body></html>
