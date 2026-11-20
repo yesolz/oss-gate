@@ -65,6 +65,17 @@ LABELS = {
         "context": "Review context",
         "appendix": "Data and source details",
         "grades": "How to read the verdict",
+        "additional_policy": "Selected review policy",
+        "base_verdict": "Base verdict",
+        "effective_verdict": "With selected policy",
+        "additional_pass": "No additional blocking condition was found under the selected rules.",
+        "release_wait": "The selected release waiting period has not elapsed.",
+        "release_time_unverified": "The release time is missing, invalid or later than the evaluation time.",
+        "communication_unverified": "A complete, attributed communication review for this version is unavailable.",
+        "blocked_destination": "Reviewed evidence identifies a prohibited destination used by default or required for operation.",
+        "communication_configuration_unverified": "Some activation or disabling conditions for external communication remain unverified.",
+        "policy_limited_collection": "The selected outbound policy blocked part of the evidence collection.",
+        "communication_source": "Communication findings use explicitly supplied reviewer evidence. They are not an automated network scan.",
         "grade_help": "Allow: meets the screening rules. Conditional: checks or actions remain. Hold: a policy blocker needs resolution. Unverified is an individual area's evidence status. PASS / WARN / FAIL describe the report's evidence check, not approval to adopt.",
     },
     "ko": {
@@ -116,6 +127,17 @@ LABELS = {
         "context": "검토 정보",
         "appendix": "수치와 상세 근거",
         "grades": "판정 읽는 법",
+        "additional_policy": "선택한 검토 정책",
+        "base_verdict": "기본 판정",
+        "effective_verdict": "추가 정책 적용 후",
+        "additional_pass": "선택한 규칙에서 추가로 제한하는 조건은 확인되지 않았습니다.",
+        "release_wait": "선택한 신규 버전 대기 기간이 지나지 않았습니다.",
+        "release_time_unverified": "발행 시각이 없거나 잘못됐거나 평가 시각보다 나중입니다.",
+        "communication_unverified": "이 버전의 외부 통신을 확인한 완전한 검토 자료가 없습니다.",
+        "blocked_destination": "검토 자료에 따르면 금지된 목적지로 기본 활성화되거나 필수인 통신이 있습니다.",
+        "communication_configuration_unverified": "외부 통신의 활성화 또는 비활성화 조건 중 일부가 확인되지 않았습니다.",
+        "policy_limited_collection": "선택한 외부 전송 정책으로 근거 수집의 일부가 차단됐습니다.",
+        "communication_source": "외부 통신 판정은 명시적으로 제공한 검토 자료에 근거합니다. 네트워크를 자동 검사한 결과는 아닙니다.",
         "grade_help": "가능: 현재 점검 기준을 통과했습니다. 조건부: 확인하거나 조치할 일이 남았습니다. 보류: 정책상 막는 항목을 해결해야 합니다. 확인 필요는 개별 항목의 근거 상태입니다. PASS / WARN / FAIL은 보고서의 근거 검증 상태이며 도입 승인이 아닙니다.",
     },
 }
@@ -281,7 +303,7 @@ def shell(title, lang, cover, body):
     script_hash = base64.b64encode(hashlib.sha256(SCRIPT.encode()).digest()).decode()
     csp = f"default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-{script_hash}'; img-src data:; base-uri 'none'; form-action 'none'"
     css = Path(__file__).with_name("theme.css").read_text(encoding="utf-8") + EXTRA_CSS
-    return f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="{csp}"><meta name="generator" content="OSS Gate 0.2.3"><title>{esc(title)}</title><style>{css}</style></head><body><a class="skip" href="#main">{esc(LABELS[lang]["read"])}</a><div class="page"><aside class="cover"><div class="cover-in">{cover}</div></aside><main class="sheet" id="main">{body}</main></div><script>{SCRIPT}</script></body></html>'''
+    return f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="{csp}"><meta name="generator" content="OSS Gate 0.3.0"><title>{esc(title)}</title><style>{css}</style></head><body><a class="skip" href="#main">{esc(LABELS[lang]["read"])}</a><div class="page"><aside class="cover"><div class="cover-in">{cover}</div></aside><main class="sheet" id="main">{body}</main></div><script>{SCRIPT}</script></body></html>'''
 
 
 def render(data, text, lang, available=("ko", "en"), digest="", raw=False):
@@ -309,6 +331,11 @@ def render(data, text, lang, available=("ko", "en"), digest="", raw=False):
         )
         + "</nav>"
     )
+    if verdict.get("additional_policy"):
+        nav = (
+            nav.removesuffix("</nav>")
+            + f'<a href="#additional-policy"><span class="area-label">{t["additional_policy"]}</span><strong class="st-{TOKENS[grade]}">{t[grade]}</strong></a></nav>'
+        )
     actions = f'<div class="actions"><button data-print>{t["print"]}</button><a href="review.{lang}.md" download>{t["markdown"]}</a><a href="data.json" download>{t["snapshot"]}</a></div>'
     cover = (
         f'<a class="brand" href="#main"><span class="wordmark">OSS GATE</span><span class="brand-sub">{t["title"]}</span></a>'
@@ -322,6 +349,31 @@ def render(data, text, lang, available=("ko", "en"), digest="", raw=False):
     body = f'<header class="doc-head"><p class="meta">{esc(target.get("system"))} / {esc(date)}</p><h1 class="pkg">{esc(name)}<span class="ver">{esc(version)}</span></h1><p class="desc">{t["title"]}</p></header>'
     if data.get("schema") == "oss-gate.review/1":
         body += f'<p class="notice">{t["historical"]}</p>'
+    additional = verdict.get("additional_policy")
+    policy_section = ""
+    if additional:
+        rules = obj(obj(data.get("policy_context")).get("config")).get("review", {})
+        explanation = "".join(
+            f"<li>{esc(t.get(f['code'], f['code']))}"
+            + (f' <span class="meta">{esc(f["destination"])}</span>' if f.get("destination") else "")
+            + "</li>"
+            for f in additional["findings"]
+        )
+        body += f'<p class="notice">{esc(additional["name"])} · {t["base_verdict"]}: {t[additional["base_overall"]]} · {t["effective_verdict"]}: <strong>{t[additional["overall"]]}</strong> · <a href="#additional-policy">{t["policy"]}</a></p>'
+        policy_section = section(
+            "additional-policy",
+            t["additional_policy"],
+            f"<p>{esc(additional['name'])} · {esc(additional['version'])}</p>"
+            f"<p>{t['base_verdict']}: <strong>{t[additional['base_overall']]}</strong> · "
+            f"{t['effective_verdict']}: <strong>{t[additional['overall']]}</strong></p>"
+            + (f"<ul>{explanation}</ul>" if explanation else f"<p>{t['additional_pass']}</p>")
+            + (
+                f'<p class="legend-note">{t["communication_source"]}</p>'
+                if rules.get("require_communication_review") or rules.get("blocked_destinations")
+                else ""
+            )
+            + f'<p class="meta">{esc(additional["evaluated_at"])} · SHA-256 {esc(additional["sha256"])}</p>',
+        )
     counts = obj(gd.get("counts"))
     metrics = [
         (t["direct"], counts.get("direct")),
@@ -334,6 +386,7 @@ def render(data, text, lang, available=("ko", "en"), digest="", raw=False):
     ]
     _, reading = reading_sections(text, lang)
     body += reading
+    body += policy_section
     body += f'<h2 class="appendix-title" id="appendix">{t["appendix"]}</h2>'
     body += section(
         "summary",

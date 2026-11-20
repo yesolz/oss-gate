@@ -1,8 +1,15 @@
 {
   "mcpServers": {
     "deepwiki": {
-      "type": "http",
-      "url": "https://mcp.deepwiki.com/mcp"
+      "command": "uv",
+      "args": [
+        "run",
+        "--frozen",
+        "--project",
+        "${CLAUDE_PLUGIN_ROOT}",
+        "python",
+        "${CLAUDE_PLUGIN_ROOT}/mcp/deepwiki/server.py"
+      ]
     },
     "depsdev": {
       "command": "uv",

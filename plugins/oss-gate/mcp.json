@@ -1,8 +1,16 @@
 {
   "mcpServers": {
     "deepwiki": {
-      "type": "streamable-http",
-      "url": "https://mcp.deepwiki.com/mcp"
+      "command": "uv",
+      "args": [
+        "run",
+        "--frozen",
+        "--project",
+        "${PLUGIN_ROOT}",
+        "python",
+        "${PLUGIN_ROOT}/mcp/deepwiki/server.py"
+      ],
+      "type": "stdio"
     },
     "depsdev": {
       "command": "uv",

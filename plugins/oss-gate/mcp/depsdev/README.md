@@ -2,6 +2,8 @@
 
 A local stdio MCP server wrapping `https://api.deps.dev/v3` and `https://api.osv.dev/v1`. It does not require an API key or execute reviewed packages.
 
+This module is a thin adapter over `core.api`, `core.collect` and `core.service`. The CLI calls the same service. Optional `OSS_GATE_POLICY` settings are checked before outbound requests, including worker-thread and OSV batch calls. With no settings, ordinary collection is unchanged. See the bundled [execution reference](../../skills/oss-review/references/execution.md) for CLI usage, local policy and limits.
+
 From the repository root:
 
 ```sh

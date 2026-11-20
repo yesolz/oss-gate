@@ -49,7 +49,7 @@ Remove with `codex plugin remove oss-gate@oss-gate`, then `codex plugin marketpl
 For clients without plugin installation, keep a local checkout. Register the MCPs using absolute paths:
 
 ```sh
-codex mcp add oss-gate-deepwiki --url https://mcp.deepwiki.com/mcp
+codex mcp add oss-gate-deepwiki -- uv run --frozen --project /absolute/path/oss-gate/plugins/oss-gate python /absolute/path/oss-gate/plugins/oss-gate/mcp/deepwiki/server.py
 codex mcp add oss-gate-depsdev -- uv run --frozen --project /absolute/path/oss-gate/plugins/oss-gate python /absolute/path/oss-gate/plugins/oss-gate/mcp/depsdev/server.py
 ```
 
@@ -61,7 +61,7 @@ Remove only the links and MCP entries you added (`codex mcp remove oss-gate-deep
 
 - depsdev contacts `api.deps.dev` and `api.osv.dev` with public package names/versions, repository identifiers and selected manifest package entries.
 - After a deps.dev package/version 404 only, npm/PyPI public identifiers may also be sent to `registry.npmjs.org` or `pypi.org` to distinguish missing registry metadata from a public-registry miss. These existence checks cannot approve a review.
-- DeepWiki receives the public repository name and your research questions. Your model provider receives the conversation/tool context under that client's terms.
+- The local DeepWiki adapter sends the public repository name and fixed topic questions only when invoked. It does not connect during tool discovery. Your model provider receives the conversation/tool context under that client's terms.
 - The collector writes to the output folder chosen by the agent. Prefer an absolute workspace path so the client's server working directory cannot change where results go.
 - The MCP does not execute reviewed packages. The agent and uv still run local code; normal host permissions apply. The plugin does not install a global network-blocking hook.
 - Do not send private package names, credentials or private repository content. Inspect manifests before querying them.
@@ -69,3 +69,5 @@ Remove only the links and MCP entries you added (`codex mcp remove oss-gate-deep
 `uv: command not found` means the desktop client's PATH does not include uv. Restart the app after installation or configure the MCP command to uv's actual absolute path. A missing graph or unindexed wiki is a coverage limitation, not an installation failure. Rate limits/timeouts remain unknown evidence; try a new review later instead of replacing them with zeros.
 
 Official host references: [Claude marketplaces](https://code.claude.com/docs/en/plugin-marketplaces), [OpenAI plugin packaging](https://developers.openai.com/plugins/build/plugins), [Codex MCP](https://developers.openai.com/codex/mcp).
+
+[Optional policies and CLI](customization.md). Existing manually configured remote DeepWiki connections must be replaced with the local adapter to apply these controls. Restart the client after changing configuration.

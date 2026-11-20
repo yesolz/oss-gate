@@ -12,6 +12,8 @@ Start with one blockquote containing three short paragraphs, before collection m
 >
 > **Next step:** Name the most useful action the reader can take now, with an exact version or setting only when supported. Do not imply that a proposed fix has already been verified in their environment.
 
+If `additional_policy` is present, distinguish its effective outcome from `base_overall` and explain its findings. Otherwise omit additional-policy sections.
+
 After the opening, record snapshot date, ecosystem, repository, policy version, verdict and verification status. The renderer places this context separately from the opening summary. Keep detailed counts, full advisory IDs, hashes and collection mechanics in the relevant sections below. These instructions affect presentation, never the computed policy or preserved evidence.
 
 ## 1. Decision and scope

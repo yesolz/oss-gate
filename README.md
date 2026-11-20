@@ -6,7 +6,7 @@
 
 Give OSS Gate a public repository or package. It combines license and dependency metadata, known vulnerabilities, maintenance signals and a sourced explanation of the software into a readable adoption review. Keep the Markdown, open the offline HTML, and inspect the evidence JSON behind the verdict.
 
-Your agent supplies the reasoning and writing. Two MCP connections supply context: **DeepWiki** for repository explanations, and the bundled **depsdev** server for **deps.dev + OSV**. The latter runs locally. You do not need to operate a server or buy a separate model API key for OSS Gate. Your agent plan, local execution permissions and upstream service limits still apply.
+Your agent supplies the reasoning and writing. Two MCP connections supply context: **DeepWiki** for repository explanations, and the bundled **depsdev** server for **deps.dev + OSV**. Both adapters run locally; the DeepWiki adapter contacts the external service only when invoked. You do not need to operate a server or buy a separate model API key for OSS Gate. Your agent plan, local execution permissions and upstream service limits still apply.
 
 ## Install
 
@@ -92,4 +92,6 @@ uv run --frozen python scripts/build_site.py
 
 [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md) · [MIT license](LICENSE) · [Third-party attribution](NOTICE.md)
 
-[Release validation](docs/release-v0.2.3.md)
+[Release validation](docs/release-v0.3.0.md)
+
+[Optional policies and CLI](docs/customization.md): no configuration is needed for ordinary reviews.

@@ -16,16 +16,20 @@ If collection returns `error`, stop the package-review flow and explain its `cod
 
 The collector queries at most 200 dependency nodes and 200 advisory IDs. A cap is an explicit coverage gap. It does not substitute a different version's graph. `get_dependencies(..., fallback_to_previous=true)` is available for investigation only: label all resulting facts with the resolved version and never use them to approve the requested version.
 
+When a selected policy requires communication evidence, missing evidence limits the verdict. `communication_path` accepts an absolute path to explicitly supplied, attributed review facts. Never mark AI-generated claims as human-reviewed or invent a reviewer to clear a policy condition. See `references/execution.md`.
+
 The returned verdict is computed by the shared policy. Do not override it in prose. Read its findings and coverage gaps. Additional evidence may justify a new run or a separately documented human decision, not an undisclosed grade change.
 
 ## 3. Explain the software with DeepWiki
 
-Use DeepWiki tools to read the public repository structure and relevant pages, then ask focused questions:
+Use the local DeepWiki tools to read public repository structure and relevant pages. `ask_question` accepts `repoName` and a fixed `topic` (`overview`, `communication`, `dependencies`, `maintenance`), not a free-form question. The corresponding public-software questions cover:
 
 1. What does the project do, who uses it, and how does a typical request flow through it?
 2. What information leaves the user's environment? Which endpoints, telemetry, credential handling, defaults and environment variables are documented?
 3. Why are each of the direct dependencies used? What optional extras and platform-specific dependencies sit outside the captured graph?
 4. Who maintains it? What are the release and vulnerability-reporting practices?
+
+If the user skips DeepWiki or policy blocks it, record the missing explanation coverage and continue the evidence-backed package review. Never call the remote endpoint directly to bypass the adapter.
 
 Store tool responses in `deepwiki.json` with tool name, repository, retrieval time, question/page title and response text. Preserve sources. If the host cannot save exact tool output, label the saved material as an agent transcription; do not call it an original API response. Do not change sealed `data.json` to add this material. Failed or unindexed repository lookup is a documented gap, never an invitation to invent an answer. DeepWiki answers are AI-generated, may describe another revision and are not an independent security audit.
 

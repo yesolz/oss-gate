@@ -1,0 +1,14 @@
+{
+  "schema": "oss-gate.settings/1",
+  "name": "Example review policy",
+  "version": "1",
+  "network": {
+    "services": ["depsdev", "osv", "npm", "pypi"],
+    "deny_identifiers": ["npm:@internal/*", "pypi:company-*", "repo:company/*"]
+  },
+  "review": {
+    "minimum_release_age_days": 7,
+    "require_communication_review": true,
+    "blocked_destinations": ["telemetry.example.org"]
+  }
+}
