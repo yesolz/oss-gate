@@ -42,6 +42,9 @@ class Links(HTMLParser):
 
 
 def check(root=ROOT):
+    from build_cli_plugin import build
+
+    build(check=True, root=root)
     errors = []
     site = root / "site/generated"
     html_files = list(site.rglob("*.html"))

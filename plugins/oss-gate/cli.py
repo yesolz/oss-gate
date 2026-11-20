@@ -8,7 +8,6 @@ from pathlib import Path
 from core.service import invoke
 from core import render
 from core.deepwiki import QUESTIONS, request
-from core.snapshot import write_json
 
 
 def main(argv=None):
@@ -26,6 +25,13 @@ def main(argv=None):
             sub.add_argument(
                 "--communication", default="", help="Absolute path to explicitly supplied communication evidence"
             )
+    sub = commands.add_parser("project", help="Resolve a public repository to package candidates")
+    sub.add_argument("repo")
+    sub.add_argument("--out", type=Path, required=True)
+    sub = commands.add_parser("audit", help="Audit a locally sanitized dependency manifest")
+    sub.add_argument("manifest", type=Path)
+    sub.add_argument("--type", choices=("package.json", "requirements.txt", "go.mod"), required=True)
+    sub.add_argument("--out", type=Path, required=True)
     sub = commands.add_parser("explain")
     sub.add_argument("repo", help="Public owner/repo")
     sub.add_argument("--topic", choices=QUESTIONS, default="overview")
@@ -38,21 +44,46 @@ def main(argv=None):
         if args.policy:
             parser.error("render uses the policy sealed in the snapshot; --policy cannot change it")
         return render.main([args.source, "--language", args.language]) or 0
-    if args.command == "explain":
+    if args.command in ("explain", "project", "audit"):
         if args.out.exists() or not args.out.parent.is_dir():
             parser.error("--out must be a new file in an existing directory")
-        result = asyncio.run(request(args.repo, topic=args.topic, policy_path=args.policy))
+        if args.command == "explain":
+            result = asyncio.run(request(args.repo, topic=args.topic, policy_path=args.policy))
+        elif args.command == "project":
+            result = json.loads(invoke("get_project", args.repo, policy_path=args.policy))
+        else:
+            try:
+                with args.manifest.open("r", encoding="utf-8") as source:
+                    content = source.read(512001)
+                if len(content) > 512000:
+                    raise ValueError("manifest too large")
+            except (OSError, ValueError):
+                result = {"error": "cannot read manifest or it exceeds 512000 characters", "code": "invalid_input"}
+            else:
+                result = json.loads(invoke("audit_manifest", content, args.type, policy_path=args.policy))
         if not result.get("error") and not result.get("isError"):
             try:
-                write_json(args.out, result)
+                # Exclusive creation prevents concurrent runs overwriting evidence.
+                with args.out.open("x", encoding="utf-8") as destination:
+                    destination.write(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
                 result = {
                     "file": str(args.out.resolve()),
-                    "repository": args.repo,
-                    "topic": args.topic,
-                    "source": result["source"],
+                    **{
+                        k: result[k]
+                        for k in (
+                            "repository",
+                            "topic",
+                            "source",
+                            "primary_package",
+                            "summary",
+                            "osv_incomplete",
+                            "selected_policy",
+                        )
+                        if k in result
+                    },
                 }
             except OSError:
-                result = {"error": "cannot write explanation file", "code": "output_unavailable"}
+                result = {"error": "cannot write result file", "code": "output_unavailable"}
     else:
         operation = "collect_review" if args.command == "collect" else "plan"
         extra = (

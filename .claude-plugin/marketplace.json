@@ -8,7 +8,13 @@
       "name": "oss-gate",
       "source": "./plugins/oss-gate",
       "description": "Evidence-backed open-source adoption reviews in your own agent. Korean and English reports, source snapshots, and local HTML.",
-      "version": "0.3.0"
+      "version": "0.4.0"
+    },
+    {
+      "name": "oss-gate-cli",
+      "source": "./plugins/oss-gate-cli",
+      "description": "CLI-only adoption reviews with preserved evidence. Registers no MCP servers.",
+      "version": "0.4.0"
     }
   ],
   "metadata": {

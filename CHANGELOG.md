@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0
+
+- Add a generated CLI-only plugin with no MCP registration, including repository resolution and manifest auditing commands.
+- Add optional repository-host restrictions shared by all entry points, preserving existing identifier policies.
+- Support explicit HTTPS npm mirrors for scoped existence diagnostics, without public fallback or automatic credentials.
+
 ## 0.3.0
 
 - Share collection and policy functions between thin MCP adapters and a local CLI; preserve default review behavior.

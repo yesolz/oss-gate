@@ -4,7 +4,8 @@ import json
 
 from . import api
 from .collect import collect
-from .settings import check, fingerprint, identifier, load_policy, policy_scope, PolicyBlocked
+from .settings import check, fingerprint, identifier, load_policy, npm_registry_url, policy_scope, PolicyBlocked
+from .repository import parse_repository
 
 
 def plan(system, name, version="", repo=""):
@@ -29,7 +30,10 @@ def plan(system, name, version="", repo=""):
     for service, value, purpose in requests:
         try:
             check(service, [value])
-            decision, reason = "allowed", None
+            if service == "deepwiki" and parse_repository(value[5:])[0] != "github.com":
+                decision, reason = "unsupported", "unsupported_repository_host"
+            else:
+                decision, reason = "allowed", None
         except PolicyBlocked as exc:
             decision, reason = "blocked", exc.code
         rows.append(
@@ -39,6 +43,7 @@ def plan(system, name, version="", repo=""):
         "target": {"system": system, "name": name, "version": version or "registry default at collection"},
         "requests": rows,
         "network_performed": False,
+        "npm_registry_url": npm_registry_url() if system == "npm" else None,
         "scope": "Initial destinations only. Returned dependencies, repository candidates and advisory IDs are unknown until collection. Each later request is checked before sending. A missing version also requires version discovery.",
     }
 

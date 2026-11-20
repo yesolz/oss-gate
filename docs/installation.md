@@ -44,6 +44,24 @@ Start a new local session, confirm both MCP connections, then request the `oss-r
 
 Remove with `codex plugin remove oss-gate@oss-gate`, then `codex plugin marketplace remove oss-gate` if desired. Generated reports remain in your workspace.
 
+## CLI-only installation
+
+Choose `oss-gate-cli` when you want the agent to run the local CLI without registering OSS Gate MCP servers. The standard `oss-gate` remains the default installation above. Install one variant for a given workflow.
+
+```sh
+# Claude Code, after adding the marketplace
+claude plugin install oss-gate-cli@oss-gate
+
+# Codex, after adding the marketplace
+codex plugin add oss-gate-cli@oss-gate
+```
+
+Start a new session and request an adoption review through the installed `oss-review` skill. In Claude Code, use `/oss-gate-cli:oss-review`. The CLI variant includes the same analysis, policies and report templates. Your agent still writes the narrative; local shell execution and uv are required. DeepWiki still contacts its external service when requested. This distribution does not claim to eliminate all agent context or all MCP client dependencies.
+
+Installing the CLI variant does not disable an existing `oss-gate` installation or manually registered MCP servers. To switch, remove the standard plugin with the uninstall command above and remove only your manually registered OSS Gate MCP entries, then restart. Existing reports remain in your workspace.
+
+For a local candidate, add the checkout as a marketplace first, then install `oss-gate-cli@oss-gate`. Its directory is self-contained and does not depend on a sibling `oss-gate` installation. See [customization](customization.md) for CLI commands and optional policies.
+
 ## Manual Codex setup
 
 For clients without plugin installation, keep a local checkout. Register the MCPs using absolute paths:

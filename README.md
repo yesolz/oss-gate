@@ -92,6 +92,8 @@ uv run --frozen python scripts/build_site.py
 
 [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md) · [MIT license](LICENSE) · [Third-party attribution](NOTICE.md)
 
-[Release validation](docs/release-v0.3.0.md)
+[Release validation](docs/release-v0.4.0.md)
 
 [Optional policies and CLI](docs/customization.md): no configuration is needed for ordinary reviews.
+
+Prefer CLI execution without MCP registration? Choose the optional `oss-gate-cli` package in the [installation guide](docs/installation.md).

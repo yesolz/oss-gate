@@ -3,12 +3,27 @@
   "name": "Example review policy",
   "version": "1",
   "network": {
-    "services": ["depsdev", "osv", "npm", "pypi"],
-    "deny_identifiers": ["npm:@internal/*", "pypi:company-*", "repo:company/*"]
+    "services": [
+      "depsdev",
+      "osv",
+      "npm",
+      "pypi"
+    ],
+    "deny_identifiers": [
+      "npm:@internal/*",
+      "pypi:company-*",
+      "repo:company/*",
+      "repo:*.example.internal/*"
+    ],
+    "allowed_repository_hosts": [
+      "github.com"
+    ]
   },
   "review": {
     "minimum_release_age_days": 7,
     "require_communication_review": true,
-    "blocked_destinations": ["telemetry.example.org"]
+    "blocked_destinations": [
+      "telemetry.example.org"
+    ]
   }
 }

@@ -19,7 +19,8 @@ def lookup_package(system: str, name: str, version: str = "") -> str:
     license_policy, advisories, repository candidates, links and release timeline.
     Unknown licenses are review questions, not proof of a license violation.
     Errors have error/status; upstream lookup failures add a code and hint. On a deps.dev 404,
-    npm/PyPI public registries are checked for existence only, not approval.
+    npm/PyPI registries are checked for existence only, not approval. A configured npm mirror
+    replaces public npm; its absence result applies only to that mirror.
     Other ecosystems remain unverified; a 404 is not proof of nonexistence."""
     return invoke("lookup_package", system, name, version)
 

@@ -10,6 +10,8 @@ from pathlib import Path
 import re
 from urllib.parse import unquote, urlsplit
 
+from .repository import hostname, parse_repository
+
 SERVICES = {
     "api.deps.dev": "depsdev",
     "api.osv.dev": "osv",
@@ -49,6 +51,34 @@ def _strings(value):
         raise ValueError("invalid policy list entry")
 
 
+DEFAULT_NPM_REGISTRY = "https://registry.npmjs.org"
+
+
+def validate_npm_registry(value):
+    if not isinstance(value, str) or len(value) > 2048 or re.search(r"[\x00-\x20\x7f%\\?#]", value):
+        raise ValueError("npm registry must be an HTTPS base URL without credentials, query or escapes")
+    parsed = urlsplit(value)
+    if parsed.scheme != "https" or not parsed.hostname or parsed.username is not None or parsed.password is not None:
+        raise ValueError("npm registry requires HTTPS without credentials")
+    host = hostname(parsed.hostname)
+    if parsed.port is not None and not 1 <= parsed.port <= 65535:
+        raise ValueError("invalid registry port")
+    if host in SERVICES and host != "registry.npmjs.org":
+        raise ValueError("registry URL cannot replace another evidence service")
+    path = parsed.path.rstrip("/")
+    if path and (
+        not re.fullmatch(r"/[A-Za-z0-9_~./-]+", path) or any(p in ("", ".", "..") for p in path[1:].split("/"))
+    ):
+        raise ValueError("invalid registry base path")
+    port = f":{parsed.port}" if parsed.port not in (None, 443) else ""
+    return f"https://{host}{port}{path}"
+
+
+def npm_registry_url():
+    config = CURRENT.get() or {}
+    return validate_npm_registry(config.get("network", {}).get("npm_registry_url", DEFAULT_NPM_REGISTRY))
+
+
 def validate(config):
     _keys(config, {"schema", "name", "version", "network", "review"})
     if config.get("schema") != "oss-gate.settings/1":
@@ -57,12 +87,20 @@ def validate(config):
         if not isinstance(config.get(key), str) or not config[key].strip() or len(config[key]) > 120:
             raise ValueError("policy name and version are required")
     network = config.get("network", {})
-    _keys(network, {"services", "allow_identifiers", "deny_identifiers"})
+    _keys(
+        network, {"services", "allow_identifiers", "deny_identifiers", "allowed_repository_hosts", "npm_registry_url"}
+    )
     for key, values in network.items():
+        if key == "npm_registry_url":
+            validate_npm_registry(values)
+            continue
         _strings(values)
         if key == "services":
             if set(values) - set(SERVICES.values()):
                 raise ValueError("unknown external service")
+        elif key == "allowed_repository_hosts":
+            for value in values:
+                hostname(value)
         elif any(
             v.split(":", 1)[0] not in ECOSYSTEMS | {"repo"} or ":" not in v or not v.split(":", 1)[1] for v in values
         ):
@@ -128,7 +166,7 @@ def identifier(system, name):
     elif system in ("npm", "nuget"):
         name = name.lower()
     elif system == "repo":
-        name = name.removeprefix("github.com/").lower()
+        name = name.lower().removeprefix("github.com/")
     return f"{system}:{name}"
 
 
@@ -145,6 +183,10 @@ def check(service, identifiers=()):
             return fnmatchcase(value, identifier(system, name))
 
         for value in identifiers:
+            if value.startswith("repo:") and "allowed_repository_hosts" in network:
+                host, _ = parse_repository(value[5:])
+                if host not in {hostname(h) for h in network["allowed_repository_hosts"]}:
+                    reason = "repository_host_not_allowed"
             if any(matches(value, p) for p in network.get("deny_identifiers", [])):
                 reason = "identifier_denied"
             if "allow_identifiers" in network and not any(matches(value, p) for p in network["allow_identifiers"]):
@@ -159,12 +201,35 @@ def check(service, identifiers=()):
 
 def guard_request(url, body=None):
     parsed = urlsplit(url)
+    base = npm_registry_url()
+    # A configured mirror replaces public npm. Grant only metadata paths under
+    # this exact origin and prefix, not arbitrary requests to the whole host.
+    if url.startswith(base + "/"):
+        tail = url[len(base) + 1 :].split("/")
+        name = unquote(tail[0])
+        if (
+            len(tail) not in (1, 2)
+            or parsed.query
+            or parsed.fragment
+            or not re.fullmatch(r"(?:@[a-z0-9._~-]+/)?[a-z0-9._~-]+", name)
+            or any(part in (".", "..") for part in name.split("/"))
+            or (
+                len(tail) == 2
+                and (not re.fullmatch(r"[A-Za-z0-9.+_-]+", unquote(tail[1])) or unquote(tail[1]) in (".", ".."))
+            )
+        ):
+            raise PolicyBlocked("unrecognized_registry_path")
+        check("npm", [identifier("npm", name)])
+        return
     if (
         parsed.scheme != "https"
         or parsed.hostname not in SERVICES
         or parsed.username
         or parsed.password
         or parsed.port not in (None, 443)
+        or parsed.query
+        or parsed.fragment
+        or parsed.hostname == "registry.npmjs.org"
     ):
         raise PolicyBlocked("unrecognized_destination")
     service = SERVICES[parsed.hostname]
@@ -175,11 +240,11 @@ def guard_request(url, body=None):
             i = parts.index("packages")
             names = [identifier(parts[i - 1], unquote(parts[i + 1]))]
         elif "projects" in parts:
-            names = [identifier("repo", unquote(parts[parts.index("projects") + 1]))]
+            project = unquote(parts[parts.index("projects") + 1].removesuffix(":packageversions"))
+            host, path = parse_repository(project)
+            names = [identifier("repo", f"{host}/{path}")]
     elif service == "osv" and body:
         names = [identifier(q["package"]["ecosystem"], q["package"]["name"]) for q in body.get("queries", [])]
-    elif service == "npm":
-        names = [identifier("npm", unquote(parts[1]))]
     elif service == "pypi":
         names = [identifier("pypi", unquote(parts[2]))]
     check(service, names)

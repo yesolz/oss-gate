@@ -16,7 +16,7 @@ from urllib.parse import quote
 
 import httpx
 
-VERSION = "0.3.0"
+VERSION = "0.4.0"
 DEPSDEV_BASE = "https://api.deps.dev/v3"
 OSV_BASE = "https://api.osv.dev/v1"
 USER_AGENT = f"oss-gate-depsdev/{VERSION}"
@@ -96,20 +96,12 @@ def osv_ecosystem(system: str) -> str:
 # ----------------------------------------------------------------- license classification
 # ----------------------------------------------------------------- repo / manifest helpers
 def normalize_repo(s: str) -> str:
-    """'owner/repo' | 'github.com/owner/repo' | 'https://github.com/owner/repo(.git)' → 'github.com/owner/repo'."""
-    r = (s or "").strip() if isinstance(s, str) else ""
-    r = re.sub(r"^[a-z]+://", "", r, flags=re.I)
-    r = re.sub(r"^(www\.)?", "", r, flags=re.I).strip("/")
-    if r.lower().endswith(".git"):
-        r = r[:-4]
-    parts = [p for p in r.split("/") if p]
-    if not parts:
-        raise ApiError("invalid input: empty repo id")
-    if "." not in parts[0]:
-        parts = ["github.com"] + parts
-    if len(parts) < 3 or any(p in (".", "..") for p in parts[:3]):
-        raise ApiError("invalid input: repo id must look like owner/repo")
-    return "/".join(parts[:3]).lower()
+    from .repository import normalize_repository
+
+    try:
+        return normalize_repository(s)
+    except ValueError as exc:
+        raise ApiError("invalid input: repository identity", hint=str(exc)) from exc
 
 
 _VER_RE = re.compile(r"^v?\d+(\.\d+)*(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$")
@@ -688,7 +680,15 @@ def _lookup_metadata(url, system, name, version, stage):
             state = registry["status"]
             if state == "found":
                 extra["code"] = "depsdev_metadata_unavailable"
-                hint = "The public registry confirms this target exists, but deps.dev metadata is unavailable. Retry later or review the sources manually; existence alone is not approval."
+                source = (
+                    "The configured mirror"
+                    if registry.get("source_kind") == "configured_mirror"
+                    else "The public registry"
+                )
+                hint = f"{source} confirms this target exists, but deps.dev metadata is unavailable. Retry later or review the sources manually; existence alone is not approval."
+            elif state in ("mirror_package_not_found", "mirror_version_not_found"):
+                extra["code"] = state
+                hint = "The target was not found in the configured npm mirror. This does not establish absence from public npm; mirror synchronization or access policy may differ. No public registry fallback was attempted."
             elif state == "package_not_found":
                 extra["code"] = state
                 hint = f"The package was not found in public {registry['registry']}. Check the package name and ecosystem. Private/custom registries are not checked."
