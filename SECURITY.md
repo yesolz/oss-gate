@@ -16,6 +16,8 @@ The code uses fixed public API bases, TLS verification, bounded queries and expl
 
 `collect_review` writes new files under the output root provided by its caller. Choose a workspace path you intend to use. New IDs avoid overwriting earlier runs. Markdown/HTML derivatives can be regenerated; sealed JSON should not be edited. Before sharing a report, inspect its source questions and metadata for private information.
 
+HTTP timeouts and query-count limits do not impose a total response-byte or memory limit. A compromised upstream service or an explicitly configured malicious mirror can return excessive data and exhaust local resources. Use trusted endpoints and host-level resource limits when processing untrusted evidence.
+
 Dependency audit results are timestamped observations. No known advisory match is not a guarantee of safety. Keep the host, uv, Python and locked dependencies current, with regression checks for updates.
 
 ## Optional local policy
@@ -29,3 +31,13 @@ Additional review policies preserve base restrictions. Communication assertions 
 Repository-host restrictions inspect the repository identifier being sent, including upstream-discovered projects, independently of the API server hostname. Unspecified host restrictions preserve defaults; strict deployments should explicitly set an allowlist. DeepWiki remains limited to public GitHub repositories.
 
 An explicit npm mirror URL grants only metadata reads under that exact HTTPS origin and base path, subject to existing service and identifier rules. It is not a general outbound-host grant. Redirects and public fallback are disabled. Keep policy files trusted: choosing an internal mirror authorizes contact with that address. Credentials in URLs, automatic credential discovery and TLS bypass are unsupported. Mirror evidence may be stale or filtered and does not establish public absence, package-byte identity or safety.
+
+## Repository and release controls
+
+The GitHub repository requires a pull request and the four platform CI checks before merging into `main`, including for administrators. Force pushes and branch deletion are blocked. A second person's approving review is not mandatory while the project has one maintainer; external contributions still require maintainer inspection. All external contributors require approval before their fork PR workflows run. Read the proposed code and workflow changes before approving a run, and do not test untrusted contributions in a local environment containing credentials.
+
+Version tags matching `v*` cannot be updated or deleted under the active ruleset. GitHub Actions must use full commit SHAs. CI does not retain checkout credentials, has bounded job durations and uses read-only repository permissions. Only the Pages deployment job receives Pages write and OIDC permissions, and the deployment environment allows `main` only.
+
+Secret scanning, push protection, private vulnerability reporting, Dependabot alerts and security updates are enabled in repository settings. A weekly and manually runnable dependency audit also checks both runtime and development lockfiles. Audit failures require maintainer triage; updates are not automatically merged. GitHub's dependency coverage and secret detectors are incomplete, and a clean scan is not proof that no secret or vulnerability exists.
+
+These settings are server-side controls, not files included in a clone. Repository administrators can change them. Protect maintainer accounts with a passkey or strong two-factor authentication, keep recovery codes offline, and use narrowly scoped, expiring tokens. A checksum detects changed bytes but is not independent publisher authentication; an attacker who controls the account may replace both an artifact and its published checksum. Report evidence hashes likewise detect changes relative to their manifest, not the identity or honesty of whoever created that manifest.

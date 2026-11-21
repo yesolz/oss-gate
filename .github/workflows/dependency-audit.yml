@@ -1,0 +1,26 @@
+name: Dependency audit
+on:
+  schedule:
+    - cron: '23 3 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: dependency-audit
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff # v6
+        with:
+          version: '0.8.8'
+      - run: uv sync --frozen
+      - run: uv export --frozen --all-groups --no-emit-project --no-hashes --no-annotate --no-header --output-file development-requirements.txt
+      - run: uv export --frozen --project plugins/oss-gate --no-dev --no-emit-project --no-hashes --no-annotate --no-header --output-file runtime-requirements.txt
+      - run: uv run --frozen pip-audit --requirement development-requirements.txt --no-deps --disable-pip --progress-spinner off
+      - run: uv run --frozen pip-audit --requirement runtime-requirements.txt --no-deps --disable-pip --progress-spinner off
