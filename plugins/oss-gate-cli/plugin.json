@@ -1,6 +1,6 @@
 {
   "name": "oss-gate-cli",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Open-source adoption reviews through a local CLI. Korean and English reports with preserved evidence; no MCP servers registered.",
   "author": {
     "name": "yesolz",

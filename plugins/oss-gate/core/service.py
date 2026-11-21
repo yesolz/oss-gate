@@ -1,11 +1,13 @@
 """Shared entry points for local MCP adapters and the CLI."""
 
 import json
+from contextlib import nullcontext
 
 from . import api
 from .collect import collect
 from .settings import check, fingerprint, identifier, load_policy, npm_registry_url, policy_scope, PolicyBlocked
 from .repository import parse_repository
+from .tls import TLSConfigurationError, EVIDENCE as TLS_EVIDENCE
 
 
 def plan(system, name, version="", repo=""):
@@ -68,7 +70,13 @@ def invoke(operation, *args, policy_path=None, **kwargs):
     if operation not in operations:
         return json.dumps({"error": "unknown operation", "code": "invalid_operation"})
     with policy_scope(config) as events:
-        result = json.loads(api._run(operations[operation], *args, **kwargs))
+        try:
+            with nullcontext() if operation == "plan" else api.client_scope(config):
+                result = json.loads(api._run(operations[operation], *args, **kwargs))
+                if operation != "plan" and TLS_EVIDENCE.get() is not None:
+                    result["tls_trust"] = dict(TLS_EVIDENCE.get())
+        except TLSConfigurationError:
+            result = {"error": "cannot load selected additional CA certificates", "code": "tls_configuration_invalid"}
         if config is not None:
             result["selected_policy"] = {
                 "name": config["name"],

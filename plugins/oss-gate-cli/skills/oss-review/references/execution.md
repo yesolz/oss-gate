@@ -48,3 +48,9 @@ The optional result can only maintain or increase the base outcome's restriction
 ## Boundaries
 
 This is per-tool policy enforcement, not a sandbox for the host agent. Other MCPs, browser tools, shell commands, model-provider traffic and uv setup are outside its control. Users who can modify the code, environment or policy file can bypass it; organizations must protect those through their own host controls. Existing direct remote DeepWiki connections bypass the local adapter and must be removed from a restricted setup. Reports and settings can contain organization names and reviewer details: inspect them before sharing. No centralized logs, telemetry, policy server or new model credentials are introduced.
+
+## Explicit additional CA trust
+
+`network.additional_ca_file` optionally adds public PEM CA certificates to certifi for all OSS Gate HTTP clients, including DeepWiki and configured mirrors. Use an absolute local path (at most 1 MiB, no private keys). Only select a CA supplied by the user or their administrator; never create, download or substitute a CA to bypass an upstream certificate error. TLS verification stays enabled, ambient proxy/CA variables remain disabled, and service/identifier restrictions still apply.
+
+An invalid or missing CA file returns `tls_configuration_invalid` before collection; do not remove the setting and retry. `plan` checks syntax without opening the file. Collection records the loaded file hash and certifi version in sealed `tls_trust` evidence. The saved policy includes its local path, so check sharing scope. Offline rendering never loads the file. OS trust-store integration, proxy routing, client certificates and uv bootstrap configuration are outside this setting. See the customization guide.

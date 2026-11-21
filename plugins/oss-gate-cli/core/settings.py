@@ -6,7 +6,7 @@ from fnmatch import fnmatchcase
 import hashlib
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 import re
 from urllib.parse import unquote, urlsplit
 
@@ -88,9 +88,28 @@ def validate(config):
             raise ValueError("policy name and version are required")
     network = config.get("network", {})
     _keys(
-        network, {"services", "allow_identifiers", "deny_identifiers", "allowed_repository_hosts", "npm_registry_url"}
+        network,
+        {
+            "services",
+            "allow_identifiers",
+            "deny_identifiers",
+            "allowed_repository_hosts",
+            "npm_registry_url",
+            "additional_ca_file",
+        },
     )
     for key, values in network.items():
+        if key == "additional_ca_file":
+            if (
+                not isinstance(values, str)
+                or not values
+                or len(values) > 4096
+                or re.search(r"[\x00-\x1f\x7f]", values)
+                or values.startswith(("//", "\\\\"))
+                or not (PurePosixPath(values).is_absolute() or PureWindowsPath(values).is_absolute())
+            ):
+                raise ValueError("additional_ca_file must be an absolute local path")
+            continue
         if key == "npm_registry_url":
             validate_npm_registry(values)
             continue

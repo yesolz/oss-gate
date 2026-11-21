@@ -2,6 +2,7 @@
 
 import asyncio
 import json
+from functools import partial
 
 import httpx
 from mcp import ClientSession
@@ -10,6 +11,7 @@ from mcp.client.streamable_http import streamablehttp_client
 from .transport import BoundedAsyncTransport
 from .repository import parse_repository
 from .settings import PolicyBlocked, check, identifier, load_policy, policy_scope
+from .tls import build_context, TLSConfigurationError
 
 ENDPOINT = "https://mcp.deepwiki.com/mcp"
 QUESTIONS = {
@@ -20,12 +22,12 @@ QUESTIONS = {
 }
 
 
-def client_factory(headers=None, timeout=None, auth=None):
+def client_factory(headers=None, timeout=None, auth=None, *, verify=True):
     return httpx.AsyncClient(
         headers=headers,
         timeout=timeout or 30,
         auth=auth,
-        transport=BoundedAsyncTransport(),
+        transport=BoundedAsyncTransport(verify=verify),
         follow_redirects=False,
         trust_env=False,
     )
@@ -49,11 +51,17 @@ async def request(repo, action="ask_question", topic="overview", policy_path=Non
                     "code": "unsupported_repository_host",
                 }
             repo = path
-            return await asyncio.wait_for(_call(repo, action, topic, args), timeout=120)
+            verify, evidence = build_context(config)
+            result = await asyncio.wait_for(_call(repo, action, topic, args, verify), timeout=120)
+            if evidence is not None:
+                result["tls_trust"] = evidence
+            return result
     except PolicyBlocked as exc:
         return {"error": "DeepWiki request blocked by selected policy", "code": "policy_blocked", "reason": exc.code}
     except asyncio.TimeoutError:
         return {"error": "DeepWiki timed out", "code": "upstream_timeout"}
+    except TLSConfigurationError:
+        return {"error": "cannot load selected additional CA certificates", "code": "tls_configuration_invalid"}
     except (ValueError, OSError) as exc:
         return {"error": "invalid DeepWiki input or policy", "code": "invalid_input", "error_type": type(exc).__name__}
     except Exception as exc:
@@ -61,9 +69,9 @@ async def request(repo, action="ask_question", topic="overview", policy_path=Non
         return {"error": "DeepWiki unavailable", "code": "upstream_unavailable", "error_type": type(exc).__name__}
 
 
-async def _call(repo, action, topic, args):
+async def _call(repo, action, topic, args, verify=True):
     async with streamablehttp_client(
-        ENDPOINT, timeout=30, sse_read_timeout=90, httpx_client_factory=client_factory
+        ENDPOINT, timeout=30, sse_read_timeout=90, httpx_client_factory=partial(client_factory, verify=verify)
     ) as (read, write, _):
         async with ClientSession(read, write) as session:
             await session.initialize()

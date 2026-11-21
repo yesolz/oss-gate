@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.2
+
+- Support explicit additional PEM CA certificates through `network.additional_ca_file`, preserving default trust, TLS verification and outbound restrictions. Isolate custom connection pools per operation and preserve the loaded CA hash in review evidence.
+
 ## 0.4.1
 
 - Compare PyPI versions using PEP 440 across metadata, registry checks, timelines and review policy; preserve requested versions and keep other ecosystems strict.

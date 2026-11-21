@@ -8,6 +8,7 @@ from core.policy import evaluate
 from core.settings import CURRENT, EVENTS, fingerprint
 from core.additional_policy import validate_communication
 from core.snapshot import new_run, seal, write_json
+from core.tls import EVIDENCE as TLS_EVIDENCE
 
 
 def collect(server, system, name, version="", repo="", output_root="reviews", communication_path=""):
@@ -64,6 +65,8 @@ def collect(server, system, name, version="", repo="", output_root="reviews", co
                 raise ValueError("communication evidence does not match the reviewed target")
             data["communication"] = communication
         config = CURRENT.get()
+        if TLS_EVIDENCE.get() is not None:
+            data["tls_trust"] = dict(TLS_EVIDENCE.get())
         if config is not None:
             data["policy_context"] = {
                 "schema": "oss-gate.policy-context/1",
