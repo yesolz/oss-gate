@@ -16,7 +16,7 @@ The code uses fixed public API bases, TLS verification, bounded queries and expl
 
 `collect_review` writes new files under the output root provided by its caller. Choose a workspace path you intend to use. New IDs avoid overwriting earlier runs. Markdown/HTML derivatives can be regenerated; sealed JSON should not be edited. Before sharing a report, inspect its source questions and metadata for private information.
 
-HTTP timeouts and query-count limits do not impose a total response-byte or memory limit. A compromised upstream service or an explicitly configured malicious mirror can return excessive data and exhaust local resources. Use trusted endpoints and host-level resource limits when processing untrusted evidence.
+API and DeepWiki HTTP bodies are limited to 16 MiB per response before JSON or SSE parsing. Requests ask for uncompressed bodies and reject unexpected content encodings. Streaming responses have a 120-second elapsed-time check between chunks, in addition to socket timeouts; a DeepWiki operation is cancelled after 120 seconds. Limit failures remain incomplete evidence, never a clean result or proof that a package is absent. These bounds are not a total process-memory quota: parsed objects, concurrent queries, accumulated evidence and local files still consume memory. Use trusted endpoints and host-level resource limits when processing untrusted evidence.
 
 Dependency audit results are timestamped observations. No known advisory match is not a guarantee of safety. Keep the host, uv, Python and locked dependencies current, with regression checks for updates.
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.1
+
+- Compare PyPI versions using PEP 440 across metadata, registry checks, timelines and review policy; preserve requested versions and keep other ecosystems strict.
+- Parse exact Python prerelease, epoch, postrelease and local versions in requirements audits; reject ranges and wildcards.
+- Reject metadata and dependency license responses that identify a different package or release.
+- Bound API and DeepWiki response bodies before parsing, reject unexpected compression and cancel stalled DeepWiki operations without treating failures as clean evidence.
+- Exclude local virtual-environment symlinks from CLI distribution checks while continuing to reject linked product files.
+
 ## 0.4.0
 
 - Add a generated CLI-only plugin with no MCP registration, including repository resolution and manifest auditing commands.

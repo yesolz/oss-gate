@@ -73,7 +73,9 @@ def build(check=False, root=ROOT):
         for p in target.rglob("*")
         if p.is_file() and not set(p.relative_to(target).parts) & EXCLUDED
     }
-    if any(p.is_symlink() for p in target.rglob("*")) or target.is_symlink():
+    if target.is_symlink() or any(
+        p.is_symlink() for p in target.rglob("*") if not set(p.relative_to(target).parts) & EXCLUDED
+    ):
         raise ValueError("symlinks are not supported in the generated CLI plugin")
     different = [name for name, data in expected.items() if name not in actual or actual[name].read_bytes() != data]
     extra = set(actual) - set(expected)
