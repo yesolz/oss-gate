@@ -303,7 +303,7 @@ def shell(title, lang, cover, body):
     script_hash = base64.b64encode(hashlib.sha256(SCRIPT.encode()).digest()).decode()
     csp = f"default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-{script_hash}'; img-src data:; base-uri 'none'; form-action 'none'"
     css = Path(__file__).with_name("theme.css").read_text(encoding="utf-8") + EXTRA_CSS
-    return f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="{csp}"><meta name="generator" content="OSS Gate 0.4.0"><title>{esc(title)}</title><style>{css}</style></head><body><a class="skip" href="#main">{esc(LABELS[lang]["read"])}</a><div class="page"><aside class="cover"><div class="cover-in">{cover}</div></aside><main class="sheet" id="main">{body}</main></div><script>{SCRIPT}</script></body></html>'''
+    return f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="{csp}"><meta name="generator" content="OSS Gate 0.4.1"><title>{esc(title)}</title><style>{css}</style></head><body><a class="skip" href="#main">{esc(LABELS[lang]["read"])}</a><div class="page"><aside class="cover"><div class="cover-in">{cover}</div></aside><main class="sheet" id="main">{body}</main></div><script>{SCRIPT}</script></body></html>'''
 
 
 def render(data, text, lang, available=("ko", "en"), digest="", raw=False):

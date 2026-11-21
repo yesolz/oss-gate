@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import math
+from .identity import same_name, same_version
 from .licenses import classify_license
 
 POLICY_VERSION = "oss-gate.policy/2"
@@ -97,7 +98,11 @@ def _evaluate_base(data):
             licenses=lp.get("licenses"),
             category=root_policy["category"],
         )
-        if any(target.get(k) and target[k] != lp.get(k) for k in ("name", "version", "system")):
+        if (
+            target.get("system") != lp.get("system")
+            or not same_name(target.get("system"), target.get("name"), lp.get("name"))
+            or not same_version(target.get("system"), target.get("version"), lp.get("version"))
+        ):
             gaps.append("target_mismatch")
             mark("license", "hold", "target_mismatch")
 
@@ -107,7 +112,7 @@ def _evaluate_base(data):
         bool(gd)
         and not gd.get("error")
         and not gd.get("fallback_used")
-        and (gd.get("resolved_version") or gd.get("version")) == target.get("version")
+        and same_version(target.get("system"), gd.get("resolved_version") or gd.get("version"), target.get("version"))
     )
     if not graph_matches:
         gaps.append("graph_version_unverified")
@@ -115,8 +120,8 @@ def _evaluate_base(data):
     roots = [obj(n) for n in seq(gd.get("nodes")) if obj(n).get("relation") == "SELF"]
     if (
         len(roots) != 1
-        or roots[0].get("name") != target.get("name")
-        or roots[0].get("version") != target.get("version")
+        or not same_name(target.get("system"), roots[0].get("name"), target.get("name"))
+        or not same_version(target.get("system"), roots[0].get("version"), target.get("version"))
     ):
         gaps.append("graph_root_unverified")
         graph_matches = False

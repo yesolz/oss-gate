@@ -1,11 +1,13 @@
 """Lazy DeepWiki connection with the same optional outbound policy as collection."""
 
+import asyncio
 import json
 
 import httpx
 from mcp import ClientSession
 from mcp.client.streamable_http import streamablehttp_client
 
+from .transport import BoundedAsyncTransport
 from .repository import parse_repository
 from .settings import PolicyBlocked, check, identifier, load_policy, policy_scope
 
@@ -19,7 +21,14 @@ QUESTIONS = {
 
 
 def client_factory(headers=None, timeout=None, auth=None):
-    return httpx.AsyncClient(headers=headers, timeout=timeout or 30, auth=auth, follow_redirects=False, trust_env=False)
+    return httpx.AsyncClient(
+        headers=headers,
+        timeout=timeout or 30,
+        auth=auth,
+        transport=BoundedAsyncTransport(),
+        follow_redirects=False,
+        trust_env=False,
+    )
 
 
 async def request(repo, action="ask_question", topic="overview", policy_path=None):
@@ -40,29 +49,35 @@ async def request(repo, action="ask_question", topic="overview", policy_path=Non
                     "code": "unsupported_repository_host",
                 }
             repo = path
-            async with streamablehttp_client(
-                ENDPOINT, timeout=30, sse_read_timeout=90, httpx_client_factory=client_factory
-            ) as (read, write, _):
-                async with ClientSession(read, write) as session:
-                    await session.initialize()
-                    remote_action = "ask_wiki_question" if action == "ask_question" else action
-                    result = await session.call_tool(remote_action, args)
-                    return {
-                        "repository": repo,
-                        "action": action,
-                        "topic": topic if action == "ask_question" else None,
-                        "question": args.get("question"),
-                        "isError": result.isError,
-                        "content": [item.model_dump(mode="json", exclude_none=True) for item in result.content],
-                        "source": "DeepWiki AI-generated content; not version-pinned or independently verified",
-                    }
+            return await asyncio.wait_for(_call(repo, action, topic, args), timeout=120)
     except PolicyBlocked as exc:
         return {"error": "DeepWiki request blocked by selected policy", "code": "policy_blocked", "reason": exc.code}
+    except asyncio.TimeoutError:
+        return {"error": "DeepWiki timed out", "code": "upstream_timeout"}
     except (ValueError, OSError) as exc:
         return {"error": "invalid DeepWiki input or policy", "code": "invalid_input", "error_type": type(exc).__name__}
     except Exception as exc:
         # SDK transport failures can arrive wrapped in task-group exceptions.
         return {"error": "DeepWiki unavailable", "code": "upstream_unavailable", "error_type": type(exc).__name__}
+
+
+async def _call(repo, action, topic, args):
+    async with streamablehttp_client(
+        ENDPOINT, timeout=30, sse_read_timeout=90, httpx_client_factory=client_factory
+    ) as (read, write, _):
+        async with ClientSession(read, write) as session:
+            await session.initialize()
+            remote_action = "ask_wiki_question" if action == "ask_question" else action
+            result = await session.call_tool(remote_action, args)
+            return {
+                "repository": repo,
+                "action": action,
+                "topic": topic if action == "ask_question" else None,
+                "question": args.get("question"),
+                "isError": result.isError,
+                "content": [item.model_dump(mode="json", exclude_none=True) for item in result.content],
+                "source": "DeepWiki AI-generated content; not version-pinned or independently verified",
+            }
 
 
 async def invoke(repo, action="ask_question", topic="overview"):

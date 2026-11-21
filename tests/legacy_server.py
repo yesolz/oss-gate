@@ -262,7 +262,7 @@ def test_version_timeline():
     check(len(r["recent_versions"]) == 8 and r["recent_versions"][0]["version"] == "11" and r["previous_version"] == "10", "limit 8")
     check(vt([], "x") == {"recent_versions": [], "previous_version": None} and vt([1, "s"], "x")["recent_versions"] == [], "empty / junk input")
     pkg = {"versions": vs}
-    with fake({PKG("pypi", "p"): pkg, VER("pypi", "p", "3.0"): {"versionKey": {"version": "3.0"}}}):
+    with fake({PKG("pypi", "p"): pkg, VER("pypi", "p", "3.0"): {"versionKey": {"name": "p", "version": "3.0"}}}):
         d = run(server._lookup_package, "pypi", "p", "")
     check(d["version"] == "3.0" and d["previous_version"] == "2.0" and len(d["recent_versions"]) == 6, "lookup_package carries timeline (no extra call)")
     with fake({}):
@@ -324,7 +324,7 @@ def deps_fixture(n_direct=3, n_indirect=3):
 def test_dependencies_offline():
     print("[unit] get_dependencies caps / null semantics (#6, #5)")
     routes = {DEPS("npm", "root", "1.0.0"): deps_fixture(), QB: qb_echo(("V-1", "V-2"))}
-    routes.update({VER("npm", n, "1.0.0"): {"versionKey": {"version": "1.0.0"}, "licenses": lic}
+    routes.update({VER("npm", n, "1.0.0"): {"versionKey": {"name": n, "version": "1.0.0"}, "licenses": lic}
                    for n, lic in [("d0", ["MIT"]), ("d1", ["GPL-3.0"]), ("d2", ["MIT"]), ("i0", ["MIT"]), ("i1", ["AGPL-3.0"])]})
     with fake(routes) as fc:
         d = run(server._get_dependencies, "npm", "root", "1.0.0", True, True, 1)
@@ -410,13 +410,13 @@ def test_validation_and_urls():
         check(run(server._lookup_package, "npm", "p", "")["error"] == "version mismatch from upstream", "version mismatch detected")
     nodef = {"versions": [{"versionKey": {"version": "a"}, "publishedAt": "2020-01-01T00:00:00Z"},
                           {"versionKey": {"version": "b"}, "publishedAt": "2023-06-01T00:00:00Z"}, {"versionKey": {"version": "c"}}]}
-    with fake({PKG("npm", "p"): nodef, VER("npm", "p", "b"): {"versionKey": {"version": "b"}}}):
+    with fake({PKG("npm", "p"): nodef, VER("npm", "p", "b"): {"versionKey": {"name": "p", "version": "b"}}}):
         d = run(server._lookup_package, "npm", "p", "")
     check(d["version"] == "b" and d["latest_version"] == "b", "no isDefault -> newest publishedAt (#20)")
     with fake({PKG("npm", "p"): {"versions": [{"versionKey": {"version": "c"}}]}}):
         d = run(server._lookup_package, "npm", "p", "")
     check(d["error"].startswith("package has no resolvable") and d["status"] == 404, "no parseable dates -> error")
-    with fake({PKG("npm", "p"): {"versions": [{"versionKey": {"version": "c"}}]}, VER("npm", "p", "c"): {"versionKey": {"version": "c"}}}):
+    with fake({PKG("npm", "p"): {"versions": [{"versionKey": {"version": "c"}}]}, VER("npm", "p", "c"): {"versionKey": {"name": "p", "version": "c"}}}):
         check(run(server._lookup_package, "npm", "p", "c")["latest_version"] is None, "explicit version, latest null")
 
 
@@ -427,7 +427,7 @@ def test_fuzz_shapes():
             d = run(server._lookup_package, "pypi", "p", "1")
         check("error" in d or isinstance(d, dict), f"lookup fuzz {body!r} -> JSON")
     with fake({PKG("pypi", "p"): {"versions": [{"versionKey": {"version": "1"}, "isDefault": True}]},
-               VER("pypi", "p", "1"): {"versionKey": {"version": "1"}, "licenses": "MIT", "links": "x", "relatedProjects": [1], "advisoryKeys": [{"id": None}]}}):
+               VER("pypi", "p", "1"): {"versionKey": {"name": "p", "version": "1"}, "licenses": "MIT", "links": "x", "relatedProjects": [1], "advisoryKeys": [{"id": None}]}}):
         d = run(server._lookup_package, "pypi", "p", "")
     check(d["licenses"] == [] and d["license_policy"]["category"] == "unknown" and d["links"] == [] and d["advisories"] == [], "licenses:'MIT' str & junk fields tolerated")
     for body in ({"nodes": [1], "edges": "x"}, {"nodes": "x"}, [], {"nodes": [{"versionKey": 5, "relation": None}]}):
@@ -486,7 +486,7 @@ def test_project_helpers():
     check(server._related_project_ids(dup) == ["github.com/fastapi/fastapi"], "related_projects deduped case-insensitively, first spelling kept")
     check(server._repo_candidates(dup) == ["fastapi/fastapi"], "repo_candidates deduped the same way")
     pkg1 = {"versions": [{"versionKey": {"version": "1"}, "isDefault": True}]}
-    with fake({PKG("pypi", "fastapi"): pkg1, VER("pypi", "fastapi", "1"): {"versionKey": {"version": "1"}, **dup}}) as fc:
+    with fake({PKG("pypi", "fastapi"): pkg1, VER("pypi", "fastapi", "1"): {"versionKey": {"name": "fastapi", "version": "1"}, **dup}}) as fc:
         d = run(server._lookup_package, "pypi", "fastapi", "")
     check(d["related_projects"] == ["github.com/fastapi/fastapi"] and d["repo_candidates"] == ["fastapi/fastapi"] and len(fc.calls) == 3, "lookup output deduped; single project GET")
     print("[unit] project check reasons + lookup description")

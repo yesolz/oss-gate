@@ -1,10 +1,10 @@
 """Narrow existence checks against a selected registry, never substitute review evidence."""
 
-import re
 from urllib.parse import quote
 
 import httpx
 
+from .identity import same_name, same_version
 from .settings import DEFAULT_NPM_REGISTRY, npm_registry_url
 
 
@@ -16,11 +16,6 @@ def check_registry(system, name, version, get):
     """
     if system not in ("npm", "pypi"):
         return {"status": "unsupported", "reason": "No public registry check for this ecosystem."}
-
-    def normalize(value):
-        if not isinstance(value, str):
-            return None
-        return re.sub(r"[-_.]+", "-", value).lower() if system == "pypi" else value
 
     base = npm_registry_url() if system == "npm" else "https://pypi.org"
     mirror = system == "npm" and base != DEFAULT_NPM_REGISTRY
@@ -55,8 +50,8 @@ def check_registry(system, name, version, get):
             metadata = payload.get("info") if system == "pypi" and isinstance(payload, dict) else payload
             if (
                 not isinstance(metadata, dict)
-                or normalize(metadata.get("name")) != normalize(name)
-                or (expected_version and metadata.get("version") != expected_version)
+                or not same_name(system, metadata.get("name"), name)
+                or (expected_version and not same_version(system, metadata.get("version"), expected_version))
             ):
                 check["reason"] = "Registry metadata does not identify the exact requested target."
                 return "unknown"

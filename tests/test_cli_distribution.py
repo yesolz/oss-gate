@@ -40,6 +40,21 @@ class CLIDistribution(unittest.TestCase):
                 ignore=shutil.ignore_patterns(".venv", "__pycache__"),
             )
             builder.build(root=root)
+            # A normal uv-created environment has interpreter symlinks. It is
+            # excluded from distribution, while linked product files stay blocked.
+            interpreter = root / "plugins/oss-gate-cli/.venv/bin/python"
+            interpreter.parent.mkdir(parents=True)
+            try:
+                interpreter.symlink_to(sys.executable)
+            except OSError:
+                pass  # Windows may require elevated privileges to create symlinks.
+            else:
+                builder.build(check=True, root=root)
+                linked = root / "plugins/oss-gate-cli/core/linked.py"
+                linked.symlink_to(root / "plugins/oss-gate-cli/core/api.py")
+                with self.assertRaises(ValueError):
+                    builder.build(check=True, root=root)
+                linked.unlink()
             (root / "plugins/oss-gate-cli/.mcp.json").write_text('{"mcpServers":{}}')
             with self.assertRaises(ValueError):
                 builder.build(check=True, root=root)

@@ -16,7 +16,7 @@ from urllib.parse import quote
 
 import httpx
 
-VERSION = "0.4.0"
+VERSION = "0.4.1"
 DEPSDEV_BASE = "https://api.deps.dev/v3"
 OSV_BASE = "https://api.osv.dev/v1"
 USER_AGENT = f"oss-gate-depsdev/{VERSION}"
@@ -40,10 +40,18 @@ _OSV_ECO = {
 }
 
 from core.licenses import CATEGORIES, _SEV, classify_license
+from .identity import same_name, same_version, valid_pypi_version
 from .registry import check_registry
+from .transport import BoundedTransport, ResponseLimitError
 from .settings import guard_request, PolicyBlocked
 
-_client = httpx.Client(timeout=TIMEOUT, headers={"User-Agent": USER_AGENT}, follow_redirects=False, trust_env=False)
+_client = httpx.Client(
+    timeout=TIMEOUT,
+    headers={"User-Agent": USER_AGENT},
+    transport=BoundedTransport(),
+    follow_redirects=False,
+    trust_env=False,
+)
 
 
 class ApiError(Exception):
@@ -104,7 +112,6 @@ def normalize_repo(s: str) -> str:
         raise ApiError("invalid input: repository identity", hint=str(exc)) from exc
 
 
-_VER_RE = re.compile(r"^v?\d+(\.\d+)*(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$")
 _NPM_NUM = r"(?:0|[1-9]\d*)"
 _NPM_PRE = r"(?:0|[1-9]\d*|\d*[A-Za-z-][0-9A-Za-z-]*)"
 _NPM_VERSION_RE = re.compile(
@@ -156,7 +163,7 @@ def _parse_requirements(text: str) -> list[dict]:
         ver = m.group(4) or ""
         trailing = line[m.end() :].strip()
         if ver and (
-            not _VER_RE.fullmatch(ver)
+            not valid_pypi_version(ver)
             or "," in line
             or (trailing not in ("", "\\") and not re.fullmatch(r"(?:--hash=[^\s]+\s*)+\\?", trailing))
         ):
@@ -532,10 +539,10 @@ def _sorted_versions(versions: Any) -> list[tuple[float, dict]]:
     return items
 
 
-def older_versions(versions: list[dict], selected: str | None) -> list[str]:
+def older_versions(versions: list[dict], selected: str | None, system: str = "") -> list[str]:
     """Return strictly earlier publication dates, newest first; no semver inference."""
     items = _sorted_versions(versions)
-    sel_ts = next((ts for ts, v in items if _vkey(v).get("version") == selected), float("-inf"))
+    sel_ts = next((ts for ts, v in items if same_version(system, _vkey(v).get("version"), selected)), float("-inf"))
     return [
         str(_vkey(v).get("version"))
         for ts, v in items
@@ -543,7 +550,7 @@ def older_versions(versions: list[dict], selected: str | None) -> list[str]:
     ]
 
 
-def version_timeline(versions: list[dict], selected: str | None, limit: int = 8) -> dict:
+def version_timeline(versions: list[dict], selected: str | None, limit: int = 8, system: str = "") -> dict:
     """Summarize recent versions and the previous publication, if known."""
     recent = [
         {
@@ -553,7 +560,7 @@ def version_timeline(versions: list[dict], selected: str | None, limit: int = 8)
         }
         for _, v in _sorted_versions(versions)[:limit]
     ]
-    older = older_versions(versions, selected)
+    older = older_versions(versions, selected, system)
     return {"recent_versions": recent, "previous_version": older[0] if older else None}
 
 
@@ -706,6 +713,13 @@ def _lookup_metadata(url, system, name, version, stage):
             "Try again later or check the upstream service. This lookup did not complete; it is not a clean review.",
             extra,
         ) from error
+    except ResponseLimitError as error:
+        raise ApiError(
+            "upstream response rejected by resource limits",
+            None,
+            "The lookup is incomplete. Retry later or use another evidence source; no registry absence was inferred.",
+            {**extra, "code": "upstream_response_limit"},
+        ) from error
     except httpx.HTTPError as error:
         extra["code"] = "upstream_timeout" if isinstance(error, httpx.TimeoutException) else "upstream_network_error"
         raise ApiError(
@@ -740,8 +754,7 @@ def _lookup_package(system: str, name: str, version: str) -> dict:
     det = _lookup_metadata(
         f"{DEPSDEV_BASE}/systems/{sysn}/packages/{_q(name)}/versions/{_q(ver)}", sysn, name, ver, "version"
     )
-    if _vkey(det).get("version") != ver:
-        raise ApiError("version mismatch from upstream")
+    _validate_version_identity(det, sysn, name, ver)
     licenses = _strs(det.get("licenses"))
     related = _related_project_ids(det)
     description = homepage = None
@@ -765,13 +778,24 @@ def _lookup_package(system: str, name: str, version: str) -> dict:
         "links": _dicts(det.get("links")),
         "total_versions": len(versions),
         "latest_version": latest,
-        **version_timeline(versions, ver),
+        **version_timeline(versions, ver, system=sysn),
     }
+
+
+def _validate_version_identity(detail: dict, system: str, name: str, version: str):
+    key = _vkey(detail)
+    if not same_version(system, key.get("version"), version):
+        raise ApiError("version mismatch from upstream")
+    if not same_name(system, key.get("name"), name) or (
+        key.get("system") is not None and str(key["system"]).lower() != system
+    ):
+        raise ApiError("package identity mismatch from upstream")
 
 
 def _fetch_licenses(sysn: str, name: str, version: str) -> tuple[list[str] | None, str | None]:
     try:
         det = _get(f"{DEPSDEV_BASE}/systems/{sysn}/packages/{_q(name)}/versions/{_q(version)}")
+        _validate_version_identity(det, sysn, name, version)
         return _strs(det.get("licenses")), None
     except ApiError as e:
         return None, e.message
@@ -810,7 +834,7 @@ def _get_dependencies(
             if e.status == 404:
                 raise ApiError("not found", 404, GRAPH_404_HINT, {"fallback_tried": []})
             raise
-        for cand in older_versions(_dicts(pkg.get("versions")), requested)[:MAX_FALLBACK_ATTEMPTS]:
+        for cand in older_versions(_dicts(pkg.get("versions")), requested, sysn)[:MAX_FALLBACK_ATTEMPTS]:
             data = _fetch_graph(sysn, name, cand)
             if data is not None:
                 resolved = cand
