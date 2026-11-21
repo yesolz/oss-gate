@@ -60,8 +60,8 @@ class BoundedAsyncStream(httpx.AsyncByteStream):
 
 
 class BoundedTransport(httpx.BaseTransport):
-    def __init__(self, transport=None, limit=MAX_RESPONSE_BYTES):
-        self.transport = transport if transport is not None else httpx.HTTPTransport(trust_env=False)
+    def __init__(self, transport=None, limit=MAX_RESPONSE_BYTES, *, verify=True):
+        self.transport = transport if transport is not None else httpx.HTTPTransport(verify=verify, trust_env=False)
         self.limit = limit
 
     def handle_request(self, request):
@@ -80,8 +80,10 @@ class BoundedTransport(httpx.BaseTransport):
 
 
 class BoundedAsyncTransport(httpx.AsyncBaseTransport):
-    def __init__(self, transport=None, limit=MAX_RESPONSE_BYTES):
-        self.transport = transport if transport is not None else httpx.AsyncHTTPTransport(trust_env=False)
+    def __init__(self, transport=None, limit=MAX_RESPONSE_BYTES, *, verify=True):
+        self.transport = (
+            transport if transport is not None else httpx.AsyncHTTPTransport(verify=verify, trust_env=False)
+        )
         self.limit = limit
 
     async def handle_async_request(self, request):

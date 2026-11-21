@@ -27,3 +27,24 @@ Set `network.npm_registry_url` to an HTTPS npm-compatible base URL to use a mirr
 No public npm fallback or redirect is followed. Mirror misses are reported as `mirror_package_not_found` or `mirror_version_not_found`, not public nonexistence. A mirror hit is only an existence diagnostic, not vulnerability evidence or a byte-identity check. Authentication errors remain unverified. This release does not load credentials or `.npmrc`, bypass TLS, support PyPI mirrors, or replace deps.dev/OSV in a disconnected network.
 
 For an installation that registers no MCP servers, choose `oss-gate-cli` in the [installation guide](installation.md). The analysis code, policies and report templates are generated from the same maintained source as the standard plugin.
+
+## Additional CA certificates
+
+If your network re-signs HTTPS certificates with a company CA, explicitly add its public certificates to the existing certifi trust bundle:
+
+```json
+{
+  "schema": "oss-gate.settings/1",
+  "name": "Company CA",
+  "version": "1",
+  "network": {"additional_ca_file": "/absolute/path/company-ca.pem"}
+}
+```
+
+Use an absolute path on the machine running OSS Gate (Windows JSON example: `"C:\\Company\\company-ca.pem"`). The PEM file must contain public certificates only, no private keys, and be at most 1 MiB. Obtain it from your organization's trusted administrator. Omission preserves default trust. OS trust-store selection is not implemented; export the required public CA certificates to PEM instead.
+
+The selected CA applies to OSS Gate's deps.dev, OSV, registry/mirror and DeepWiki requests. TLS chain, hostname and expiry verification remain enabled. Requests still enforce service/identifier policy, disable redirects and ignore ambient proxy and CA-path variables (`trust_env=False`). This setting does not configure a proxy URL, client authentication, your agent's other tools or uv's initial dependency download.
+
+Each operation loads the file once and uses an isolated connection pool; dependency workers share only that operation's pool. An unreadable, malformed or oversized file returns `tls_configuration_invalid` before an HTTP request, with no fallback. `plan` validates the setting's shape without opening the file, so it does not establish certificate readiness. `collect` preserves the actual CA-file SHA-256 and certifi version in sealed `data.json#/tls_trust`; offline evaluation/rendering does not need the original file. A different CA file on the next operation is a new trust configuration, even if its path is unchanged.
+
+Additional trust authorizes certificates issued by that CA for otherwise allowed destinations. A TLS-inspecting proxy can read those requests, so existing private-name restrictions remain necessary. The saved policy contains the local CA path; review that path before sharing reports. No certificate contents or private keys are stored in the report.

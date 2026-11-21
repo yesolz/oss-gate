@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from contextlib import contextmanager, nullcontext
 from contextvars import ContextVar, copy_context
 
 import re
@@ -16,7 +17,7 @@ from urllib.parse import quote
 
 import httpx
 
-VERSION = "0.4.1"
+VERSION = "0.4.2"
 DEPSDEV_BASE = "https://api.deps.dev/v3"
 OSV_BASE = "https://api.osv.dev/v1"
 USER_AGENT = f"oss-gate-depsdev/{VERSION}"
@@ -44,6 +45,7 @@ from .identity import same_name, same_version, valid_pypi_version
 from .registry import check_registry
 from .transport import BoundedTransport, ResponseLimitError
 from .settings import guard_request, PolicyBlocked
+from .tls import build_context, EVIDENCE as TLS_EVIDENCE
 
 _client = httpx.Client(
     timeout=TIMEOUT,
@@ -52,6 +54,31 @@ _client = httpx.Client(
     follow_redirects=False,
     trust_env=False,
 )
+_active_client = ContextVar("api_operation_client", default=None)
+
+
+@contextmanager
+def client_scope(config):
+    """Keep custom trust and connection pools isolated to one operation and its workers."""
+    verify, evidence = build_context(config)
+    manager = (
+        nullcontext(None)
+        if evidence is None
+        else httpx.Client(
+            timeout=TIMEOUT,
+            headers={"User-Agent": USER_AGENT},
+            transport=BoundedTransport(verify=verify),
+            follow_redirects=False,
+            trust_env=False,
+        )
+    )
+    with manager as client:
+        token, provenance = _active_client.set(client), TLS_EVIDENCE.set(evidence)
+        try:
+            yield
+        finally:
+            TLS_EVIDENCE.reset(provenance)
+            _active_client.reset(token)
 
 
 class ApiError(Exception):
@@ -292,7 +319,8 @@ def _request(method: str, url: str, body=None):
         ) from exc
     for attempt in range(2):
         try:
-            response = _client.get(url) if method == "GET" else _client.post(url, json=body)
+            client = _active_client.get() or _client
+            response = client.get(url) if method == "GET" else client.post(url, json=body)
         except (httpx.TimeoutException, httpx.NetworkError):
             if attempt:
                 raise
