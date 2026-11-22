@@ -21,6 +21,7 @@ ALLOWED_FILES = {
     "uv.lock",
     ".gitignore",
     ".gitattributes",
+    ".gitleaks.toml",
 }
 
 

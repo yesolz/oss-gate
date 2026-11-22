@@ -6,6 +6,7 @@ from datetime import datetime
 from pathlib import Path
 
 from .policy import POLICY_VERSION, advisory_groups, evaluate
+from .licenses import DATA_SHA256
 from .snapshot import load_review, sha256, write_json
 
 
@@ -69,6 +70,7 @@ def aggregate(paths):
     return {
         "schema": "oss-gate.portfolio/1",
         "policy": POLICY_VERSION,
+        "classification_sha256": DATA_SHA256,
         "additional_policy_sha256": next(iter(policy_ids), None),
         "items": items,
         "excluded": excluded,
@@ -82,6 +84,8 @@ def aggregate(paths):
 
 def compare(current, previous):
     """Compare exact targets under the same policy; absent items are not zero findings."""
+    if current.get("classification_sha256") != previous.get("classification_sha256"):
+        raise ValueError("compare portfolios with the same license classification data")
     if current.get("policy") != previous.get("policy"):
         raise ValueError("recompute both portfolios with the same policy before comparing")
     if current.get("additional_policy_sha256") != previous.get("additional_policy_sha256"):

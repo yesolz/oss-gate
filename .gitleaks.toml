@@ -1,0 +1,13 @@
+[extend]
+useDefault = true
+
+[[rules]]
+id = "generic-api-key"
+
+# Keep this rule-scoped: a global path allowlist can skip an entire file.
+[[rules.allowlists]]
+description = "Integrity manifest SHA-256 for api-responses.json, not an API credential"
+condition = "AND"
+paths = ['''(^|/)evidence-sha256\.json$''']
+regexTarget = "line"
+regexes = ['''^\s*"api-responses\.json": "[0-9a-f]{64}"[,]?\s*$''']

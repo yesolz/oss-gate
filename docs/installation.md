@@ -89,3 +89,11 @@ Remove only the links and MCP entries you added (`codex mcp remove oss-gate-deep
 Official host references: [Claude marketplaces](https://code.claude.com/docs/en/plugin-marketplaces), [OpenAI plugin packaging](https://developers.openai.com/plugins/build/plugins), [Codex MCP](https://developers.openai.com/codex/mcp).
 
 [Optional policies and CLI](customization.md). Existing manually configured remote DeepWiki connections must be replaced with the local adapter to apply these controls. Restart the client after changing configuration.
+
+## Locked runtime and package mirrors
+
+The plugin uses a checked-in `uv.lock` with `--frozen`. Keep the lock: it makes the runtime reproducible. A private Python mirror can lag behind a pinned version. An installation failure alone does not establish mirror lag; inspect uv's error for a missing artifact/version, authentication, TLS, platform or Python compatibility first. OSS Gate's npm mirror setting controls reviewed-package diagnostics, not uv runtime installation.
+
+If an approved mirror lacks a locked artifact, ask its operator to synchronize that version or use an earlier validated OSS Gate release that meets your security requirements. Do not silently switch to public PyPI, remove the lock, or downgrade dependencies.
+
+If you maintain a customized runtime, use a separate checkout: explicitly configure uv for your approved index, adjust constraints only after checking compatibility/security, regenerate the lock there, and run the test suite, MCP smoke tests and CLI distribution checks from CONTRIBUTING.md. Keep the changed lock and validation record with that custom distribution. This is a locally maintained variant, not an unchanged upstream release. Do not paste authenticated index URLs into reports or issue logs.

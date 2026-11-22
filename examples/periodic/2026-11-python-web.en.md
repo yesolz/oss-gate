@@ -1,12 +1,12 @@
 # Python web library portfolio: November 2026
 
-Snapshot date: 2026-11-17 · Example revision: policy v2 · Verification: **WARN**
+Snapshot date: 2026-11-17 · Example revision: policy v3 · Verification: **WARN**
 
 > This revises a historical periodic report for publication. Its original list contained Flask and Requests, but this repository does not contain Flask's source snapshot. One verifiable item and one unverified item are kept separate. No new API query is performed.
 
 ## 1. Summary
 
-The available snapshot covers Requests 2.34.2. Recalculation under policy v2 gives allow 0, conditional 1 and hold 0. Flask 3.1.3 is separately excluded because its evidence is missing. The Requests snapshot has 0 known advisory records; that does not establish the safety of the complete original list, including Flask.
+The available snapshot covers Requests 2.34.2. Recalculation under policy v3 gives allow 0, conditional 1 and hold 0. Flask 3.1.3 is separately excluded because its evidence is missing. The Requests snapshot has 0 known advisory records; that does not establish the safety of the complete original list, including Flask.
 
 The outstanding Requests adoption question is certifi@2026.10.23 and its MPL-2.0 license. A human must review the actual modifications and distribution. There is no previous periodic report to calculate a change from.
 

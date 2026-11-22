@@ -31,6 +31,9 @@ def narratives(name, lang):
 
 def build_review(folder):
     data = json.loads((folder / "data.json").read_text(encoding="utf-8"))
+    if data["schema"] == "oss-gate.review/2":
+        main([str(folder), "--language", "both"])
+        return
     target, gd, lp = data["target"], data["get_dependencies"], data["lookup_package"]
     verdict = evaluate(data)
     original_hash = sha256(folder / "data.json")
@@ -85,9 +88,9 @@ def build_review(folder):
             + ("과거 판정" if ko else "Historical verdict")
             + f": `{t.get({'가능': 'allow', '조건부': 'conditional', '보류': 'hold'}.get(data['verdict']['overall'], 'unknown'))}`. "
             + (
-                "현재 표는 동일한 저장 자료에 정책 v2를 적용한 결과다."
+                "현재 표는 동일한 저장 자료에 정책 v3를 적용한 결과다."
                 if ko
-                else "The table above applies policy v2 to the same saved evidence."
+                else "The table above applies policy v3 to the same saved evidence."
             ),
         )
         section(2, n["overview"])

@@ -95,7 +95,7 @@ def qb_echo(ids_per_query=("V-1",)):
 
 # ====================================================================== (a) unit
 def test_license():
-    print("[unit] classify_license (5 categories)")
+    print("[unit] classify_license (6 categories)")
     cl = server.classify_license
     cat = lambda x: cl(x)["category"]
     check(cat("MIT OR GPL-3.0") == "permissive", "OR -> loosest")
@@ -110,7 +110,7 @@ def test_license():
     for u in ("non-standard", "", None, "LicenseRef-x", "Apache 2.0", ["LicenseRef-scancode-foo"]):
         check(cat(u) == "unknown", f"unknown: {u!r}")
     check("LicenseRef-x" in cl("LicenseRef-x")["reason"], "unrecognised id kept in reason")
-    check(cl("MIT") == {"category": "permissive", "tier": "allow", "reason": "MIT -> permissive"}, "str input + full shape")
+    check(cl("MIT")["category"] == "permissive" and cl("MIT")["tier"] == "allow" and cl("MIT")["selected"] == ["MIT"], "string input and selected license")
     check(cl(["MIT", "LGPL-3.0"])["tier"] == "conditional", "weak -> conditional tier")
     check(cl(["GPL-2.0"])["tier"] == "hold" and cl([])["tier"] == "hold", "strong/unknown -> hold")
     check(cat("BSD-3-Clause") == "permissive" and cat("BlueOak-1.0.0") == "permissive" and cat("0BSD") == "permissive", "BSD family")
@@ -133,7 +133,7 @@ def test_summarize():
     r = server.summarize_dep_licenses(nodes, edges)
     check(r["strictest_category"] == "unknown", "strictest == unknown (policy: unknown is strictest)")
     check(r["strictest_known_category"] == "strong-copyleft", "strictest_known == strong-copyleft (unknown excluded)")
-    check(r["license_summary"] == {"permissive": 3, "weak-copyleft": 0, "strong-copyleft": 1, "network-copyleft": 0, "unknown": 1}, "summary counts")
+    check(r["license_summary"] == {"permissive": 3, "attribution": 0, "weak-copyleft": 0, "strong-copyleft": 1, "network-copyleft": 0, "unknown": 1}, "summary counts")
     check(r["license_lookup_failures"] == 1, "lookup failures == 1")
     names = [x["name"] for x in r["non_permissive"]]
     check(names == ["d", "b"], "non_permissive strictest-first (unknown, then strong)")
@@ -334,7 +334,7 @@ def test_dependencies_offline():
     others = [n for n in d["nodes"] if not n["vulns_queried"]]
     check(all(n["vuln_count"] is None and n["vuln_ids"] is None and n["licenses"] is None and n["license_category"] is None for n in others),
           "unqueried nodes null, not 0")
-    check(d["license_summary"] == {"permissive": 1, "weak-copyleft": 0, "strong-copyleft": 0, "network-copyleft": 0, "unknown": 0}, "summary only over queried")
+    check(d["license_summary"] == {"permissive": 1, "attribution": 0, "weak-copyleft": 0, "strong-copyleft": 0, "network-copyleft": 0, "unknown": 0}, "summary only over queried")
     check(sum(1 for c in fc.calls if c[0] == "GET") == 2 and sum(1 for c in fc.calls if c[0] == "POST") == 1, "upstream calls bounded: 1 graph + 1 version + 1 batch")
     check(d["nodes_with_errors"] == ["i0"] and d["counts"] == {"total": 7, "direct": 3, "indirect": 3}, "counts + error nodes")
     check(all(n["path"] and n["path"][0] == "root@1.0.0" for n in d["nodes"]), "every node path starts at SELF")

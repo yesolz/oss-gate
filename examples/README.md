@@ -14,3 +14,7 @@ These are historical snapshots collected on 2026-11-17, revised under policy v2.
 Sibling HTML files are standalone reports for local viewing. The static demo links them directly. Legacy review.md/report.html paths point to the Korean version with an English link.
 
 The bilingual reports are revised presentations, not a claim that every historical assertion is verified. FastAPI's fallback graph now prevents allow; Next.js high-severity findings stay blocking despite fixed versions; the unavailable Flask source is excluded rather than invented. Source narrative, unknowns and limitations are aligned across languages. See [attribution](NOTICE.md).
+
+## Fresh policy/3 example
+
+[packaging 26.3](reviews/pypi-packaging-26.3/report.en.html) / [한국어](reviews/pypi-packaging-26.3/report.ko.html) was collected on 2026-11-22. It obtained allow without custom settings. Its original responses and integrity manifest are included. It has no DeepWiki narrative; the overview uses official documentation. Historical November 17 snapshots remain unchanged and are explicitly reassessed.

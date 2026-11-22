@@ -1,0 +1,375 @@
+{
+  "schema": "oss-gate.review/2",
+  "generated_at": "2026-11-22T10:11:21.508283+00:00",
+  "target": {
+    "system": "pypi",
+    "name": "packaging",
+    "version": "26.3",
+    "repo": "pypa/packaging"
+  },
+  "lookup_package": {
+    "system": "pypi",
+    "name": "packaging",
+    "version": "26.3",
+    "is_default": true,
+    "published_at": "2026-08-04T18:15:27Z",
+    "description": "Core utilities for Python packages",
+    "homepage": "https://packaging.pypa.io/",
+    "licenses": [
+      "Apache-2.0 OR BSD-2-Clause"
+    ],
+    "license_policy": {
+      "category": "permissive",
+      "tier": "allow",
+      "reasons": [
+        "reviewed"
+      ],
+      "selected": [
+        "Apache-2.0"
+      ],
+      "choices": [
+        "Apache-2.0"
+      ],
+      "notes": [
+        "Retained policy/2 screening classification. Review the license text and intended use."
+      ],
+      "reason": "Apache-2.0; reviewed",
+      "spdx_version": "3.29.0",
+      "classification_sha256": "4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279"
+    },
+    "advisories": [],
+    "related_projects": [
+      "github.com/pypa/packaging"
+    ],
+    "repo_candidates": [
+      "pypa/packaging"
+    ],
+    "links": [
+      {
+        "label": "SOURCE_REPO",
+        "url": "https://github.com/pypa/packaging"
+      },
+      {
+        "label": "DOCUMENTATION",
+        "url": "https://packaging.pypa.io/"
+      },
+      {
+        "label": "ATTESTATION",
+        "url": "https://pypi.org/integrity/packaging/26.3/packaging-26.3-py3-none-any.whl/provenance"
+      }
+    ],
+    "total_versions": 54,
+    "latest_version": "26.3.0",
+    "recent_versions": [
+      {
+        "version": "26.3.0",
+        "published_at": "2026-08-04T18:15:27Z",
+        "is_default": true
+      },
+      {
+        "version": "26.2.0",
+        "published_at": "2026-04-24T20:15:22Z",
+        "is_default": false
+      },
+      {
+        "version": "26.1.0",
+        "published_at": "2026-04-14T21:12:47Z",
+        "is_default": false
+      },
+      {
+        "version": "26.0.0",
+        "published_at": "2026-01-21T20:50:37Z",
+        "is_default": false
+      },
+      {
+        "version": "26.0.0rc3",
+        "published_at": "2026-01-15T23:16:37Z",
+        "is_default": false
+      },
+      {
+        "version": "26.0.0rc2",
+        "published_at": "2026-01-12T20:58:54Z",
+        "is_default": false
+      },
+      {
+        "version": "26.0.0rc1",
+        "published_at": "2026-01-09T17:41:17Z",
+        "is_default": false
+      },
+      {
+        "version": "25.0.0",
+        "published_at": "2025-04-19T11:48:57Z",
+        "is_default": false
+      }
+    ],
+    "previous_version": "26.2.0"
+  },
+  "get_dependencies": {
+    "system": "pypi",
+    "name": "packaging",
+    "version": "26.3",
+    "requested_version": "26.3",
+    "resolved_version": "26.3",
+    "fallback_used": false,
+    "fallback_attempts": 0,
+    "fallback_tried": [],
+    "counts": {
+      "total": 1,
+      "direct": 0,
+      "indirect": 0
+    },
+    "nodes": [
+      {
+        "name": "packaging",
+        "version": "26.3.0",
+        "relation": "SELF",
+        "vuln_count": null,
+        "vuln_ids": null,
+        "vulns_queried": false,
+        "licenses": null,
+        "license_category": null,
+        "license_error": null,
+        "licenses_queried": false,
+        "path": [
+          "packaging@26.3.0"
+        ]
+      }
+    ],
+    "nodes_with_errors": [],
+    "truncated": false,
+    "include_vulns": true,
+    "include_licenses": true,
+    "osv_incomplete": false,
+    "graph_error": null,
+    "license_summary": {
+      "permissive": 0,
+      "attribution": 0,
+      "weak-copyleft": 0,
+      "strong-copyleft": 0,
+      "network-copyleft": 0,
+      "unknown": 0
+    },
+    "non_permissive": [],
+    "strictest_category": null,
+    "strictest_known_category": null,
+    "license_lookup_failures": 0,
+    "edges_named": [],
+    "vulnerable_nodes": []
+  },
+  "root_osv": {
+    "ids": [],
+    "queried": true,
+    "incomplete": false
+  },
+  "advisories": {},
+  "get_project": {
+    "project": "github.com/pypa/packaging",
+    "license": "non-standard",
+    "stars": 757,
+    "forks": 380,
+    "open_issues": 106,
+    "description": "Core utilities for Python packages",
+    "homepage": "https://packaging.pypa.io/",
+    "scorecard": {
+      "date": "2026-08-24T00:00:00Z",
+      "overall": 8.8,
+      "checks": [
+        {
+          "name": "Security-Policy",
+          "score": 9,
+          "reason": "security policy file detected"
+        },
+        {
+          "name": "Dangerous-Workflow",
+          "score": 10,
+          "reason": "no dangerous workflow patterns detected"
+        },
+        {
+          "name": "Maintained",
+          "score": 10,
+          "reason": "30 commit(s) and 12 issue activity found in the last 90 days -- score normalized to 10"
+        },
+        {
+          "name": "Code-Review",
+          "score": 9,
+          "reason": "Found 26/28 approved changesets -- score normalized to 9"
+        },
+        {
+          "name": "Token-Permissions",
+          "score": 10,
+          "reason": "GitHub workflow tokens follow principle of least privilege"
+        },
+        {
+          "name": "Binary-Artifacts",
+          "score": 4,
+          "reason": "binaries present in source code"
+        },
+        {
+          "name": "CII-Best-Practices",
+          "score": 0,
+          "reason": "no effort to earn an OpenSSF best practices badge detected"
+        },
+        {
+          "name": "Pinned-Dependencies",
+          "score": 10,
+          "reason": "all dependencies are pinned"
+        },
+        {
+          "name": "Fuzzing",
+          "score": 10,
+          "reason": "project is fuzzed"
+        },
+        {
+          "name": "License",
+          "score": 9,
+          "reason": "license file detected"
+        },
+        {
+          "name": "Signed-Releases",
+          "score": -1,
+          "reason": "no releases found"
+        },
+        {
+          "name": "Branch-Protection",
+          "score": -1,
+          "reason": "internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authenticatio…"
+        },
+        {
+          "name": "Packaging",
+          "score": 10,
+          "reason": "packaging workflow detected"
+        },
+        {
+          "name": "SAST",
+          "score": 10,
+          "reason": "SAST tool is run on all commits"
+        }
+      ]
+    },
+    "primary_package": {
+      "system": "pypi",
+      "name": "packaging",
+      "versions": 61,
+      "relation_type": "SOURCE_REPO"
+    },
+    "packages": [
+      {
+        "system": "go",
+        "name": "github.com/PYPA/packaging",
+        "versions": 3,
+        "relation_type": "SOURCE_REPO"
+      },
+      {
+        "system": "go",
+        "name": "github.com/Pypa/packaging",
+        "versions": 2,
+        "relation_type": "SOURCE_REPO"
+      },
+      {
+        "system": "go",
+        "name": "github.com/pypa/packaging",
+        "versions": 179,
+        "relation_type": "SOURCE_REPO"
+      },
+      {
+        "system": "pypi",
+        "name": "packaging",
+        "versions": 61,
+        "relation_type": "SOURCE_REPO"
+      },
+      {
+        "system": "pypi",
+        "name": "packaging-rust",
+        "versions": 1,
+        "relation_type": "SOURCE_REPO"
+      }
+    ],
+    "packages_error": null
+  },
+  "get_project_fallback": null,
+  "advisories_truncated": false,
+  "deepwiki": null,
+  "evidence_note": "Normalized API fields. Unabridged successful JSON responses and HTTP error JSON are in api-responses.json. Network failures appear in normalized error fields.",
+  "verdict": {
+    "policy": "oss-gate.policy/3",
+    "classification_sha256": "4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279",
+    "license_reviews": [
+      {
+        "name": "packaging",
+        "version": "26.3",
+        "relation": "SELF",
+        "licenses": [
+          "Apache-2.0 OR BSD-2-Clause"
+        ],
+        "assessment": {
+          "category": "permissive",
+          "tier": "allow",
+          "reasons": [
+            "reviewed"
+          ],
+          "selected": [
+            "Apache-2.0"
+          ],
+          "choices": [
+            "Apache-2.0"
+          ],
+          "notes": [
+            "Retained policy/2 screening classification. Review the license text and intended use."
+          ],
+          "reason": "Apache-2.0; reviewed",
+          "spdx_version": "3.29.0",
+          "classification_sha256": "4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279"
+        },
+        "finding_sha256": "b5b26e0e5d207a80530d9bd9d530800d8c51b384d660ea519b662d3d48e5f9a4"
+      }
+    ],
+    "overall": "allow",
+    "areas": {
+      "license": "allow",
+      "vulns": "allow",
+      "deps": "allow",
+      "maintenance": "allow"
+    },
+    "coverage_gaps": [],
+    "findings": [
+      {
+        "area": "license",
+        "code": "root_license",
+        "package": "packaging@26.3",
+        "licenses": [
+          "Apache-2.0 OR BSD-2-Clause"
+        ],
+        "category": "permissive",
+        "assessment": {
+          "category": "permissive",
+          "tier": "allow",
+          "reasons": [
+            "reviewed"
+          ],
+          "selected": [
+            "Apache-2.0"
+          ],
+          "choices": [
+            "Apache-2.0"
+          ],
+          "notes": [
+            "Retained policy/2 screening classification. Review the license text and intended use."
+          ],
+          "reason": "Apache-2.0; reviewed",
+          "spdx_version": "3.29.0",
+          "classification_sha256": "4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279"
+        },
+        "version": "26.3"
+      },
+      {
+        "area": "maintenance",
+        "code": "scorecard",
+        "score": 8.8,
+        "date": "2026-08-24T00:00:00Z"
+      }
+    ],
+    "advisory_count": 0,
+    "high_critical_count": 0,
+    "severity_unknown_count": 0
+  }
+}

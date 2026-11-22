@@ -1,8 +1,8 @@
 # next 15.1.0: Open-source adoption review
 
-Snapshot date: 2026-11-17T00:00:00Z · npm · vercel/next.js · oss-gate.policy/2
+Snapshot date: 2026-11-17T00:00:00Z · npm · vercel/next.js · oss-gate.policy/3
 
-> Historical example. The source snapshot is preserved; the verdict shown here is reassessed using policy v2. This is not a live scan.
+> Historical example. The source snapshot is preserved; the verdict shown here is reassessed using policy v3. This is not a live scan.
 
 **Verdict: Hold**
 
@@ -19,7 +19,7 @@ Next.js combines React routing, server rendering, server features and build tool
 
 A screening aid, not a legal opinion or security certification. Public metadata can be incomplete. DeepWiki narratives are AI-generated and may not describe the reviewed version.
 
-Historical verdict: `Hold`. The table above applies policy v2 to the same saved evidence.
+Historical verdict: `Hold`. The table above applies policy v3 to the same saved evidence.
 
 ## 2. What the software does
 
@@ -77,7 +77,7 @@ Categories are screening outcomes, not legal conclusions. `unknown` includes mis
 | @swc/counter | 0.1.3 | Apache-2.0 | permissive | next@15.1.0 → @swc/counter@0.1.3 |
 | @swc/helpers | 0.5.15 | Apache-2.0 | permissive | next@15.1.0 → @swc/helpers@0.5.15 |
 | busboy | 1.6.0 | Not measured | unknown | next@15.1.0 → busboy@1.6.0 |
-| caniuse-lite | 1.0.30001823 | CC-BY-4.0 | unknown | next@15.1.0 → caniuse-lite@1.0.30001823 |
+| caniuse-lite | 1.0.30001823 | CC-BY-4.0 | attribution | next@15.1.0 → caniuse-lite@1.0.30001823 |
 | client-only | 0.0.1 | MIT | permissive | next@15.1.0 → styled-jsx@5.1.6 → client-only@0.0.1 |
 | color | 4.2.3 | MIT | permissive | next@15.1.0 → sharp@0.33.5 → color@4.2.3 |
 | color-convert | 2.0.1 | MIT | permissive | next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-convert@2.0.1 |
@@ -218,7 +218,7 @@ The resolved graph contains platform-specific image and compiler packages. It do
 
 ## 7. Maintenance
 
-The saved Scorecard total is 6.2, dated 2026-08-24. Policy v2 therefore marks maintenance conditional, even though the Maintained check is 10. A strong activity score does not erase the other measured practices. Code-Review is 9 and Security-Policy is 10; the response also includes low scores for pinned dependencies, token permissions, binary artifacts and static analysis. Branch-Protection and Signed-Releases are unevaluated (-1), and the Vulnerabilities check is absent. [Source: `data.json#/get_project/scorecard`]
+The saved Scorecard total is 6.2, dated 2026-08-24. Policy v3 therefore marks maintenance conditional, even though the Maintained check is 10. A strong activity score does not erase the other measured practices. Code-Review is 9 and Security-Policy is 10; the response also includes low scores for pinned dependencies, token permissions, binary artifacts and static analysis. Branch-Protection and Signed-Releases are unevaluated (-1), and the Vulnerabilities check is absent. [Source: `data.json#/get_project/scorecard`]
 
 The historical narrative attributes the project to Vercel, describes maintainer review and stable/canary release channels, and points security reports to Vercel's private HackerOne process. It does not establish a guaranteed stable-release cadence or independently verify the current reporting process. Refer to upstream's current security policy for a real disclosure.
 
@@ -243,7 +243,7 @@ The historical narrative attributes the project to Vercel, describes maintainer 
 
 1. For 15.1.0, treat known high-severity findings as blockers for the reviewed version. Match each advisory's ecosystem, affected package and branch before selecting a replacement. The existence of a fixed version does not make 15.1.0 safe.
 2. Verify the actual resolved postcss and sharp versions after any framework upgrade. Re-run the review and relevant application tests; do not infer remediation solely from a framework version number or the flattened fixed-version list.
-3. Inspect caniuse-lite's CC-BY-4.0 attribution conditions and the LGPL obligations of the sharp/libvips artifacts actually shipped. CC-BY-4.0 is a recognized data license; its `unknown` screening category means this policy does not automatically approve it, not that the package has no license.
+3. Inspect caniuse-lite's CC-BY-4.0 attribution conditions and the LGPL obligations of the sharp/libvips artifacts actually shipped. Policy/3 classifies CC-BY-4.0 as attribution review (conditional), rather than unknown. Check attribution, license links and change notices for the covered material.
 4. For 15.1.0, inspect the exact busboy and streamsearch license files because their saved metadata arrays are empty. Empty metadata is not proof of license absence.
 5. Review telemetry configuration, browser-exposed environment variables and image-processing features against the exact release and deployment. Do not rely on wiki claims that were not reproduced.
 6. Record unresolved maintenance practices and obtain current evidence before production approval. Preserve this snapshot when translating or comparing versions.

@@ -6,7 +6,7 @@ Evidence date: 2026-11-17 · Proposal example · Verification: **WARN**
 
 ## 1. Context and intended users
 
-Assume a Python service needs to call external HTTP APIs. A “backend API team” is an illustrative audience, not a verified organizational requirement. Requests 2.34.2 is conditional under policy v2. The outstanding adoption question is certifi@2026.10.23, its MPL-2.0 obligations, and the actual modifications/distribution. [Evidence 1, 2]
+Assume a Python service needs to call external HTTP APIs. A “backend API team” is an illustrative audience, not a verified organizational requirement. Requests 2.34.2 is conditional under policy v3. The outstanding adoption question is certifi@2026.10.23, its MPL-2.0 obligations, and the actual modifications/distribution. [Evidence 1, 2]
 
 The package itself declares Apache-2.0. The saved graph has four direct dependencies, certifi, charset-normalizer, idna and urllib3, and no transitive dependencies. It has not been established that this graph matches any particular service's installed environment. [Evidence 2]
 

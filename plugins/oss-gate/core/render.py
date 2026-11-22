@@ -12,8 +12,9 @@ from urllib.parse import urlsplit
 
 from markdown_it import MarkdownIt
 from .policy import advisory_groups, evaluate, obj, seq
-from .licenses import classify_license
+from .license_display import explain as license_explanation, STATUS as DECISION_STATUS
 from .snapshot import load_review, sha256
+from .identity import same_name, same_version
 
 LABELS = {
     "en": {
@@ -46,7 +47,7 @@ LABELS = {
         "no_vulns": "No known advisories were returned in this snapshot. This is not proof of absence.",
         "missing": "Not measured",
         "limits": "Interpretation and coverage",
-        "historical": "Historical example. The source snapshot is preserved; the verdict shown here is reassessed using policy v2. This is not a live scan.",
+        "historical": "Historical example. The source snapshot is preserved; the verdict shown here is reassessed using policy v3. This is not a live scan.",
         "notice": "A screening aid, not a legal opinion or security certification. Public metadata can be incomplete. DeepWiki narratives are AI-generated and may not describe the reviewed version.",
         "policy": "Policy findings",
         "details": "Source details",
@@ -68,6 +69,7 @@ LABELS = {
         "additional_policy": "Selected review policy",
         "base_verdict": "Base verdict",
         "effective_verdict": "With selected policy",
+        "selected_license_restriction": "The selected policy adds a license restriction.",
         "additional_pass": "No additional blocking condition was found under the selected rules.",
         "release_wait": "The selected release waiting period has not elapsed.",
         "release_time_unverified": "The release time is missing, invalid or later than the evaluation time.",
@@ -108,7 +110,7 @@ LABELS = {
         "no_vulns": "이 스냅샷에서 알려진 권고가 반환되지 않았습니다. 취약점이 없다는 보장은 아닙니다.",
         "missing": "미측정",
         "limits": "해석과 조회 범위",
-        "historical": "과거 자료로 만든 예제입니다. 원본 스냅샷을 보존하고 정책 v2로 판정을 다시 계산했습니다. 실시간 검사 결과가 아닙니다.",
+        "historical": "과거 자료로 만든 예제입니다. 원본 스냅샷을 보존하고 정책 v3로 판정을 다시 계산했습니다. 실시간 검사 결과가 아닙니다.",
         "notice": "도입 검토를 돕는 자료이며 법적 판단이나 보안 인증이 아닙니다. 공개 메타데이터는 불완전할 수 있습니다. DeepWiki 설명은 AI 생성 자료이며 검토 버전과 다를 수 있습니다.",
         "policy": "판정 근거",
         "details": "출처 상세",
@@ -130,6 +132,7 @@ LABELS = {
         "additional_policy": "선택한 검토 정책",
         "base_verdict": "기본 판정",
         "effective_verdict": "추가 정책 적용 후",
+        "selected_license_restriction": "선택한 정책이 라이선스 제한을 추가했습니다.",
         "additional_pass": "선택한 규칙에서 추가로 제한하는 조건은 확인되지 않았습니다.",
         "release_wait": "선택한 신규 버전 대기 기간이 지나지 않았습니다.",
         "release_time_unverified": "발행 시각이 없거나 잘못됐거나 평가 시각보다 나중입니다.",
@@ -326,7 +329,7 @@ def render(data, text, lang, available=("ko", "en"), digest="", raw=False):
     nav = (
         '<nav class="arows">'
         + "".join(
-            f'<a href="#{"dependencies" if area in ("license", "deps") else "vulnerabilities" if area == "vulns" else "maintenance"}"><span class="area-label">{t[area]}</span><strong class="st-{TOKENS[value]}">{t[value]}</strong></a>'
+            f'<a href="#{"dependencies" if area == "deps" else "vulnerabilities" if area == "vulns" else "license-review" if area == "license" else "maintenance"}"><span class="area-label">{t[area]}</span><strong class="st-{TOKENS[value]}">{t[value]}</strong></a>'
             for area, value in verdict["areas"].items()
         )
         + "</nav>"
@@ -349,6 +352,17 @@ def render(data, text, lang, available=("ko", "en"), digest="", raw=False):
     body = f'<header class="doc-head"><p class="meta">{esc(target.get("system"))} / {esc(date)}</p><h1 class="pkg">{esc(name)}<span class="ver">{esc(version)}</span></h1><p class="desc">{t["title"]}</p></header>'
     if data.get("schema") == "oss-gate.review/1":
         body += f'<p class="notice">{t["historical"]}</p>'
+    previous_policy = obj(data.get("verdict")).get("policy")
+    if previous_policy and previous_policy != verdict["policy"]:
+        body += f'<p class="notice">{esc(previous_policy)} → {esc(verdict["policy"])}: ' + (
+            '저장된 근거를 현재 정책으로 재평가했습니다. 원본 판정은 data.json에 보존됩니다.' if lang == "ko"
+            else 'Reassessed saved evidence under the current policy. The original verdict remains in data.json.'
+        ) + '</p>'
+    if data.get("reassessment"):
+        body += '<p class="notice">' + (
+            '외부 재조회 없이 저장된 근거로 재평가했습니다. 이전 자료는 source-data.json에 보존됩니다.' if lang == "ko"
+            else 'Reassessed saved evidence without network requests. Previous data is preserved in source-data.json.'
+        ) + '</p>'
     additional = verdict.get("additional_policy")
     policy_section = ""
     if additional:
@@ -387,6 +401,31 @@ def render(data, text, lang, available=("ko", "en"), digest="", raw=False):
     _, reading = reading_sections(text, lang)
     body += reading
     body += policy_section
+    reviews = verdict.get("license_reviews", [])
+    body += section("license-review", t["license"], table(
+        [t["package"], t["license"], t["verdict"], "확인 사항" if lang == "ko" else "Review reason"],
+        [[str(item["name"]) + "@" + str(item["version"]), ", ".join(item["assessment"]["selected"]) or t["missing"],
+          t[item["assessment"]["tier"]], license_explanation(item["assessment"], lang)] for item in reviews if item["relation"] == "SELF" or item["assessment"]["tier"] != "allow"]
+    ) + '<p class="legend-note">' + (
+        '보류 사유는 근거 부족과 정책 제한을 구분해 읽어야 합니다. OR 선택지는 검토 근거이며 실제 선택·준수 확인이 필요합니다.' if lang == "ko"
+        else 'Distinguish missing evidence from policy restrictions. OR branches identify a screening option; confirm the actual choice and compliance.'
+    ) + '</p>' + details(t["details"], [item for item in reviews if item["relation"] == "SELF" or item["assessment"]["tier"] != "allow"]))
+    decisions = verdict.get("license_decisions")
+    if decisions:
+        body += section("license-decisions", "사용자 검토 결정" if lang == "ko" else "User review decisions",
+            '<p>' + (
+                f'라이선스 검토 항목 {decisions["total"]}건 중 수용 기록 {decisions["recorded"]}건, 남은 항목 {decisions["pending"]}건. 자동 판정은 유지됩니다. 서명·권한을 인증한 승인이 아닙니다.' if lang == "ko"
+                else f'{decisions["recorded"]} of {decisions["total"]} license review items have acceptance records; {decisions["pending"]} remain. The automated verdict is unchanged. These are attributed records, not authenticated approvals.'
+            ) + '</p>' + "".join(
+                '<article><h3>' + esc(next((str(review["name"]) + "@" + str(review["version"])
+                    for review in reviews if review["finding_sha256"] == item["finding_sha256"]),
+                    "일치하는 항목 없음" if lang == "ko" else "No matching finding")) + '</h3>'
+                + '<p class="meta">' + esc(DECISION_STATUS[item["status"]][int(lang == "ko")])
+                + ' · ' + esc(item["decided_by"]) + ' · ' + esc(item["decided_at"].replace("T", " ")) + '</p>'
+                + '<p><strong>' + ("사유: " if lang == "ko" else "Reason: ") + '</strong>' + esc(item["reason"]) + '</p>'
+                + '<p><strong>' + ("적용 조건: " if lang == "ko" else "Conditions: ") + '</strong>' + esc(item["conditions"]) + '</p></article>'
+                for item in decisions["items"]
+            ) + details(t["details"], decisions))
     body += f'<h2 class="appendix-title" id="appendix">{t["appendix"]}</h2>'
     body += section(
         "summary",
@@ -407,8 +446,8 @@ def render(data, text, lang, available=("ko", "en"), digest="", raw=False):
     for node in nodes:
         if (
             node.get("relation") == "SELF"
-            and node.get("name") == lp.get("name")
-            and node.get("version") == lp.get("version")
+            and same_name(target.get("system"), node.get("name"), lp.get("name"))
+            and same_version(target.get("system"), node.get("version"), lp.get("version"))
         ):
             node["licenses"] = lp.get("licenses")
             node["vulns_queried"] = isinstance(lp.get("advisories"), list)
@@ -417,7 +456,7 @@ def render(data, text, lang, available=("ko", "en"), digest="", raw=False):
     cards = (
         '<div class="node-grid">'
         + "".join(
-            f'<div class="node {"warn" if n.get("vuln_count") or classify_license(n.get("licenses"))["tier"] != "allow" else "unknown" if n.get("vuln_count") is None else ""}"><strong>{esc(n.get("name"))}</strong><small>{esc(n.get("version"))}</small><small>{esc(", ".join(seq(n.get("licenses")))) or t["missing"]}</small></div>'
+            f'<div class="node {"warn" if n.get("vuln_count") or next((item["assessment"]["tier"] for item in reviews if same_name(target.get("system"), item["name"], n.get("name")) and same_version(target.get("system"), item["version"], n.get("version"))), "unknown") != "allow" else "unknown" if n.get("vuln_count") is None else ""}"><strong>{esc(n.get("name"))}</strong><small>{esc(n.get("version"))}</small><small>{esc(", ".join(seq(n.get("licenses")))) or t["missing"]}</small></div>'
             for n in nodes
             if n.get("relation") in ("SELF", "DIRECT")
         )

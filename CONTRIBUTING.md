@@ -29,3 +29,17 @@ Update both runtime lockfiles when changing dependencies. Include a vulnerabilit
 A pull request should explain the problem, resulting behavior and relevant validation. Keep commits focused. Do not change commit dates to establish priority; use release publication records and commit identity transparently.
 
 `plugins/oss-gate` is the maintained source. `plugins/oss-gate-cli` is a generated, self-contained distribution committed for marketplace installation; do not edit it directly. Regenerate it after changing common code, skills, policies, runtime locks or metadata. CI and release packaging reject stale generated files. The CLI-specific transport reference and metadata are owned by `scripts/build_cli_plugin.py`.
+
+## License policy changes
+
+Start at `core/licenses.py` (bounded expression parsing), `core/license_data/reviewed.json` (reviewed classifications), `core/license_policy.py` (optional restrictions and attributed decisions), and `core/policy.py` (overall screening). Data changes need a primary source and rationale. SPDX catalog membership alone must not imply approval. Add a regression that fails for the prior behavior and checks preserved uncertainty. Run `tests/test_license_policy.py` together with the full suite. Update policy/version documentation and regenerate the CLI distribution. No approval ratio is a release target.
+
+Small, focused improvements are welcome. Report the exact input, observed result and expected behavior. A clear failure case is useful even without a patch. Keep behavior changes separate from unrelated file reorganizations.
+
+For secret-pattern checks, run `gitleaks dir <extracted-release-directory> --config .gitleaks.toml --redact`. The config retains default rules and narrowly excludes the exact 64-hex SHA-256 entry for api-responses.json inside an evidence-sha256.json file. It does not exclude reports, source files or arbitrary API-key fields.
+
+## Runtime updates
+
+Update runtime dependencies for a documented compatibility, maintenance or security reason; do not refresh every pin merely to match the newest release. Keep the lock and validate it with a cache-free installation in an isolated copy before publishing. Check supported Python versions with the same offline tests and MCP smoke suite. Urgent security fixes should not wait for an arbitrary aging period. Mirror availability cannot be proven by a public-index install; record the tested index without credentials, and explain missing-artifact failures instead of silently changing sources or versions.
+
+Explanation capture and agent-check file contracts are documented in `plugins/oss-gate/skills/oss-review/references/evidence-files.md`. Keep CLI and MCP capture metadata aligned. Agent checks describe model/user reasoning, not independent automated narrative validation.

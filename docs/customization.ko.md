@@ -52,7 +52,7 @@ MCP를 사용할 때는 두 로컬 서버 `depsdev`와 `deepwiki` 각각의 환�
 ```sh
 uv run --frozen --project plugins/oss-gate python plugins/oss-gate/cli.py plan pypi requests --version 2.34.2 --repo psf/requests
 uv run --frozen --project plugins/oss-gate python plugins/oss-gate/cli.py collect pypi requests --version 2.34.2 --output-root /absolute/reviews
-uv run --frozen --project plugins/oss-gate python plugins/oss-gate/cli.py explain psf/requests --topic overview --out /absolute/review/deepwiki.json
+uv run --frozen --project plugins/oss-gate python plugins/oss-gate/cli.py explain psf/requests --topic overview --out /absolute/review/deepwiki.overview.json
 uv run --frozen --project plugins/oss-gate python plugins/oss-gate/cli.py render /absolute/review --language both
 ```
 
@@ -100,3 +100,35 @@ deps.dev·OSV·레지스트리·미러·DeepWiki 요청에 같은 추가 CA를 �
 작업마다 파일을 한 번 읽고 전용 연결 풀을 사용합니다. 의존성 조회 스레드는 해당 작업의 연결만 공유합니다. 파일을 읽을 수 없거나 형식·크기가 잘못되면 HTTP 요청 전에 `tls_configuration_invalid`로 종료하고 다른 신뢰 설정으로 넘어가지 않습니다. `plan`은 설정 형식만 확인하므로 인증서가 실제로 준비됐다는 뜻은 아닙니다. `collect`는 실제 CA 파일의 SHA-256과 certifi 버전을 `data.json`의 `tls_trust`에 보존하며, 이후 오프라인 판정·HTML 생성에는 원래 파일이 필요하지 않습니다. 같은 경로라도 파일을 바꾸면 다음 작업에는 변경된 인증서를 적용합니다.
 
 추가한 CA가 발급한 인증서는 기존 정책이 허용한 목적지에 대해 신뢰하게 됩니다. HTTPS 검사 프록시는 요청 내용을 읽을 수 있으므로 사내 이름 전송 제한도 계속 필요합니다. 저장된 정책에는 로컬 CA 파일 경로가 포함되니 보고서 공유 전에 확인하세요. 인증서 내용이나 개인 키는 보고서에 저장하지 않습니다.
+
+## 라이선스 검토 설정
+
+일반적인 검토에는 설정이 필요 없습니다. 특정 라이선스에 추가 검토나 제한이 필요할 때 정확한 SPDX 식별자를 지정합니다.
+
+```json
+{"schema":"oss-gate.settings/1","name":"My review rules","version":"1",
+ "review":{"license_restrictions":{"MPL-2.0":"hold","CC-BY-4.0":"conditional"}}}
+```
+
+`conditional`과 `hold`만 허용하며 기본 제한을 완화하지 않습니다. OR에 다른 허용 가능한 선택지가 있으면 그 선택지를 사용하고 기록합니다. 원래 라이선스 표현은 바꾸지 않습니다.
+
+사용자 수용 결정은 평가 결과 `license_reviews` 항목의 정확한 `finding_sha256`을 복사해 `review.license_decisions`에 기록합니다. 각 기록에는 결정자 `decided_by`, 시간대가 있는 결정 시각 `decided_at`, 사유 `reason`, 적용 조건 `conditions`가 필요하고, 만료 시각 `expires_at`은 선택입니다. 자동 판정은 유지됩니다. 검토자를 꾸며내거나 사용자를 대신해 자동 수용하지 마세요. 설정은 검토 대상 프로젝트 밖에 두고 명시적으로 선택합니다.
+
+```json
+{"finding_sha256":"<해당 항목의 64자리 해시를 복사>",
+ "decided_by":"실제 검토자","decided_at":"2026-11-22T10:00:00Z",
+ "reason":"검토한 사용 방식과 근거",
+ "conditions":"수용 시 지킬 조건"}
+```
+
+위 해시 자리표시자는 실제 값으로 바꿔야 합니다. 미해결 라이선스 근거는 수용 기록으로 해소되지 않습니다. 만료·미래 시각·근거 불일치 기록은 적용 건수에 포함하지 않고 사유를 보여줍니다. 결정자의 신원이나 권한을 인증하는 기능은 아닙니다.
+
+외부 재조회 없이 기존 검토를 선택한 정책으로 다시 평가할 수 있습니다.
+
+```sh
+uv run --frozen --project plugins/oss-gate python plugins/oss-gate/cli.py \
+  --policy /absolute/policy.json reassess /absolute/review-directory \
+  --output-root /absolute/new-reviews
+```
+
+반환된 새 폴더에 새 평가에 맞는 검토 내용을 작성한 다음 HTML을 생성합니다. 원본 검토는 변경하지 않습니다. 새 스냅샷에는 설정·평가 시각·원본 데이터·결정 기록을 보존합니다. 결정자·사유·조건도 보고서에 들어가므로 공유 전에 확인하세요.

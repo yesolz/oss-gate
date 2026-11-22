@@ -1,0 +1,3919 @@
+[
+  {
+    "method": "GET",
+    "url": "https://api.deps.dev/v3/systems/pypi/packages/packaging",
+    "request": null,
+    "status": 200,
+    "response": {
+      "packageKey": {
+        "system": "PYPI",
+        "name": "packaging"
+      },
+      "versions": [
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "14.0.0"
+          },
+          "publishedAt": "2014-09-05T00:26:05Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "14.1.0"
+          },
+          "publishedAt": "2014-09-09T00:53:30Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "14.2.0"
+          },
+          "publishedAt": "2014-09-10T17:37:44Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "14.3.0"
+          },
+          "publishedAt": "2014-11-20T02:45:21Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "14.4.0"
+          },
+          "publishedAt": "2014-12-15T20:30:44Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "14.5.0"
+          },
+          "publishedAt": "2014-12-18T02:35:44Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "15.0.0"
+          },
+          "publishedAt": "2015-01-03T02:47:30Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "15.1.0"
+          },
+          "publishedAt": "2015-04-15T00:29:05Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "15.2.0"
+          },
+          "publishedAt": "2015-05-13T21:45:54Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "15.3.0"
+          },
+          "publishedAt": "2015-08-02T00:08:44Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.0.0"
+          },
+          "publishedAt": "2016-01-19T14:58:40Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.1.0"
+          },
+          "publishedAt": "2016-02-08T00:39:30Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.2.0"
+          },
+          "publishedAt": "2016-02-09T22:51:09Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.3.0"
+          },
+          "publishedAt": "2016-02-22T01:19:55Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.4.0"
+          },
+          "publishedAt": "2016-02-23T01:13:14Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.5.0"
+          },
+          "publishedAt": "2016-02-26T18:29:20Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.6.0"
+          },
+          "publishedAt": "2016-03-29T15:15:52Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.7.0"
+          },
+          "publishedAt": "2016-04-23T22:16:15Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.8.0"
+          },
+          "publishedAt": "2016-10-29T15:55:42Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "17.0.0"
+          },
+          "publishedAt": "2018-02-28T14:04:58Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "17.1.0"
+          },
+          "publishedAt": "2018-02-28T17:52:49Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "18.0.0"
+          },
+          "publishedAt": "2018-09-26T06:04:55Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "19.0.0"
+          },
+          "publishedAt": "2019-01-20T11:05:21Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "19.1.0"
+          },
+          "publishedAt": "2019-07-30T06:32:58Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "19.2.0"
+          },
+          "publishedAt": "2019-09-18T22:26:04Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.0.0"
+          },
+          "publishedAt": "2020-01-06T06:25:04Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.1.0"
+          },
+          "publishedAt": "2020-01-24T10:55:53Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.2.0"
+          },
+          "publishedAt": "2020-03-05T07:39:20Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.3.0"
+          },
+          "publishedAt": "2020-03-05T07:48:26Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.4.0"
+          },
+          "publishedAt": "2020-05-19T06:30:05Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.5.0"
+          },
+          "publishedAt": "2020-11-27T22:06:29Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.6.0"
+          },
+          "publishedAt": "2020-11-28T14:19:42Z",
+          "isDefault": false,
+          "isDeprecated": true,
+          "deprecatedReason": "Incorrect git commit was used for cutting release"
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.7.0"
+          },
+          "publishedAt": "2020-11-28T14:22:58Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.8.0"
+          },
+          "publishedAt": "2020-12-12T04:36:49Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.9.0"
+          },
+          "publishedAt": "2021-01-29T20:24:35Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "21.0.0"
+          },
+          "publishedAt": "2021-07-03T12:32:30Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "21.1.0"
+          },
+          "publishedAt": "2021-10-29T11:20:46Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "21.2.0"
+          },
+          "publishedAt": "2021-10-29T11:25:26Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "21.3.0"
+          },
+          "publishedAt": "2021-11-18T00:39:10Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "22.0.0"
+          },
+          "publishedAt": "2022-12-07T23:18:10Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "23.0.0"
+          },
+          "publishedAt": "2023-01-08T18:18:53Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "23.1.0"
+          },
+          "publishedAt": "2023-04-12T16:11:09Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "23.2.0"
+          },
+          "publishedAt": "2023-10-01T13:50:03Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "24.0.0"
+          },
+          "publishedAt": "2024-03-10T09:39:25Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "24.1.0"
+          },
+          "publishedAt": "2024-06-09T23:19:21Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "24.2.0"
+          },
+          "publishedAt": "2024-11-08T09:47:44Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "25.0.0"
+          },
+          "publishedAt": "2025-04-19T11:48:57Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.0.0"
+          },
+          "publishedAt": "2026-01-21T20:50:37Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.0.0rc1"
+          },
+          "publishedAt": "2026-01-09T17:41:17Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.0.0rc2"
+          },
+          "publishedAt": "2026-01-12T20:58:54Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.0.0rc3"
+          },
+          "publishedAt": "2026-01-15T23:16:37Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.1.0"
+          },
+          "publishedAt": "2026-04-14T21:12:47Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.2.0"
+          },
+          "publishedAt": "2026-04-24T20:15:22Z",
+          "isDefault": false,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.3.0"
+          },
+          "publishedAt": "2026-08-04T18:15:27Z",
+          "isDefault": true,
+          "isDeprecated": false,
+          "deprecatedReason": ""
+        }
+      ]
+    }
+  },
+  {
+    "method": "GET",
+    "url": "https://api.deps.dev/v3/systems/pypi/packages/packaging/versions/26.3",
+    "request": null,
+    "status": 200,
+    "response": {
+      "versionKey": {
+        "system": "PYPI",
+        "name": "packaging",
+        "version": "26.3.0"
+      },
+      "publishedAt": "2026-08-04T18:15:27Z",
+      "isDefault": true,
+      "isDeprecated": false,
+      "deprecatedReason": "",
+      "licenses": [
+        "Apache-2.0 OR BSD-2-Clause"
+      ],
+      "advisoryKeys": [],
+      "links": [
+        {
+          "label": "SOURCE_REPO",
+          "url": "https://github.com/pypa/packaging"
+        },
+        {
+          "label": "DOCUMENTATION",
+          "url": "https://packaging.pypa.io/"
+        },
+        {
+          "label": "ATTESTATION",
+          "url": "https://pypi.org/integrity/packaging/26.3/packaging-26.3-py3-none-any.whl/provenance"
+        }
+      ],
+      "slsaProvenances": [],
+      "attestations": [
+        {
+          "type": "https://docs.pypi.org/attestations/publish/v1",
+          "url": "https://pypi.org/integrity/packaging/26.3/packaging-26.3-py3-none-any.whl/provenance",
+          "verified": true,
+          "sourceRepository": "https://github.com/pypa/packaging",
+          "commit": "3db4261366eebeb802574458dd037b3e13515e2e"
+        }
+      ],
+      "registries": [
+        "https://pypi.org/simple"
+      ],
+      "relatedProjects": [
+        {
+          "projectKey": {
+            "id": "github.com/pypa/packaging"
+          },
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "relationType": "SOURCE_REPO"
+        },
+        {
+          "projectKey": {
+            "id": "github.com/pypa/packaging"
+          },
+          "relationProvenance": "PYPI_PUBLISH_ATTESTATION",
+          "relationType": "SOURCE_REPO"
+        }
+      ],
+      "projectStatus": {
+        "status": "active",
+        "reason": ""
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "url": "https://api.deps.dev/v3/projects/github.com%2Fpypa%2Fpackaging",
+    "request": null,
+    "status": 200,
+    "response": {
+      "projectKey": {
+        "id": "github.com/pypa/packaging"
+      },
+      "openIssuesCount": 106,
+      "starsCount": 757,
+      "forksCount": 380,
+      "license": "non-standard",
+      "description": "Core utilities for Python packages",
+      "homepage": "https://packaging.pypa.io/",
+      "scorecard": {
+        "date": "2026-08-24T00:00:00Z",
+        "repository": {
+          "name": "github.com/pypa/packaging",
+          "commit": "053c884615f2e83d80705251b447769ec2599653"
+        },
+        "scorecard": {
+          "version": "v5.5.1-0.20260815060127-d1fab88f5463",
+          "commit": "d1fab88f54636ff366076edfc5c239f97b3c8e66"
+        },
+        "checks": [
+          {
+            "name": "Security-Policy",
+            "documentation": {
+              "shortDescription": "Determines if the project has published a security policy.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#security-policy"
+            },
+            "score": 9,
+            "reason": "security policy file detected",
+            "details": [
+              "Info: security policy file detected: SECURITY.md:1",
+              "Info: Found linked content: SECURITY.md:1",
+              "Warn: One or no descriptive hints of disclosure, vulnerability, and/or timelines in security policy",
+              "Info: Found text in security policy: SECURITY.md:1"
+            ]
+          },
+          {
+            "name": "Dangerous-Workflow",
+            "documentation": {
+              "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#dangerous-workflow"
+            },
+            "score": 10,
+            "reason": "no dangerous workflow patterns detected",
+            "details": []
+          },
+          {
+            "name": "Maintained",
+            "documentation": {
+              "shortDescription": "Determines if the project is \"actively maintained\".",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#maintained"
+            },
+            "score": 10,
+            "reason": "30 commit(s) and 12 issue activity found in the last 90 days -- score normalized to 10",
+            "details": []
+          },
+          {
+            "name": "Code-Review",
+            "documentation": {
+              "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#code-review"
+            },
+            "score": 9,
+            "reason": "Found 26/28 approved changesets -- score normalized to 9",
+            "details": []
+          },
+          {
+            "name": "Token-Permissions",
+            "documentation": {
+              "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#token-permissions"
+            },
+            "score": 10,
+            "reason": "GitHub workflow tokens follow principle of least privilege",
+            "details": [
+              "Info: jobLevel 'actions' permission set to 'read': .github/workflows/codeql.yml:29",
+              "Info: jobLevel 'contents' permission set to 'read': .github/workflows/codeql.yml:30",
+              "Info: found token with 'none' permissions: .github/workflows/codeql.yml:1",
+              "Info: found token with 'none' permissions: .github/workflows/docs.yml:1",
+              "Info: found token with 'none' permissions: .github/workflows/lint.yml:1",
+              "Info: found token with 'none' permissions: .github/workflows/perf.yml:1",
+              "Info: found token with 'none' permissions: .github/workflows/publish.yml:1",
+              "Info: found token with 'none' permissions: .github/workflows/test.yml:1",
+              "Info: no jobLevel write permissions found"
+            ]
+          },
+          {
+            "name": "Binary-Artifacts",
+            "documentation": {
+              "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#binary-artifacts"
+            },
+            "score": 4,
+            "reason": "binaries present in source code",
+            "details": [
+              "Warn: binary detected: tests/manylinux/hello-world-s390x-s390x:1",
+              "Warn: binary detected: tests/manylinux/hello-world-x86_64-amd64:1",
+              "Warn: binary detected: tests/musllinux/glibc-x86_64:1",
+              "Warn: binary detected: tests/musllinux/musl-aarch64:1",
+              "Warn: binary detected: tests/musllinux/musl-i386:1",
+              "Warn: binary detected: tests/musllinux/musl-x86_64:1"
+            ]
+          },
+          {
+            "name": "CII-Best-Practices",
+            "documentation": {
+              "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#cii-best-practices"
+            },
+            "score": 0,
+            "reason": "no effort to earn an OpenSSF best practices badge detected",
+            "details": []
+          },
+          {
+            "name": "Pinned-Dependencies",
+            "documentation": {
+              "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#pinned-dependencies"
+            },
+            "score": 10,
+            "reason": "all dependencies are pinned",
+            "details": [
+              "Info:  24 out of  24 GitHub-owned GitHubAction dependencies pinned",
+              "Info:  12 out of  12 third-party GitHubAction dependencies pinned"
+            ]
+          },
+          {
+            "name": "Fuzzing",
+            "documentation": {
+              "shortDescription": "Determines if the project uses fuzzing.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#fuzzing"
+            },
+            "score": 10,
+            "reason": "project is fuzzed",
+            "details": [
+              "Info: OSSFuzz integration found"
+            ]
+          },
+          {
+            "name": "License",
+            "documentation": {
+              "shortDescription": "Determines if the project has defined a license.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#license"
+            },
+            "score": 9,
+            "reason": "license file detected",
+            "details": [
+              "Info: project has a license file: LICENSE:0",
+              "Warn: project license file does not contain an FSF or OSI license."
+            ]
+          },
+          {
+            "name": "Signed-Releases",
+            "documentation": {
+              "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#signed-releases"
+            },
+            "score": -1,
+            "reason": "no releases found",
+            "details": []
+          },
+          {
+            "name": "Branch-Protection",
+            "documentation": {
+              "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#branch-protection"
+            },
+            "score": -1,
+            "reason": "internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authentication/fine-grained-auth-token.md",
+            "details": []
+          },
+          {
+            "name": "Packaging",
+            "documentation": {
+              "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#packaging"
+            },
+            "score": 10,
+            "reason": "packaging workflow detected",
+            "details": [
+              "Info: Project packages its releases by way of GitHub Actions.: .github/workflows/publish.yml:76"
+            ]
+          },
+          {
+            "name": "SAST",
+            "documentation": {
+              "shortDescription": "Determines if the project uses static code analysis.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#sast"
+            },
+            "score": 10,
+            "reason": "SAST tool is run on all commits",
+            "details": [
+              "Info: SAST configuration detected: CodeQL",
+              "Info: all commits (28) are checked with a SAST tool"
+            ]
+          }
+        ],
+        "overallScore": 8.8,
+        "metadata": []
+      },
+      "ossFuzz": {
+        "lineCount": 5912,
+        "lineCoverCount": 470,
+        "date": "2026-11-17T00:00:00Z",
+        "configUrl": "https://github.com/google/oss-fuzz/tree/master/projects/packaging"
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "url": "https://api.deps.dev/v3/systems/pypi/packages/packaging/versions/26.3:dependencies",
+    "request": null,
+    "status": 200,
+    "response": {
+      "nodes": [
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.3.0"
+          },
+          "bundled": false,
+          "relation": "SELF",
+          "errors": []
+        }
+      ],
+      "edges": [],
+      "error": ""
+    }
+  },
+  {
+    "method": "POST",
+    "url": "https://api.osv.dev/v1/querybatch",
+    "request": {
+      "queries": [
+        {
+          "package": {
+            "name": "packaging",
+            "ecosystem": "PyPI"
+          },
+          "version": "26.3"
+        }
+      ]
+    },
+    "status": 200,
+    "response": {
+      "results": [
+        {}
+      ]
+    }
+  },
+  {
+    "method": "GET",
+    "url": "https://api.deps.dev/v3/projects/github.com%2Fpypa%2Fpackaging",
+    "request": null,
+    "status": 200,
+    "response": {
+      "projectKey": {
+        "id": "github.com/pypa/packaging"
+      },
+      "openIssuesCount": 106,
+      "starsCount": 757,
+      "forksCount": 380,
+      "license": "non-standard",
+      "description": "Core utilities for Python packages",
+      "homepage": "https://packaging.pypa.io/",
+      "scorecard": {
+        "date": "2026-08-24T00:00:00Z",
+        "repository": {
+          "name": "github.com/pypa/packaging",
+          "commit": "053c884615f2e83d80705251b447769ec2599653"
+        },
+        "scorecard": {
+          "version": "v5.5.1-0.20260815060127-d1fab88f5463",
+          "commit": "d1fab88f54636ff366076edfc5c239f97b3c8e66"
+        },
+        "checks": [
+          {
+            "name": "Security-Policy",
+            "documentation": {
+              "shortDescription": "Determines if the project has published a security policy.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#security-policy"
+            },
+            "score": 9,
+            "reason": "security policy file detected",
+            "details": [
+              "Info: security policy file detected: SECURITY.md:1",
+              "Info: Found linked content: SECURITY.md:1",
+              "Warn: One or no descriptive hints of disclosure, vulnerability, and/or timelines in security policy",
+              "Info: Found text in security policy: SECURITY.md:1"
+            ]
+          },
+          {
+            "name": "Dangerous-Workflow",
+            "documentation": {
+              "shortDescription": "Determines if the project's GitHub Action workflows avoid dangerous patterns.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#dangerous-workflow"
+            },
+            "score": 10,
+            "reason": "no dangerous workflow patterns detected",
+            "details": []
+          },
+          {
+            "name": "Maintained",
+            "documentation": {
+              "shortDescription": "Determines if the project is \"actively maintained\".",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#maintained"
+            },
+            "score": 10,
+            "reason": "30 commit(s) and 12 issue activity found in the last 90 days -- score normalized to 10",
+            "details": []
+          },
+          {
+            "name": "Code-Review",
+            "documentation": {
+              "shortDescription": "Determines if the project requires human code review before pull requests (aka merge requests) are merged.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#code-review"
+            },
+            "score": 9,
+            "reason": "Found 26/28 approved changesets -- score normalized to 9",
+            "details": []
+          },
+          {
+            "name": "Token-Permissions",
+            "documentation": {
+              "shortDescription": "Determines if the project's workflows follow the principle of least privilege.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#token-permissions"
+            },
+            "score": 10,
+            "reason": "GitHub workflow tokens follow principle of least privilege",
+            "details": [
+              "Info: jobLevel 'actions' permission set to 'read': .github/workflows/codeql.yml:29",
+              "Info: jobLevel 'contents' permission set to 'read': .github/workflows/codeql.yml:30",
+              "Info: found token with 'none' permissions: .github/workflows/codeql.yml:1",
+              "Info: found token with 'none' permissions: .github/workflows/docs.yml:1",
+              "Info: found token with 'none' permissions: .github/workflows/lint.yml:1",
+              "Info: found token with 'none' permissions: .github/workflows/perf.yml:1",
+              "Info: found token with 'none' permissions: .github/workflows/publish.yml:1",
+              "Info: found token with 'none' permissions: .github/workflows/test.yml:1",
+              "Info: no jobLevel write permissions found"
+            ]
+          },
+          {
+            "name": "Binary-Artifacts",
+            "documentation": {
+              "shortDescription": "Determines if the project has generated executable (binary) artifacts in the source repository.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#binary-artifacts"
+            },
+            "score": 4,
+            "reason": "binaries present in source code",
+            "details": [
+              "Warn: binary detected: tests/manylinux/hello-world-s390x-s390x:1",
+              "Warn: binary detected: tests/manylinux/hello-world-x86_64-amd64:1",
+              "Warn: binary detected: tests/musllinux/glibc-x86_64:1",
+              "Warn: binary detected: tests/musllinux/musl-aarch64:1",
+              "Warn: binary detected: tests/musllinux/musl-i386:1",
+              "Warn: binary detected: tests/musllinux/musl-x86_64:1"
+            ]
+          },
+          {
+            "name": "CII-Best-Practices",
+            "documentation": {
+              "shortDescription": "Determines if the project has an OpenSSF (formerly CII) Best Practices Badge.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#cii-best-practices"
+            },
+            "score": 0,
+            "reason": "no effort to earn an OpenSSF best practices badge detected",
+            "details": []
+          },
+          {
+            "name": "Pinned-Dependencies",
+            "documentation": {
+              "shortDescription": "Determines if the project has declared and pinned the dependencies of its build process.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#pinned-dependencies"
+            },
+            "score": 10,
+            "reason": "all dependencies are pinned",
+            "details": [
+              "Info:  24 out of  24 GitHub-owned GitHubAction dependencies pinned",
+              "Info:  12 out of  12 third-party GitHubAction dependencies pinned"
+            ]
+          },
+          {
+            "name": "Fuzzing",
+            "documentation": {
+              "shortDescription": "Determines if the project uses fuzzing.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#fuzzing"
+            },
+            "score": 10,
+            "reason": "project is fuzzed",
+            "details": [
+              "Info: OSSFuzz integration found"
+            ]
+          },
+          {
+            "name": "License",
+            "documentation": {
+              "shortDescription": "Determines if the project has defined a license.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#license"
+            },
+            "score": 9,
+            "reason": "license file detected",
+            "details": [
+              "Info: project has a license file: LICENSE:0",
+              "Warn: project license file does not contain an FSF or OSI license."
+            ]
+          },
+          {
+            "name": "Signed-Releases",
+            "documentation": {
+              "shortDescription": "Determines if the project cryptographically signs release artifacts.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#signed-releases"
+            },
+            "score": -1,
+            "reason": "no releases found",
+            "details": []
+          },
+          {
+            "name": "Branch-Protection",
+            "documentation": {
+              "shortDescription": "Determines if the default and release branches are protected with GitHub's branch protection settings.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#branch-protection"
+            },
+            "score": -1,
+            "reason": "internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authentication/fine-grained-auth-token.md",
+            "details": []
+          },
+          {
+            "name": "Packaging",
+            "documentation": {
+              "shortDescription": "Determines if the project is published as a package that others can easily download, install, easily update, and uninstall.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#packaging"
+            },
+            "score": 10,
+            "reason": "packaging workflow detected",
+            "details": [
+              "Info: Project packages its releases by way of GitHub Actions.: .github/workflows/publish.yml:76"
+            ]
+          },
+          {
+            "name": "SAST",
+            "documentation": {
+              "shortDescription": "Determines if the project uses static code analysis.",
+              "url": "https://github.com/ossf/scorecard/blob/d1fab88f54636ff366076edfc5c239f97b3c8e66/docs/checks.md#sast"
+            },
+            "score": 10,
+            "reason": "SAST tool is run on all commits",
+            "details": [
+              "Info: SAST configuration detected: CodeQL",
+              "Info: all commits (28) are checked with a SAST tool"
+            ]
+          }
+        ],
+        "overallScore": 8.8,
+        "metadata": []
+      },
+      "ossFuzz": {
+        "lineCount": 5912,
+        "lineCoverCount": 470,
+        "date": "2026-11-17T00:00:00Z",
+        "configUrl": "https://github.com/google/oss-fuzz/tree/master/projects/packaging"
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "url": "https://api.deps.dev/v3/projects/github.com%2Fpypa%2Fpackaging:packageversions",
+    "request": null,
+    "status": 200,
+    "response": {
+      "versions": [
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/PYPA/packaging",
+            "version": "v0.0.0-20260820192049-053c884615f2"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/PYPA/packaging",
+            "version": "v0.0.0-20260902041935-10590c194edb"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/PYPA/packaging",
+            "version": "v0.0.0-20261007220500-ea25b7d2befd"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/Pypa/packaging",
+            "version": "v0.0.0-20260820192049-053c884615f2"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/Pypa/packaging",
+            "version": "v0.0.0-20260902041935-10590c194edb"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20231001134925-b3a5d7d68991"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20241108094712-d8e3b31b7349"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20250419114836-f58537628042"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20250515012551-22e40f519b0a"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20250522170431-eeffed412db9"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20250610173416-14b83e15dbb9"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20250703210201-0055d4b8ff35"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20250812125316-48125006684b"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20250815220411-033854a05229"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20250821201110-258202ed7f79"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20250902184143-e5470c1854e3"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20250909004142-888eb1452625"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20250913002811-3b20e0fd026f"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251024223958-e83801f455b0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251025211646-9983e4bcc1be"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251031230208-aa9310b8803d"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251102143002-8f13a4309aa6"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251111191041-6da1c50d1354"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251111194340-4a013fbd1c63"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251111212504-0786154aa5d6"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251112003855-92304cb374c8"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251112024236-d9ddbef5e624"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251112032539-6832e1942d61"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251112033416-bdc4b94919ec"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251112135032-cb2975ebb291"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251112194315-9cb29338e1e7"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251112235927-7e1b968b3b64"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251113215328-2b3fcaf14efd"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251114030133-013f3b03a61f"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251114144531-306d0b831ce4"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251114161202-b0c230c8cfa4"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251115033406-312041efe426"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251117181912-516e60a9b546"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251117185342-2377220e5c16"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251118034542-f451a9fc5172"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251118201703-505278dbe8ed"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251119205604-4b015117d76b"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251125012159-429d0c95e2fe"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251125025843-28294b6bf20b"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251125183630-a84c80455b7e"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251126021107-f61a88bac669"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251126182746-f67a11ed5ef8"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251126212949-39b0432b26d4"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251127071902-cf455270ac96"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251127160714-47bc7217c8db"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251127181841-5037c9324e4c"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251127203803-7dd3b6845cc2"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251128030059-fd469c34f039"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251129211127-f88ea3c7245b"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251130142916-7cafa4511cd1"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251130195527-5bf7018a09cb"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251201021959-a70ead837b25"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251201184301-55335c1b6dac"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251202002734-39ce7d47a83a"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251202174733-5de9865be26d"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251213052702-72283ea15d5e"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20251215221157-994a371eca41"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260102142844-c39b6da9ab11"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260104220709-8a805e3baac2"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260108013601-eb5f4926931b"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260109180548-f34845a1076f"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260112201528-b44ad2593eb8"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260112210052-78db9520ad41"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260112235954-f0b6f1a87b4e"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260114030753-350a2306700b"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260114204441-0cf1b41b4b32"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260115012135-3a7b600a126d"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260115223436-d5398b8bc19f"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260121212824-0e9f03137bba"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260123154746-971ae00e1dd1"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260124044818-16cfaebac3e8"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260125233630-7c0307115f73"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260126181055-120ce2561585"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260130172912-39ad033eac63"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260202194312-6fe1d5b93364"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260211041753-77a4f3fe0bcf"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260212211353-2df7bdd8dfef"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260216201348-921eb4912555"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260224030824-65ed5e92673a"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260228164309-c7e3ec1d99a6"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260311220758-f2bbd4f57864"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260313224117-1676a10cdad3"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260318170421-2f933f2a60e7"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260327042708-c901ded1a6b9"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260405152236-98b4bfb6828b"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260406040035-15fdefcb0db9"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260407042306-e892020b3721"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260408171551-2c6c7dfa2d40"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260408223510-f294d529e263"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260409194208-905c90c1eb8c"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260411205349-06c6555f44f0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260412151556-3f4f5d46808f"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260414132726-b51fc198071f"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260415235205-9ac29c01860f"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260416195545-b82413d6a1e5"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260420140117-02c1e9595a57"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260421142141-66e34a80256c"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260423033435-4bed32d920ca"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260424134424-48a8a0698052"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260424183846-84a87ee42483"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260424192150-9bfe549d54c8"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260427222253-58aaa7fbe800"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260428164751-966bbd2c423d"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260502223741-4772432b4c20"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260509203402-70ff3f88af36"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260510123127-ff14df979f86"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260515032915-40d76fbedf22"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260527202838-68cdb4d40082"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260529141631-cf5dc921b4e1"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260602120347-0030fb8c17d6"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260604022223-618e8516a85e"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260604123538-9d142069caf7"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260605212140-28c299e8a823"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260605230810-08bb047794f4"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260608193914-e6cd4be75370"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260609151432-1529771b80cf"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260611203015-9cef9d088d14"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260612011739-515396b33254"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260613050748-0b8f100bbe5b"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260614022606-684427106cfb"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260615014541-155760e37acb"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260615021704-664f049980f1"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260615235040-c97f696fcc07"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260616040406-349abfad0688"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260616122931-07265129295b"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260620041537-b61e85eafa19"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260623173316-0cc1cc8eea11"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260624051212-0d799f1ae4ae"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260624115844-e80f70f8b164"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260625032445-fbd0d4b4b83b"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260626012336-d2fa92384821"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260627035517-fbea07c1f23f"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260627163729-0019d113dfc2"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260628195148-fb82782df51f"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260629191703-4c362e39d483"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260630010249-c7d859d13338"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260701230834-dcac24cc0a37"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260702194424-c4fb81ff6eba"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260706124247-0a85b41e24c9"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260707161929-a0661b5f5c88"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260707180946-2b6726cec7bd"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260708012238-f0620a997147"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260708205006-9377ef405915"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260709015453-c411a96fea8d"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260709175158-4c663c9ef5e1"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260710043814-cf100d20e09c"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260710130614-30824d9e3b33"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260711043850-1a9c4cb6b6aa"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260711125859-9d0ec47b36a1"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260717234902-58c6cd700bdf"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260720045609-9c6f09ba6b31"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260720165321-fe18f139c5b3"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260721175003-b62954b62d04"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260725121313-826426fc8877"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260728133627-4eb0753dba8f"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260731191336-413d006fadf5"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260801011418-2d873eb60020"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260802052831-b1a7124fe3d4"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260803163431-f91d97566a96"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260803195532-3db4261366ee"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260805215127-b80e6eb0a6c0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260808150429-ef91ddbe6891"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260811214307-f8630ea2b7c8"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260813032007-f14a09332591"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260816163823-4840c3a6817f"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260818040711-55cbf1b9426f"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260820192049-053c884615f2"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260829184056-b9d249f585ba"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260902041935-10590c194edb"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20260925230036-7b898d9f0b34"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20261002174707-4a920d632a0e"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20261005152814-d17cfaf0b77a"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20261005200925-2c87a33f6658"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20261006142325-2aada00b158f"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20261007144020-fa52d7237a74"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20261007220500-ea25b7d2befd"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20261008213402-332d716676eb"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20261013083615-ae9d39c13b5f"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "GO",
+            "name": "github.com/pypa/packaging",
+            "version": "v0.0.0-20261013191705-ef837aad3127"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "GO_ORIGIN",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.0.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "PYPI_PUBLISH_ATTESTATION",
+          "slsaProvenances": [],
+          "attestations": [
+            {
+              "type": "https://docs.pypi.org/attestations/publish/v1",
+              "url": "https://pypi.org/integrity/packaging/26.0/packaging-26.0-py3-none-any.whl/provenance",
+              "verified": true,
+              "sourceRepository": "https://github.com/pypa/packaging",
+              "commit": "2b8b9817eef05931f3fba920947cbff2df115d15"
+            }
+          ]
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.0.0rc1"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "PYPI_PUBLISH_ATTESTATION",
+          "slsaProvenances": [],
+          "attestations": [
+            {
+              "type": "https://docs.pypi.org/attestations/publish/v1",
+              "url": "https://pypi.org/integrity/packaging/26.0rc1/packaging-26.0rc1-py3-none-any.whl/provenance",
+              "verified": true,
+              "sourceRepository": "https://github.com/pypa/packaging",
+              "commit": "024a464a2951ef073acfc26e29c8461cd5fbe2cd"
+            }
+          ]
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.0.0rc2"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "PYPI_PUBLISH_ATTESTATION",
+          "slsaProvenances": [],
+          "attestations": [
+            {
+              "type": "https://docs.pypi.org/attestations/publish/v1",
+              "url": "https://pypi.org/integrity/packaging/26.0rc2/packaging-26.0rc2-py3-none-any.whl/provenance",
+              "verified": true,
+              "sourceRepository": "https://github.com/pypa/packaging",
+              "commit": "b44ad2593eb80410b432d08fa2d7863e09049640"
+            }
+          ]
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.0.0rc3"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "PYPI_PUBLISH_ATTESTATION",
+          "slsaProvenances": [],
+          "attestations": [
+            {
+              "type": "https://docs.pypi.org/attestations/publish/v1",
+              "url": "https://pypi.org/integrity/packaging/26.0rc3/packaging-26.0rc3-py3-none-any.whl/provenance",
+              "verified": true,
+              "sourceRepository": "https://github.com/pypa/packaging",
+              "commit": "3a7b600a126d237b2ad3cd7e25d2cb5c176276af"
+            }
+          ]
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.1.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "PYPI_PUBLISH_ATTESTATION",
+          "slsaProvenances": [],
+          "attestations": [
+            {
+              "type": "https://docs.pypi.org/attestations/publish/v1",
+              "url": "https://pypi.org/integrity/packaging/26.1/packaging-26.1-py3-none-any.whl/provenance",
+              "verified": true,
+              "sourceRepository": "https://github.com/pypa/packaging",
+              "commit": "b51fc198071f5ee5ea84a84ed8efc7b7d46c0edd"
+            }
+          ]
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.2.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "PYPI_PUBLISH_ATTESTATION",
+          "slsaProvenances": [],
+          "attestations": [
+            {
+              "type": "https://docs.pypi.org/attestations/publish/v1",
+              "url": "https://pypi.org/integrity/packaging/26.2/packaging-26.2-py3-none-any.whl/provenance",
+              "verified": true,
+              "sourceRepository": "https://github.com/pypa/packaging",
+              "commit": "9bfe549d54c8e83441f00860e0d3cdd63b865e26"
+            }
+          ]
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.3.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "PYPI_PUBLISH_ATTESTATION",
+          "slsaProvenances": [],
+          "attestations": [
+            {
+              "type": "https://docs.pypi.org/attestations/publish/v1",
+              "url": "https://pypi.org/integrity/packaging/26.3/packaging-26.3-py3-none-any.whl/provenance",
+              "verified": true,
+              "sourceRepository": "https://github.com/pypa/packaging",
+              "commit": "3db4261366eebeb802574458dd037b3e13515e2e"
+            }
+          ]
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "14.0.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "14.1.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "14.2.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "14.3.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "14.4.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "14.5.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "15.0.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "15.1.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "15.2.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "15.3.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.0.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.1.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.2.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.3.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.4.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.5.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.6.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.7.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "16.8.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "17.0.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "17.1.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "18.0.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "19.0.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "19.1.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "19.2.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.0.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.1.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.2.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.3.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.4.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.5.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.6.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.7.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.8.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "20.9.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "21.0.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "21.1.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "21.2.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "21.3.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "22.0.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "23.0.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "23.1.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "23.2.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "24.0.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "24.1.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "24.2.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "25.0.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.0.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.0.0rc1"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.0.0rc2"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.0.0rc3"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.1.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.2.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging",
+            "version": "26.3.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        },
+        {
+          "versionKey": {
+            "system": "PYPI",
+            "name": "packaging-rust",
+            "version": "26.4.0"
+          },
+          "relationType": "SOURCE_REPO",
+          "relationProvenance": "UNVERIFIED_METADATA",
+          "slsaProvenances": [],
+          "attestations": []
+        }
+      ]
+    }
+  }
+]

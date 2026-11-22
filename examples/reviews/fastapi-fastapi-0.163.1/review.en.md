@@ -1,12 +1,12 @@
 # fastapi 0.163.1: Open-source adoption review
 
-Snapshot date: 2026-11-17T03:05:00Z · pypi · fastapi/fastapi · oss-gate.policy/2
+Snapshot date: 2026-11-17T03:05:00Z · pypi · fastapi/fastapi · oss-gate.policy/3
 
-> Historical example. The source snapshot is preserved; the verdict shown here is reassessed using policy v2. This is not a live scan.
+> Historical example. The source snapshot is preserved; the verdict shown here is reassessed using policy v3. This is not a live scan.
 
 **Verdict: Conditional**
 
-FastAPI combines Python type annotations with validation, serialization and API documentation. The package's MIT metadata and empty advisory list are favorable observations, but the saved dependency graph belongs to 0.162.4 rather than the requested 0.163.1. Under policy v2, that gap limits the result to conditional. The historical report allowed adoption despite the version substitution; this revised example corrects that behavior without changing the original evidence.
+FastAPI combines Python type annotations with validation, serialization and API documentation. The package's MIT metadata and empty advisory list are favorable observations, but the saved dependency graph belongs to 0.162.4 rather than the requested 0.163.1. Under policy v3, that gap limits the result to conditional. The historical report allowed adoption despite the version substitution; this revised example corrects that behavior without changing the original evidence.
 
 ## 1. Decision and scope
 
@@ -19,7 +19,7 @@ FastAPI combines Python type annotations with validation, serialization and API 
 
 A screening aid, not a legal opinion or security certification. Public metadata can be incomplete. DeepWiki narratives are AI-generated and may not describe the reviewed version.
 
-Historical verdict: `Allow`. The table above applies policy v2 to the same saved evidence.
+Historical verdict: `Allow`. The table above applies policy v3 to the same saved evidence.
 
 ## 2. What the software does
 

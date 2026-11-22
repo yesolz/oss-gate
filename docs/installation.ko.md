@@ -80,3 +80,11 @@ codex mcp add oss-gate-depsdev -- uv run --frozen --project /absolute/path/oss-g
 공식 안내: [Claude 마켓플레이스](https://code.claude.com/docs/en/plugin-marketplaces), [OpenAI 플러그인](https://developers.openai.com/plugins/build/plugins), [Codex MCP](https://developers.openai.com/codex/mcp).
 
 [선택적 정책과 CLI](customization.ko.md). 기존에 직접 등록한 원격 DeepWiki 연결은 로컬 연결 모듈로 교체해야 이 통제를 적용할 수 있습니다. 설정을 바꾼 뒤 클라이언트를 다시 시작하세요.
+
+## 잠금 파일과 패키지 미러
+
+플러그인은 저장소의 `uv.lock`과 `--frozen`을 사용합니다. 재현성을 위해 잠금 파일을 유지하세요. 사용하는 Python 미러에 고정된 버전이 아직 없을 수 있지만, 설치 실패만으로 미러 지연이라고 단정하지 않습니다. 먼저 uv 오류에서 버전·배포 파일 누락, 인증, TLS, 운영체제·Python 호환성 중 무엇이 원인인지 확인하세요. OSS Gate의 npm 미러 설정은 검사 대상 패키지 조회용이며, uv 실행 환경 설치와는 별개입니다.
+
+승인된 미러에 필요한 파일이 없다면 운영자에게 해당 버전 동기화를 요청하거나 보안 요건을 만족하는 이전 검증 릴리즈를 사용하세요. 공개 PyPI로 몰래 우회하거나 잠금 파일을 지우거나 자동으로 의존성을 낮추지 않습니다.
+
+실행 환경을 별도로 관리해야 한다면 별도 체크아웃에서 uv의 승인된 인덱스를 명시적으로 설정하세요. 호환성과 보안을 확인한 뒤 필요한 제약을 조정하고 잠금 파일을 재생성합니다. CONTRIBUTING.md의 테스트, MCP 점검, CLI 배포 검사를 실행하고 변경한 잠금 파일과 검증 기록을 함께 보관하세요. 이 결과는 원본 배포판과 구분되는 사용자 관리 배포판입니다. 인증정보가 들어 있는 인덱스 주소를 보고서나 이슈 로그에 붙이지 마세요.

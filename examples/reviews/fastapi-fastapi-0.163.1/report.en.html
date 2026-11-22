@@ -322,11 +322,11 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
 
 @media print{.actions,.language,.skip{display:none!important}.cover{position:static}.review-body h2{break-after:avoid}.node,.notice{break-inside:avoid}.table-wrap{overflow:visible}details{display:block}.page{padding:0}.sheet{padding:25px}a{color:inherit;text-decoration:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
-</style></head><body><a class="skip" href="#main">Read the full review</a><div class="page"><aside class="cover"><div class="cover-in"><a class="brand" href="#main"><span class="wordmark">OSS GATE</span><span class="brand-sub">Open-source adoption review</span></a><nav class="language" aria-label="Language"><a href="report.ko.html" lang="ko" >한국어</a><a href="report.en.html" lang="en" aria-current=page>English</a></nav><div class="seal-wrap"><div class="seal st-warn" style="--seal:160px"><svg class="seal-ring" viewBox="0 0 160 160" aria-hidden="true"><circle cx="80" cy="80" r="76" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="80" cy="80" r="69" fill="none" stroke="currentColor"/></svg><div class="seal-text"><span class="seal-k">Verdict</span><span class="seal-v">Conditional</span><span class="seal-d">2026-11-17</span></div></div><p class="seal-cap">Automated policy verdict</p></div><details class="details grade-guide"><summary>How to read the verdict</summary><p>Allow: meets the screening rules. Conditional: checks or actions remain. Hold: a policy blocker needs resolution. Unverified is an individual area's evidence status. PASS / WARN / FAIL describe the report's evidence check, not approval to adopt.</p></details><nav class="arows"><a href="#dependencies"><span class="area-label">License</span><strong class="st-good">Allow</strong></a><a href="#vulnerabilities"><span class="area-label">Known vulnerabilities</span><strong class="st-good">Allow</strong></a><a href="#dependencies"><span class="area-label">Dependencies</span><strong class="st-neutral">Unverified</strong></a><a href="#maintenance"><span class="area-label">Maintenance</span><strong class="st-neutral">Unverified</strong></a></nav><nav class="toc"><a href="#main">Decision in brief</a><a href="#appendix">Data and source details</a></nav><div class="actions"><button data-print>Print / PDF</button><a href="review.en.md" download>Markdown</a><a href="data.json" download>Evidence JSON</a></div></div></aside><main class="sheet" id="main"><header class="doc-head"><p class="meta">pypi / 2026-11-17</p><h1 class="pkg">fastapi<span class="ver">0.163.1</span></h1><p class="desc">Open-source adoption review</p></header><p class="notice">Historical example. The source snapshot is preserved; the verdict shown here is reassessed using policy v2. This is not a live scan.</p><section class="sec" id="decision"><h2>Decision in brief</h2><div class="review-body brief"><p><strong>Verdict: Conditional</strong></p>
-<p>FastAPI combines Python type annotations with validation, serialization and API documentation. The package's MIT metadata and empty advisory list are favorable observations, but the saved dependency graph belongs to 0.162.4 rather than the requested 0.163.1. Under policy v2, that gap limits the result to conditional. The historical report allowed adoption despite the version substitution; this revised example corrects that behavior without changing the original evidence.</p>
-</div></section><details class="details context"><summary>Review context</summary><div class="review-body"><p>Snapshot date: 2026-11-17T03:05:00Z · pypi · fastapi/fastapi · oss-gate.policy/2</p>
+</style></head><body><a class="skip" href="#main">Read the full review</a><div class="page"><aside class="cover"><div class="cover-in"><a class="brand" href="#main"><span class="wordmark">OSS GATE</span><span class="brand-sub">Open-source adoption review</span></a><nav class="language" aria-label="Language"><a href="report.ko.html" lang="ko" >한국어</a><a href="report.en.html" lang="en" aria-current=page>English</a></nav><div class="seal-wrap"><div class="seal st-warn" style="--seal:160px"><svg class="seal-ring" viewBox="0 0 160 160" aria-hidden="true"><circle cx="80" cy="80" r="76" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="80" cy="80" r="69" fill="none" stroke="currentColor"/></svg><div class="seal-text"><span class="seal-k">Verdict</span><span class="seal-v">Conditional</span><span class="seal-d">2026-11-17</span></div></div><p class="seal-cap">Automated policy verdict</p></div><details class="details grade-guide"><summary>How to read the verdict</summary><p>Allow: meets the screening rules. Conditional: checks or actions remain. Hold: a policy blocker needs resolution. Unverified is an individual area's evidence status. PASS / WARN / FAIL describe the report's evidence check, not approval to adopt.</p></details><nav class="arows"><a href="#license-review"><span class="area-label">License</span><strong class="st-good">Allow</strong></a><a href="#vulnerabilities"><span class="area-label">Known vulnerabilities</span><strong class="st-good">Allow</strong></a><a href="#dependencies"><span class="area-label">Dependencies</span><strong class="st-neutral">Unverified</strong></a><a href="#maintenance"><span class="area-label">Maintenance</span><strong class="st-neutral">Unverified</strong></a></nav><nav class="toc"><a href="#main">Decision in brief</a><a href="#appendix">Data and source details</a></nav><div class="actions"><button data-print>Print / PDF</button><a href="review.en.md" download>Markdown</a><a href="data.json" download>Evidence JSON</a></div></div></aside><main class="sheet" id="main"><header class="doc-head"><p class="meta">pypi / 2026-11-17</p><h1 class="pkg">fastapi<span class="ver">0.163.1</span></h1><p class="desc">Open-source adoption review</p></header><p class="notice">Historical example. The source snapshot is preserved; the verdict shown here is reassessed using policy v3. This is not a live scan.</p><section class="sec" id="decision"><h2>Decision in brief</h2><div class="review-body brief"><p><strong>Verdict: Conditional</strong></p>
+<p>FastAPI combines Python type annotations with validation, serialization and API documentation. The package's MIT metadata and empty advisory list are favorable observations, but the saved dependency graph belongs to 0.162.4 rather than the requested 0.163.1. Under policy v3, that gap limits the result to conditional. The historical report allowed adoption despite the version substitution; this revised example corrects that behavior without changing the original evidence.</p>
+</div></section><details class="details context"><summary>Review context</summary><div class="review-body"><p>Snapshot date: 2026-11-17T03:05:00Z · pypi · fastapi/fastapi · oss-gate.policy/3</p>
 <blockquote>
-<p>Historical example. The source snapshot is preserved; the verdict shown here is reassessed using policy v2. This is not a live scan.</p>
+<p>Historical example. The source snapshot is preserved; the verdict shown here is reassessed using policy v3. This is not a live scan.</p>
 </blockquote>
 </div></details><section class="sec" id="review"><h2>Adoption review</h2><article class="review-body"><h2>1. Decision and scope</h2>
 <div class="table-wrap"><table>
@@ -356,7 +356,7 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
 </tbody>
 </table></div>
 <p>A screening aid, not a legal opinion or security certification. Public metadata can be incomplete. DeepWiki narratives are AI-generated and may not describe the reviewed version.</p>
-<p>Historical verdict: <code>Allow</code>. The table above applies policy v2 to the same saved evidence.</p>
+<p>Historical verdict: <code>Allow</code>. The table above applies policy v3 to the same saved evidence.</p>
 <h2>2. What the software does</h2>
 <p>The saved DeepWiki material describes a framework built on Starlette and Pydantic. Type declarations drive input validation, data conversion and OpenAPI/JSON Schema documentation, exposed through Swagger UI and ReDoc. Dependency injection composes shared components such as authentication and database connections. The wiki describes HTTP Basic, OAuth2/JWT and API-key facilities. These are AI-generated descriptions, not a version-specific security test. [Source: <code>data.json#/deepwiki</code>]</p>
 <p>An application creates <code>FastAPI</code> and includes <code>APIRouter</code> instances. Starlette routes the incoming request; the handler reads form data or bytes/JSON and <code>solve_dependencies()</code> gathers and validates path, query, header, cookie and body values. <code>run_endpoint_function()</code> awaits asynchronous handlers or dispatches synchronous handlers to a thread pool. The original wiki excerpts only partly covered response generation and serialization, so the complete final path remains unverified. [Source: saved DeepWiki request-flow answer]</p>
@@ -588,8 +588,64 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
 <p>SHA-256 (<code>data.json</code>): <code>9c119652268042677ecbfe97e2f20620e98be40d8dc42276480403ac61dc7a47</code></p>
 <p><a href="https://deps.dev/">deps.dev</a> · <a href="https://osv.dev/">OSV</a> · <a href="https://deepwiki.com/fastapi/fastapi">DeepWiki</a></p>
 <p>See <a href="../../NOTICE.md">NOTICE</a> for source attribution and terms.</p>
-</article></section><h2 class="appendix-title" id="appendix">Data and source details</h2><section class="sec" id="summary"><h2>At a glance</h2><div class="ledger"><div class="fig"><div class="fig-val">7</div><div class="fig-label">Direct</div></div><div class="fig"><div class="fig-val">3</div><div class="fig-label">Transitive</div></div><div class="fig"><div class="fig-val">0*</div><div class="fig-label">Advisory groups</div></div><div class="fig"><div class="fig-val">2</div><div class="fig-label">Coverage gaps</div></div></div><p class="legend-note">* Interpretation and coverage: graph_root_unverified, graph_version_unverified</p></section><section class="sec" id="dependencies"><h2>Resolved dependency graph</h2><p class="notice coverage">Graph version differs from the reviewed version. Treat dependency coverage as unverified.</p><div class="node-grid"><div class="node warn"><strong>fastapi</strong><small>0.162.4</small><small>Not measured</small></div><div class="node "><strong>annotated-doc</strong><small>0.0.6</small><small>MIT</small></div><div class="node "><strong>anyio</strong><small>4.16.0</small><small>MIT</small></div><div class="node "><strong>opentelemetry-api</strong><small>1.45.2</small><small>Apache-2.0</small></div><div class="node "><strong>pydantic</strong><small>2.14.3</small><small>MIT</small></div><div class="node "><strong>starlette</strong><small>1.10.0</small><small>BSD-3-Clause</small></div><div class="node "><strong>typing-extensions</strong><small>4.16.0</small><small>PSF-2.0</small></div><div class="node "><strong>typing-inspection</strong><small>0.4.5</small><small>MIT</small></div></div><p class="legend-note">The table below includes every returned node. A registry graph is not a scan of your installed environment.</p><div class="table-wrap"><table><thead><tr><th scope="col">Package</th><th scope="col">Version</th><th scope="col">Relation</th><th scope="col">License</th><th scope="col">Known vulnerabilities</th><th scope="col">Dependency path</th></tr></thead><tbody><tr><td>fastapi</td><td>0.162.4</td><td>SELF</td><td>Not measured</td><td>Not measured</td><td>fastapi@0.162.4</td></tr><tr><td>annotated-doc</td><td>0.0.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>fastapi@0.162.4 → annotated-doc@0.0.6</td></tr><tr><td>annotated-types</td><td>0.8.0</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>fastapi@0.162.4 → pydantic@2.14.3 → annotated-types@0.8.0</td></tr><tr><td>anyio</td><td>4.16.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>fastapi@0.162.4 → anyio@4.16.0</td></tr><tr><td>idna</td><td>3.20.0</td><td>INDIRECT</td><td>BSD-3-Clause</td><td>0</td><td>fastapi@0.162.4 → anyio@4.16.0 → idna@3.20.0</td></tr><tr><td>opentelemetry-api</td><td>1.45.2</td><td>DIRECT</td><td>Apache-2.0</td><td>0</td><td>fastapi@0.162.4 → opentelemetry-api@1.45.2</td></tr><tr><td>pydantic</td><td>2.14.3</td><td>DIRECT</td><td>MIT</td><td>0</td><td>fastapi@0.162.4 → pydantic@2.14.3</td></tr><tr><td>pydantic-core</td><td>2.50.4</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>fastapi@0.162.4 → pydantic@2.14.3 → pydantic-core@2.50.4</td></tr><tr><td>starlette</td><td>1.10.0</td><td>DIRECT</td><td>BSD-3-Clause</td><td>0</td><td>fastapi@0.162.4 → starlette@1.10.0</td></tr><tr><td>typing-extensions</td><td>4.16.0</td><td>DIRECT</td><td>PSF-2.0</td><td>0</td><td>fastapi@0.162.4 → typing-extensions@4.16.0</td></tr><tr><td>typing-inspection</td><td>0.4.5</td><td>DIRECT</td><td>MIT</td><td>0</td><td>fastapi@0.162.4 → typing-inspection@0.4.5</td></tr></tbody></table></div></section><section class="sec" id="vulnerabilities"><h2>Known vulnerabilities</h2><p>Not measured</p></section><section class="sec" id="maintenance"><h2>Maintenance</h2><p class="meta">Scorecard ·  · /10</p><p>Not measured</p></section><section class="sec" id="evidence"><h2>Evidence</h2><p class="notice">A screening aid, not a legal opinion or security certification. Public metadata can be incomplete. DeepWiki narratives are AI-generated and may not describe the reviewed version.</p><details class="details"><summary>Policy findings</summary><pre>{
-  &quot;policy&quot;: &quot;oss-gate.policy/2&quot;,
+</article></section><section class="sec" id="license-review"><h2>License</h2><div class="table-wrap"><table><thead><tr><th scope="col">Package</th><th scope="col">License</th><th scope="col">Verdict</th><th scope="col">Review reason</th></tr></thead><tbody><tr><td>fastapi@0.163.1</td><td>MIT</td><td>Allow</td><td>Reviewed license classification. Retain the applicable notices and license terms.</td></tr></tbody></table></div><p class="legend-note">Distinguish missing evidence from policy restrictions. OR branches identify a screening option; confirm the actual choice and compliance.</p><details class="details"><summary>Source details</summary><pre>[
+  {
+    &quot;name&quot;: &quot;fastapi&quot;,
+    &quot;version&quot;: &quot;0.163.1&quot;,
+    &quot;relation&quot;: &quot;SELF&quot;,
+    &quot;licenses&quot;: [
+      &quot;MIT&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;permissive&quot;,
+      &quot;tier&quot;: &quot;allow&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+      ],
+      &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;29cc48ba50e636120409c3388ed553b022fd93daa96ceb10f6fb39f78e2c7908&quot;
+  }
+]</pre></details></section><h2 class="appendix-title" id="appendix">Data and source details</h2><section class="sec" id="summary"><h2>At a glance</h2><div class="ledger"><div class="fig"><div class="fig-val">7</div><div class="fig-label">Direct</div></div><div class="fig"><div class="fig-val">3</div><div class="fig-label">Transitive</div></div><div class="fig"><div class="fig-val">0*</div><div class="fig-label">Advisory groups</div></div><div class="fig"><div class="fig-val">2</div><div class="fig-label">Coverage gaps</div></div></div><p class="legend-note">* Interpretation and coverage: graph_root_unverified, graph_version_unverified</p></section><section class="sec" id="dependencies"><h2>Resolved dependency graph</h2><p class="notice coverage">Graph version differs from the reviewed version. Treat dependency coverage as unverified.</p><div class="node-grid"><div class="node warn"><strong>fastapi</strong><small>0.162.4</small><small>Not measured</small></div><div class="node warn"><strong>annotated-doc</strong><small>0.0.6</small><small>MIT</small></div><div class="node warn"><strong>anyio</strong><small>4.16.0</small><small>MIT</small></div><div class="node warn"><strong>opentelemetry-api</strong><small>1.45.2</small><small>Apache-2.0</small></div><div class="node warn"><strong>pydantic</strong><small>2.14.3</small><small>MIT</small></div><div class="node warn"><strong>starlette</strong><small>1.10.0</small><small>BSD-3-Clause</small></div><div class="node warn"><strong>typing-extensions</strong><small>4.16.0</small><small>PSF-2.0</small></div><div class="node warn"><strong>typing-inspection</strong><small>0.4.5</small><small>MIT</small></div></div><p class="legend-note">The table below includes every returned node. A registry graph is not a scan of your installed environment.</p><div class="table-wrap"><table><thead><tr><th scope="col">Package</th><th scope="col">Version</th><th scope="col">Relation</th><th scope="col">License</th><th scope="col">Known vulnerabilities</th><th scope="col">Dependency path</th></tr></thead><tbody><tr><td>fastapi</td><td>0.162.4</td><td>SELF</td><td>Not measured</td><td>Not measured</td><td>fastapi@0.162.4</td></tr><tr><td>annotated-doc</td><td>0.0.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>fastapi@0.162.4 → annotated-doc@0.0.6</td></tr><tr><td>annotated-types</td><td>0.8.0</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>fastapi@0.162.4 → pydantic@2.14.3 → annotated-types@0.8.0</td></tr><tr><td>anyio</td><td>4.16.0</td><td>DIRECT</td><td>MIT</td><td>0</td><td>fastapi@0.162.4 → anyio@4.16.0</td></tr><tr><td>idna</td><td>3.20.0</td><td>INDIRECT</td><td>BSD-3-Clause</td><td>0</td><td>fastapi@0.162.4 → anyio@4.16.0 → idna@3.20.0</td></tr><tr><td>opentelemetry-api</td><td>1.45.2</td><td>DIRECT</td><td>Apache-2.0</td><td>0</td><td>fastapi@0.162.4 → opentelemetry-api@1.45.2</td></tr><tr><td>pydantic</td><td>2.14.3</td><td>DIRECT</td><td>MIT</td><td>0</td><td>fastapi@0.162.4 → pydantic@2.14.3</td></tr><tr><td>pydantic-core</td><td>2.50.4</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>fastapi@0.162.4 → pydantic@2.14.3 → pydantic-core@2.50.4</td></tr><tr><td>starlette</td><td>1.10.0</td><td>DIRECT</td><td>BSD-3-Clause</td><td>0</td><td>fastapi@0.162.4 → starlette@1.10.0</td></tr><tr><td>typing-extensions</td><td>4.16.0</td><td>DIRECT</td><td>PSF-2.0</td><td>0</td><td>fastapi@0.162.4 → typing-extensions@4.16.0</td></tr><tr><td>typing-inspection</td><td>0.4.5</td><td>DIRECT</td><td>MIT</td><td>0</td><td>fastapi@0.162.4 → typing-inspection@0.4.5</td></tr></tbody></table></div></section><section class="sec" id="vulnerabilities"><h2>Known vulnerabilities</h2><p>Not measured</p></section><section class="sec" id="maintenance"><h2>Maintenance</h2><p class="meta">Scorecard ·  · /10</p><p>Not measured</p></section><section class="sec" id="evidence"><h2>Evidence</h2><p class="notice">A screening aid, not a legal opinion or security certification. Public metadata can be incomplete. DeepWiki narratives are AI-generated and may not describe the reviewed version.</p><details class="details"><summary>Policy findings</summary><pre>{
+  &quot;policy&quot;: &quot;oss-gate.policy/3&quot;,
+  &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;,
+  &quot;license_reviews&quot;: [
+    {
+      &quot;name&quot;: &quot;fastapi&quot;,
+      &quot;version&quot;: &quot;0.163.1&quot;,
+      &quot;relation&quot;: &quot;SELF&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;29cc48ba50e636120409c3388ed553b022fd93daa96ceb10f6fb39f78e2c7908&quot;
+    }
+  ],
   &quot;overall&quot;: &quot;conditional&quot;,
   &quot;areas&quot;: {
     &quot;license&quot;: &quot;allow&quot;,
@@ -609,7 +665,25 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
       &quot;licenses&quot;: [
         &quot;MIT&quot;
       ],
-      &quot;category&quot;: &quot;permissive&quot;
+      &quot;category&quot;: &quot;permissive&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;0.163.1&quot;
     },
     {
       &quot;area&quot;: &quot;maintenance&quot;,

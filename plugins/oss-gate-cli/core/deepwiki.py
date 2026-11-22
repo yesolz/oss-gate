@@ -2,6 +2,7 @@
 
 import asyncio
 import json
+from datetime import datetime, timezone
 from functools import partial
 
 import httpx
@@ -34,6 +35,20 @@ def client_factory(headers=None, timeout=None, auth=None, *, verify=True):
 
 
 async def request(repo, action="ask_question", topic="overview", policy_path=None):
+    """Record capture metadata for both remote responses and local failures."""
+    result = await _request(repo, action, topic, policy_path)
+    return {
+        **result,
+        "schema": "oss-gate.explanation/1",
+        "repository": result.get("repository", repo),
+        "action": action,
+        "topic": topic if action == "ask_question" else None,
+        "recorded_at": datetime.now(timezone.utc).isoformat(),
+        "capture_kind": "local_failure" if "error" in result else "tool_response",
+    }
+
+
+async def _request(repo, action, topic, policy_path):
     """Only public owner/repo identifiers and fixed topic questions can leave here."""
     try:
         config = load_policy(policy_path)

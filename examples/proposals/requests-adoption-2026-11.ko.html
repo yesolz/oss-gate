@@ -327,7 +327,7 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
 </blockquote>
 </div></section><details class="details context"><summary>검토 정보</summary><div class="review-body"><p>근거 기준일: 2026-11-17 · 제안 예제 · 검증: <strong>WARN</strong></p>
 </div></details><section class="sec" id="review"><h2>도입 검토서</h2><article class="review-body"><h2>1. 배경과 대상</h2>
-<p>외부 HTTP API를 호출하는 Python 서비스에 Requests를 사용하는 상황을 가정한다. “백엔드 API 팀”은 제안을 설명하기 위한 가정이며 실제 조직의 요구사항을 확인한 것은 아니다. Requests 2.34.2는 정책 v2에서 조건부다. 남은 도입 질문은 certifi@2026.10.23의 MPL-2.0 의무와 실제 수정·배포 방식이다. [근거 1, 2]</p>
+<p>외부 HTTP API를 호출하는 Python 서비스에 Requests를 사용하는 상황을 가정한다. “백엔드 API 팀”은 제안을 설명하기 위한 가정이며 실제 조직의 요구사항을 확인한 것은 아니다. Requests 2.34.2는 정책 v3에서 조건부다. 남은 도입 질문은 certifi@2026.10.23의 MPL-2.0 의무와 실제 수정·배포 방식이다. [근거 1, 2]</p>
 <p>패키지 자신의 라이선스는 Apache-2.0이다. 저장된 직접 의존성은 certifi, charset-normalizer, idna, urllib3 네 개이며 간접 의존성은 없다. 이 그래프가 특정 서비스의 실제 설치 환경과 같은지는 확인하지 않았다. [근거 2]</p>
 <h2>2. 제안하는 도입 조건</h2>
 <p><strong>환경 확인.</strong> 실제 런타임과 lockfile을 검토한다. 과거 스냅샷의 버전은 Requests 2.34.2, certifi 2026.10.23, charset-normalizer 3.5.2, idna 3.20.0, urllib3 2.8.0이다. 이 목록은 비교 기준이며 현재 시점의 설치 권고가 아니다. 다른 버전이나 extras를 사용할 경우 해당 환경을 새로 검토한다. [근거 2, 3]</p>
