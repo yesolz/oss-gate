@@ -107,7 +107,7 @@ uv run --frozen python scripts/build_site.py
 
 [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md) · [MIT license](LICENSE) · [Third-party attribution](NOTICE.md)
 
-[Release validation](docs/release-v0.4.2.md)
+[Release validation](docs/release-v0.5.0.md)
 
 [Optional policies and CLI](docs/customization.md): no configuration is needed for ordinary reviews.
 

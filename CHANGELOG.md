@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.5.0
 
 - Preserve failed DeepWiki responses with tool-recorded capture metadata and index multiple topics without rewriting responses.
 - Record agent checks through a validated local command with save time, evidence/narrative hashes and explicit archived replacement; reject stale checks.

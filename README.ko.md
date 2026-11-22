@@ -107,7 +107,7 @@ uv run --frozen python scripts/build_site.py
 
 [기여 안내](CONTRIBUTING.md) · [보안](SECURITY.md) · [변경 기록](CHANGELOG.md) · [MIT 라이선스](LICENSE) · [외부 자료 출처](NOTICE.md)
 
-[릴리즈 검증 기록](docs/release-v0.4.2.md)
+[릴리즈 검증 기록](docs/release-v0.5.0.md)
 
 [선택적 정책과 CLI](docs/customization.ko.md): 일반 검토에는 별도 설정이 필요하지 않습니다.
 
