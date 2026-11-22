@@ -33,7 +33,8 @@ COPY = {
         "c": "Keep the underlying evidence",
         "cp": "Markdown for collaboration, offline HTML for reading, and JSON snapshots with integrity hashes.",
         "s2": "Open the review files",
-        "note": "Historical examples, collected November 17, 2026. Revised under policy v2. These are saved snapshots, not live scan results.",
+        "note": "Saved examples, collected November 17 and 22, 2026. Evaluated under policy v3. These are saved snapshots, not live scan results.",
+        "r0": "An allow result with preserved API evidence and a matching dependency graph.",
         "r1": "A conditional decision caused by a dependency’s MPL-2.0 license.",
         "r2": "A previous-version graph leaves the requested version’s dependencies unverified.",
         "r3": "Known high-severity findings, dependency paths and license-review actions.",
@@ -50,7 +51,7 @@ COPY = {
         "limit": "A screening aid, not a legal opinion or security certification.",
         "preview": "ADOPTION REVIEW",
         "stamp": "CONDITIONAL",
-        "stampSub": "POLICY V2",
+        "stampSub": "POLICY V3",
         "date": "SAVED 2026-11-17",
         "lic": "License review",
         "known": "Known advisories",
@@ -73,7 +74,8 @@ COPY = {
         "c": "판단의 근거 보관하기",
         "cp": "협업에는 마크다운, 읽기에는 오프라인 HTML, 근거 확인에는 JSON 스냅샷과 무결성 해시를 사용합니다.",
         "s2": "검토서 파일 열어보기",
-        "note": "2026년 11월 17일 수집한 과거 자료를 정책 v2로 개정한 예제입니다. 저장된 스냅샷이며 실시간 검사 결과가 아닙니다.",
+        "note": "2026년 11월 17일과 22일 수집한 자료를 정책 v3로 평가한 예제입니다. 저장된 스냅샷이며 실시간 검사 결과가 아닙니다.",
+        "r0": "일치하는 의존성 그래프와 API 원문을 보존한 가능 판정 예제입니다.",
         "r1": "의존성의 MPL-2.0 라이선스로 조건부가 된 검토서입니다.",
         "r2": "이전 버전의 그래프로는 요청 버전의 의존성을 확인할 수 없습니다.",
         "r3": "높은 심각도 취약점과 의존성 경로, 라이선스 조치를 함께 봅니다.",
@@ -90,7 +92,7 @@ COPY = {
         "limit": "도입 검토를 돕는 자료이며 법적 판단이나 보안 인증이 아닙니다.",
         "preview": "오픈소스 도입 검토서",
         "stamp": "조건부",
-        "stampSub": "POLICY V2",
+        "stampSub": "POLICY V3",
         "date": "2026-11-17 자료",
         "lic": "라이선스 검토",
         "known": "알려진 권고",
@@ -114,6 +116,7 @@ def build():
         c = COPY[lang]
         ko = lang == "ko"
         specs = [
+            ("pypi-packaging-26.3", "packaging", "r0"),
             ("psf-requests-2.34.2", "Requests", "r1"),
             ("fastapi-fastapi-0.163.1", "FastAPI", "r2"),
             ("npm-next-15.1.0", "Next.js", "r3"),
@@ -128,7 +131,7 @@ def build():
                 f'<article class="review-row"><span class="num">0{idx}</span><div><h3>{name}</h3><span class="version">{html.escape(data["target"]["version"])}</span></div><p>{c[desc]}</p><div class="result"><span class="tag {grade}">{LABELS[lang][grade]}</span><div class="links"><a href="{prefix}/report.{lang}.html">{c["open"]} ↗</a><a href="{prefix}/review.{lang}.md" download>{c["md"]}</a><a href="{prefix}/data.json" download>{c["json"]}</a></div></div></article>'
             )
         guide = "https://github.com/yesolz/oss-gate/blob/main/docs/installation" + (".ko" if ko else "") + ".md"
-        body = f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; base-uri 'none'; form-action 'none'"><meta name="description" content="{html.escape(c["sub"])}"><title>OSS Gate | {c["preview"]}</title><link rel="stylesheet" href="style.css"></head><body><a class="skip" href="#main">{c["skip"]}</a><header><a class="wordmark" href="index{".ko" if ko else ""}.html">OSS <span>GATE</span></a><nav aria-label="Language"><a href="index.ko.html" lang="ko" {'aria-current="page"' if ko else ""}>한국어</a><a href="index.html" lang="en" {'aria-current="page"' if not ko else ""}>English</a><a href="https://github.com/yesolz/oss-gate">GitHub ↗</a></nav></header><main id="main"><section class="hero"><div><div class="eyebrow">OSS Gate / v0.4.2</div><h1>{c["hero"]}</h1><p>{c["lead"]}</p><div class="actions"><a class="button" href="#reviews">{c["browse"]}</a><a class="button secondary" href="#install">{c["install"]}</a></div></div><aside class="preview" aria-label="{c["preview"]}"><div class="preview-top"><span>OSS GATE</span><span>{c["date"]}</span></div><div class="stamp"><small>{c["stampSub"]}</small>{c["stamp"]}</div><h2>requests</h2><span class="version">2.34.2 / PyPI</span><dl><div><dt>{c["lic"]}</dt><dd>{c["licValue"]}</dd></div><div><dt>{c["known"]}</dt><dd>0</dd></div><div><dt>{c["dep"]}</dt><dd>4</dd></div></dl><p>{c["prevNote"]}</p></aside></section><div class="section-head"><span>01</span><h2>{c["s1"]}</h2></div><section class="scope"><article><h3>{c["a"]}</h3><p>{c["ap"]}</p></article><article><h3>{c["b"]}</h3><p>{c["bp"]}</p></article><article><h3>{c["c"]}</h3><p>{c["cp"]}</p></article></section><section id="reviews"><div class="section-head"><span>02</span><h2>{c["s2"]}</h2></div><p class="note">{c["note"]}</p>{"".join(rows)}<div class="more"><a href="examples/periodic/2026-11-python-web.{lang}.html">{c["periodic"]} ↗</a><a href="examples/proposals/requests-adoption-2026-11.{lang}.html">{c["proposal"]} ↗</a></div></section><section id="install"><div class="section-head"><span>03</span><h2>{c["s3"]}</h2></div><div class="install"><article><h3>Claude Code</h3><pre>claude plugin marketplace add yesolz/oss-gate\nclaude plugin install oss-gate@oss-gate</pre></article><article><h3>Codex</h3><pre>codex plugin marketplace add yesolz/oss-gate\ncodex plugin add oss-gate@oss-gate</pre></article></div><p class="small">{c["req"]}</p><a href="{guide}">{c["guide"]} ↗</a></section></main><footer><span>© 2026 yesolz · <a href="NOTICE.md">{c["footer"]}</a></span><p>{c["limit"]}</p></footer></body></html>'''
+        body = f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; base-uri 'none'; form-action 'none'"><meta name="description" content="{html.escape(c["sub"])}"><title>OSS Gate | {c["preview"]}</title><link rel="stylesheet" href="style.css"></head><body><a class="skip" href="#main">{c["skip"]}</a><header><a class="wordmark" href="index{".ko" if ko else ""}.html">OSS <span>GATE</span></a><nav aria-label="Language"><a href="index.ko.html" lang="ko" {'aria-current="page"' if ko else ""}>한국어</a><a href="index.html" lang="en" {'aria-current="page"' if not ko else ""}>English</a><a href="https://github.com/yesolz/oss-gate">GitHub ↗</a></nav></header><main id="main"><section class="hero"><div><div class="eyebrow">OSS Gate / v0.5.0</div><h1>{c["hero"]}</h1><p>{c["lead"]}</p><div class="actions"><a class="button" href="#reviews">{c["browse"]}</a><a class="button secondary" href="#install">{c["install"]}</a></div></div><aside class="preview" aria-label="{c["preview"]}"><div class="preview-top"><span>OSS GATE</span><span>{c["date"]}</span></div><div class="stamp"><small>{c["stampSub"]}</small>{c["stamp"]}</div><h2>requests</h2><span class="version">2.34.2 / PyPI</span><dl><div><dt>{c["lic"]}</dt><dd>{c["licValue"]}</dd></div><div><dt>{c["known"]}</dt><dd>0</dd></div><div><dt>{c["dep"]}</dt><dd>4</dd></div></dl><p>{c["prevNote"]}</p></aside></section><div class="section-head"><span>01</span><h2>{c["s1"]}</h2></div><section class="scope"><article><h3>{c["a"]}</h3><p>{c["ap"]}</p></article><article><h3>{c["b"]}</h3><p>{c["bp"]}</p></article><article><h3>{c["c"]}</h3><p>{c["cp"]}</p></article></section><section id="reviews"><div class="section-head"><span>02</span><h2>{c["s2"]}</h2></div><p class="note">{c["note"]}</p>{"".join(rows)}<div class="more"><a href="examples/periodic/2026-11-python-web.{lang}.html">{c["periodic"]} ↗</a><a href="examples/proposals/requests-adoption-2026-11.{lang}.html">{c["proposal"]} ↗</a></div></section><section id="install"><div class="section-head"><span>03</span><h2>{c["s3"]}</h2></div><div class="install"><article><h3>Claude Code</h3><pre>claude plugin marketplace add yesolz/oss-gate\nclaude plugin install oss-gate@oss-gate</pre></article><article><h3>Codex</h3><pre>codex plugin marketplace add yesolz/oss-gate\ncodex plugin add oss-gate@oss-gate</pre></article></div><p class="small">{c["req"]}</p><a href="{guide}">{c["guide"]} ↗</a></section></main><footer><span>© 2026 yesolz · <a href="NOTICE.md">{c["footer"]}</a></span><p>{c["limit"]}</p></footer></body></html>'''
         (OUT / ("index.ko.html" if ko else "index.html")).write_text(body, encoding="utf-8", newline="\n")
     (OUT / ".nojekyll").touch()
     print(OUT)

@@ -5,7 +5,7 @@ description: Create an evidence-backed open-source adoption review from a public
 
 # OSS Gate review
 
-Read `references/transport.md`, `references/workflow.md` and `references/report-template.md` relative to this skill before collecting evidence. Run the workflow in the current session; delegated agents are optional only when the user or host explicitly authorizes them.
+Read `references/transport.md`, `references/workflow.md` and `references/report-template.md` and `references/evidence-files.md` relative to this skill before collecting evidence. Run the workflow in the current session; delegated agents are optional only when the user or host explicitly authorizes them.
 
 ## Contract
 
@@ -17,13 +17,13 @@ Read `references/transport.md`, `references/workflow.md` and `references/report-
 - Send only public package identifiers, versions and public repository names. A manifest can contain private names and registry credentials: inspect locally and remove those entries before any network request. Explain exclusions without reproducing secrets.
 - Do not install or execute the reviewed package. Do not read environment secrets, `.env`, SSH keys or credential files.
 - Version ranges are not installed versions. Missing, failed, truncated, old-version or unqueried evidence must stay visible. A fix existing elsewhere does not make the reviewed vulnerable version safe.
-- A verdict is a screening outcome under `oss-gate.policy/2`, not legal approval, exploitability proof, a source-code audit, or security certification.
+- A verdict is a screening outcome under `oss-gate.policy/3`, not legal approval, exploitability proof, a source-code audit, or security certification.
 
 ## Output and translation
 
-`collect_review` creates a unique local directory and sealed evidence. Read it directly; do not reconstruct or edit the data from memory. Add `deepwiki.json`, `verification.json`, `review.ko.md` and/or `review.en.md` beside it. Preserve tool-returned DeepWiki text, identify it as AI-generated and not version-pinned, and distinguish quotes from interpretation.
+`collect_review` creates a unique local directory and sealed evidence. Read it directly; do not reconstruct or edit the data from memory. Use the evidence-file commands to save explanation responses, their `deepwiki.json` index and `verification.json`; write `review.ko.md` and/or `review.en.md` beside them. Preserve tool-returned DeepWiki text, identify it as AI-generated and not version-pinned, and distinguish quotes from interpretation.
 
-Both languages use the same snapshot, policy, IDs, scores, versions, sources and limitations. Produce two separate complete documents. Do not put a Korean narrative under English headings. For a later translation, verify `evidence-sha256.json`, reuse the existing snapshot and translate the document. Network refresh is a new review, only when requested.
+Both languages use the same snapshot, policy, IDs, scores, versions, sources and limitations. Produce two separate complete documents. Do not put a Korean narrative under English headings. For a later translation, verify `evidence-sha256.json`, reuse the existing snapshot and translate the document. Recheck both narratives and replace the verification record explicitly before rendering; the previous record is archived. Network refresh is a new review, only when requested.
 
 Use the plugin's locked runtime to render:
 

@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.0
+
+- Preserve failed DeepWiki responses with tool-recorded capture metadata and index multiple topics without rewriting responses.
+- Record agent checks through a validated local command with save time, evidence/narrative hashes and explicit archived replacement; reject stale checks.
+- Document evidence-file formats, workspace output locations and locked-runtime mirror troubleshooting.
+
+- Add policy/3 license classifications, distinct uncertainty reasons and explicit OR choices using a pinned SPDX identifier catalog.
+- Support optional license restrictions and attributed acceptance records without changing automated verdicts; reassess verified saved evidence offline into a new snapshot.
+- Show actionable bilingual license findings, preserve reassessment provenance and handle equivalent PyPI versions consistently in dependency cards.
+- Lead the README with real report screenshots and add a fresh bilingual allow example with raw evidence.
+
 ## 0.4.2
 
 - Support explicit additional PEM CA certificates through `network.additional_ca_file`, preserving default trust, TLS verification and outbound restrictions. Isolate custom connection pools per operation and preserve the loaded CA hash in review evidence.

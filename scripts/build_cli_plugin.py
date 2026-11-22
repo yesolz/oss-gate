@@ -21,6 +21,8 @@ Workflow operation mapping:
 | `audit_manifest(text, type)` | `audit <sanitized-file> --type <type> --out <new-audit.json>` |
 | `collect_review(...)` | `collect <system> <name> --version <version> --repo <repo> --output-root <directory>` |
 | DeepWiki explanation | `explain <owner/repo> --topic <topic> --out <new-topic.json>` |
+| Explanation index | `index-explanations <review-directory> <topic-files...>` |
+| Agent evidence check | `record-verification <review-directory> --input <check-input.json>` |
 | HTML output | `render <review-directory> --language <ko|en|both>` |
 
 Prefix every command with `uv run --frozen --project "<plugin-root>" python

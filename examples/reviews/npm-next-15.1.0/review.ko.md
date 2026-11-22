@@ -1,8 +1,8 @@
 # next 15.1.0: 오픈소스 도입 검토서
 
-자료 수집일: 2026-11-17T00:00:00Z · npm · vercel/next.js · oss-gate.policy/2
+자료 수집일: 2026-11-17T00:00:00Z · npm · vercel/next.js · oss-gate.policy/3
 
-> 과거 자료로 만든 예제입니다. 원본 스냅샷을 보존하고 정책 v2로 판정을 다시 계산했습니다. 실시간 검사 결과가 아닙니다.
+> 과거 자료로 만든 예제입니다. 원본 스냅샷을 보존하고 정책 v3로 판정을 다시 계산했습니다. 실시간 검사 결과가 아닙니다.
 
 **판정: 보류**
 
@@ -19,7 +19,7 @@ Next.js는 React 라우팅, 서버 렌더링, 서버 기능과 빌드 도구를 
 
 도입 검토를 돕는 자료이며 법적 판단이나 보안 인증이 아닙니다. 공개 메타데이터는 불완전할 수 있습니다. DeepWiki 설명은 AI 생성 자료이며 검토 버전과 다를 수 있습니다.
 
-과거 판정: `보류`. 현재 표는 동일한 저장 자료에 정책 v2를 적용한 결과다.
+과거 판정: `보류`. 현재 표는 동일한 저장 자료에 정책 v3를 적용한 결과다.
 
 ## 2. 이 소프트웨어는 무엇인가
 
@@ -77,7 +77,7 @@ Next.js는 React 라우팅, 서버 렌더링, 서버 기능과 빌드 도구를 
 | @swc/counter | 0.1.3 | Apache-2.0 | permissive | next@15.1.0 → @swc/counter@0.1.3 |
 | @swc/helpers | 0.5.15 | Apache-2.0 | permissive | next@15.1.0 → @swc/helpers@0.5.15 |
 | busboy | 1.6.0 | 미측정 | unknown | next@15.1.0 → busboy@1.6.0 |
-| caniuse-lite | 1.0.30001823 | CC-BY-4.0 | unknown | next@15.1.0 → caniuse-lite@1.0.30001823 |
+| caniuse-lite | 1.0.30001823 | CC-BY-4.0 | attribution | next@15.1.0 → caniuse-lite@1.0.30001823 |
 | client-only | 0.0.1 | MIT | permissive | next@15.1.0 → styled-jsx@5.1.6 → client-only@0.0.1 |
 | color | 4.2.3 | MIT | permissive | next@15.1.0 → sharp@0.33.5 → color@4.2.3 |
 | color-convert | 2.0.1 | MIT | permissive | next@15.1.0 → sharp@0.33.5 → color@4.2.3 → color-convert@2.0.1 |
@@ -218,7 +218,7 @@ Next.js는 React 라우팅, 서버 렌더링, 서버 기능과 빌드 도구를 
 
 ## 7. 유지보수
 
-저장된 Scorecard 총점은 6.2, 기준일은 2026-08-24다. 정책 v2는 Maintained 체크가 10이어도 유지보수를 조건부로 판정한다. 활발한 활동만으로 다른 측정 항목을 상쇄하지 않는다. Code-Review 9, Security-Policy 10이며, 의존성 고정·토큰 권한·바이너리 산출물·정적 분석에는 낮은 점수도 있다. Branch-Protection과 Signed-Releases는 미평가(-1)이고 Vulnerabilities 체크는 없다. [출처: `data.json#/get_project/scorecard`]
+저장된 Scorecard 총점은 6.2, 기준일은 2026-08-24다. 정책 v3는 Maintained 체크가 10이어도 유지보수를 조건부로 판정한다. 활발한 활동만으로 다른 측정 항목을 상쇄하지 않는다. Code-Review 9, Security-Policy 10이며, 의존성 고정·토큰 권한·바이너리 산출물·정적 분석에는 낮은 점수도 있다. Branch-Protection과 Signed-Releases는 미평가(-1)이고 Vulnerabilities 체크는 없다. [출처: `data.json#/get_project/scorecard`]
 
 과거 설명은 Vercel의 프로젝트, 유지관리자 리뷰, stable·canary 릴리스 채널, Vercel HackerOne을 통한 비공개 보안 신고를 제시한다. 고정된 stable 릴리스 주기나 현재 신고 절차를 독립적으로 검증한 것은 아니다. 실제 신고에는 upstream의 최신 보안 정책을 따른다.
 
@@ -243,7 +243,7 @@ Next.js는 React 라우팅, 서버 렌더링, 서버 기능과 빌드 도구를 
 
 1. 15.1.0의 알려진 높은 심각도 취약점은 해당 버전의 도입 차단 항목으로 본다. 대체 버전을 고르기 전에 권고별 생태계·영향 패키지·버전 분기를 대조한다. 수정 버전이 존재해도 15.1.0 자체가 안전해지지는 않는다.
 2. 프레임워크를 올린 뒤 실제 해석된 postcss·sharp 버전을 확인한다. 검토와 관련 앱 테스트를 다시 실행한다. 프레임워크 버전이나 평탄화된 수정 버전 목록만으로 해결됐다고 추정하지 않는다.
-3. 실제 배포되는 sharp/libvips 산출물의 LGPL 의무와 caniuse-lite CC-BY-4.0의 출처 표시 조건을 검토한다. CC-BY-4.0은 알려진 데이터 라이선스다. 여기서 `unknown`은 이 정책이 자동 승인하지 않는다는 뜻이며 라이선스가 없다는 뜻이 아니다.
+3. 실제 배포되는 sharp/libvips 산출물의 LGPL 의무와 caniuse-lite CC-BY-4.0의 출처 표시 조건을 검토한다. 정책/3은 CC-BY-4.0을 unknown 대신 출처 표시 검토가 필요한 조건부로 분류한다. 해당 자료의 출처·라이선스 링크·변경 고지를 확인해야 한다.
 4. 15.1.0의 busboy·streamsearch는 저장된 메타데이터 배열이 비어 있으므로 정확한 버전의 라이선스 파일을 확인한다. 빈 메타데이터가 라이선스 부재의 증거는 아니다.
 5. 정확한 릴리스·배포 환경에서 텔레메트리 설정, 브라우저 노출 환경 변수, 이미지 처리 기능을 점검한다. 재현되지 않은 위키 설명에 의존하지 않는다.
 6. 미확인 유지보수 관행을 기록하고 운영 승인 전에 최신 자료를 확보한다. 번역하거나 버전을 비교할 때 이 스냅샷은 보존한다.

@@ -1,8 +1,8 @@
 # requests 2.34.2: Open-source adoption review
 
-Snapshot date: 2026-11-17T00:00:00Z · pypi · psf/requests · oss-gate.policy/2
+Snapshot date: 2026-11-17T00:00:00Z · pypi · psf/requests · oss-gate.policy/3
 
-> Historical example. The source snapshot is preserved; the verdict shown here is reassessed using policy v2. This is not a live scan.
+> Historical example. The source snapshot is preserved; the verdict shown here is reassessed using policy v3. This is not a live scan.
 
 **Verdict: Conditional**
 
@@ -19,7 +19,7 @@ Requests is a Python HTTP client for services that need readable code for callin
 
 A screening aid, not a legal opinion or security certification. Public metadata can be incomplete. DeepWiki narratives are AI-generated and may not describe the reviewed version.
 
-Historical verdict: `Conditional`. The table above applies policy v2 to the same saved evidence.
+Historical verdict: `Conditional`. The table above applies policy v3 to the same saved evidence.
 
 ## 2. What the software does
 

@@ -125,7 +125,7 @@ def validate(config):
         ):
             raise ValueError("identifier patterns require an ecosystem: or repo: prefix")
     review = config.get("review", {})
-    _keys(review, {"minimum_release_age_days", "require_communication_review", "blocked_destinations"})
+    _keys(review, {"minimum_release_age_days", "require_communication_review", "blocked_destinations", "license_restrictions", "license_decisions"})
     if "minimum_release_age_days" in review:
         days = review["minimum_release_age_days"]
         if type(days) is not int or not 0 <= days <= 3650:
@@ -138,6 +138,9 @@ def validate(config):
             not re.fullmatch(r"(?:\*\.)?[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?", v) for v in review["blocked_destinations"]
         ):
             raise ValueError("blocked destinations must be lowercase host names or *.host patterns")
+    from .license_policy import validate_rules
+
+    validate_rules(review)
     return config
 
 

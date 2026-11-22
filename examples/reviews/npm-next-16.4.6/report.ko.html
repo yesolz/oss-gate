@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-P7o5K9rZzfDtdK3dC4Cf9WdUXHNGgX6rv48xkEcSukk='; img-src data:; base-uri 'none'; form-action 'none'"><meta name="generator" content="OSS Gate 0.4.2"><title>next 16.4.6 | OSS Gate</title><style>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-P7o5K9rZzfDtdK3dC4Cf9WdUXHNGgX6rv48xkEcSukk='; img-src data:; base-uri 'none'; form-action 'none'"><meta name="generator" content="OSS Gate 0.5.0"><title>next 16.4.6 | OSS Gate</title><style>
 :root{
   color-scheme:light;
   --paper:#eceeeb;--sheet:#ffffff;--sheet-2:#f4f5f2;
@@ -322,11 +322,11 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
 
 @media print{.actions,.language,.skip{display:none!important}.cover{position:static}.review-body h2{break-after:avoid}.node,.notice{break-inside:avoid}.table-wrap{overflow:visible}details{display:block}.page{padding:0}.sheet{padding:25px}a{color:inherit;text-decoration:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
-</style></head><body><a class="skip" href="#main">검토서 전문 읽기</a><div class="page"><aside class="cover"><div class="cover-in"><a class="brand" href="#main"><span class="wordmark">OSS GATE</span><span class="brand-sub">오픈소스 도입 검토서</span></a><nav class="language" aria-label="Language"><a href="report.ko.html" lang="ko" aria-current=page>한국어</a><a href="report.en.html" lang="en" >English</a></nav><div class="seal-wrap"><div class="seal st-serious" style="--seal:160px"><svg class="seal-ring" viewBox="0 0 160 160" aria-hidden="true"><circle cx="80" cy="80" r="76" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="80" cy="80" r="69" fill="none" stroke="currentColor"/></svg><div class="seal-text"><span class="seal-k">판정</span><span class="seal-v">보류</span><span class="seal-d">2026-11-17</span></div></div><p class="seal-cap">자동 정책 판정</p></div><details class="details grade-guide"><summary>판정 읽는 법</summary><p>가능: 현재 점검 기준을 통과했습니다. 조건부: 확인하거나 조치할 일이 남았습니다. 보류: 정책상 막는 항목을 해결해야 합니다. 확인 필요는 개별 항목의 근거 상태입니다. PASS / WARN / FAIL은 보고서의 근거 검증 상태이며 도입 승인이 아닙니다.</p></details><nav class="arows"><a href="#dependencies"><span class="area-label">라이선스</span><strong class="st-serious">보류</strong></a><a href="#vulnerabilities"><span class="area-label">알려진 취약점</span><strong class="st-good">가능</strong></a><a href="#dependencies"><span class="area-label">의존성</span><strong class="st-good">가능</strong></a><a href="#maintenance"><span class="area-label">유지보수</span><strong class="st-warn">조건부</strong></a></nav><nav class="toc"><a href="#main">결론부터 읽기</a><a href="#appendix">수치와 상세 근거</a></nav><div class="actions"><button data-print>인쇄 / PDF</button><a href="review.ko.md" download>마크다운</a><a href="data.json" download>근거 JSON</a></div></div></aside><main class="sheet" id="main"><header class="doc-head"><p class="meta">npm / 2026-11-17</p><h1 class="pkg">next<span class="ver">16.4.6</span></h1><p class="desc">오픈소스 도입 검토서</p></header><p class="notice">과거 자료로 만든 예제입니다. 원본 스냅샷을 보존하고 정책 v2로 판정을 다시 계산했습니다. 실시간 검사 결과가 아닙니다.</p><section class="sec" id="decision"><h2>결론부터 읽기</h2><div class="review-body brief"><p><strong>판정: 보류</strong></p>
+</style></head><body><a class="skip" href="#main">검토서 전문 읽기</a><div class="page"><aside class="cover"><div class="cover-in"><a class="brand" href="#main"><span class="wordmark">OSS GATE</span><span class="brand-sub">오픈소스 도입 검토서</span></a><nav class="language" aria-label="Language"><a href="report.ko.html" lang="ko" aria-current=page>한국어</a><a href="report.en.html" lang="en" >English</a></nav><div class="seal-wrap"><div class="seal st-warn" style="--seal:160px"><svg class="seal-ring" viewBox="0 0 160 160" aria-hidden="true"><circle cx="80" cy="80" r="76" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="80" cy="80" r="69" fill="none" stroke="currentColor"/></svg><div class="seal-text"><span class="seal-k">판정</span><span class="seal-v">조건부</span><span class="seal-d">2026-11-17</span></div></div><p class="seal-cap">자동 정책 판정</p></div><details class="details grade-guide"><summary>판정 읽는 법</summary><p>가능: 현재 점검 기준을 통과했습니다. 조건부: 확인하거나 조치할 일이 남았습니다. 보류: 정책상 막는 항목을 해결해야 합니다. 확인 필요는 개별 항목의 근거 상태입니다. PASS / WARN / FAIL은 보고서의 근거 검증 상태이며 도입 승인이 아닙니다.</p></details><nav class="arows"><a href="#license-review"><span class="area-label">라이선스</span><strong class="st-warn">조건부</strong></a><a href="#vulnerabilities"><span class="area-label">알려진 취약점</span><strong class="st-good">가능</strong></a><a href="#dependencies"><span class="area-label">의존성</span><strong class="st-good">가능</strong></a><a href="#maintenance"><span class="area-label">유지보수</span><strong class="st-warn">조건부</strong></a></nav><nav class="toc"><a href="#main">결론부터 읽기</a><a href="#appendix">수치와 상세 근거</a></nav><div class="actions"><button data-print>인쇄 / PDF</button><a href="review.ko.md" download>마크다운</a><a href="data.json" download>근거 JSON</a></div></div></aside><main class="sheet" id="main"><header class="doc-head"><p class="meta">npm / 2026-11-17</p><h1 class="pkg">next<span class="ver">16.4.6</span></h1><p class="desc">오픈소스 도입 검토서</p></header><p class="notice">과거 자료로 만든 예제입니다. 원본 스냅샷을 보존하고 정책 v3로 판정을 다시 계산했습니다. 실시간 검사 결과가 아닙니다.</p><section class="sec" id="decision"><h2>결론부터 읽기</h2><div class="review-body brief"><p><strong>판정: 조건부</strong></p>
 <p>Next.js는 React 라우팅, 서버 렌더링, 서버 기능과 빌드 도구를 묶는다. 저장된 두 버전 모두 의존성 라이선스 확인이 필요하다. 15.1.0에는 패키지 자신과 의존성 그래프의 높은 심각도 취약점도 있다. 이 과거 예제는 같은 프레임워크라도 버전에 따라 결과가 달라짐을 보여 준다. 현재 시점에 오래된 릴리스를 설치하라는 권고는 아니다.</p>
-</div></section><details class="details context"><summary>검토 정보</summary><div class="review-body"><p>자료 수집일: 2026-11-17T00:00:00Z · npm · vercel/next.js · oss-gate.policy/2</p>
+</div></section><details class="details context"><summary>검토 정보</summary><div class="review-body"><p>자료 수집일: 2026-11-17T00:00:00Z · npm · vercel/next.js · oss-gate.policy/3</p>
 <blockquote>
-<p>과거 자료로 만든 예제입니다. 원본 스냅샷을 보존하고 정책 v2로 판정을 다시 계산했습니다. 실시간 검사 결과가 아닙니다.</p>
+<p>과거 자료로 만든 예제입니다. 원본 스냅샷을 보존하고 정책 v3로 판정을 다시 계산했습니다. 실시간 검사 결과가 아닙니다.</p>
 </blockquote>
 </div></details><section class="sec" id="review"><h2>도입 검토서</h2><article class="review-body"><h2>1. 판정과 범위</h2>
 <div class="table-wrap"><table>
@@ -339,7 +339,7 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
 <tbody>
 <tr>
 <td>라이선스</td>
-<td>보류</td>
+<td>조건부</td>
 </tr>
 <tr>
 <td>알려진 취약점</td>
@@ -356,7 +356,7 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
 </tbody>
 </table></div>
 <p>도입 검토를 돕는 자료이며 법적 판단이나 보안 인증이 아닙니다. 공개 메타데이터는 불완전할 수 있습니다. DeepWiki 설명은 AI 생성 자료이며 검토 버전과 다를 수 있습니다.</p>
-<p>과거 판정: <code>보류</code>. 현재 표는 동일한 저장 자료에 정책 v2를 적용한 결과다.</p>
+<p>과거 판정: <code>보류</code>. 현재 표는 동일한 저장 자료에 정책 v3를 적용한 결과다.</p>
 <h2>2. 이 소프트웨어는 무엇인가</h2>
 <p>과거 DeepWiki 설명에는 App Router·Pages Router, 서버 렌더링 React 앱, 통합 컴파일·빌드 도구가 있다. Turbopack, 캐싱, 부분 프리렌더링도 다루지만 저장소 위키는 요청한 패키지 버전에 고정돼 있지 않다. 특히 새 Next.js 동작에 관한 설명을 15.1.0에도 적용하면 안 된다. [출처: 과거 검토서의 설명, 존재하는 경우 <code>data.json#/deepwiki</code>]</p>
 <p>저장소는 <code>packages/next</code>에 프레임워크, <code>crates</code>에 네이티브 코드, <code>turbopack</code>에 Turbopack 소스가 있는 pnpm 모노레포로 설명됐다. CLI 진입점에는 <code>next-dev.ts</code>, <code>next-build.ts</code>, <code>next-start.ts</code>가 있다. 요청 흐름 설명은 <code>router-server.ts</code>, <code>resolveRoutes</code>, <code>BaseServer</code>, 라우트 매칭, App/Page 모듈 또는 라우트 핸들러를 거친다. 렌더링 중 요청별 URL·헤더·쿠키를 사용한다. 발췌만으로 Edge Proxy의 최종 변환 경로 전체를 확인하지는 못했다.</p>
@@ -656,7 +656,7 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
 <td>caniuse-lite</td>
 <td>1.0.30001823</td>
 <td>CC-BY-4.0</td>
-<td>unknown</td>
+<td>attribution</td>
 <td>next@16.4.6 → caniuse-lite@1.0.30001823</td>
 </tr>
 <tr>
@@ -997,7 +997,7 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
 </tbody>
 </table></div>
 <h2>7. 유지보수</h2>
-<p>저장된 Scorecard 총점은 6.2, 기준일은 2026-08-24다. 정책 v2는 Maintained 체크가 10이어도 유지보수를 조건부로 판정한다. 활발한 활동만으로 다른 측정 항목을 상쇄하지 않는다. Code-Review 9, Security-Policy 10이며, 의존성 고정·토큰 권한·바이너리 산출물·정적 분석에는 낮은 점수도 있다. Branch-Protection과 Signed-Releases는 미평가(-1)이고 Vulnerabilities 체크는 없다. [출처: <code>data.json#/get_project/scorecard</code>]</p>
+<p>저장된 Scorecard 총점은 6.2, 기준일은 2026-08-24다. 정책 v3는 Maintained 체크가 10이어도 유지보수를 조건부로 판정한다. 활발한 활동만으로 다른 측정 항목을 상쇄하지 않는다. Code-Review 9, Security-Policy 10이며, 의존성 고정·토큰 권한·바이너리 산출물·정적 분석에는 낮은 점수도 있다. Branch-Protection과 Signed-Releases는 미평가(-1)이고 Vulnerabilities 체크는 없다. [출처: <code>data.json#/get_project/scorecard</code>]</p>
 <p>과거 설명은 Vercel의 프로젝트, 유지관리자 리뷰, stable·canary 릴리스 채널, Vercel HackerOne을 통한 비공개 보안 신고를 제시한다. 고정된 stable 릴리스 주기나 현재 신고 절차를 독립적으로 검증한 것은 아니다. 실제 신고에는 upstream의 최신 보안 정책을 따른다.</p>
 <div class="table-wrap"><table>
 <thead>
@@ -1084,7 +1084,7 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
 <ol>
 <li>15.1.0의 알려진 높은 심각도 취약점은 해당 버전의 도입 차단 항목으로 본다. 대체 버전을 고르기 전에 권고별 생태계·영향 패키지·버전 분기를 대조한다. 수정 버전이 존재해도 15.1.0 자체가 안전해지지는 않는다.</li>
 <li>프레임워크를 올린 뒤 실제 해석된 postcss·sharp 버전을 확인한다. 검토와 관련 앱 테스트를 다시 실행한다. 프레임워크 버전이나 평탄화된 수정 버전 목록만으로 해결됐다고 추정하지 않는다.</li>
-<li>실제 배포되는 sharp/libvips 산출물의 LGPL 의무와 caniuse-lite CC-BY-4.0의 출처 표시 조건을 검토한다. CC-BY-4.0은 알려진 데이터 라이선스다. 여기서 <code>unknown</code>은 이 정책이 자동 승인하지 않는다는 뜻이며 라이선스가 없다는 뜻이 아니다.</li>
+<li>실제 배포되는 sharp/libvips 산출물의 LGPL 의무와 caniuse-lite CC-BY-4.0의 출처 표시 조건을 검토한다. 정책/3은 CC-BY-4.0을 unknown 대신 출처 표시 검토가 필요한 조건부로 분류한다. 해당 자료의 출처·라이선스 링크·변경 고지를 확인해야 한다.</li>
 <li>15.1.0의 busboy·streamsearch는 저장된 메타데이터 배열이 비어 있으므로 정확한 버전의 라이선스 파일을 확인한다. 빈 메타데이터가 라이선스 부재의 증거는 아니다.</li>
 <li>정확한 릴리스·배포 환경에서 텔레메트리 설정, 브라우저 노출 환경 변수, 이미지 처리 기능을 점검한다. 재현되지 않은 위키 설명에 의존하지 않는다.</li>
 <li>미확인 유지보수 관행을 기록하고 운영 승인 전에 최신 자료를 확보한다. 번역하거나 버전을 비교할 때 이 스냅샷은 보존한다.</li>
@@ -1128,11 +1128,1767 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
 <p>SHA-256 (<code>data.json</code>): <code>ace41db5490e85ed6e0fd649a1d48e7aed385aa32019bbaf046a9eec17b266db</code></p>
 <p><a href="https://deps.dev/">deps.dev</a> · <a href="https://osv.dev/">OSV</a> · <a href="https://deepwiki.com/vercel/next.js">DeepWiki</a></p>
 <p>출처·이용 조건은 <a href="../../NOTICE.md">NOTICE</a>를 참고한다.</p>
-</article></section><h2 class="appendix-title" id="appendix">수치와 상세 근거</h2><section class="sec" id="summary"><h2>한눈에 보기</h2><div class="ledger"><div class="fig"><div class="fig-val">15</div><div class="fig-label">직접 의존성</div></div><div class="fig"><div class="fig-val">35</div><div class="fig-label">간접 의존성</div></div><div class="fig"><div class="fig-val">0</div><div class="fig-label">취약점 권고 묶음</div></div><div class="fig"><div class="fig-val">0</div><div class="fig-label">미확인 범위</div></div></div></section><section class="sec" id="dependencies"><h2>해석된 의존성 그래프</h2><div class="node-grid"><div class="node "><strong>next</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/env</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/swc-darwin-arm64</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/swc-darwin-x64</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/swc-linux-arm64-gnu</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/swc-linux-arm64-musl</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/swc-linux-x64-gnu</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/swc-linux-x64-musl</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/swc-win32-arm64-msvc</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/swc-win32-x64-msvc</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@swc/helpers</strong><small>0.5.23</small><small>Apache-2.0</small></div><div class="node "><strong>baseline-browser-mapping</strong><small>2.11.35</small><small>Apache-2.0</small></div><div class="node warn"><strong>caniuse-lite</strong><small>1.0.30001823</small><small>CC-BY-4.0</small></div><div class="node "><strong>postcss</strong><small>8.5.23</small><small>MIT</small></div><div class="node "><strong>sharp</strong><small>0.35.5</small><small>Apache-2.0</small></div><div class="node "><strong>styled-jsx</strong><small>5.1.6</small><small>MIT</small></div></div><p class="legend-note">아래 표는 반환된 모든 노드를 포함합니다. 레지스트리 그래프는 실제 설치 환경의 검사 결과와 다를 수 있습니다.</p><div class="table-wrap"><table><thead><tr><th scope="col">패키지</th><th scope="col">버전</th><th scope="col">관계</th><th scope="col">라이선스</th><th scope="col">알려진 취약점</th><th scope="col">의존성 경로</th></tr></thead><tbody><tr><td>next</td><td>16.4.6</td><td>SELF</td><td>MIT</td><td>0</td><td>next@16.4.6</td></tr><tr><td>@emnapi/runtime</td><td>1.11.3</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-freebsd-wasm32@0.35.5 → @img/sharp-wasm32@0.35.5 → @emnapi/runtime@1.11.3</td></tr><tr><td>@img/colour</td><td>1.1.0</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/colour@1.1.0</td></tr><tr><td>@img/sharp-darwin-arm64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-darwin-arm64@0.35.5</td></tr><tr><td>@img/sharp-darwin-x64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-darwin-x64@0.35.5</td></tr><tr><td>@img/sharp-freebsd-wasm32</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-freebsd-wasm32@0.35.5</td></tr><tr><td>@img/sharp-libvips-darwin-arm64</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-darwin-arm64@1.3.4</td></tr><tr><td>@img/sharp-libvips-darwin-x64</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-darwin-x64@1.3.4</td></tr><tr><td>@img/sharp-libvips-linux-arm</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-linux-arm@1.3.4</td></tr><tr><td>@img/sharp-libvips-linux-arm64</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-linux-arm64@1.3.4</td></tr><tr><td>@img/sharp-libvips-linux-ppc64</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-linux-ppc64@1.3.4</td></tr><tr><td>@img/sharp-libvips-linux-riscv64</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-linux-riscv64@1.3.4</td></tr><tr><td>@img/sharp-libvips-linux-s390x</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-linux-s390x@1.3.4</td></tr><tr><td>@img/sharp-libvips-linux-x64</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-linux-x64@1.3.4</td></tr><tr><td>@img/sharp-libvips-linuxmusl-arm64</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-linuxmusl-arm64@1.3.4</td></tr><tr><td>@img/sharp-libvips-linuxmusl-x64</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-linuxmusl-x64@1.3.4</td></tr><tr><td>@img/sharp-linux-arm</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-linux-arm@0.35.5</td></tr><tr><td>@img/sharp-linux-arm64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-linux-arm64@0.35.5</td></tr><tr><td>@img/sharp-linux-ppc64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-linux-ppc64@0.35.5</td></tr><tr><td>@img/sharp-linux-riscv64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-linux-riscv64@0.35.5</td></tr><tr><td>@img/sharp-linux-s390x</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-linux-s390x@0.35.5</td></tr><tr><td>@img/sharp-linux-x64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-linux-x64@0.35.5</td></tr><tr><td>@img/sharp-linuxmusl-arm64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-linuxmusl-arm64@0.35.5</td></tr><tr><td>@img/sharp-linuxmusl-x64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-linuxmusl-x64@0.35.5</td></tr><tr><td>@img/sharp-wasm32</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0 AND LGPL-3.0-or-later AND MIT</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-freebsd-wasm32@0.35.5 → @img/sharp-wasm32@0.35.5</td></tr><tr><td>@img/sharp-webcontainers-wasm32</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-webcontainers-wasm32@0.35.5</td></tr><tr><td>@img/sharp-win32-arm64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0 AND LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-win32-arm64@0.35.5</td></tr><tr><td>@img/sharp-win32-ia32</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0 AND LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-win32-ia32@0.35.5</td></tr><tr><td>@img/sharp-win32-x64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0 AND LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-win32-x64@0.35.5</td></tr><tr><td>@next/env</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/env@16.4.6</td></tr><tr><td>@next/swc-darwin-arm64</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/swc-darwin-arm64@16.4.6</td></tr><tr><td>@next/swc-darwin-x64</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/swc-darwin-x64@16.4.6</td></tr><tr><td>@next/swc-linux-arm64-gnu</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/swc-linux-arm64-gnu@16.4.6</td></tr><tr><td>@next/swc-linux-arm64-musl</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/swc-linux-arm64-musl@16.4.6</td></tr><tr><td>@next/swc-linux-x64-gnu</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/swc-linux-x64-gnu@16.4.6</td></tr><tr><td>@next/swc-linux-x64-musl</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/swc-linux-x64-musl@16.4.6</td></tr><tr><td>@next/swc-win32-arm64-msvc</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/swc-win32-arm64-msvc@16.4.6</td></tr><tr><td>@next/swc-win32-x64-msvc</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/swc-win32-x64-msvc@16.4.6</td></tr><tr><td>@swc/helpers</td><td>0.5.23</td><td>DIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → @swc/helpers@0.5.23</td></tr><tr><td>baseline-browser-mapping</td><td>2.11.35</td><td>DIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → baseline-browser-mapping@2.11.35</td></tr><tr><td>caniuse-lite</td><td>1.0.30001823</td><td>DIRECT</td><td>CC-BY-4.0</td><td>0</td><td>next@16.4.6 → caniuse-lite@1.0.30001823</td></tr><tr><td>client-only</td><td>0.0.1</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → styled-jsx@5.1.6 → client-only@0.0.1</td></tr><tr><td>detect-libc</td><td>2.1.2</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → detect-libc@2.1.2</td></tr><tr><td>nanoid</td><td>3.3.20</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → postcss@8.5.23 → nanoid@3.3.20</td></tr><tr><td>picocolors</td><td>1.1.1</td><td>INDIRECT</td><td>ISC</td><td>0</td><td>next@16.4.6 → postcss@8.5.23 → picocolors@1.1.1</td></tr><tr><td>postcss</td><td>8.5.23</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → postcss@8.5.23</td></tr><tr><td>semver</td><td>7.8.6</td><td>INDIRECT</td><td>ISC</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → semver@7.8.6</td></tr><tr><td>sharp</td><td>0.35.5</td><td>DIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5</td></tr><tr><td>source-map-js</td><td>1.2.2</td><td>INDIRECT</td><td>BSD-3-Clause</td><td>0</td><td>next@16.4.6 → postcss@8.5.23 → source-map-js@1.2.2</td></tr><tr><td>styled-jsx</td><td>5.1.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → styled-jsx@5.1.6</td></tr><tr><td>tslib</td><td>2.9.1</td><td>INDIRECT</td><td>0BSD</td><td>0</td><td>next@16.4.6 → @swc/helpers@0.5.23 → tslib@2.9.1</td></tr></tbody></table></div></section><section class="sec" id="vulnerabilities"><h2>알려진 취약점</h2><p>이 스냅샷에서 알려진 권고가 반환되지 않았습니다. 취약점이 없다는 보장은 아닙니다.</p></section><section class="sec" id="maintenance"><h2>유지보수</h2><p class="meta">Scorecard · 2026-08-24T00:00:00Z · 6.2/10</p><div class="table-wrap"><table><thead><tr><th scope="col">Check</th><th scope="col">점수</th><th scope="col">출처 상세</th></tr></thead><tbody><tr><td>Code-Review</td><td>9</td><td>Found 27/29 approved changesets -- score normalized to 9</td></tr><tr><td>Maintained</td><td>10</td><td>30 commit(s) and 4 issue activity found in the last 90 days -- score normalized to 10</td></tr><tr><td>CII-Best-Practices</td><td>0</td><td>no effort to earn an OpenSSF best practices badge detected</td></tr><tr><td>Dangerous-Workflow</td><td>10</td><td>no dangerous workflow patterns detected</td></tr><tr><td>License</td><td>10</td><td>license file detected</td></tr><tr><td>Token-Permissions</td><td>0</td><td>detected GitHub workflow tokens with excessive permissions</td></tr><tr><td>Branch-Protection</td><td>-1</td><td>internal error: error during branchesHandler.setup: internal error: githubv4.Query: Resource not accessible by integration</td></tr><tr><td>Signed-Releases</td><td>-1</td><td>no releases found</td></tr><tr><td>Security-Policy</td><td>10</td><td>security policy file detected</td></tr><tr><td>Packaging</td><td>10</td><td>packaging workflow detected</td></tr><tr><td>Binary-Artifacts</td><td>0</td><td>binaries present in source code</td></tr><tr><td>Pinned-Dependencies</td><td>4</td><td>dependency not pinned by hash detected -- score normalized to 4</td></tr><tr><td>Fuzzing</td><td>10</td><td>project is fuzzed</td></tr><tr><td>SAST</td><td>0</td><td>SAST tool is not run on all commits -- score normalized to 0</td></tr></tbody></table></div></section><section class="sec" id="evidence"><h2>근거 자료</h2><p class="notice">도입 검토를 돕는 자료이며 법적 판단이나 보안 인증이 아닙니다. 공개 메타데이터는 불완전할 수 있습니다. DeepWiki 설명은 AI 생성 자료이며 검토 버전과 다를 수 있습니다.</p><details class="details"><summary>판정 근거</summary><pre>{
-  &quot;policy&quot;: &quot;oss-gate.policy/2&quot;,
-  &quot;overall&quot;: &quot;hold&quot;,
+</article></section><section class="sec" id="license-review"><h2>라이선스</h2><div class="table-wrap"><table><thead><tr><th scope="col">패키지</th><th scope="col">라이선스</th><th scope="col">판정</th><th scope="col">확인 사항</th></tr></thead><tbody><tr><td>next@16.4.6</td><td>MIT</td><td>가능</td><td>검토된 라이선스 분류. 해당 고지와 라이선스 조건을 유지하세요.</td></tr><tr><td>@img/sharp-libvips-darwin-arm64@1.3.4</td><td>LGPL-3.0-or-later</td><td>조건부</td><td>검토된 라이선스 분류. 사용 방식에 따른 수정·배포 의무를 확인하세요.</td></tr><tr><td>@img/sharp-libvips-darwin-x64@1.3.4</td><td>LGPL-3.0-or-later</td><td>조건부</td><td>검토된 라이선스 분류. 사용 방식에 따른 수정·배포 의무를 확인하세요.</td></tr><tr><td>@img/sharp-libvips-linux-arm@1.3.4</td><td>LGPL-3.0-or-later</td><td>조건부</td><td>검토된 라이선스 분류. 사용 방식에 따른 수정·배포 의무를 확인하세요.</td></tr><tr><td>@img/sharp-libvips-linux-arm64@1.3.4</td><td>LGPL-3.0-or-later</td><td>조건부</td><td>검토된 라이선스 분류. 사용 방식에 따른 수정·배포 의무를 확인하세요.</td></tr><tr><td>@img/sharp-libvips-linux-ppc64@1.3.4</td><td>LGPL-3.0-or-later</td><td>조건부</td><td>검토된 라이선스 분류. 사용 방식에 따른 수정·배포 의무를 확인하세요.</td></tr><tr><td>@img/sharp-libvips-linux-riscv64@1.3.4</td><td>LGPL-3.0-or-later</td><td>조건부</td><td>검토된 라이선스 분류. 사용 방식에 따른 수정·배포 의무를 확인하세요.</td></tr><tr><td>@img/sharp-libvips-linux-s390x@1.3.4</td><td>LGPL-3.0-or-later</td><td>조건부</td><td>검토된 라이선스 분류. 사용 방식에 따른 수정·배포 의무를 확인하세요.</td></tr><tr><td>@img/sharp-libvips-linux-x64@1.3.4</td><td>LGPL-3.0-or-later</td><td>조건부</td><td>검토된 라이선스 분류. 사용 방식에 따른 수정·배포 의무를 확인하세요.</td></tr><tr><td>@img/sharp-libvips-linuxmusl-arm64@1.3.4</td><td>LGPL-3.0-or-later</td><td>조건부</td><td>검토된 라이선스 분류. 사용 방식에 따른 수정·배포 의무를 확인하세요.</td></tr><tr><td>@img/sharp-libvips-linuxmusl-x64@1.3.4</td><td>LGPL-3.0-or-later</td><td>조건부</td><td>검토된 라이선스 분류. 사용 방식에 따른 수정·배포 의무를 확인하세요.</td></tr><tr><td>@img/sharp-wasm32@0.35.5</td><td>Apache-2.0, LGPL-3.0-or-later, MIT</td><td>조건부</td><td>검토된 라이선스 분류. 사용 방식에 따른 수정·배포 의무를 확인하세요.</td></tr><tr><td>@img/sharp-win32-arm64@0.35.5</td><td>Apache-2.0, LGPL-3.0-or-later</td><td>조건부</td><td>검토된 라이선스 분류. 사용 방식에 따른 수정·배포 의무를 확인하세요.</td></tr><tr><td>@img/sharp-win32-ia32@0.35.5</td><td>Apache-2.0, LGPL-3.0-or-later</td><td>조건부</td><td>검토된 라이선스 분류. 사용 방식에 따른 수정·배포 의무를 확인하세요.</td></tr><tr><td>@img/sharp-win32-x64@0.35.5</td><td>Apache-2.0, LGPL-3.0-or-later</td><td>조건부</td><td>검토된 라이선스 분류. 사용 방식에 따른 수정·배포 의무를 확인하세요.</td></tr><tr><td>caniuse-lite@1.0.30001823</td><td>CC-BY-4.0</td><td>조건부</td><td>검토된 라이선스 분류. 공유 전 출처 표시·라이선스 링크·변경 고지를 확인하세요.</td></tr></tbody></table></div><p class="legend-note">보류 사유는 근거 부족과 정책 제한을 구분해 읽어야 합니다. OR 선택지는 검토 근거이며 실제 선택·준수 확인이 필요합니다.</p><details class="details"><summary>출처 상세</summary><pre>[
+  {
+    &quot;name&quot;: &quot;next&quot;,
+    &quot;version&quot;: &quot;16.4.6&quot;,
+    &quot;relation&quot;: &quot;SELF&quot;,
+    &quot;licenses&quot;: [
+      &quot;MIT&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;permissive&quot;,
+      &quot;tier&quot;: &quot;allow&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+      ],
+      &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;075328aa57f945cfb086f48d8ce1d343b20d8ed010de39aa7704d87285bcd472&quot;
+  },
+  {
+    &quot;name&quot;: &quot;@img/sharp-libvips-darwin-arm64&quot;,
+    &quot;version&quot;: &quot;1.3.4&quot;,
+    &quot;relation&quot;: &quot;INDIRECT&quot;,
+    &quot;licenses&quot;: [
+      &quot;LGPL-3.0-or-later&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;tier&quot;: &quot;conditional&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+      ],
+      &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;1499f39aa0690b5450d3e471dbeeba5616a51d3f7c1f0798788c0b7d4c1db57a&quot;
+  },
+  {
+    &quot;name&quot;: &quot;@img/sharp-libvips-darwin-x64&quot;,
+    &quot;version&quot;: &quot;1.3.4&quot;,
+    &quot;relation&quot;: &quot;INDIRECT&quot;,
+    &quot;licenses&quot;: [
+      &quot;LGPL-3.0-or-later&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;tier&quot;: &quot;conditional&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+      ],
+      &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;6ec60abaf5d950cab0b4e919c696389f46f55ac63092c2ae0c1349b8a902f1ef&quot;
+  },
+  {
+    &quot;name&quot;: &quot;@img/sharp-libvips-linux-arm&quot;,
+    &quot;version&quot;: &quot;1.3.4&quot;,
+    &quot;relation&quot;: &quot;INDIRECT&quot;,
+    &quot;licenses&quot;: [
+      &quot;LGPL-3.0-or-later&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;tier&quot;: &quot;conditional&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+      ],
+      &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;b16d5f5ef75595a1759a8c2d106a6482349418d7ffa716f7d19159825a9fe7ee&quot;
+  },
+  {
+    &quot;name&quot;: &quot;@img/sharp-libvips-linux-arm64&quot;,
+    &quot;version&quot;: &quot;1.3.4&quot;,
+    &quot;relation&quot;: &quot;INDIRECT&quot;,
+    &quot;licenses&quot;: [
+      &quot;LGPL-3.0-or-later&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;tier&quot;: &quot;conditional&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+      ],
+      &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;d8bb857e895208c3dde19420f16fe264911ecfaa63b100620947343a5319979e&quot;
+  },
+  {
+    &quot;name&quot;: &quot;@img/sharp-libvips-linux-ppc64&quot;,
+    &quot;version&quot;: &quot;1.3.4&quot;,
+    &quot;relation&quot;: &quot;INDIRECT&quot;,
+    &quot;licenses&quot;: [
+      &quot;LGPL-3.0-or-later&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;tier&quot;: &quot;conditional&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+      ],
+      &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;a740b2b1f71910d4703ce36867d3f4335ff6fba01c2eb04163b97d5f66d46d48&quot;
+  },
+  {
+    &quot;name&quot;: &quot;@img/sharp-libvips-linux-riscv64&quot;,
+    &quot;version&quot;: &quot;1.3.4&quot;,
+    &quot;relation&quot;: &quot;INDIRECT&quot;,
+    &quot;licenses&quot;: [
+      &quot;LGPL-3.0-or-later&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;tier&quot;: &quot;conditional&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+      ],
+      &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;3d7a12a8ab3ecd24815d4621b527439477f2283d329abbe3fd9c1c29126577c5&quot;
+  },
+  {
+    &quot;name&quot;: &quot;@img/sharp-libvips-linux-s390x&quot;,
+    &quot;version&quot;: &quot;1.3.4&quot;,
+    &quot;relation&quot;: &quot;INDIRECT&quot;,
+    &quot;licenses&quot;: [
+      &quot;LGPL-3.0-or-later&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;tier&quot;: &quot;conditional&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+      ],
+      &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;fd4c908cff53ece8a1154cccbdad7ba0051e6de789ce977f8151074df8e60869&quot;
+  },
+  {
+    &quot;name&quot;: &quot;@img/sharp-libvips-linux-x64&quot;,
+    &quot;version&quot;: &quot;1.3.4&quot;,
+    &quot;relation&quot;: &quot;INDIRECT&quot;,
+    &quot;licenses&quot;: [
+      &quot;LGPL-3.0-or-later&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;tier&quot;: &quot;conditional&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+      ],
+      &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;d652b03cb228db2b7684b570928ae5a99604cebd7d6c0b7f095f60a4bb2fd2fb&quot;
+  },
+  {
+    &quot;name&quot;: &quot;@img/sharp-libvips-linuxmusl-arm64&quot;,
+    &quot;version&quot;: &quot;1.3.4&quot;,
+    &quot;relation&quot;: &quot;INDIRECT&quot;,
+    &quot;licenses&quot;: [
+      &quot;LGPL-3.0-or-later&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;tier&quot;: &quot;conditional&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+      ],
+      &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;ccd5c4c51a5e45ae732c4ec43c53acb7d6911f2280837334accc9ac8fd9b20a0&quot;
+  },
+  {
+    &quot;name&quot;: &quot;@img/sharp-libvips-linuxmusl-x64&quot;,
+    &quot;version&quot;: &quot;1.3.4&quot;,
+    &quot;relation&quot;: &quot;INDIRECT&quot;,
+    &quot;licenses&quot;: [
+      &quot;LGPL-3.0-or-later&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;tier&quot;: &quot;conditional&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+      ],
+      &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;ffdeff3a55495f1205db7a566d02e362d968fcc72b2dcd00e1ec08ce615315f9&quot;
+  },
+  {
+    &quot;name&quot;: &quot;@img/sharp-wasm32&quot;,
+    &quot;version&quot;: &quot;0.35.5&quot;,
+    &quot;relation&quot;: &quot;INDIRECT&quot;,
+    &quot;licenses&quot;: [
+      &quot;Apache-2.0 AND LGPL-3.0-or-later AND MIT&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;tier&quot;: &quot;conditional&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;Apache-2.0&quot;,
+        &quot;LGPL-3.0-or-later&quot;,
+        &quot;MIT&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+      ],
+      &quot;reason&quot;: &quot;Apache-2.0; LGPL-3.0-or-later; MIT; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;bb22f3bc126d82cc91492c21d935c9b4e40e399f6d411f21a72c00b6e162e911&quot;
+  },
+  {
+    &quot;name&quot;: &quot;@img/sharp-win32-arm64&quot;,
+    &quot;version&quot;: &quot;0.35.5&quot;,
+    &quot;relation&quot;: &quot;INDIRECT&quot;,
+    &quot;licenses&quot;: [
+      &quot;Apache-2.0 AND LGPL-3.0-or-later&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;tier&quot;: &quot;conditional&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;Apache-2.0&quot;,
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+      ],
+      &quot;reason&quot;: &quot;Apache-2.0; LGPL-3.0-or-later; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;d54331679375defe6e5af1f6986ed827109a2d24ab664b9d0378b563db43a8eb&quot;
+  },
+  {
+    &quot;name&quot;: &quot;@img/sharp-win32-ia32&quot;,
+    &quot;version&quot;: &quot;0.35.5&quot;,
+    &quot;relation&quot;: &quot;INDIRECT&quot;,
+    &quot;licenses&quot;: [
+      &quot;Apache-2.0 AND LGPL-3.0-or-later&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;tier&quot;: &quot;conditional&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;Apache-2.0&quot;,
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+      ],
+      &quot;reason&quot;: &quot;Apache-2.0; LGPL-3.0-or-later; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;814036106ab8966053098db7465ad4eb2dfb3e7e4001c68c90736b425e991f51&quot;
+  },
+  {
+    &quot;name&quot;: &quot;@img/sharp-win32-x64&quot;,
+    &quot;version&quot;: &quot;0.35.5&quot;,
+    &quot;relation&quot;: &quot;INDIRECT&quot;,
+    &quot;licenses&quot;: [
+      &quot;Apache-2.0 AND LGPL-3.0-or-later&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;tier&quot;: &quot;conditional&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;Apache-2.0&quot;,
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+      ],
+      &quot;reason&quot;: &quot;Apache-2.0; LGPL-3.0-or-later; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;5906e6d62bec33d6bb2ebb3dd5fdaeb07824d1c3ec7e317ca0f2be6ce765d914&quot;
+  },
+  {
+    &quot;name&quot;: &quot;caniuse-lite&quot;,
+    &quot;version&quot;: &quot;1.0.30001823&quot;,
+    &quot;relation&quot;: &quot;DIRECT&quot;,
+    &quot;licenses&quot;: [
+      &quot;CC-BY-4.0&quot;
+    ],
+    &quot;assessment&quot;: {
+      &quot;category&quot;: &quot;attribution&quot;,
+      &quot;tier&quot;: &quot;conditional&quot;,
+      &quot;reasons&quot;: [
+        &quot;reviewed&quot;
+      ],
+      &quot;selected&quot;: [
+        &quot;CC-BY-4.0&quot;
+      ],
+      &quot;choices&quot;: [],
+      &quot;notes&quot;: [
+        &quot;Review attribution, license links, change notices and downstream restrictions for the covered material.&quot;
+      ],
+      &quot;reason&quot;: &quot;CC-BY-4.0; reviewed&quot;,
+      &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+      &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+    },
+    &quot;finding_sha256&quot;: &quot;c144a94a77b2d68bce142c57d15cf693e12a408f228c76f7a3a8964f24252500&quot;
+  }
+]</pre></details></section><h2 class="appendix-title" id="appendix">수치와 상세 근거</h2><section class="sec" id="summary"><h2>한눈에 보기</h2><div class="ledger"><div class="fig"><div class="fig-val">15</div><div class="fig-label">직접 의존성</div></div><div class="fig"><div class="fig-val">35</div><div class="fig-label">간접 의존성</div></div><div class="fig"><div class="fig-val">0</div><div class="fig-label">취약점 권고 묶음</div></div><div class="fig"><div class="fig-val">0</div><div class="fig-label">미확인 범위</div></div></div></section><section class="sec" id="dependencies"><h2>해석된 의존성 그래프</h2><div class="node-grid"><div class="node "><strong>next</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/env</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/swc-darwin-arm64</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/swc-darwin-x64</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/swc-linux-arm64-gnu</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/swc-linux-arm64-musl</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/swc-linux-x64-gnu</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/swc-linux-x64-musl</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/swc-win32-arm64-msvc</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@next/swc-win32-x64-msvc</strong><small>16.4.6</small><small>MIT</small></div><div class="node "><strong>@swc/helpers</strong><small>0.5.23</small><small>Apache-2.0</small></div><div class="node "><strong>baseline-browser-mapping</strong><small>2.11.35</small><small>Apache-2.0</small></div><div class="node warn"><strong>caniuse-lite</strong><small>1.0.30001823</small><small>CC-BY-4.0</small></div><div class="node "><strong>postcss</strong><small>8.5.23</small><small>MIT</small></div><div class="node "><strong>sharp</strong><small>0.35.5</small><small>Apache-2.0</small></div><div class="node "><strong>styled-jsx</strong><small>5.1.6</small><small>MIT</small></div></div><p class="legend-note">아래 표는 반환된 모든 노드를 포함합니다. 레지스트리 그래프는 실제 설치 환경의 검사 결과와 다를 수 있습니다.</p><div class="table-wrap"><table><thead><tr><th scope="col">패키지</th><th scope="col">버전</th><th scope="col">관계</th><th scope="col">라이선스</th><th scope="col">알려진 취약점</th><th scope="col">의존성 경로</th></tr></thead><tbody><tr><td>next</td><td>16.4.6</td><td>SELF</td><td>MIT</td><td>0</td><td>next@16.4.6</td></tr><tr><td>@emnapi/runtime</td><td>1.11.3</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-freebsd-wasm32@0.35.5 → @img/sharp-wasm32@0.35.5 → @emnapi/runtime@1.11.3</td></tr><tr><td>@img/colour</td><td>1.1.0</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/colour@1.1.0</td></tr><tr><td>@img/sharp-darwin-arm64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-darwin-arm64@0.35.5</td></tr><tr><td>@img/sharp-darwin-x64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-darwin-x64@0.35.5</td></tr><tr><td>@img/sharp-freebsd-wasm32</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-freebsd-wasm32@0.35.5</td></tr><tr><td>@img/sharp-libvips-darwin-arm64</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-darwin-arm64@1.3.4</td></tr><tr><td>@img/sharp-libvips-darwin-x64</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-darwin-x64@1.3.4</td></tr><tr><td>@img/sharp-libvips-linux-arm</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-linux-arm@1.3.4</td></tr><tr><td>@img/sharp-libvips-linux-arm64</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-linux-arm64@1.3.4</td></tr><tr><td>@img/sharp-libvips-linux-ppc64</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-linux-ppc64@1.3.4</td></tr><tr><td>@img/sharp-libvips-linux-riscv64</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-linux-riscv64@1.3.4</td></tr><tr><td>@img/sharp-libvips-linux-s390x</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-linux-s390x@1.3.4</td></tr><tr><td>@img/sharp-libvips-linux-x64</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-linux-x64@1.3.4</td></tr><tr><td>@img/sharp-libvips-linuxmusl-arm64</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-linuxmusl-arm64@1.3.4</td></tr><tr><td>@img/sharp-libvips-linuxmusl-x64</td><td>1.3.4</td><td>INDIRECT</td><td>LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-libvips-linuxmusl-x64@1.3.4</td></tr><tr><td>@img/sharp-linux-arm</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-linux-arm@0.35.5</td></tr><tr><td>@img/sharp-linux-arm64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-linux-arm64@0.35.5</td></tr><tr><td>@img/sharp-linux-ppc64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-linux-ppc64@0.35.5</td></tr><tr><td>@img/sharp-linux-riscv64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-linux-riscv64@0.35.5</td></tr><tr><td>@img/sharp-linux-s390x</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-linux-s390x@0.35.5</td></tr><tr><td>@img/sharp-linux-x64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-linux-x64@0.35.5</td></tr><tr><td>@img/sharp-linuxmusl-arm64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-linuxmusl-arm64@0.35.5</td></tr><tr><td>@img/sharp-linuxmusl-x64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-linuxmusl-x64@0.35.5</td></tr><tr><td>@img/sharp-wasm32</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0 AND LGPL-3.0-or-later AND MIT</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-freebsd-wasm32@0.35.5 → @img/sharp-wasm32@0.35.5</td></tr><tr><td>@img/sharp-webcontainers-wasm32</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-webcontainers-wasm32@0.35.5</td></tr><tr><td>@img/sharp-win32-arm64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0 AND LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-win32-arm64@0.35.5</td></tr><tr><td>@img/sharp-win32-ia32</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0 AND LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-win32-ia32@0.35.5</td></tr><tr><td>@img/sharp-win32-x64</td><td>0.35.5</td><td>INDIRECT</td><td>Apache-2.0 AND LGPL-3.0-or-later</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → @img/sharp-win32-x64@0.35.5</td></tr><tr><td>@next/env</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/env@16.4.6</td></tr><tr><td>@next/swc-darwin-arm64</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/swc-darwin-arm64@16.4.6</td></tr><tr><td>@next/swc-darwin-x64</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/swc-darwin-x64@16.4.6</td></tr><tr><td>@next/swc-linux-arm64-gnu</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/swc-linux-arm64-gnu@16.4.6</td></tr><tr><td>@next/swc-linux-arm64-musl</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/swc-linux-arm64-musl@16.4.6</td></tr><tr><td>@next/swc-linux-x64-gnu</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/swc-linux-x64-gnu@16.4.6</td></tr><tr><td>@next/swc-linux-x64-musl</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/swc-linux-x64-musl@16.4.6</td></tr><tr><td>@next/swc-win32-arm64-msvc</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/swc-win32-arm64-msvc@16.4.6</td></tr><tr><td>@next/swc-win32-x64-msvc</td><td>16.4.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → @next/swc-win32-x64-msvc@16.4.6</td></tr><tr><td>@swc/helpers</td><td>0.5.23</td><td>DIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → @swc/helpers@0.5.23</td></tr><tr><td>baseline-browser-mapping</td><td>2.11.35</td><td>DIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → baseline-browser-mapping@2.11.35</td></tr><tr><td>caniuse-lite</td><td>1.0.30001823</td><td>DIRECT</td><td>CC-BY-4.0</td><td>0</td><td>next@16.4.6 → caniuse-lite@1.0.30001823</td></tr><tr><td>client-only</td><td>0.0.1</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → styled-jsx@5.1.6 → client-only@0.0.1</td></tr><tr><td>detect-libc</td><td>2.1.2</td><td>INDIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → detect-libc@2.1.2</td></tr><tr><td>nanoid</td><td>3.3.20</td><td>INDIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → postcss@8.5.23 → nanoid@3.3.20</td></tr><tr><td>picocolors</td><td>1.1.1</td><td>INDIRECT</td><td>ISC</td><td>0</td><td>next@16.4.6 → postcss@8.5.23 → picocolors@1.1.1</td></tr><tr><td>postcss</td><td>8.5.23</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → postcss@8.5.23</td></tr><tr><td>semver</td><td>7.8.6</td><td>INDIRECT</td><td>ISC</td><td>0</td><td>next@16.4.6 → sharp@0.35.5 → semver@7.8.6</td></tr><tr><td>sharp</td><td>0.35.5</td><td>DIRECT</td><td>Apache-2.0</td><td>0</td><td>next@16.4.6 → sharp@0.35.5</td></tr><tr><td>source-map-js</td><td>1.2.2</td><td>INDIRECT</td><td>BSD-3-Clause</td><td>0</td><td>next@16.4.6 → postcss@8.5.23 → source-map-js@1.2.2</td></tr><tr><td>styled-jsx</td><td>5.1.6</td><td>DIRECT</td><td>MIT</td><td>0</td><td>next@16.4.6 → styled-jsx@5.1.6</td></tr><tr><td>tslib</td><td>2.9.1</td><td>INDIRECT</td><td>0BSD</td><td>0</td><td>next@16.4.6 → @swc/helpers@0.5.23 → tslib@2.9.1</td></tr></tbody></table></div></section><section class="sec" id="vulnerabilities"><h2>알려진 취약점</h2><p>이 스냅샷에서 알려진 권고가 반환되지 않았습니다. 취약점이 없다는 보장은 아닙니다.</p></section><section class="sec" id="maintenance"><h2>유지보수</h2><p class="meta">Scorecard · 2026-08-24T00:00:00Z · 6.2/10</p><div class="table-wrap"><table><thead><tr><th scope="col">Check</th><th scope="col">점수</th><th scope="col">출처 상세</th></tr></thead><tbody><tr><td>Code-Review</td><td>9</td><td>Found 27/29 approved changesets -- score normalized to 9</td></tr><tr><td>Maintained</td><td>10</td><td>30 commit(s) and 4 issue activity found in the last 90 days -- score normalized to 10</td></tr><tr><td>CII-Best-Practices</td><td>0</td><td>no effort to earn an OpenSSF best practices badge detected</td></tr><tr><td>Dangerous-Workflow</td><td>10</td><td>no dangerous workflow patterns detected</td></tr><tr><td>License</td><td>10</td><td>license file detected</td></tr><tr><td>Token-Permissions</td><td>0</td><td>detected GitHub workflow tokens with excessive permissions</td></tr><tr><td>Branch-Protection</td><td>-1</td><td>internal error: error during branchesHandler.setup: internal error: githubv4.Query: Resource not accessible by integration</td></tr><tr><td>Signed-Releases</td><td>-1</td><td>no releases found</td></tr><tr><td>Security-Policy</td><td>10</td><td>security policy file detected</td></tr><tr><td>Packaging</td><td>10</td><td>packaging workflow detected</td></tr><tr><td>Binary-Artifacts</td><td>0</td><td>binaries present in source code</td></tr><tr><td>Pinned-Dependencies</td><td>4</td><td>dependency not pinned by hash detected -- score normalized to 4</td></tr><tr><td>Fuzzing</td><td>10</td><td>project is fuzzed</td></tr><tr><td>SAST</td><td>0</td><td>SAST tool is not run on all commits -- score normalized to 0</td></tr></tbody></table></div></section><section class="sec" id="evidence"><h2>근거 자료</h2><p class="notice">도입 검토를 돕는 자료이며 법적 판단이나 보안 인증이 아닙니다. 공개 메타데이터는 불완전할 수 있습니다. DeepWiki 설명은 AI 생성 자료이며 검토 버전과 다를 수 있습니다.</p><details class="details"><summary>판정 근거</summary><pre>{
+  &quot;policy&quot;: &quot;oss-gate.policy/3&quot;,
+  &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;,
+  &quot;license_reviews&quot;: [
+    {
+      &quot;name&quot;: &quot;next&quot;,
+      &quot;version&quot;: &quot;16.4.6&quot;,
+      &quot;relation&quot;: &quot;SELF&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;075328aa57f945cfb086f48d8ce1d343b20d8ed010de39aa7704d87285bcd472&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@emnapi/runtime&quot;,
+      &quot;version&quot;: &quot;1.11.3&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;6a7e046973fe87a21d2d93e8972bd09dd5c7f00862fb148f7a40045decc92f3b&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/colour&quot;,
+      &quot;version&quot;: &quot;1.1.0&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;7d3261f7767ce7f464c2a92b50ef4b2cf47587e62489ca73a1d179c8a9fc976b&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-darwin-arm64&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;024ad729efde361756515f44d0558bd7f3ade6aa835e8831ab4077d33a07fe3a&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-darwin-x64&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;06568da4aa7cca15d46594d60cfea948fb314ff188f5b3c4549df42f932107cb&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-freebsd-wasm32&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;bb3957f6638bed1e982d40d51b55939740d184b206d4741d2c15c811f5f40092&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-libvips-darwin-arm64&quot;,
+      &quot;version&quot;: &quot;1.3.4&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;1499f39aa0690b5450d3e471dbeeba5616a51d3f7c1f0798788c0b7d4c1db57a&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-libvips-darwin-x64&quot;,
+      &quot;version&quot;: &quot;1.3.4&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;6ec60abaf5d950cab0b4e919c696389f46f55ac63092c2ae0c1349b8a902f1ef&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-libvips-linux-arm&quot;,
+      &quot;version&quot;: &quot;1.3.4&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;b16d5f5ef75595a1759a8c2d106a6482349418d7ffa716f7d19159825a9fe7ee&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-libvips-linux-arm64&quot;,
+      &quot;version&quot;: &quot;1.3.4&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;d8bb857e895208c3dde19420f16fe264911ecfaa63b100620947343a5319979e&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-libvips-linux-ppc64&quot;,
+      &quot;version&quot;: &quot;1.3.4&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;a740b2b1f71910d4703ce36867d3f4335ff6fba01c2eb04163b97d5f66d46d48&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-libvips-linux-riscv64&quot;,
+      &quot;version&quot;: &quot;1.3.4&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;3d7a12a8ab3ecd24815d4621b527439477f2283d329abbe3fd9c1c29126577c5&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-libvips-linux-s390x&quot;,
+      &quot;version&quot;: &quot;1.3.4&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;fd4c908cff53ece8a1154cccbdad7ba0051e6de789ce977f8151074df8e60869&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-libvips-linux-x64&quot;,
+      &quot;version&quot;: &quot;1.3.4&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;d652b03cb228db2b7684b570928ae5a99604cebd7d6c0b7f095f60a4bb2fd2fb&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-libvips-linuxmusl-arm64&quot;,
+      &quot;version&quot;: &quot;1.3.4&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;ccd5c4c51a5e45ae732c4ec43c53acb7d6911f2280837334accc9ac8fd9b20a0&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-libvips-linuxmusl-x64&quot;,
+      &quot;version&quot;: &quot;1.3.4&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;LGPL-3.0-or-later&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;ffdeff3a55495f1205db7a566d02e362d968fcc72b2dcd00e1ec08ce615315f9&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-linux-arm&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;6f0ad80ebab658ccb8877ecee58054bad71342d05aac6e83bf23feba49d5f4d2&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-linux-arm64&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;9a374ae8e692f02b97289b85a491240403710765592941dc8e987f7c66d664bf&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-linux-ppc64&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;f3e7dc5d56e87c0b97e95229a41f31ec9a4bad7656cc341e2d452689174cf5d1&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-linux-riscv64&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;bd680da4680a433599d0fec2fa22c04181c3346883bdae9dd5cee74d10f373db&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-linux-s390x&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;339cdf9e5056d8126d21b8fe9f8d3bb88984721d21a0ef5974cf0bbe0188601f&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-linux-x64&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;82610f876a112b5a3f58d2ae518c8dcd0ec39fbdbe08e2b18fd110cb7f7b9c10&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-linuxmusl-arm64&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;d0787056b51199a757ee8fb15951b051f2c88ef6d096558d64e088109dd47cea&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-linuxmusl-x64&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;84ff11bd914f18e84c6f426d255874240f6e022028d8edad9aaba0e1ce9db7ed&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-wasm32&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0 AND LGPL-3.0-or-later AND MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;,
+          &quot;LGPL-3.0-or-later&quot;,
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; LGPL-3.0-or-later; MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;bb22f3bc126d82cc91492c21d935c9b4e40e399f6d411f21a72c00b6e162e911&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-webcontainers-wasm32&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;c57e30d26d9b7991960748fc16a416646865f56bfcc2080af4295a5bae007a77&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-win32-arm64&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0 AND LGPL-3.0-or-later&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;,
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;d54331679375defe6e5af1f6986ed827109a2d24ab664b9d0378b563db43a8eb&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-win32-ia32&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0 AND LGPL-3.0-or-later&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;,
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;814036106ab8966053098db7465ad4eb2dfb3e7e4001c68c90736b425e991f51&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@img/sharp-win32-x64&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0 AND LGPL-3.0-or-later&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;,
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;5906e6d62bec33d6bb2ebb3dd5fdaeb07824d1c3ec7e317ca0f2be6ce765d914&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@next/env&quot;,
+      &quot;version&quot;: &quot;16.4.6&quot;,
+      &quot;relation&quot;: &quot;DIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;d794605a5a5e802386c1341c4b52bfa630feb467400f832aba9dacbc8a3f5189&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@next/swc-darwin-arm64&quot;,
+      &quot;version&quot;: &quot;16.4.6&quot;,
+      &quot;relation&quot;: &quot;DIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;616091dde36012b2c0e3c2a395faed95f694326616b63c28c10834e58351c576&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@next/swc-darwin-x64&quot;,
+      &quot;version&quot;: &quot;16.4.6&quot;,
+      &quot;relation&quot;: &quot;DIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;6c28cb608ad0b34c645915e0f34820a09e384fa6c765c248ac95358dca29a4df&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@next/swc-linux-arm64-gnu&quot;,
+      &quot;version&quot;: &quot;16.4.6&quot;,
+      &quot;relation&quot;: &quot;DIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;694d23264ab5458e37508d170a54d74a8e5093349bf0d863d5fd57aa7a49c43e&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@next/swc-linux-arm64-musl&quot;,
+      &quot;version&quot;: &quot;16.4.6&quot;,
+      &quot;relation&quot;: &quot;DIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;072a9fd7d321757941f8a666a9013a42530dba05a67d8a53c623ec8c6589b238&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@next/swc-linux-x64-gnu&quot;,
+      &quot;version&quot;: &quot;16.4.6&quot;,
+      &quot;relation&quot;: &quot;DIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;9135fdf4709fb69095365543a0fc6635040c23590d51dfebc704285a4cd59d1d&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@next/swc-linux-x64-musl&quot;,
+      &quot;version&quot;: &quot;16.4.6&quot;,
+      &quot;relation&quot;: &quot;DIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;22a1e81ce29534d33ff6253656006c3af5b7117c931627d3bf88155d20069713&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@next/swc-win32-arm64-msvc&quot;,
+      &quot;version&quot;: &quot;16.4.6&quot;,
+      &quot;relation&quot;: &quot;DIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;ef428a021670dd80123b00710a0f42ab52a345b667622362e49888abdf7775bc&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@next/swc-win32-x64-msvc&quot;,
+      &quot;version&quot;: &quot;16.4.6&quot;,
+      &quot;relation&quot;: &quot;DIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;7c0d42da210d7e22930a6af0e16650d90a62e130c5ad2fceb9393d9e9fe739a3&quot;
+    },
+    {
+      &quot;name&quot;: &quot;@swc/helpers&quot;,
+      &quot;version&quot;: &quot;0.5.23&quot;,
+      &quot;relation&quot;: &quot;DIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;8cb4729d9c96381f3b2fae46d11a95459d515e282f146ff3c23cdc837a72a83e&quot;
+    },
+    {
+      &quot;name&quot;: &quot;baseline-browser-mapping&quot;,
+      &quot;version&quot;: &quot;2.11.35&quot;,
+      &quot;relation&quot;: &quot;DIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;8abd91b22eeee7439766884384ef19bb842a72b82dd2876c35c3927b645a59ba&quot;
+    },
+    {
+      &quot;name&quot;: &quot;caniuse-lite&quot;,
+      &quot;version&quot;: &quot;1.0.30001823&quot;,
+      &quot;relation&quot;: &quot;DIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;CC-BY-4.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;attribution&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;CC-BY-4.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Review attribution, license links, change notices and downstream restrictions for the covered material.&quot;
+        ],
+        &quot;reason&quot;: &quot;CC-BY-4.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;c144a94a77b2d68bce142c57d15cf693e12a408f228c76f7a3a8964f24252500&quot;
+    },
+    {
+      &quot;name&quot;: &quot;client-only&quot;,
+      &quot;version&quot;: &quot;0.0.1&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;983cda71718a12a6e606a320dc96cc25a3b1048b7e32be2de94a6a3ddf1e6b58&quot;
+    },
+    {
+      &quot;name&quot;: &quot;detect-libc&quot;,
+      &quot;version&quot;: &quot;2.1.2&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;b7575c5f6ecef946a68db5fb046e0f5ba9b771f29cb0f267ac0eaba41daeb955&quot;
+    },
+    {
+      &quot;name&quot;: &quot;nanoid&quot;,
+      &quot;version&quot;: &quot;3.3.20&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;b91f5086ea531a05f4ff751f1c4a768bbff8e23da1ba55ac139c40666608eed9&quot;
+    },
+    {
+      &quot;name&quot;: &quot;picocolors&quot;,
+      &quot;version&quot;: &quot;1.1.1&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;ISC&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;ISC&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;ISC; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;6091dba0ae6b0c12c64f9668336d02e2d745e670599fbe0bd7d29e5f64e66579&quot;
+    },
+    {
+      &quot;name&quot;: &quot;postcss&quot;,
+      &quot;version&quot;: &quot;8.5.23&quot;,
+      &quot;relation&quot;: &quot;DIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;137ef2d14f01f74f8fdafe0f20870d42a0628a23cb01c3005cfe31a9f4e0fd4d&quot;
+    },
+    {
+      &quot;name&quot;: &quot;semver&quot;,
+      &quot;version&quot;: &quot;7.8.6&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;ISC&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;ISC&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;ISC; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;f5295ef5df6033bd070d65b859404532e89b01cfc7ad41c1344aaf082b5f7704&quot;
+    },
+    {
+      &quot;name&quot;: &quot;sharp&quot;,
+      &quot;version&quot;: &quot;0.35.5&quot;,
+      &quot;relation&quot;: &quot;DIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;Apache-2.0&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;473ed0cd77526ffa687b87778779885a5afead6a55142bc4480e9af404a7f072&quot;
+    },
+    {
+      &quot;name&quot;: &quot;source-map-js&quot;,
+      &quot;version&quot;: &quot;1.2.2&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;BSD-3-Clause&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;BSD-3-Clause&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;BSD-3-Clause; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;2f338aec6348c0fd3b8fdd8a0fc4e0f056d58feda06d9e233eb417baa35adde9&quot;
+    },
+    {
+      &quot;name&quot;: &quot;styled-jsx&quot;,
+      &quot;version&quot;: &quot;5.1.6&quot;,
+      &quot;relation&quot;: &quot;DIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;MIT&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;d4f4d4b5b65b446ccccf259f5c77a7abcae9c57f17f4907782d9925ee5abdd0d&quot;
+    },
+    {
+      &quot;name&quot;: &quot;tslib&quot;,
+      &quot;version&quot;: &quot;2.9.1&quot;,
+      &quot;relation&quot;: &quot;INDIRECT&quot;,
+      &quot;licenses&quot;: [
+        &quot;0BSD&quot;
+      ],
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;0BSD&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;0BSD; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;finding_sha256&quot;: &quot;f33e0f4ae04ab9bca398fb4516b46381db8d8fb6889882830afd2cd45d97ee4d&quot;
+    }
+  ],
+  &quot;overall&quot;: &quot;conditional&quot;,
   &quot;areas&quot;: {
-    &quot;license&quot;: &quot;hold&quot;,
+    &quot;license&quot;: &quot;conditional&quot;,
     &quot;vulns&quot;: &quot;allow&quot;,
     &quot;deps&quot;: &quot;allow&quot;,
     &quot;maintenance&quot;: &quot;conditional&quot;
@@ -1146,7 +2902,25 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
       &quot;licenses&quot;: [
         &quot;MIT&quot;
       ],
-      &quot;category&quot;: &quot;permissive&quot;
+      &quot;category&quot;: &quot;permissive&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;permissive&quot;,
+        &quot;tier&quot;: &quot;allow&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;16.4.6&quot;
     },
     {
       &quot;area&quot;: &quot;license&quot;,
@@ -1156,6 +2930,24 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
         &quot;LGPL-3.0-or-later&quot;
       ],
       &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;1.3.4&quot;,
       &quot;path&quot;: [
         &quot;next@16.4.6&quot;,
         &quot;sharp@0.35.5&quot;,
@@ -1170,6 +2962,24 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
         &quot;LGPL-3.0-or-later&quot;
       ],
       &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;1.3.4&quot;,
       &quot;path&quot;: [
         &quot;next@16.4.6&quot;,
         &quot;sharp@0.35.5&quot;,
@@ -1184,6 +2994,24 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
         &quot;LGPL-3.0-or-later&quot;
       ],
       &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;1.3.4&quot;,
       &quot;path&quot;: [
         &quot;next@16.4.6&quot;,
         &quot;sharp@0.35.5&quot;,
@@ -1198,6 +3026,24 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
         &quot;LGPL-3.0-or-later&quot;
       ],
       &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;1.3.4&quot;,
       &quot;path&quot;: [
         &quot;next@16.4.6&quot;,
         &quot;sharp@0.35.5&quot;,
@@ -1212,6 +3058,24 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
         &quot;LGPL-3.0-or-later&quot;
       ],
       &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;1.3.4&quot;,
       &quot;path&quot;: [
         &quot;next@16.4.6&quot;,
         &quot;sharp@0.35.5&quot;,
@@ -1226,6 +3090,24 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
         &quot;LGPL-3.0-or-later&quot;
       ],
       &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;1.3.4&quot;,
       &quot;path&quot;: [
         &quot;next@16.4.6&quot;,
         &quot;sharp@0.35.5&quot;,
@@ -1240,6 +3122,24 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
         &quot;LGPL-3.0-or-later&quot;
       ],
       &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;1.3.4&quot;,
       &quot;path&quot;: [
         &quot;next@16.4.6&quot;,
         &quot;sharp@0.35.5&quot;,
@@ -1254,6 +3154,24 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
         &quot;LGPL-3.0-or-later&quot;
       ],
       &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;1.3.4&quot;,
       &quot;path&quot;: [
         &quot;next@16.4.6&quot;,
         &quot;sharp@0.35.5&quot;,
@@ -1268,6 +3186,24 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
         &quot;LGPL-3.0-or-later&quot;
       ],
       &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;1.3.4&quot;,
       &quot;path&quot;: [
         &quot;next@16.4.6&quot;,
         &quot;sharp@0.35.5&quot;,
@@ -1282,6 +3218,24 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
         &quot;LGPL-3.0-or-later&quot;
       ],
       &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;1.3.4&quot;,
       &quot;path&quot;: [
         &quot;next@16.4.6&quot;,
         &quot;sharp@0.35.5&quot;,
@@ -1296,6 +3250,26 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
         &quot;Apache-2.0 AND LGPL-3.0-or-later AND MIT&quot;
       ],
       &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;,
+          &quot;LGPL-3.0-or-later&quot;,
+          &quot;MIT&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; LGPL-3.0-or-later; MIT; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;0.35.5&quot;,
       &quot;path&quot;: [
         &quot;next@16.4.6&quot;,
         &quot;sharp@0.35.5&quot;,
@@ -1311,6 +3285,25 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
         &quot;Apache-2.0 AND LGPL-3.0-or-later&quot;
       ],
       &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;,
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;0.35.5&quot;,
       &quot;path&quot;: [
         &quot;next@16.4.6&quot;,
         &quot;sharp@0.35.5&quot;,
@@ -1325,6 +3318,25 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
         &quot;Apache-2.0 AND LGPL-3.0-or-later&quot;
       ],
       &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;,
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;0.35.5&quot;,
       &quot;path&quot;: [
         &quot;next@16.4.6&quot;,
         &quot;sharp@0.35.5&quot;,
@@ -1339,6 +3351,25 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
         &quot;Apache-2.0 AND LGPL-3.0-or-later&quot;
       ],
       &quot;category&quot;: &quot;weak-copyleft&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;weak-copyleft&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;Apache-2.0&quot;,
+          &quot;LGPL-3.0-or-later&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Retained policy/2 screening classification. Review the license text and intended use.&quot;
+        ],
+        &quot;reason&quot;: &quot;Apache-2.0; LGPL-3.0-or-later; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;0.35.5&quot;,
       &quot;path&quot;: [
         &quot;next@16.4.6&quot;,
         &quot;sharp@0.35.5&quot;,
@@ -1352,7 +3383,25 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
       &quot;licenses&quot;: [
         &quot;CC-BY-4.0&quot;
       ],
-      &quot;category&quot;: &quot;unknown&quot;,
+      &quot;category&quot;: &quot;attribution&quot;,
+      &quot;assessment&quot;: {
+        &quot;category&quot;: &quot;attribution&quot;,
+        &quot;tier&quot;: &quot;conditional&quot;,
+        &quot;reasons&quot;: [
+          &quot;reviewed&quot;
+        ],
+        &quot;selected&quot;: [
+          &quot;CC-BY-4.0&quot;
+        ],
+        &quot;choices&quot;: [],
+        &quot;notes&quot;: [
+          &quot;Review attribution, license links, change notices and downstream restrictions for the covered material.&quot;
+        ],
+        &quot;reason&quot;: &quot;CC-BY-4.0; reviewed&quot;,
+        &quot;spdx_version&quot;: &quot;3.29.0&quot;,
+        &quot;classification_sha256&quot;: &quot;4c79be9f8cd6f5d9b9c7b56e5a1af3993260d5242c1a9a2a917963bb94663279&quot;
+      },
+      &quot;version&quot;: &quot;1.0.30001823&quot;,
       &quot;path&quot;: [
         &quot;next@16.4.6&quot;,
         &quot;caniuse-lite@1.0.30001823&quot;

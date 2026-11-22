@@ -62,6 +62,9 @@ def load_review(path):
         verification = json.loads(verification_path.read_text(encoding="utf-8"))
         if not isinstance(verification, dict) or verification.get("status") not in ("PASS", "WARN", "FAIL"):
             raise ValueError("invalid verification status")
+        from .records import validate_record
+
+        validate_record(folder, verification)
         # A later PASS cannot erase a failure already recorded in sealed evidence.
         if isinstance(data.get("verification"), dict) and data["verification"].get("status") == "FAIL":
             verification = {**verification, "status": "FAIL"}

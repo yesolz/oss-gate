@@ -1,5 +1,5 @@
 [project]
 name = "oss-gate-runtime"
-version = "0.4.2"
+version = "0.5.0"
 requires-python = ">=3.10"
 dependencies = ["mcp==1.30.0", "httpx==0.28.1", "markdown-it-py==4.3.0", "packaging==26.3", "certifi==2026.10.23"]

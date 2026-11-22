@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-P7o5K9rZzfDtdK3dC4Cf9WdUXHNGgX6rv48xkEcSukk='; img-src data:; base-uri 'none'; form-action 'none'"><meta name="generator" content="OSS Gate 0.4.2"><title>Python 웹 라이브러리 현황: 2026-11</title><style>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-P7o5K9rZzfDtdK3dC4Cf9WdUXHNGgX6rv48xkEcSukk='; img-src data:; base-uri 'none'; form-action 'none'"><meta name="generator" content="OSS Gate 0.5.0"><title>Python 웹 라이브러리 현황: 2026-11</title><style>
 :root{
   color-scheme:light;
   --paper:#eceeeb;--sheet:#ffffff;--sheet-2:#f4f5f2;
@@ -325,9 +325,9 @@ html{scroll-behavior:smooth}.seal-v{font-size:25px!important}.seal-k{letter-spac
 </style></head><body><a class="skip" href="#main">검토서 전문 읽기</a><div class="page"><aside class="cover"><div class="cover-in"><div class="brand"><span class="wordmark">OSS GATE</span><span class="brand-sub">근거 기반 문서</span></div><div class="document-status"><strong>자동 판정 없음</strong><p>이 문서의 권고는 자동 패키지 판정과 별도로 작성한 판단입니다.</p></div><div class="actions"><button data-print>인쇄 / PDF</button></div></div></aside><main class="sheet" id="main"><header class="doc-head"><p class="document-kind">근거 기반 문서</p><h1 class="document-title">Python 웹 라이브러리 현황: 2026-11</h1></header><section class="sec" id="decision"><h2>결론부터 읽기</h2><div class="review-body brief"><blockquote>
 <p>과거 정기 리포트를 공개용으로 개정한 예제다. 당시 목록에는 Flask와 Requests가 있었으나, 이 저장소에 Flask의 원본 스냅샷이 없다. 확인할 수 있는 한 건과 확인하지 못한 한 건을 분리하며 새 API 조회는 하지 않는다.</p>
 </blockquote>
-</div></section><details class="details context"><summary>검토 정보</summary><div class="review-body"><p>자료 기준일: 2026-11-17 · 예제 개정: 정책 v2 · 검증: <strong>WARN</strong></p>
+</div></section><details class="details context"><summary>검토 정보</summary><div class="review-body"><p>자료 기준일: 2026-11-17 · 예제 개정: 정책 v3 · 검증: <strong>WARN</strong></p>
 </div></details><section class="sec" id="review"><h2>도입 검토서</h2><article class="review-body"><h2>1. 요약</h2>
-<p>확인 가능한 스냅샷은 Requests 2.34.2 한 건이다. 정책 v2 재계산 결과는 가능 0, 조건부 1, 보류 0이다. 별도로 Flask 3.1.3 한 건은 근거 누락으로 집계에서 제외한다. Requests 스냅샷의 알려진 권고는 0건이며, 이는 누락된 Flask를 포함한 전체 목록이 안전하다는 뜻이 아니다.</p>
+<p>확인 가능한 스냅샷은 Requests 2.34.2 한 건이다. 정책 v3 재계산 결과는 가능 0, 조건부 1, 보류 0이다. 별도로 Flask 3.1.3 한 건은 근거 누락으로 집계에서 제외한다. Requests 스냅샷의 알려진 권고는 0건이며, 이는 누락된 Flask를 포함한 전체 목록이 안전하다는 뜻이 아니다.</p>
 <p>Requests의 남은 도입 질문은 certifi@2026.10.23의 MPL-2.0이다. 실제 파일 수정과 배포 방식에 대한 사람의 검토가 필요하다. 이전 정기 리포트가 없어 변화량은 계산하지 않는다.</p>
 <h2>2. 대상과 범위</h2>
 <div class="table-wrap"><table>

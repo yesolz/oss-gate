@@ -15,3 +15,7 @@ Reports preserve identifiers and source text; translations and policy explanatio
 ## Runtime dependencies
 
 The plugin downloads dependencies through uv using the committed lockfile; their code is not vendored in the release archive. Direct dependencies are the Python MCP SDK (MIT), HTTPX (BSD-3-Clause), and markdown-it-py (MIT). Their own notices and transitive dependency licenses remain applicable. See the release audit inventory for exact installed versions and license metadata. Metadata screening is not a substitute for reviewing the applicable license texts when redistributing dependencies.
+
+## SPDX identifiers
+
+The minimal identifier and exception catalog in `core/license_data/spdx.json` is derived from [SPDX License List Data v3.29.0](https://github.com/spdx/license-list-data/tree/v3.29.0). It contains identifier strings and provenance, not the upstream license texts or editorial descriptions. Original JSON hashes are recorded. SPDX identifies licenses; OSS Gate's separate classification and notes are its own screening policy. The project MIT license does not relicense the referred license texts or imply SPDX endorsement. The fresh packaging example preserves deps.dev and OSV responses under the public-evidence terms above.

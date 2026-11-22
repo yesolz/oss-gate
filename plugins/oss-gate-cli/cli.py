@@ -36,6 +36,16 @@ def main(argv=None):
     sub.add_argument("repo", help="Public owner/repo")
     sub.add_argument("--topic", choices=QUESTIONS, default="overview")
     sub.add_argument("--out", type=Path, required=True, help="New JSON file for the full response")
+    sub = commands.add_parser("index-explanations", help="Index saved topic responses without rewriting them")
+    sub.add_argument("source", type=Path, help="Review directory")
+    sub.add_argument("files", nargs="+", help="Response filenames inside the review directory")
+    sub = commands.add_parser("record-verification", help="Save an agent check with machine-recorded time and hashes")
+    sub.add_argument("source", type=Path, help="Review directory")
+    sub.add_argument("--input", type=Path, required=True, help="Agent check JSON; see references/evidence-files.md")
+    sub.add_argument("--replace", action="store_true", help="Archive the previous check before recording a new one")
+    sub = commands.add_parser("reassess", help="Reassess saved evidence with an explicit policy; no network")
+    sub.add_argument("source")
+    sub.add_argument("--output-root", default="reviews")
     sub = commands.add_parser("render")
     sub.add_argument("source")
     sub.add_argument("--language", choices=("ko", "en", "both"), default="ko")
@@ -44,7 +54,28 @@ def main(argv=None):
         if args.policy:
             parser.error("render uses the policy sealed in the snapshot; --policy cannot change it")
         return render.main([args.source, "--language", args.language]) or 0
-    if args.command in ("explain", "project", "audit"):
+    if args.command in ("index-explanations", "record-verification"):
+        from core.records import index_explanations, record_verification
+
+        try:
+            if args.command == "index-explanations":
+                result = index_explanations(args.source, args.files)
+            else:
+                result = record_verification(args.source, args.input, replace=args.replace)
+        except (ValueError, OSError, KeyError, TypeError) as exc:
+            result = {
+                "error": "cannot record evidence; check input format and use a new output file",
+                "code": "invalid_input",
+                "error_type": type(exc).__name__,
+            }
+    elif args.command == "reassess":
+        from core.reassess import reassess
+
+        try:
+            result = reassess(args.source, args.output_root, args.policy)
+        except (ValueError, OSError, KeyError, TypeError):
+            result = {"error": "cannot reassess the selected evidence or policy", "code": "invalid_input"}
+    elif args.command in ("explain", "project", "audit"):
         if args.out.exists() or not args.out.parent.is_dir():
             parser.error("--out must be a new file in an existing directory")
         if args.command == "explain":
@@ -61,7 +92,7 @@ def main(argv=None):
                 result = {"error": "cannot read manifest or it exceeds 512000 characters", "code": "invalid_input"}
             else:
                 result = json.loads(invoke("audit_manifest", content, args.type, policy_path=args.policy))
-        if not result.get("error") and not result.get("isError"):
+        if args.command == "explain" or (not result.get("error") and not result.get("isError")):
             try:
                 # Exclusive creation prevents concurrent runs overwriting evidence.
                 with args.out.open("x", encoding="utf-8") as destination:
@@ -78,6 +109,11 @@ def main(argv=None):
                             "summary",
                             "osv_incomplete",
                             "selected_policy",
+                            "error",
+                            "code",
+                            "isError",
+                            "capture_kind",
+                            "recorded_at",
                         )
                         if k in result
                     },

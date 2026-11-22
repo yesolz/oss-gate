@@ -11,13 +11,13 @@ uv run --frozen --project "<plugin-root>" python "<plugin-root>/cli.py" project 
 uv run --frozen --project "<plugin-root>" python "<plugin-root>/cli.py" audit /absolute/sanitized-requirements.txt --type requirements.txt --out /absolute/audit.json
 uv run --frozen --project "<plugin-root>" python "<plugin-root>/cli.py" plan pypi requests --version 2.34.2 --repo psf/requests
 uv run --frozen --project "<plugin-root>" python "<plugin-root>/cli.py" collect pypi requests --version 2.34.2 --output-root /absolute/reviews
-uv run --frozen --project "<plugin-root>" python "<plugin-root>/cli.py" explain psf/requests --topic overview --out /absolute/review/deepwiki.json
+uv run --frozen --project "<plugin-root>" python "<plugin-root>/cli.py" explain psf/requests --topic overview --out /absolute/review/deepwiki.overview.json
 uv run --frozen --project "<plugin-root>" python "<plugin-root>/cli.py" render /absolute/review --language both
 ```
 
 `project` saves full repository metadata and package candidates; verify identity before selecting one. `audit` saves the direct-dependency audit of a locally inspected, sanitized file (`package.json`, `requirements.txt` or `go.mod`). Both require a new `--out` path in an existing directory. Neither installs or executes the target.
 
-`plan` is a local preview of initial destinations, not a complete list of future dependency/advisory requests. Every later request is checked separately. `collect` saves full evidence and prints the verdict and file paths. Write `review.ko.md` and/or `review.en.md` from that evidence before `render`. `explain` saves the complete response in a new file in an existing directory. Multiple topics need separate filenames. It accepts only `overview`, `communication`, `dependencies` and `maintenance`. Errors return a nonzero CLI exit code; a completed hold verdict is not an execution error.
+`plan` is a local preview of initial destinations, not a complete list of future dependency/advisory requests. Every later request is checked separately. `collect` saves full evidence and prints the verdict and file paths. Write `review.ko.md` and/or `review.en.md` from that evidence before `render`. `explain` saves the complete response, including failures, in a new file in an existing directory. Multiple topics need separate filenames. Use `index-explanations` and `record-verification` as shown in `evidence-files.md`; these local writers are available in both plugin variants. It accepts only `overview`, `communication`, `dependencies` and `maintenance`. Errors return a nonzero CLI exit code; a completed hold verdict is not an execution error.
 
 ## Selecting policy
 
@@ -54,3 +54,11 @@ This is per-tool policy enforcement, not a sandbox for the host agent. Other MCP
 `network.additional_ca_file` optionally adds public PEM CA certificates to certifi for all OSS Gate HTTP clients, including DeepWiki and configured mirrors. Use an absolute local path (at most 1 MiB, no private keys). Only select a CA supplied by the user or their administrator; never create, download or substitute a CA to bypass an upstream certificate error. TLS verification stays enabled, ambient proxy/CA variables remain disabled, and service/identifier restrictions still apply.
 
 An invalid or missing CA file returns `tls_configuration_invalid` before collection; do not remove the setting and retry. `plan` checks syntax without opening the file. Collection records the loaded file hash and certifi version in sealed `tls_trust` evidence. The saved policy includes its local path, so check sharing scope. Offline rendering never loads the file. OS trust-store integration, proxy routing, client certificates and uv bootstrap configuration are outside this setting. See the customization guide.
+
+## License classification and reviewer decisions
+
+Policy/3 distinguishes missing license metadata, unclassified SPDX IDs, custom references, unsupported exceptions and malformed input. A known ID is not automatic permission. Read `verdict.license_reviews` for the selected OR branch, reason, notes and exact finding hash. Explain what the user should check; do not describe every hold as a known legal violation.
+
+Explicit settings may add `review.license_restrictions` (exact SPDX ID to conditional/hold) and `review.license_decisions` (finding_sha256, decided_by, decided_at, reason, conditions, optional expires_at). Decisions never alter the automatic verdict or clear unrelated findings. Never manufacture acceptance or reviewer attribution. A recorded decision is not an authenticated approval. Unknown, nonmatching, future and expired records do not count as applied.
+
+To apply explicit settings to saved evidence offline, run `cli.py --policy /absolute/policy.json reassess /absolute/review --output-root /absolute/new-reviews`. This creates new sealed data and preserves source-data.json. Write a fresh narrative in the returned folder before rendering. Do not rewrite sealed inputs or copy an old narrative as if it reflected the new policy. The same CLI is bundled in both distributions.

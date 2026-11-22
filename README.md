@@ -1,12 +1,22 @@
 # OSS Gate
 
-**An open-source adoption review you can understand, generated in your own agent.**
+**Turn a package into a readable adoption review, inside your own agent.**
 
-[한국어](README.ko.md) · [Live demo](https://yesolz.github.io/oss-gate/) · [Example review](examples/reviews/psf-requests-2.34.2/review.en.md) · [Installation](docs/installation.md) · [How decisions work](docs/policy.md)
+[한국어](README.ko.md) · [Live demo](https://yesolz.github.io/oss-gate/) · [Installation](docs/installation.md) · [Decision policy](docs/policy.md)
 
-Give OSS Gate a public repository or package. It combines license and dependency metadata, known vulnerabilities, maintenance signals and a sourced explanation of the software into a readable adoption review. Keep the Markdown, open the offline HTML, and inspect the evidence JSON behind the verdict.
+Understand what a library does, what needs attention, and which evidence supports the result. OSS Gate brings license metadata, known vulnerabilities, dependency paths and maintenance signals into one review you can keep and share.
 
-Your agent supplies the reasoning and writing. Two MCP connections supply context: **DeepWiki** for repository explanations, and the bundled **depsdev** server for **deps.dev + OSV**. Both adapters run locally; the DeepWiki adapter contacts the external service only when invoked. You do not need to operate a server or buy a separate model API key for OSS Gate. Your agent plan, local execution permissions and upstream service limits still apply.
+[![A real OSS Gate report for packaging 26.3](docs/images/report-preview.en.png)](https://yesolz.github.io/oss-gate/examples/reviews/pypi-packaging-26.3/report.en.html)
+
+After installation, ask your agent:
+
+```text
+Use oss-review to review pypi packaging 26.3 in English.
+```
+
+You get **a readable HTML report, editable Markdown and the underlying evidence JSON**. [Open the example](examples/reviews/pypi-packaging-26.3/report.en.html) or [read its Markdown](examples/reviews/pypi-packaging-26.3/review.en.md). The screenshot is a saved result, not a promise about future scans.
+
+Use your existing Claude Code or Codex account. OSS Gate needs no hosted backend or separate model API key. Ordinary reviews need no policy configuration. Choose the standard plugin with local MCP adapters, or the [CLI-only plugin](docs/installation.md) that registers no MCP servers.
 
 ## Install
 
@@ -46,6 +56,8 @@ Use oss-review to review pypi requests 2.25.1 in English.
 
 Choose **Korean**, **English**, or **both**. Without a choice, the request language is used. Both languages share one evidence snapshot and verdict. Asking for a translation later reuses the snapshot; asking to refresh creates a new one.
 
+Results normally go to `<workspace>/reviews`; the agent passes an absolute path and reports the returned folder. A direct CLI call without `--output-root` uses `reviews` under its working directory.
+
 A review produces:
 
 ```text
@@ -53,7 +65,8 @@ reviews/<package-version>/<timestamp-id>/
   data.json                 # normalized evidence and deterministic verdict
   api-responses.json        # original public API JSON
   evidence-sha256.json      # integrity hashes
-  deepwiki.json             # sourced explanation, with capture limitations
+  deepwiki.overview.json    # exact explanation response, including errors
+  deepwiki.json             # index of saved topic responses
   verification.json         # agent evidence check
   review.en.md              # selected language(s) only
   report.en.html
@@ -67,11 +80,13 @@ HTML works offline, includes detailed findings and source data, and can be print
 
 OSS Gate helps answer: what does this software do, what needs review before adoption, and which evidence supports that decision? It keeps versions, limitations, suggested actions and source references together in a report you can discuss with a teammate.
 
-OSV Scanner and OSS Gate can use the same vulnerability data while serving different workflows. Sharing OSV data does not establish equivalent scanning coverage: lockfile parsing, supported ecosystems, dependency resolution and analysis capabilities differ. OSS Gate is an agent-assisted review workflow, not a replacement for a dedicated scanner, a legal opinion, or an enterprise SCA program. [Scope and policy](docs/policy.md)
+OSV Scanner and OSS Gate can use the same vulnerability data while serving different workflows. Sharing OSV data does not establish equivalent scanning coverage: lockfile parsing, supported ecosystems, dependency resolution and analysis capabilities differ. OSS Gate is an agent-assisted review workflow, not a replacement for a dedicated scanner, a legal opinion, or a complete compliance program. [Scope and policy](docs/policy.md)
+
+Package and vulnerability evidence comes from deps.dev and OSV. DeepWiki supplies optional repository context, and your agent writes the explanation. Deterministic code calculates screening results. Invoked services receive the queried identifiers; see [data flow and settings](docs/customization.md).
 
 ## Examples and demo
 
-Four historical package reviews, a periodic report and an adoption proposal are available in **both languages** under [examples](examples/README.md). They use saved 2026-11-17 data, not live results. Important corrections are visible: a prior-version graph cannot approve FastAPI's requested version, a fixed release does not clear a vulnerable older release, and a missing Flask snapshot is excluded from portfolio totals.
+A fresh allow example and four historical package reviews, a periodic report and an adoption proposal are available in **both languages** under [examples](examples/README.md). Each report identifies its collection date. Historical reviews use saved 2026-11-17 data; the packaging example was collected on 2026-11-22. These are saved results. Important corrections are visible: a prior-version graph cannot approve FastAPI's requested version, a fixed release does not clear a vulnerable older release, and a missing Flask snapshot is excluded from portfolio totals.
 
 The web is a **read-only static demo**. It has no package input, account, API route or model call. Build it with `uv run --frozen python scripts/build_site.py`; serve `site/generated` with any static server. The public demo is hosted on [GitHub Pages](https://yesolz.github.io/oss-gate/); the included workflow also supports your own deployment. [Deployment and prototype retirement](docs/deployment.md)
 
@@ -92,7 +107,7 @@ uv run --frozen python scripts/build_site.py
 
 [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md) · [MIT license](LICENSE) · [Third-party attribution](NOTICE.md)
 
-[Release validation](docs/release-v0.4.2.md)
+[Release validation](docs/release-v0.5.0.md)
 
 [Optional policies and CLI](docs/customization.md): no configuration is needed for ordinary reviews.
 

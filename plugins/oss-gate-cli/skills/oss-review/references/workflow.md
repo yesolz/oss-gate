@@ -33,7 +33,7 @@ Use the configured execution mode for DeepWiki explanations. MCP offers public r
 
 If the user skips DeepWiki or policy blocks it, record the missing explanation coverage and continue the evidence-backed package review. Never call the remote endpoint directly to bypass the adapter.
 
-Store tool responses in `deepwiki.json` with tool name, repository, retrieval time, question/page title and response text. Preserve sources. If the host cannot save exact tool output, label the saved material as an agent transcription; do not call it an original API response. Do not change sealed `data.json` to add this material. Failed or unindexed repository lookup is a documented gap, never an invitation to invent an answer. DeepWiki answers are AI-generated, may describe another revision and are not an independent security audit.
+Follow `evidence-files.md`: save exact topic responses, including failures, and create the `deepwiki.json` index with the bundled command. The adapter records capture time. Use CLI capture if the host cannot save exact MCP output; only if neither is possible retain a separately labelled transcription. Never reconstruct an original API response from memory. Do not change sealed `data.json` to add this material. Failed or unindexed repository lookup is a documented gap, never an invitation to invent an answer. DeepWiki answers are AI-generated, may describe another revision and are not an independent security audit.
 
 ## 4. Write the narrative
 
@@ -47,7 +47,7 @@ Do not describe unknown/non-standard metadata as proof that a package lacks a li
 
 Re-read evidence rather than the draft alone. Check names, exact versions, node counts, alias deduplication, scores, grade reasons, graph scope, and references. Confirm every network/data-flow assertion is supported and labelled with its source type. Check that uncertainty, failures and unavailable scores were not rendered as zero. Check both languages have the same numerical facts and verdict.
 
-Write `verification.json` with status `PASS`, `WARN`, or `FAIL`, checked fields, mismatches and unresolved items. This is an agent evidence check, not an independent scanner. A grade-affecting mismatch or suspected evidence tampering blocks delivery as an approved review. Correct the draft, or explicitly deliver it as failed/incomplete. Do not mark PASS merely because the renderer succeeded.
+Write the four-field check input shown in `evidence-files.md`, then run `record-verification` to create `verification.json` with status `PASS`, `WARN`, or `FAIL`, checked fields, mismatches and unresolved items. The command supplies the record-save time and binds the check to current evidence and narratives. Do not guess timestamps or inspect core code to invent a format. This is an agent evidence check, not an independent scanner. A grade-affecting mismatch or suspected evidence tampering blocks delivery as an approved review. Correct the draft, or explicitly deliver it as failed/incomplete. Do not mark PASS merely because the renderer succeeded.
 
 Verify the evidence hashes again, render the selected languages, and inspect the generated files. A fresh query is a new snapshot; never overwrite an earlier review to make a comparison look better.
 

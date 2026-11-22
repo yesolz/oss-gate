@@ -1,0 +1,380 @@
+{
+  "policy": "oss-gate.policy/3",
+  "licenses": {
+    "0BSD": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/0BSD.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "AGPL-1.0": {
+      "category": "network-copyleft",
+      "source": "https://spdx.org/licenses/AGPL-1.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "AGPL-1.0-only": {
+      "category": "network-copyleft",
+      "source": "https://spdx.org/licenses/AGPL-1.0-only.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "AGPL-1.0-or-later": {
+      "category": "network-copyleft",
+      "source": "https://spdx.org/licenses/AGPL-1.0-or-later.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "AGPL-3.0": {
+      "category": "network-copyleft",
+      "source": "https://spdx.org/licenses/AGPL-3.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "AGPL-3.0-only": {
+      "category": "network-copyleft",
+      "source": "https://spdx.org/licenses/AGPL-3.0-only.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "AGPL-3.0-or-later": {
+      "category": "network-copyleft",
+      "source": "https://spdx.org/licenses/AGPL-3.0-or-later.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "Apache-2.0": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/Apache-2.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "Artistic-2.0": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/Artistic-2.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "BSD-1-Clause": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/BSD-1-Clause.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "BSD-2-Clause": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/BSD-2-Clause.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "BSD-3-Clause": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/BSD-3-Clause.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "BSD-4-Clause": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/BSD-4-Clause.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "BSL-1.0": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/BSL-1.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "BlueOak-1.0.0": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/BlueOak-1.0.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "CC0-1.0": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/CC0-1.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "CDDL-1.0": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/CDDL-1.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "CDDL-1.1": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/CDDL-1.1.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "CPL-1.0": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/CPL-1.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "EPL-1.0": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/EPL-1.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "EPL-2.0": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/EPL-2.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "EUPL-1.0": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/EUPL-1.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "EUPL-1.1": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/EUPL-1.1.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "EUPL-1.2": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/EUPL-1.2.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "GPL-1.0": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/GPL-1.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "GPL-1.0+": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/GPL-1.0+.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "GPL-1.0-only": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/GPL-1.0-only.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "GPL-1.0-or-later": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/GPL-1.0-or-later.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "GPL-2.0": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/GPL-2.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "GPL-2.0+": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/GPL-2.0+.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "GPL-2.0-only": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/GPL-2.0-only.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "GPL-2.0-or-later": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/GPL-2.0-or-later.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "GPL-3.0": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/GPL-3.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "GPL-3.0+": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/GPL-3.0+.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "GPL-3.0-only": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/GPL-3.0-only.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "GPL-3.0-or-later": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/GPL-3.0-or-later.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "ISC": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/ISC.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "LGPL-2.0": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/LGPL-2.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "LGPL-2.0+": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/LGPL-2.0+.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "LGPL-2.0-only": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/LGPL-2.0-only.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "LGPL-2.0-or-later": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/LGPL-2.0-or-later.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "LGPL-2.1": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/LGPL-2.1.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "LGPL-2.1+": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/LGPL-2.1+.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "LGPL-2.1-only": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/LGPL-2.1-only.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "LGPL-2.1-or-later": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/LGPL-2.1-or-later.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "LGPL-3.0": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/LGPL-3.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "LGPL-3.0+": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/LGPL-3.0+.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "LGPL-3.0-only": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/LGPL-3.0-only.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "LGPL-3.0-or-later": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/LGPL-3.0-or-later.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "MIT": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/MIT.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "MIT-0": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/MIT-0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "MPL-1.0": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/MPL-1.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "MPL-1.1": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/MPL-1.1.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "MPL-2.0": {
+      "category": "weak-copyleft",
+      "source": "https://spdx.org/licenses/MPL-2.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "OFL-1.0": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/OFL-1.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "OFL-1.1": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/OFL-1.1.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "OSL-1.0": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/OSL-1.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "OSL-1.1": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/OSL-1.1.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "OSL-2.0": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/OSL-2.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "OSL-2.1": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/OSL-2.1.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "OSL-3.0": {
+      "category": "strong-copyleft",
+      "source": "https://spdx.org/licenses/OSL-3.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "PSF-2.0": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/PSF-2.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "PostgreSQL": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/PostgreSQL.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "Python-2.0": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/Python-2.0.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "Unlicense": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/Unlicense.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "WTFPL": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/WTFPL.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "X11": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/X11.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "Zlib": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/Zlib.html",
+      "note": "Retained policy/2 screening classification. Review the license text and intended use."
+    },
+    "Unicode-3.0": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/Unicode-3.0.html",
+      "note": "Keep the copyright and permission notice with copies or associated documentation; respect name-use restrictions."
+    },
+    "Unicode-DFS-2016": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/Unicode-DFS-2016.html",
+      "note": "Retain the copyright and permission notice with copies or documentation; respect name-use restrictions."
+    },
+    "MIT-CMU": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/MIT-CMU.html",
+      "note": "Keep copyright and permission notices in copies and supporting documentation; respect publicity restrictions."
+    },
+    "HPND": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/HPND.html",
+      "note": "Retain required notices in copies and documentation; respect name-use restrictions."
+    },
+    "CDLA-Permissive-2.0": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/CDLA-Permissive-2.0.html",
+      "note": "Provide the agreement text when sharing the covered data; distinguish data from results."
+    },
+    "BSD-3-Clause-Clear": {
+      "category": "permissive",
+      "source": "https://spdx.org/licenses/BSD-3-Clause-Clear.html",
+      "note": "Retain notices and avoid implied endorsement. This license expressly grants no patent rights."
+    },
+    "CC-BY-4.0": {
+      "category": "attribution",
+      "source": "https://spdx.org/licenses/CC-BY-4.0.html",
+      "note": "Review attribution, license links, change notices and downstream restrictions for the covered material."
+    }
+  }
+}

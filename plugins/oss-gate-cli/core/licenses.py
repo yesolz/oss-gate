@@ -1,166 +1,154 @@
-"""Conservative screening categories, not legal conclusions or an SPDX validator."""
+"""Deterministic license screening with explicit uncertainty and selected OR branches."""
 
+import hashlib
+import json
 import re
+from pathlib import Path
 from typing import Any
 
-
-def _as_list(value):
-    return value if isinstance(value, list) else []
-
-
-CATEGORIES = ("permissive", "weak-copyleft", "strong-copyleft", "network-copyleft", "unknown")
-_SEV = {c: i for i, c in enumerate(CATEGORIES)}
-_CAT_TIER = {
-    "permissive": "allow",
-    "weak-copyleft": "conditional",
-    "strong-copyleft": "hold",
-    "network-copyleft": "hold",
-    "unknown": "hold",
-}
-_PERMISSIVE = {
-    "MIT",
-    "MIT-0",
-    "APACHE-2.0",
-    "0BSD",
-    "ISC",
-    "UNLICENSE",
-    "ZLIB",
-    "PSF-2.0",
-    "PYTHON-2.0",
-    "CC0-1.0",
-    "WTFPL",
-    "ARTISTIC-2.0",
-    "BSL-1.0",
-    "X11",
-    "POSTGRESQL",
-}
-_UNKNOWN_IDS = {"", "NON-STANDARD", "UNKNOWN", "NOASSERTION", "NONE"}
-
-
-def _license_id_category(tok: str) -> str:
-    l = tok.strip().upper()
-    if re.match(r"^(A?GPL|LGPL)-", l):
-        l = re.sub(r"(-ONLY|-OR-LATER|\+)$", "", l)
-    if l in _UNKNOWN_IDS or l.startswith("LICENSEREF-"):
-        return "unknown"
-    if l in _PERMISSIVE or l in {
-        "BSD-1-CLAUSE",
-        "BSD-2-CLAUSE",
-        "BSD-3-CLAUSE",
-        "BSD-4-CLAUSE",
-        "BLUEOAK-1.0.0",
-        "OFL-1.0",
-        "OFL-1.1",
-    }:
-        return "permissive"
-    if l in {"AGPL-1.0", "AGPL-3.0"}:
-        return "network-copyleft"
-    if l in {
-        "LGPL-2.0",
-        "LGPL-2.1",
-        "LGPL-3.0",
-        "MPL-1.0",
-        "MPL-1.1",
-        "MPL-2.0",
-        "EPL-1.0",
-        "EPL-2.0",
-        "CDDL-1.0",
-        "CDDL-1.1",
-        "CPL-1.0",
-    }:
-        return "weak-copyleft"
-    if l in {
-        "GPL-1.0",
-        "GPL-2.0",
-        "GPL-3.0",
-        "OSL-1.0",
-        "OSL-1.1",
-        "OSL-2.0",
-        "OSL-2.1",
-        "OSL-3.0",
-        "EUPL-1.0",
-        "EUPL-1.1",
-        "EUPL-1.2",
-    }:
-        return "strong-copyleft"
-    return "unknown"
-
-
+_DATA = Path(__file__).with_name("license_data")
+SPDX = json.loads((_DATA / "spdx.json").read_text(encoding="utf-8"))
+REVIEWED = json.loads((_DATA / "reviewed.json").read_text(encoding="utf-8"))["licenses"]
+IDS = {key.upper(): key for key in SPDX["licenses"]}
+EXCEPTIONS = {key.upper(): key for key in SPDX["exceptions"]}
+DATA_SHA256 = hashlib.sha256((_DATA / "spdx.json").read_bytes() + (_DATA / "reviewed.json").read_bytes()).hexdigest()
+CATEGORIES = ("permissive", "attribution", "weak-copyleft", "strong-copyleft", "network-copyleft", "unknown")
+_SEV = {category: index for index, category in enumerate(CATEGORIES)}
+_CAT_TIER = dict(zip(CATEGORIES, ("allow", "conditional", "conditional", "hold", "hold", "hold")))
+RANK = {"allow": 0, "conditional": 1, "hold": 2}
 _TOK = re.compile(r"\(|\)|[^\s()]+")
 
 
-def _expr_category(expr: str) -> str:
-    """Parse AND, OR, parentheses and a small reviewed exception set conservatively.
+def result(category: str, reason: str, selected=(), notes=()) -> dict:
+    return {
+        "category": category,
+        "tier": _CAT_TIER[category],
+        "reasons": [reason],
+        "selected": list(selected),
+        "choices": [],
+        "notes": list(notes),
+    }
 
-    OR selects the least restrictive known option; AND selects the strictest.
-    Unrecognized exceptions and malformed expressions require manual review."""
-    toks = _TOK.findall(expr or "")
-    pos = 0
 
-    def peek() -> str | None:
-        return toks[pos].upper() if pos < len(toks) else None
+def combine(values: list[dict]) -> dict:
+    worst = max(values, key=lambda value: (RANK[value["tier"]], _SEV[value["category"]]))
+    return {
+        "category": worst["category"],
+        "tier": worst["tier"],
+        **{
+            key: list(dict.fromkeys(item for value in values for item in value[key]))
+            for key in ("reasons", "selected", "choices", "notes")
+        },
+    }
 
-    def take() -> str:
-        nonlocal pos
-        pos += 1
-        return toks[pos - 1]
 
-    def primary() -> str:
-        t = peek()
-        if t is None or t in ("AND", "OR", ")", "WITH"):
-            raise ValueError("syntax")
-        if t == "(":
+def atom(token: str, restrictions: dict) -> dict:
+    upper = token.upper()
+    if upper in {"NONE", "NOASSERTION", "UNKNOWN", "NON-STANDARD"}:
+        return result("unknown", "missing_metadata")
+    if upper.startswith(("LICENSEREF-", "DOCUMENTREF-")):
+        return result("unknown", "custom_license", [token])
+    canonical = IDS.get(upper)
+    if canonical is None:
+        return result("unknown", "unrecognized_identifier", [token])
+    rule = REVIEWED.get(canonical)
+    value = (
+        result(rule["category"], "reviewed", [canonical], [rule["note"]])
+        if rule
+        else result("unknown", "unclassified_spdx", [canonical])
+    )
+    requested = restrictions.get(canonical)
+    if requested and RANK[requested] > RANK[value["tier"]]:
+        value["tier"] = requested
+        value["reasons"].append("selected_license_restriction")
+    return value
+
+
+def expression(expr: str, restrictions: dict) -> dict:
+    if not expr.strip():
+        return result("unknown", "missing_metadata")
+    if len(expr) > 8192:
+        return result("unknown", "invalid_expression")
+    tokens = _TOK.findall(expr)
+    if len(tokens) > 512:
+        return result("unknown", "invalid_expression")
+    position = 0
+
+    def peek():
+        return tokens[position].upper() if position < len(tokens) else None
+
+    def take():
+        nonlocal position
+        token = tokens[position]
+        position += 1
+        return token
+
+    def primary():
+        if peek() is None or peek() in ("AND", "OR", ")", "WITH"):
+            raise ValueError("expected license")
+        if peek() == "(":
             take()
-            c = or_expr()
+            value = or_expr()
             if peek() != ")":
-                raise ValueError("paren")
+                raise ValueError("unclosed expression")
             take()
-            return c
-        lic = take()
+            return value
+        token = take()
+        if not re.fullmatch(
+            r"(?:[A-Za-z0-9][A-Za-z0-9.-]*\+?|DocumentRef-[A-Za-z0-9.-]+:LicenseRef-[A-Za-z0-9.-]+)", token, re.I
+        ):
+            raise ValueError("invalid license token")
+        value = atom(token, restrictions)
         if peek() == "WITH":
             take()
-            if peek() is None:
-                raise ValueError("with")
+            if peek() is None or peek() in ("AND", "OR", "WITH", "(", ")"):
+                raise ValueError("expected exception")
             exception = take()
-            # Exceptions change obligations; do not interpret them automatically.
-            if exception.upper() != "LLVM-EXCEPTION" or lic.upper() != "APACHE-2.0":
-                return "unknown"
-        return _license_id_category(lic)
+            if token.upper() != "APACHE-2.0" or exception.upper() != "LLVM-EXCEPTION":
+                code = "unsupported_exception" if exception.upper() in EXCEPTIONS else "unrecognized_exception"
+                return result("unknown", code, [token + " WITH " + exception])
+            value["selected"] = ["Apache-2.0 WITH LLVM-exception"]
+            value["notes"].append("Apply the LLVM exception with Apache-2.0; retain the applicable notices.")
+        return value
 
-    def and_expr() -> str:
-        c = primary()
+    def and_expr():
+        values = [primary()]
         while peek() == "AND":
             take()
-            c = max(c, primary(), key=_SEV.get)
-        return c
+            values.append(primary())
+        return combine(values)
 
-    def or_expr() -> str:
-        c = and_expr()
+    def or_expr():
+        values = [and_expr()]
         while peek() == "OR":
             take()
-            c = min(c, and_expr(), key=_SEV.get)
-        return c
+            values.append(and_expr())
+        chosen = min(values, key=lambda value: (RANK[value["tier"]], _SEV[value["category"]]))
+        if len(values) > 1:
+            chosen["choices"].append(" AND ".join(chosen["selected"]) or "unresolved branch")
+        return chosen
 
     try:
-        c = or_expr()
-        return c if pos == len(toks) else "unknown"
+        value = or_expr()
+        if position != len(tokens):
+            raise ValueError("trailing tokens")
+        return value
     except (ValueError, IndexError, RecursionError):
-        return "unknown"
+        return result("unknown", "invalid_expression")
 
 
-def classify_license(licenses: Any) -> dict:
-    """Return a conservative category, screening tier and explanation.
-
-    Multiple declarations are treated as AND. This is not a legal conclusion.
-    SSPL and unrecognized identifiers require manual review; no OSI claim is made."""
-    if isinstance(licenses, str):
-        licenses = [licenses]
-    items = _as_list(licenses)
-    if not items:
-        return {"category": "unknown", "tier": "hold", "reason": "no license declared"}
-    cats = [
-        (x if isinstance(x, str) else repr(x), _expr_category(x) if isinstance(x, str) else "unknown") for x in items
-    ]
-    worst = max((c for _, c in cats), key=_SEV.get)
-    reason = "; ".join(f"{x or '(empty)'} -> {c}" for x, c in cats)
-    return {"category": worst, "tier": _CAT_TIER[worst], "reason": reason}
+def classify_license(licenses: Any, restrictions: dict | None = None) -> dict:
+    """Lists use AND as a screening assumption; no unknown branch becomes approval."""
+    items = [licenses] if isinstance(licenses, str) else licenses
+    if items is None or items == []:
+        value = result("unknown", "missing_metadata")
+    elif not isinstance(items, list) or len(items) > 200 or any(not isinstance(x, str) for x in items):
+        value = result("unknown", "invalid_metadata")
+    else:
+        value = combine([expression(item, restrictions or {}) for item in items])
+    return {
+        **value,
+        "reason": "; ".join(value["selected"] + value["reasons"]),
+        "spdx_version": SPDX["version"],
+        "classification_sha256": DATA_SHA256,
+    }

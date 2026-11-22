@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import math
 from .identity import same_name, same_version
-from .licenses import classify_license
+from .licenses import classify_license, DATA_SHA256
 
-POLICY_VERSION = "oss-gate.policy/2"
+POLICY_VERSION = "oss-gate.policy/3"
 RANK = {"allow": 0, "conditional": 1, "hold": 2}
 LEGACY = {"가능": "allow", "조건부": "conditional", "보류": "hold", "확인필요": "unknown", "확인 필요": "unknown"}
 
@@ -66,11 +66,11 @@ def advisory_groups(advisories):
 
 def _evaluate_base(data):
     """Return stable language-neutral grades, coverage gaps, and traceable reasons."""
-    lp, gd = obj(data.get("lookup_package")), obj(data.get("get_dependencies"))
+    package, graph = obj(data.get("lookup_package")), obj(data.get("get_dependencies"))
     target = obj(data.get("target"))
-    nodes = [obj(n) for n in seq(gd.get("nodes")) if obj(n).get("relation") != "SELF"]
+    nodes = [obj(n) for n in seq(graph.get("nodes")) if obj(n).get("relation") != "SELF"]
     areas = {key: "allow" for key in ("license", "vulns", "deps", "maintenance")}
-    gaps, findings = [], []
+    gaps, findings, license_reviews = [], [], []
 
     def ids(value):
         if not isinstance(value, list) or any(not isinstance(v, str) or not v for v in value):
@@ -85,23 +85,34 @@ def _evaluate_base(data):
             areas[area] = grade
         findings.append({"area": area, "code": code, **detail})
 
-    if not lp or lp.get("error"):
+    if not package or package.get("error"):
         gaps.append("package_unavailable")
         areas["license"] = areas["vulns"] = "unknown"
     else:
-        root_policy = classify_license(lp.get("licenses"))
+        root_policy = classify_license(package.get("licenses"))
+        license_reviews.append(
+            {
+                "name": package.get("name"),
+                "version": package.get("version"),
+                "relation": "SELF",
+                "licenses": package.get("licenses"),
+                "assessment": root_policy,
+            }
+        )
         mark(
             "license",
             root_policy["tier"],
             "root_license",
-            package=f"{lp.get('name')}@{lp.get('version')}",
-            licenses=lp.get("licenses"),
+            package=f"{package.get('name')}@{package.get('version')}",
+            licenses=package.get("licenses"),
             category=root_policy["category"],
+            assessment=root_policy,
+            version=package.get("version"),
         )
         if (
-            target.get("system") != lp.get("system")
-            or not same_name(target.get("system"), target.get("name"), lp.get("name"))
-            or not same_version(target.get("system"), target.get("version"), lp.get("version"))
+            target.get("system") != package.get("system")
+            or not same_name(target.get("system"), target.get("name"), package.get("name"))
+            or not same_version(target.get("system"), target.get("version"), package.get("version"))
         ):
             gaps.append("target_mismatch")
             mark("license", "hold", "target_mismatch")
@@ -109,15 +120,17 @@ def _evaluate_base(data):
     if data.get("advisories_truncated"):
         gaps.append("advisories_truncated")
     graph_matches = (
-        bool(gd)
-        and not gd.get("error")
-        and not gd.get("fallback_used")
-        and same_version(target.get("system"), gd.get("resolved_version") or gd.get("version"), target.get("version"))
+        bool(graph)
+        and not graph.get("error")
+        and not graph.get("fallback_used")
+        and same_version(
+            target.get("system"), graph.get("resolved_version") or graph.get("version"), target.get("version")
+        )
     )
     if not graph_matches:
         gaps.append("graph_version_unverified")
         areas["deps"] = "unknown"
-    roots = [obj(n) for n in seq(gd.get("nodes")) if obj(n).get("relation") == "SELF"]
+    roots = [obj(n) for n in seq(graph.get("nodes")) if obj(n).get("relation") == "SELF"]
     if (
         len(roots) != 1
         or not same_name(target.get("system"), roots[0].get("name"), target.get("name"))
@@ -129,9 +142,9 @@ def _evaluate_base(data):
     if any(not n.get("name") or not n.get("version") or n.get("relation") not in ("DIRECT", "INDIRECT") for n in nodes):
         gaps.append("graph_node_unverified")
     for flag in ("truncated", "osv_incomplete", "graph_error", "nodes_with_errors", "license_lookup_failures"):
-        if gd.get(flag):
+        if graph.get(flag):
             gaps.append(flag)
-    if not seq(gd.get("nodes")):
+    if not seq(graph.get("nodes")):
         gaps.append("graph_empty")
     for node in nodes:
         if node.get("vulns_queried") is not True or node.get("vuln_count") is None:
@@ -142,6 +155,15 @@ def _evaluate_base(data):
             gaps.append("dependency_license_unqueried")
         elif graph_matches:
             lic = classify_license(node.get("licenses"))
+            license_reviews.append(
+                {
+                    "name": node.get("name"),
+                    "version": node.get("version"),
+                    "relation": node.get("relation"),
+                    "licenses": node.get("licenses"),
+                    "assessment": lic,
+                }
+            )
             if lic["tier"] != "allow":
                 mark(
                     "license",
@@ -150,17 +172,19 @@ def _evaluate_base(data):
                     package=f"{node.get('name')}@{node.get('version')}",
                     licenses=node.get("licenses"),
                     category=lic["category"],
+                    assessment=lic,
+                    version=node.get("version"),
                     path=node.get("path"),
                 )
     groups = advisory_groups(data.get("advisories"))
     id_groups = {alias: group for group in groups for alias in group["aliases"]}
     root_osv = obj(data.get("root_osv"))
-    root_ids = list(dict.fromkeys(ids(lp.get("advisories")) + (ids(root_osv.get("ids")) if root_osv else [])))
+    root_ids = list(dict.fromkeys(ids(package.get("advisories")) + (ids(root_osv.get("ids")) if root_osv else [])))
     if data.get("schema") == "oss-gate.review/2" and (
         root_osv.get("queried") is not True or root_osv.get("incomplete")
     ):
         gaps.append("root_osv_unavailable")
-    if lp and not lp.get("error") and not isinstance(lp.get("advisories"), list):
+    if package and not package.get("error") and not isinstance(package.get("advisories"), list):
         gaps.append("root_vulnerabilities_unqueried")
     for area, advisory_ids in [
         ("vulns", root_ids),
@@ -181,9 +205,11 @@ def _evaluate_base(data):
                     advisory=group["id"],
                     score=group["score"],
                 )
-    sc = obj(obj(data.get("get_project")).get("scorecard"))
-    score = sc.get("overall")
-    maintained = next((c.get("score") for c in seq(sc.get("checks")) if obj(c).get("name") == "Maintained"), None)
+    scorecard = obj(obj(data.get("get_project")).get("scorecard"))
+    score = scorecard.get("overall")
+    maintained = next(
+        (c.get("score") for c in seq(scorecard.get("checks")) if obj(c).get("name") == "Maintained"), None
+    )
     if number(maintained) and maintained == 0:
         mark("maintenance", "hold", "unmaintained")
     elif number(score) and 0 <= score <= 10:
@@ -192,7 +218,7 @@ def _evaluate_base(data):
             "allow" if score >= 7 else "conditional" if score >= 4 else "hold",
             "scorecard",
             score=score,
-            date=sc.get("date"),
+            date=scorecard.get("date"),
         )
     else:
         areas["maintenance"] = "unknown"
@@ -205,6 +231,8 @@ def _evaluate_base(data):
         findings.append({"area": "overall", "code": "verification_failed"})
     return {
         "policy": POLICY_VERSION,
+        "classification_sha256": DATA_SHA256,
+        "license_reviews": license_reviews,
         "overall": overall,
         "areas": areas,
         "coverage_gaps": sorted(set(gaps)),
@@ -219,4 +247,6 @@ def evaluate(data):
     """Apply optional saved settings without changing default screening behavior."""
     from .additional_policy import apply
 
-    return apply(data, _evaluate_base(data))
+    from .license_policy import apply_license_policy
+
+    return apply_license_policy(data, apply(data, _evaluate_base(data)))

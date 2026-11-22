@@ -48,3 +48,35 @@ The selected CA applies to OSS Gate's deps.dev, OSV, registry/mirror and DeepWik
 Each operation loads the file once and uses an isolated connection pool; dependency workers share only that operation's pool. An unreadable, malformed or oversized file returns `tls_configuration_invalid` before an HTTP request, with no fallback. `plan` validates the setting's shape without opening the file, so it does not establish certificate readiness. `collect` preserves the actual CA-file SHA-256 and certifi version in sealed `data.json#/tls_trust`; offline evaluation/rendering does not need the original file. A different CA file on the next operation is a new trust configuration, even if its path is unchanged.
 
 Additional trust authorizes certificates issued by that CA for otherwise allowed destinations. A TLS-inspecting proxy can read those requests, so existing private-name restrictions remain necessary. The saved policy contains the local CA path; review that path before sharing reports. No certificate contents or private keys are stored in the report.
+
+## License review settings
+
+No settings are required for ordinary reviews. Configure exact SPDX IDs when you need additional restrictions:
+
+```json
+{"schema":"oss-gate.settings/1","name":"My review rules","version":"1",
+ "review":{"license_restrictions":{"MPL-2.0":"hold","CC-BY-4.0":"conditional"}}}
+```
+
+Only `conditional` and `hold` are accepted. An alternative permitted OR branch remains available; the selected branch is recorded. Identifiers and license expressions are not rewritten.
+
+For an attributed acceptance record, copy the exact `finding_sha256` from an evaluated `license_reviews` item into `review.license_decisions`. Each record requires `decided_by`, timezone-aware `decided_at`, `reason`, and `conditions`; `expires_at` is optional. This records your decision, not a new automatic allow grade. Exact evidence and assessment matching is required. Do not invent a reviewer or silently accept on a user's behalf. Keep the policy outside untrusted target projects and select it explicitly.
+
+```json
+{"finding_sha256":"<copy the 64-character finding hash>",
+ "decided_by":"Your reviewer name","decided_at":"2026-11-22T10:00:00Z",
+ "reason":"Explain the reviewed use and evidence",
+ "conditions":"State the conditions you will follow"}
+```
+
+The placeholder above is deliberately invalid until replaced. Unresolved license evidence cannot be cleared by an acceptance record. Expired, future or nonmatching records remain visible and are not counted as applied. No identity or authority is authenticated.
+
+Reassess an existing review with your selected policy without contacting any upstream service:
+
+```sh
+uv run --frozen --project plugins/oss-gate python plugins/oss-gate/cli.py \
+  --policy /absolute/policy.json reassess /absolute/review-directory \
+  --output-root /absolute/new-reviews
+```
+
+Write a new narrative for the returned folder, then render it. The source review is unchanged. The new snapshot seals the selected configuration, evaluation time, source data and applicable decisions. The names, reasons and conditions become part of the report: inspect them before sharing.
