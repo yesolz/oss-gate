@@ -361,7 +361,7 @@ class Integration(unittest.TestCase):
             swift_query = next(q for q in query["queries"] if q["package"]["ecosystem"] == "SwiftURL")
             self.assertEqual(swift_query["package"]["name"], "github.com/apple/swift-nio-http2")
             self.assertFalse(any("/systems/swift" in c[1] for c in fake.calls))
-            data = json.loads(Path(result["data"]).read_text())
+            data = json.loads(Path(result["data"]).read_text(encoding="utf-8"))
             self.assertIn("swift_license_source_unavailable", codes(data["verdict"]))
             self.assertEqual(data["verdict"], evaluate_repository(data))
 
@@ -407,13 +407,13 @@ class Integration(unittest.TestCase):
             self.assertEqual(result["summary"]["container_imported_findings"], 1)
             folder = Path(result["folder"])
             verify(folder)
-            saved = json.loads((folder / "data.json").read_text())
+            saved = json.loads((folder / "data.json").read_text(encoding="utf-8"))
             source_hash = next(f["sha256"] for f in saved["inventory"]["files"] if f["path"] == "scan.trivy.json")
             self.assertEqual(saved["verdict"]["container_scans"][0]["input_sha256"], source_hash)
-            self.assertEqual(json.loads((folder / "api-responses.json").read_text()), [])
+            self.assertEqual(json.loads((folder / "api-responses.json").read_text(encoding="utf-8")), [])
             render_repository(folder, "both")
             for lang in ("ko", "en"):
-                html = (folder / f"report.{lang}.html").read_text()
+                html = (folder / f"report.{lang}.html").read_text(encoding="utf-8")
                 self.assertIn("CVE-2025-0001", html)
                 self.assertIn(DIGEST, html)
                 self.assertIn(source_hash, html)
@@ -435,7 +435,7 @@ class Integration(unittest.TestCase):
             with policy_scope(config):
                 result = collect_repository(Path(tmp) / "repo", str(Path(tmp) / "out"))
             self.assertEqual(result["verdict"], "hold")
-            saved = json.loads(Path(result["data"]).read_text())
+            saved = json.loads(Path(result["data"]).read_text(encoding="utf-8"))
             verdict = saved["verdict"]["container_scans"][0]["packages"][0]["verdict"]
             self.assertIn("communication_unverified", verdict["coverage_gaps"])
             render_repository(result["folder"], "both")
@@ -457,7 +457,7 @@ class Integration(unittest.TestCase):
                     report["CreatedAt"] = value
                 write(root, {"trivy.json": json.dumps(report)})
                 result = collect_repository(root, str(Path(tmp) / "out"))
-                saved = json.loads(Path(result["data"]).read_text())
+                saved = json.loads(Path(result["data"]).read_text(encoding="utf-8"))
                 review = saved["verdict"]["container_scans"][0]["packages"][0]["verdict"]["license_reviews"][0]
                 hashes.append(review["finding_sha256"])
             self.assertEqual(len(set(hashes)), 3)

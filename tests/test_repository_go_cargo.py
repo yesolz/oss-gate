@@ -57,7 +57,7 @@ def write(root, contents):
     for name, value in contents.items():
         path = root / name
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(value)
+        path.write_text(value, encoding="utf-8")
 
 
 def codes(result):
@@ -281,11 +281,11 @@ class MixedRepository(unittest.TestCase):
             folder = Path(result["folder"])
             render_repository(folder, "both")
             for lang in ("ko", "en"):
-                report = (folder / f"report.{lang}.html").read_text()
+                report = (folder / f"report.{lang}.html").read_text(encoding="utf-8")
                 for identity in ("npm:shared", "cargo:shared", "go:example.org/lib"):
                     self.assertIn(identity, report)
                 self.assertIn("Go", report)
-            data = json.loads((folder / "data.json").read_text())
+            data = json.loads((folder / "data.json").read_text(encoding="utf-8"))
             self.assertEqual(
                 next(p for p in data["verdict"]["packages"] if p["system"] == "go")["verdict"]["license_reviews"][0][
                     "relation"
@@ -326,7 +326,7 @@ class MixedRepository(unittest.TestCase):
             )
             self.assertFalse(any("example.org" in call[1] for call in fake.calls))
             self.assertNotEqual(result["verdict"], "allow")
-            data = json.loads(Path(result["data"]).read_text())
+            data = json.loads(Path(result["data"]).read_text(encoding="utf-8"))
             blocked = [g["package"] for g in data["inventory"]["coverage_gaps"] if g["code"] == "package_policy_blocked"]
             self.assertIn({"system": "npm", "name": "shared", "version": "1.2.3"}, blocked)
             self.assertNotIn({"system": "cargo", "name": "shared", "version": "1.2.3"}, blocked)

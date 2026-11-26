@@ -214,7 +214,7 @@ class RepositoryCollection(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp, policy_scope(config), legacy_server.fake(routes()):
             result = collect_repository(repo(Path(tmp) / "repo"), str(Path(tmp) / "output"), True)
             self.assertEqual(result["verdict"], "conditional")
-            data = json.loads(Path(result["data"]).read_text())
+            data = json.loads(Path(result["data"]).read_text(encoding="utf-8"))
             for p in data["verdict"]["packages"]:
                 self.assertIn("communication_unverified", p["verdict"]["coverage_gaps"])
                 self.assertIn("release_wait", {f["code"] for f in p["verdict"]["findings"]})
@@ -245,7 +245,7 @@ class RepositoryCollection(unittest.TestCase):
             self.assertEqual(len(query["queries"]), 3)
             folder = Path(result["folder"])
             verify(folder)
-            self.assertIn("full evidence retained", (folder / "api-responses.json").read_text())
+            self.assertIn("full evidence retained", (folder / "api-responses.json").read_text(encoding="utf-8"))
 
     def test_vulnerability_aliases_count_once_and_reports_escape(self):
         with tempfile.TemporaryDirectory() as tmp, legacy_server.fake(routes(True)):
@@ -257,7 +257,7 @@ class RepositoryCollection(unittest.TestCase):
             self.assertEqual(len(rendered["files"]), 4)
             folder = Path(result["folder"])
             for lang in ("ko", "en"):
-                html = (folder / f"report.{lang}.html").read_text()
+                html = (folder / f"report.{lang}.html").read_text(encoding="utf-8")
                 self.assertNotIn("<script>alert(1)</script>", html)
                 self.assertIn("GHSA-fixture", html)
                 self.assertIn("Content-Security-Policy", html)
@@ -299,7 +299,7 @@ class RepositoryCollection(unittest.TestCase):
                 p["package"]["name"] for call in fake.calls if call[1] == legacy_server.QB for p in call[2]["queries"]
             ]
             self.assertEqual(sent, ["shared"])
-            data = json.loads(Path(result["data"]).read_text())
+            data = json.loads(Path(result["data"]).read_text(encoding="utf-8"))
             self.assertEqual(evaluate_repository(data), data["verdict"])
 
     def test_osv_pagination_and_policy_guard(self):
