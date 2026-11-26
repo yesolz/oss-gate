@@ -1,11 +1,11 @@
 ---
 name: oss-review
-description: Review public packages or a local Yarn Berry, Go or Cargo repository using preserved evidence. Use for OSS adoption, license, known vulnerability and dependency questions, including monorepo dependency screening. Supports Korean, English or both, with Markdown, offline HTML and source evidence.
+description: Review public packages or a local multi-ecosystem repository using preserved evidence. Use for OSS adoption, license, known vulnerability and dependency questions, including monorepo dependency screening. Supports Korean, English or both, with Markdown, offline HTML and source evidence.
 ---
 
 # OSS Gate review
 
-For a whole-repository or monorepo dependency review, read `references/repository-review.md` and `references/transport.md` first and follow that repository workflow. It requires a local directory and analyzes Yarn Berry npm and Cargo crates.io lock entries plus Go declared requirements. Go build selection remains unverified. Other ecosystem files are reported as coverage gaps. A repository URL alone in the existing single-package workflow still resolves public package candidates; do not silently present that as a whole-repository scan.
+For a whole-repository or monorepo dependency review, read `references/repository-review.md` and `references/transport.md` first and follow that repository workflow. It requires a local directory and supports Yarn Berry, Go, Cargo, Java/Kotlin, Swift and imported container scans. Read the reference for required resolved inputs and per-ecosystem limits; manifests alone do not establish selected versions or complete coverage. A repository URL alone in the existing single-package workflow still resolves public package candidates; do not silently present that as a whole-repository scan.
 
 Read `references/transport.md`, `references/workflow.md` and `references/report-template.md` and `references/evidence-files.md` relative to this skill before collecting evidence. Run the workflow in the current session; delegated agents are optional only when the user or host explicitly authorizes them.
 

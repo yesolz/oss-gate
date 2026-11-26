@@ -152,8 +152,8 @@ class YarnInventory(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = repo(Path(tmp) / "project")
             repo(root / "separate")
-            (root / "pom.xml").write_text("<project/>\n")
-            (root / "Dockerfile").write_text("FROM scratch\n")
+            (root / "requirements.txt").write_text("example==1.0.0\n")
+            (root / "poetry.lock").write_text("# unsupported\n")
             (root / "node_modules").mkdir()
             (root / "node_modules/package.json").write_text("invalid")
             inventory = discover(root)
@@ -162,7 +162,7 @@ class YarnInventory(unittest.TestCase):
             self.assertTrue(all(len(p["occurrences"]) == 2 for p in inventory["packages"]))
             self.assertEqual(
                 {g["source"] for g in inventory["coverage_gaps"] if g["code"] == "unsupported_format"},
-                {"pom.xml", "Dockerfile"},
+                {"requirements.txt", "poetry.lock"},
             )
             self.assertFalse(any(f["path"].startswith("node_modules/") for f in inventory["files"]))
             self.assertFalse(inventory["network_performed"])

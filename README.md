@@ -76,6 +76,8 @@ reviews/<package-version>/<timestamp-id>/
 
 HTML works offline, includes detailed findings and source data, and can be printed to PDF from the browser. No review is sent to an OSS Gate backend. You can also use `oss-viz`, `periodic-report`, and `proposal-draft` for existing results. [Usage guide](docs/usage.md)
 
+Unreleased on this feature branch: [whole-repository reviews](docs/usage.md) for Yarn Berry, Go, Cargo, Java/Kotlin, Swift and imported Trivy/Grype image reports. Each adapter reports its resolution and coverage limits.
+
 ## What it adds
 
 OSS Gate helps answer: what does this software do, what needs review before adoption, and which evidence supports that decision? It keeps versions, limitations, suggested actions and source references together in a report you can discuss with a teammate.

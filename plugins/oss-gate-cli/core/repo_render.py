@@ -11,6 +11,86 @@ from .license_display import explain as explain_license
 from .policy import advisory_groups
 
 GAPS = {
+    "jvm_omitted_nodes": (
+        "Maven verbose 트리의 선택 제외 항목은 조회하지 않음",
+        "Omitted Maven verbose nodes excluded from queries",
+    ),
+    "jvm_version_unresolved": ("JVM 동적·SNAPSHOT 버전 미확인", "Dynamic/SNAPSHOT JVM version unverified"),
+    "jvm_variant_unverified": ("JVM classifier·artifact 변형 미확인", "JVM classifier/artifact variant unverified"),
+    "jvm_local_artifact": ("JVM system 경로 artifact 제외", "JVM system-path artifact excluded"),
+    "jvm_manifest_identity_unverified": (
+        "Maven POM과 가져온 트리의 프로젝트 일치 미확인",
+        "Maven POM/imported tree project identity unverified",
+    ),
+    "jvm_manifest_missing": (
+        "JVM 해결 결과에 연결할 manifest 미확인",
+        "JVM resolution has no verified associated manifest",
+    ),
+    "jvm_dependency_edges_unverified": (
+        "Gradle lock에는 직접·간접 연결 정보 없음",
+        "Gradle lock does not record direct/transitive edges",
+    ),
+    "jvm_build_configuration_unverified": (
+        "JVM 빌드·프로필·저장소 설정과 결과 최신성 미확인",
+        "JVM build/profile/repository configuration and input freshness unverified",
+    ),
+    "jvm_resolution_invalid": (
+        "JVM 해결 결과 형식 오류 또는 처리 한도",
+        "Invalid JVM resolution input or resource limit",
+    ),
+    "jvm_resolved_input_missing": ("Maven JSON 트리 또는 Gradle lock 필요", "Maven JSON tree or Gradle lock required"),
+    "swift_source_unverified": (
+        "Swift 로컬·registry·비표준 출처 미확인",
+        "Swift local, registry or unsupported source unverified",
+    ),
+    "swift_nonversion_pin": (
+        "Swift branch·revision 전용 pin의 버전 미확인",
+        "Swift branch/revision-only pin version unverified",
+    ),
+    "swift_revision_unverified": ("Swift pin의 소스 리비전 미확인", "Swift pin source revision unverified"),
+    "swift_manifest_resolution_unverified": (
+        "Swift manifest·pin 일치, 직접·간접 연결 및 mirror 설정 미확인",
+        "Swift manifest/pin freshness, dependency edges and mirrors unverified",
+    ),
+    "swift_resolution_invalid": (
+        "Swift Package.resolved 오류 또는 미지원 형식",
+        "Invalid or unsupported Swift Package.resolved",
+    ),
+    "swift_resolved_input_missing": ("Swift Package.resolved 필요", "Swift Package.resolved required"),
+    "swift_license_source_unavailable": (
+        "Swift 라이선스 메타데이터 공급원 미지원",
+        "Swift license metadata source not supported",
+    ),
+    "swift_advisory_aliases_unverified": (
+        "SwiftURL 정규 저장소 이름과 다른 취약점 별칭은 미확인",
+        "Swift advisories under noncanonical package aliases may not match",
+    ),
+    "container_reference_unresolved": (
+        "컨테이너 이미지 변수·선언을 해석하지 못함",
+        "Unresolved container image variable or declaration",
+    ),
+    "container_final_image_unverified": ("Docker 빌드의 최종 이미지 미검사", "Final Docker build image not scanned"),
+    "container_input_invalid": (
+        "컨테이너 입력 오류·미지원 형식 또는 처리 한도",
+        "Invalid/unsupported container input or resource limit",
+    ),
+    "container_scan_missing": ("이미지 digest와 일치하는 검사 결과 없음", "No scan matched to the exact image digest"),
+    "container_digest_unverified": (
+        "가져온 검사 결과의 이미지 manifest digest 미확인",
+        "Imported scan image manifest digest unverified",
+    ),
+    "container_scan_coverage_unverified": (
+        "가져온 스캐너 결과의 최신성·필터·전체 검사 범위 미확인",
+        "Imported scanner freshness, filters and complete coverage unverified",
+    ),
+    "container_suppressed_findings": (
+        "스캐너에서 억제된 항목도 함께 심사함",
+        "Scanner-suppressed findings retained in review",
+    ),
+    "container_licenses_unverified": (
+        "컨테이너 전체 구성요소의 라이선스 미확인",
+        "Licenses of all container components unverified",
+    ),
     "go_manifest_invalid": ("Go 선언 형식 오류 또는 미지원 구문", "Invalid or unsupported Go declarations"),
     "go_workspace_member_missing": (
         "Go workspace 모듈 누락 또는 외부 경로",
@@ -132,6 +212,118 @@ def gap_target(gap):
     return " / ".join(parts) or "."
 
 
+def version_basis(package, ko):
+    if package["system"] == "go":
+        return "선언" if ko else "Declared"
+    if any(o.get("basis") == "resolved_tree" for o in package["occurrences"]):
+        return "해결 트리" if ko else "Resolved tree"
+    return "잠금" if ko else "Locked"
+
+
+def container_section(data, lang):
+    ko = lang == "ko"
+    scans = data["verdict"].get("container_scans", [])
+    images = data["inventory"].get("container_images", [])
+    if not scans and not images:
+        return []
+    lines = [
+        "",
+        "## " + ("컨테이너 검사 가져오기" if ko else "Imported container scans"),
+        "",
+        (
+            "아래 건수는 가져온 결과에 기록된 항목 수입니다. 온라인 패키지 검사율과 별개이며, 0건은 전체 검사 완료나 취약점 부재를 뜻하지 않습니다. 태그 이름만으로는 검사 결과를 연결하지 않습니다."
+            if ko
+            else "Counts below describe imported records, separately from online package queries. Zero findings do not establish complete coverage or absence of vulnerabilities. Tags alone do not bind a scan to an image."
+        ),
+        "",
+    ]
+    if images:
+        lines.extend(
+            [
+                md_table(
+                    ["선언 파일", "이미지", "역할", "digest 일치 보고서"]
+                    if ko
+                    else ["Declaration", "Image", "Role", "Digest-matched reports"],
+                    [[p["source"], p["reference"], p["role"], ", ".join(p["matched_reports"]) or "?"] for p in images],
+                ),
+                "",
+            ]
+        )
+    for scan in scans:
+        lines.extend(
+            [
+                "### " + cell(scan["source"]),
+                "",
+                md_table(
+                    ["항목", "값"] if ko else ["Field", "Value"],
+                    [
+                        ["스캐너" if ko else "Scanner", scan["scanner"] + " " + (scan["scanner_version"] or "?")],
+                        ["판정" if ko else "Verdict", LABELS[lang][scan["overall"]]],
+                        ["이미지 digest" if ko else "Image digest", ", ".join(scan["references"]) or "?"],
+                        ["입력 SHA-256" if ko else "Input SHA-256", scan.get("input_sha256") or "?"],
+                        ["기록된 검사 시각" if ko else "Recorded scan time", scan["created_at"] or "?"],
+                        ["가져온 패키지 항목" if ko else "Imported package records", len(scan["packages"])],
+                        ["가져온 취약점 항목" if ko else "Imported findings", len(scan["findings"])],
+                        ["보존된 억제 항목" if ko else "Suppressed records retained", scan["ignored_count"]],
+                    ],
+                ),
+                "",
+                md_table(
+                    ["출처", "패키지·버전", "취약점", "심각도", "점수", "수정 버전", "억제 여부"]
+                    if ko
+                    else [
+                        "Namespace",
+                        "Package version",
+                        "Advisory",
+                        "Severity",
+                        "Score",
+                        "Fixed versions",
+                        "Suppressed",
+                    ],
+                    [
+                        [
+                            f["namespace"],
+                            f["name"] + "@" + f["version"],
+                            f["id"],
+                            f["severity"],
+                            f["score"],
+                            ", ".join(f["fixed_versions"]) or "?",
+                            f["suppressed"],
+                        ]
+                        for f in scan["findings"]
+                    ],
+                ),
+                "",
+            ]
+        )
+        if scan["packages"]:
+            lines.extend(
+                [
+                    md_table(
+                        ["구성요소", "라이선스", "라이선스·추가 정책", "미확인·정책 사유"]
+                        if ko
+                        else ["Component", "Licenses", "License/additional policy", "Gaps/policy reasons"],
+                        [
+                            [
+                                p["namespace"] + ":" + p["name"] + "@" + p["version"],
+                                ", ".join(p["licenses"] or []) or "?",
+                                LABELS[lang][p["verdict"]["overall"]],
+                                ", ".join(
+                                    [
+                                        *(GAPS.get(g, (g, g))[0 if ko else 1] for g in p["verdict"]["coverage_gaps"]),
+                                        *(LABELS[lang].get(f["code"], f["code"]) for f in p["verdict"]["findings"]),
+                                    ]
+                                ),
+                            ]
+                            for p in scan["packages"]
+                        ],
+                    ),
+                    "",
+                ]
+            )
+    return lines
+
+
 def narrative(data, lang):
     ko = lang == "ko"
     t, verdict = LABELS[lang], data["verdict"]
@@ -146,9 +338,9 @@ def narrative(data, lang):
         ("수집 시각: " if ko else "Collected at: ") + cell(data["generated_at"]),
         "",
         (
-            "Yarn Berry의 npm·Cargo의 crates.io 잠금 버전과 Go 선언 버전의 취약점·라이선스를 심사합니다. 개발·선택·플랫폼별 의존성을 포함합니다. Go의 실제 빌드 선택 버전, 설치·배포 목록, 소스코드·유지보수, 외부 패키지 매니저 설정은 미확인입니다. 패치·Git·로컬 출처와 peer 연결도 별도 확인이 필요합니다."
+            "Yarn·Cargo·Gradle·Swift 잠금 목록, Maven 해결 트리와 Go 선언 버전의 취약점·라이선스를 심사합니다. 컨테이너는 가져온 Trivy·Grype 이미지 검사 결과를 별도로 평가합니다. 빌드 설정·최신성·배포 도달 가능성·소스코드·유지보수는 미확인일 수 있습니다. 미확인 항목과 버전 기준을 함께 확인하세요."
             if ko
-            else "This verdict screens Yarn Berry npm and Cargo crates.io locked versions, plus Go declared versions. It includes development, optional and target-specific entries. Go build selection, installed/deployed artifacts, source code, maintenance and external package-manager configuration remain unverified. Patches, Git/local sources and peer bindings need separate verification."
+            else "This verdict screens Yarn/Cargo/Gradle/Swift lock inventories, Maven resolved trees and Go declarations. Imported Trivy/Grype image findings are evaluated separately. Build configuration, freshness, deployment reachability, source code and maintenance may remain unverified. Read the coverage gaps and version basis with the findings."
         ),
         "",
         "## " + ("검사 범위" if ko else "Coverage"),
@@ -168,20 +360,32 @@ def narrative(data, lang):
                 ],
                 ["영향받는 패키지·버전" if ko else "Affected package versions", s["affected_packages"]],
                 ["고유 취약점 묶음" if ko else "Unique advisory groups", s["advisory_groups"]],
+                ["가져온 컨테이너 보고서" if ko else "Imported container reports", s.get("container_reports", 0)],
+                [
+                    "가져온 컨테이너 취약점 항목" if ko else "Imported container findings",
+                    s.get("container_imported_findings", 0),
+                ],
                 ["미확인 항목" if ko else "Coverage gaps", s["coverage_gaps"]],
             ],
         ),
         "",
         (
-            "분모는 식별된 생태계·패키지·버전 수입니다. 미지원 파일과 해석하지 못한 의존성은 이 수에 포함되지 않습니다. 메타데이터 확보는 라이선스 허용 판정과 다릅니다."
+            "분모는 식별된 생태계·패키지·버전 수입니다. 컨테이너 가져오기·미지원 파일·해석하지 못한 의존성은 이 수에 포함되지 않습니다. 메타데이터 확보는 라이선스 허용 판정과 다릅니다."
             if ko
-            else "Denominators count identified ecosystem/package versions. Unsupported files and unresolved dependencies are outside these totals. Available license metadata does not mean the license is allowed."
+            else "Denominators count identified ecosystem/package versions. Container imports, unsupported files and unresolved dependencies are outside these totals. Available license metadata does not mean the license is allowed."
         ),
         "",
         "## " + ("조치 순서" if ko else "Next actions"),
         "",
     ]
     blocked = [p for p in verdict["packages"] if p["verdict"]["overall"] == "hold"]
+    held_scans = [s for s in verdict.get("container_scans", []) if s["overall"] == "hold"]
+    if held_scans:
+        lines.append(
+            "보류된 컨테이너의 구성요소·수정 버전·라이선스를 확인하고, 변경 후 최종 이미지 digest를 다시 검사하세요."
+            if ko
+            else "Review components, fixed versions and licenses in held container scans, then rescan the final image digest after changes."
+        )
     if blocked:
         lines.append(
             (
@@ -198,7 +402,7 @@ def narrative(data, lang):
                 else "Resolve coverage gaps and run a new review. Update missing or inconsistent lockfiles through the project's normal development workflow."
             )
         )
-    if not blocked and not verdict["coverage_gaps"]:
+    if not blocked and not held_scans and not verdict["coverage_gaps"]:
         lines.append(
             t["no_vulns"]
             if not s["affected_packages"]
@@ -209,6 +413,14 @@ def narrative(data, lang):
             )
         )
     lines.extend(["", "## " + ("프로젝트별 직접 의존성" if ko else "Direct dependencies by project"), ""])
+    lines.extend(
+        [
+            "Gradle·Swift 잠금 파일과 컨테이너 결과만으로는 직접 의존성을 확정하지 않습니다. 아래 표의 누락은 의존성 부재를 뜻하지 않습니다."
+            if ko
+            else "Gradle/Swift locks and container scans do not establish direct dependencies. Missing rows below do not mean dependencies are absent.",
+            "",
+        ]
+    )
     lines.append(
         md_table(
             ["프로젝트", "의존성", "그룹", "선언 이름"] if ko else ["Project", "Dependency", "Group", "Declared name"],
@@ -234,7 +446,7 @@ def narrative(data, lang):
         rows.append(
             [
                 f"{p['system']}:{p['name']}@{p['version']}",
-                ("선언" if ko else "Declared") if p["system"] == "go" else ("잠금" if ko else "Locked"),
+                version_basis(p, ko),
                 t[v["overall"]],
                 license_text,
                 str(group_count) if p["osv"]["complete"] else (f"≥ {group_count}" if ids else "?"),
@@ -293,6 +505,7 @@ def narrative(data, lang):
             ],
         )
     )
+    lines.extend(container_section(data, lang))
     lines.extend(["", "## " + ("미확인 항목" if ko else "Coverage gaps"), ""])
     lines.append(
         md_table(

@@ -4,7 +4,7 @@
 
 ## Whole-repository dependency review (unreleased)
 
-Local repositories and monorepos can combine Yarn Berry (`package.json`, `yarn.lock`), Go (`go.mod`, `go.work`) and Cargo (`Cargo.toml`, `Cargo.lock`). Identified ecosystem/name/version tuples are queried once, retaining project occurrences, vulnerabilities, licenses and coverage gaps. This is separate from resolving a public repository URL to one published package.
+Local repositories and monorepos can combine Yarn Berry (`package.json`, `yarn.lock`), Go (`go.mod`, `go.work`), Cargo (`Cargo.toml`, `Cargo.lock`), Java/Kotlin resolved inputs, Swift pins and imported container image reports. Identified ecosystem/name/version tuples are queried once, retaining project occurrences, vulnerabilities, licenses and coverage gaps. This is separate from resolving a public repository URL to one published package.
 
 ```sh
 uv run --frozen --project plugins/oss-gate python plugins/oss-gate/cli.py repo-plan /absolute/repository --output-root /absolute/reviews
@@ -16,13 +16,30 @@ uv run --frozen --project plugins/oss-gate python plugins/oss-gate/cli.py repo-r
 
 Collection creates a unique folder with evidence JSON, API responses and hashes, then generates Markdown/HTML in the selected languages. `repo-render` verifies saved evidence and regenerates reports; it replaces generated report files, so keep editorial additions in separate files. MCP installations use `plan_repository` and `collect_repository`, then CLI `repo-render` on the returned folder.
 
-The verdict covers **vulnerabilities and licenses of Yarn Berry npm/Cargo crates.io locked versions and Go declared requirements**, including development, optional and target-specific entries. It does not establish an installed/deployed inventory. Patched, Git and local dependencies, peer bindings and manifest/lock mismatches remain unverified. Recognized Java/Kotlin, Swift, Docker, Python and other dependency files are discovered but not yet analyzed. Source-code vulnerabilities and maintenance are outside this repository verdict's current scope.
+The verdict covers **vulnerabilities and available licenses of Yarn Berry/Cargo/Gradle/Swift locked versions, Maven resolved versions and Go declared requirements**, including development, optional and target-specific entries. Container imports are evaluated separately. It does not establish an installed/deployed inventory. Patched, Git and local dependencies, peer bindings and manifest/lock mismatches remain unverified. Java/Kotlin, Swift and container scope is described below. Python and other unsupported files remain gaps. Source-code vulnerabilities and maintenance are outside this repository verdict's current scope.
 
 Go applies module/workspace replacements and exclusions without running Go. `go.sum` and `go.work.sum` contribute file hashes only, because checksums are not the selected dependency list. Go requirements remain **declared versions**, and every Go project retains a build-selection/complete-graph gap. Local replacements and conflicting workspace rules are not queried under their original module identity. See the [Go modules reference](https://go.dev/ref/mod).
 
 Cargo accepts lock formats 3/4, maps workspaces, dependency aliases, inherited fields and in-tree path dependencies, and follows locked transitive edges. Only crates.io sources are queried as public crates. Git, custom registries, patches, unsupported requirements and unresolved local nodes remain gaps. Detected `.cargo/config[.toml]` is reported as unsupported configuration; external configuration is outside the review. All target/feature lock entries may be included, irrespective of the deployed build. See [Cargo workspaces](https://doc.rust-lang.org/cargo/reference/workspaces.html) and [dependency resolution](https://doc.rust-lang.org/cargo/reference/resolver.html#lock-file).
 
 The default query cap is 2,000 unique package versions; `--max-packages` accepts 1..10000. Advisory details are capped at 1,000. Limits, failures and unsupported files become coverage gaps. Coverage denominators count identified ecosystem/name/version tuples, not every unresolved component in the repository. Existing package portfolio/reassessment commands do not yet accept repository snapshots.
+
+### Java/Kotlin, Swift and Docker
+
+| Ecosystem | Required input | Material limits |
+| --- | --- | --- |
+| Java/Kotlin with Maven | `dependency-tree.json` beside each module's `pom.xml` | Resolved coordinates/scopes/edges; omitted verbose nodes excluded. POM ranges alone are insufficient. |
+| Java/Kotlin with Gradle | `gradle.lockfile`, `buildscript-gradle.lockfile`, or legacy `gradle/dependency-locks/*.lockfile` beside `build.gradle[.kts]` | Configuration provenance is retained; direct/transitive edges and build configuration remain unverified. |
+| Swift | `Package.resolved` v1/v2/v3, including Xcode subdirectories | Versioned HTTPS Git pins query OSV SwiftURL. Branch/revision-only and registry/local pins remain gaps. License metadata is unavailable and retains hold. |
+| Docker | Dockerfile/Compose references and native `trivy.json` / `*.trivy.json` / `grype.json` / `*.grype.json` | Offline import; only exact repository digest matches associate scans with declarations. No image pull/build or scanner execution. |
+
+Prepare resolved exports in the project's normal development/CI workflow. For Maven Dependency Plugin 3.7 or later, an example is `mvn dependency:tree -DoutputType=json -DoutputFile=dependency-tree.json`. Gradle lock generation and Swift resolution can execute project code; OSS Gate does not run them automatically. SwiftURL queries use `host/owner/repository` without `https://` or `.git`; identifier policies can use `swift:github.com/owner/*`. Advisories under noncanonical short-name aliases remain a coverage gap. Dynamic/SNAPSHOT JVM versions, classifiers, repository/profile settings, Swift mirrors and stale manifests retain explicit gaps. Keep exports outside excluded directories such as `target`, `build` and `dist`.
+
+For an independently authorized image scan, examples are `trivy image --scanners vuln --list-all-pkgs --format json --output trivy.json IMAGE@sha256:DIGEST` or `grype IMAGE@sha256:DIGEST -o json > grype.json`. Supply actual image references/digests. Import native image reports, not text reports or SBOMs. A valid container-only import can run `repo-collect` without `--public-packages`; mixed repositories still require confirmed public identifiers or an allowlist.
+
+Suppressed/ignored vulnerabilities remain in the decision. Imported package licenses also receive selected policy checks. Scan/finding counts are separate from online query coverage. A tag does not identify immutable image contents; a base-image report does not cover the final build. Zero findings cannot establish full scan coverage, current vulnerability databases or absence of filters. Input SHA-256 and normalized findings are sealed; raw image environments and scanner configuration are excluded. Keep original scan files separately for audit. Docker Hub/Scout is not queried by this adapter.
+
+Format references: [Maven JSON trees](https://maven.apache.org/plugins/maven-dependency-plugin/examples/tree-mojo.html), [Gradle locking](https://docs.gradle.org/current/userguide/dependency_locking.html), [OSV ecosystems](https://ossf.github.io/osv-schema/#affectedpackage-field), [Trivy reporting](https://trivy.dev/latest/docs/configuration/reporting/), [Grype JSON output](https://github.com/anchore/grype), [Docker Scout](https://docs.docker.com/scout/).
 
 ## Package review
 

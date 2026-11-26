@@ -12,7 +12,8 @@ import stat
 
 import httpx
 
-from . import api, yarn, gomod, cargo
+from . import api, yarn, gomod, cargo, jvm, swift, containers
+from .repo_inputs import object_json
 from .additional_policy import apply as apply_additional
 from .license_policy import apply_license_policy
 from .licenses import classify_license, DATA_SHA256
@@ -38,6 +39,7 @@ FORMATS = {
     "Cargo.toml": "cargo",
     "Cargo.lock": "cargo",
     "pom.xml": "maven",
+    "dependency-tree.json": "maven",
     "build.gradle": "gradle",
     "build.gradle.kts": "gradle",
     "settings.gradle": "gradle",
@@ -65,18 +67,7 @@ MAX_ADVISORIES = 1000
 
 
 def _json(text):
-    def unique(pairs):
-        result = {}
-        for key, value in pairs:
-            if key in result:
-                raise ValueError("duplicate JSON key")
-            result[key] = value
-        return result
-
-    value = json.loads(text, object_pairs_hook=unique)
-    if not isinstance(value, dict):
-        raise ValueError("manifest must be an object")
-    return value
+    return object_json(text)
 
 
 def discover(root, output_root=None):
@@ -115,6 +106,14 @@ def discover(root, output_root=None):
             kind = FORMATS.get(name)
             if name in {"config", "config.toml"} and directory.name == ".cargo":
                 kind = "cargo-config"
+            if (
+                name.endswith(".lockfile")
+                and directory.name == "dependency-locks"
+                and directory.parent.name == "gradle"
+            ):
+                kind = "gradle"
+            if name in {"trivy.json", "grype.json"} or name.endswith((".trivy.json", ".grype.json")):
+                kind = "docker"
             if name.startswith("Dockerfile.") or name.endswith(".Dockerfile"):
                 kind = "docker"
             if kind is None:
@@ -142,7 +141,7 @@ def discover(root, output_root=None):
                 if len(data) > MAX_FILE_BYTES or total > MAX_TOTAL_BYTES:
                     raise ValueError("file limit")
                 row.update(sha256=hashlib.sha256(data).hexdigest(), bytes=len(data))
-                if kind in ("npm", "yarn", "go", "cargo"):
+                if kind in ("npm", "yarn", "go", "cargo", "maven", "gradle", "swift", "docker"):
                     contents[relative] = data.decode("utf-8")
                 else:
                     row["status"] = "unsupported"
@@ -173,6 +172,7 @@ def discover(root, output_root=None):
         else:
             assignments[nearest][parent.relative_to(Path(nearest).parent).as_posix()] = manifest
     projects, packages, unresolved = [], {}, []
+    container_scans, container_images = [], []
 
     def merge(result):
         projects.extend(result["projects"])
@@ -183,6 +183,9 @@ def discover(root, output_root=None):
             item = packages.setdefault(key, {k: package[k] for k in ("system", "name", "version")})
             occurrence = {k: package[k] for k in ("lockfile", "projects", "direct_uses")}
             occurrence["basis"] = package.get("basis", "locked")
+            for field in ("revision", "configurations", "configuration", "classifier", "artifact_type"):
+                if field in package:
+                    occurrence[field] = package[field]
             item.setdefault("occurrences", []).append(occurrence)
 
     for path, file in sorted(locks.items()):
@@ -195,15 +198,26 @@ def discover(root, output_root=None):
         except (ValueError, TypeError, RecursionError):
             file["status"] = "invalid_or_unsupported"
             gap("lockfile_invalid_or_unsupported", path)
-    for kind, adapter in (("go", gomod), ("cargo", cargo)):
-        inputs = {f["path"]: contents.get(f["path"], "__unreadable__") for f in files if f["format"] == kind}
+    for kinds, adapter in (
+        ({"go"}, gomod),
+        ({"cargo"}, cargo),
+        ({"maven", "gradle"}, jvm),
+        ({"swift"}, swift),
+        ({"docker"}, containers),
+    ):
+        inputs = {f["path"]: contents.get(f["path"], "__unreadable__") for f in files if f["format"] in kinds}
         result = adapter.analyze(inputs)
         merge(result)
+        container_scans.extend(result.get("container_scans", []))
+        container_images.extend(result.get("container_images", []))
         for file in files:
             if file["path"] in result["statuses"] and file["status"] == "detected":
                 file["status"] = result["statuses"][file["path"]]
     if not projects:
         gap("no_supported_projects")
+    hashes = {f["path"]: f.get("sha256") for f in files}
+    for scan in container_scans:
+        scan["input_sha256"] = hashes[scan["source"]]
     # Project manifests are parsed only when their lock and workspace are recognized.
     used = {p["path"] for p in projects}
     for file in files:
@@ -220,7 +234,9 @@ def discover(root, output_root=None):
         "exclusions": exclusions,
         "network_performed": False,
         "unresolved_dependencies": unresolved,
-        "scope": "Yarn Berry npm and Cargo crates.io lock inventories, plus Go declared requirements. Includes development, optional and target-specific entries. Go build selection, installed/deployed artifacts, custom sources and external package-manager configuration remain unverified.",
+        "container_scans": container_scans,
+        "container_images": container_images,
+        "scope": "Yarn/Cargo/Gradle/Swift lock inventories, Maven resolved trees, Go declarations and imported Trivy/Grype image findings. Build configuration, source identity, deployment reachability and imported scanner coverage may remain unverified. Containers are never queried as registry packages.",
     }
 
 
@@ -249,7 +265,13 @@ def _osv(packages):
     for start in range(0, len(packages), 500):
         chunk = packages[start : start + 500]
         queries = [
-            {"package": {"ecosystem": api.osv_ecosystem(p["system"]), "name": p["name"]}, "version": p["version"]}
+            {
+                "package": {
+                    "ecosystem": "SwiftURL" if p["system"] == "swift" else api.osv_ecosystem(p["system"]),
+                    "name": p["name"],
+                },
+                "version": p["version"],
+            }
             for p in chunk
         ]
         try:
@@ -280,6 +302,9 @@ def _osv(packages):
 
 
 def _metadata(package):
+    if package["system"] == "swift":
+        # deps.dev does not expose Swift package metadata. Never guess a license from a repository name.
+        return {"licenses": None, "published_at": None, "advisories": [], "queried": False}
     try:
         system, name, version = package["system"], package["name"], package["version"]
         data = api._get(f"{api.DEPSDEV_BASE}/systems/{system}/packages/{api._q(name)}/versions/{api._q(version)}")
@@ -319,7 +344,9 @@ def evaluate_repository(data):
         if not osv["complete"]:
             local_gaps.append("vulnerability_query_incomplete")
         if not metadata["queried"]:
-            local_gaps.append("license_query_incomplete")
+            local_gaps.append(
+                "swift_license_source_unavailable" if package["system"] == "swift" else "license_query_incomplete"
+            )
         if assessment["category"] == "unknown":
             local_gaps.append("license_unverified")
         vuln_grade = "allow" if osv["complete"] else "conditional"
@@ -358,7 +385,13 @@ def evaluate_repository(data):
             "license_reviews": [
                 {
                     **target,
-                    "relation": "DECLARED" if target["system"] == "go" else "LOCKED",
+                    "relation": "DECLARED"
+                    if target["system"] == "go"
+                    else (
+                        "RESOLVED"
+                        if any(o.get("basis") == "resolved_tree" for o in package["occurrences"])
+                        else "LOCKED"
+                    ),
                     "licenses": metadata["licenses"],
                     "assessment": assessment,
                 }
@@ -368,9 +401,59 @@ def evaluate_repository(data):
         outcomes.append({**target, "verdict": verdict})
         findings.extend({**finding, "package": target} for finding in verdict["findings"])
         gaps.extend({"code": code, "package": target} for code in verdict["coverage_gaps"])
-    if not packages:
+    scans = deepcopy(data["inventory"].get("container_scans", []))
+    for scan in scans:
+        # Imported container licenses still receive the selected monotonic restrictions.
+        for item in scan["packages"]:
+            target = {"system": "container", "name": item["namespace"] + ":" + item["name"], "version": item["version"]}
+            base = {
+                "policy": POLICY,
+                "overall": max(("conditional", item["license_assessment"]["tier"]), key=RANK.get),
+                "areas": {"license": item["license_assessment"]["tier"], "vulns": "conditional"},
+                "coverage_gaps": ["container_scan_coverage_unverified"],
+                "findings": [],
+                "license_reviews": [
+                    {
+                        **target,
+                        "relation": "IMPORTED",
+                        "licenses": item["licenses"],
+                        "assessment": item["license_assessment"],
+                    }
+                ],
+            }
+            evidence = {
+                "target": target,
+                "lookup_package": {"licenses": item["licenses"]},
+                "get_dependencies": {
+                    "image_references": scan["references"],
+                    "image_id": scan["image_id"],
+                    "import_sha256": scan.get("input_sha256"),
+                },
+                "policy_context": data.get("policy_context"),
+                "network_decisions": data.get("network_decisions", []),
+            }
+            item["verdict"] = apply_license_policy(evidence, apply_additional(evidence, base))
+            gaps.extend(
+                {"code": code, "source": scan["source"], "package": target}
+                for code in item["verdict"]["coverage_gaps"]
+                if code != "container_scan_coverage_unverified"
+            )
+            findings.extend({**f, "source": scan["source"], "package": target} for f in item["verdict"]["findings"])
+            scan["overall"] = max((scan["overall"], item["verdict"]["overall"]), key=RANK.get)
+        findings.extend(
+            {"area": "container", "code": "imported_vulnerability", "source": scan["source"], **f}
+            for f in scan["findings"]
+        )
+    if not packages and not scans:
         gaps.append({"code": "no_queryable_packages"})
-    grade = max(["conditional" if gaps else "allow", *(p["verdict"]["overall"] for p in outcomes)], key=RANK.get)
+    grade = max(
+        [
+            "conditional" if gaps else "allow",
+            *(p["verdict"]["overall"] for p in outcomes),
+            *(s["overall"] for s in scans),
+        ],
+        key=RANK.get,
+    )
     ids = {i for p in packages for i in (p["osv"]["ids"] or []) + p["metadata"]["advisories"]}
     return {
         "policy": POLICY,
@@ -380,6 +463,7 @@ def evaluate_repository(data):
         "coverage_gaps": gaps,
         "findings": findings,
         "packages": outcomes,
+        "container_scans": scans,
         "summary": {
             "projects": len(data["inventory"]["projects"]),
             "packages": len(packages),
@@ -390,6 +474,8 @@ def evaluate_repository(data):
             "affected_packages": sum(bool((p["osv"]["ids"] or []) + p["metadata"]["advisories"]) for p in packages),
             "advisory_groups": len(advisory_groups({i: data["advisories"].get(i, {}) for i in ids})),
             "coverage_gaps": len(gaps),
+            "container_reports": len(scans),
+            "container_imported_findings": sum(len(s["findings"]) for s in scans),
         },
     }
 
@@ -399,7 +485,11 @@ def collect_repository(root, output_root="reviews", public_packages=False, max_p
         raise ValueError("max_packages must be 1..10000")
     inventory = discover(root, output_root)
     config = CURRENT.get()
-    if public_packages is not True and not (config or {}).get("network", {}).get("allow_identifiers"):
+    if (
+        (inventory["packages"] or not inventory["container_scans"])
+        and public_packages is not True
+        and not (config or {}).get("network", {}).get("allow_identifiers")
+    ):
         return {
             "error": "Inspect repo-plan locally, then confirm public package identifiers or select an explicit identifier allowlist policy.",
             "code": "public_identifiers_required",
@@ -417,10 +507,14 @@ def collect_repository(root, output_root="reviews", public_packages=False, max_p
             try:
                 # Preflight individual names so a blocked private name cannot poison a public batch.
                 check("osv", [identifier(package["system"], package["name"])])
-                check("depsdev", [identifier(package["system"], package["name"])])
+                if package["system"] != "swift":
+                    check("depsdev", [identifier(package["system"], package["name"])])
             except PolicyBlocked:
                 inventory["coverage_gaps"].append(
-                    {"code": "package_policy_blocked", "package": {k: package[k] for k in ("system", "name", "version")}}
+                    {
+                        "code": "package_policy_blocked",
+                        "package": {k: package[k] for k in ("system", "name", "version")},
+                    }
                 )
                 continue
             if len(selected) < max_packages:
