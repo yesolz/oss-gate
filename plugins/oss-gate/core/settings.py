@@ -266,7 +266,8 @@ def guard_request(url, body=None):
             host, path = parse_repository(project)
             names = [identifier("repo", f"{host}/{path}")]
     elif service == "osv" and body:
-        names = [identifier(q["package"]["ecosystem"], q["package"]["name"]) for q in body.get("queries", [])]
+        queries = [body] if parsed.path == "/v1/query" else body.get("queries", [])
+        names = [identifier(q["package"]["ecosystem"], q["package"]["name"]) for q in queries]
     elif service == "pypi":
         names = [identifier("pypi", unquote(parts[2]))]
     check(service, names)

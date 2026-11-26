@@ -32,6 +32,17 @@ def main(argv=None):
     sub.add_argument("manifest", type=Path)
     sub.add_argument("--type", choices=("package.json", "requirements.txt", "go.mod"), required=True)
     sub.add_argument("--out", type=Path, required=True)
+    for command in ("repo-plan", "repo-collect"):
+        sub = commands.add_parser(command, help="Discover a local repository" if command == "repo-plan" else "Screen local repository dependencies")
+        sub.add_argument("root", type=Path)
+        sub.add_argument("--output-root", default="reviews")
+        if command == "repo-collect":
+            sub.add_argument("--public-packages", action="store_true", help="Confirm that package identifiers in this repository may be sent to public evidence services")
+            sub.add_argument("--max-packages", type=int, default=2000)
+            sub.add_argument("--language", choices=("ko", "en", "both"), default="ko")
+    sub = commands.add_parser("repo-render", help="Render a saved repository snapshot offline")
+    sub.add_argument("source", type=Path)
+    sub.add_argument("--language", choices=("ko", "en", "both"), default="ko")
     sub = commands.add_parser("explain")
     sub.add_argument("repo", help="Public owner/repo")
     sub.add_argument("--topic", choices=QUESTIONS, default="overview")
@@ -50,6 +61,27 @@ def main(argv=None):
     sub.add_argument("source")
     sub.add_argument("--language", choices=("ko", "en", "both"), default="ko")
     args = parser.parse_args(argv)
+    if args.command in ("repo-plan", "repo-collect", "repo-render"):
+        from core.repo_render import render_repository
+
+        if args.command == "repo-render":
+            if args.policy:
+                parser.error("repo-render uses the policy sealed in the snapshot")
+            try:
+                result = render_repository(args.source, args.language)
+            except (ValueError, OSError, KeyError, TypeError):
+                result = {"error": "cannot render repository evidence", "code": "invalid_repository_evidence"}
+        else:
+            operation = "plan_repository" if args.command == "repo-plan" else "collect_repository"
+            extra = {} if args.command == "repo-plan" else {"public_packages": args.public_packages, "max_packages": args.max_packages}
+            result = json.loads(invoke(operation, str(args.root), output_root=args.output_root, policy_path=args.policy, **extra))
+            if args.command == "repo-collect" and "folder" in result:
+                try:
+                    result["reports"] = render_repository(result["folder"], args.language)["files"]
+                except (ValueError, OSError, KeyError, TypeError):
+                    result.update(error="Evidence saved, but repository report rendering failed", code="report_render_failed")
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 1 if result.get("error") else 0
     if args.command == "render":
         if args.policy:
             parser.error("render uses the policy sealed in the snapshot; --policy cannot change it")

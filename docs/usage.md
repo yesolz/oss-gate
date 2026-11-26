@@ -2,6 +2,30 @@
 
 [한국어](usage.ko.md)
 
+## Whole-repository dependency review (unreleased)
+
+Local repositories and monorepos can combine Yarn Berry (`package.json`, `yarn.lock`), Go (`go.mod`, `go.work`) and Cargo (`Cargo.toml`, `Cargo.lock`). Identified ecosystem/name/version tuples are queried once, retaining project occurrences, vulnerabilities, licenses and coverage gaps. This is separate from resolving a public repository URL to one published package.
+
+```sh
+uv run --frozen --project plugins/oss-gate python plugins/oss-gate/cli.py repo-plan /absolute/repository --output-root /absolute/reviews
+uv run --frozen --project plugins/oss-gate python plugins/oss-gate/cli.py repo-collect /absolute/repository --public-packages --output-root /absolute/reviews --language both
+uv run --frozen --project plugins/oss-gate python plugins/oss-gate/cli.py repo-render /absolute/reviews/saved-run --language both
+```
+
+`repo-plan` discovers files and identifiers without network access. Use `--public-packages` only after confirming the package identifiers are public. For mixed private/public dependencies, an explicitly selected policy's `network.allow_identifiers` can restrict queries without that flag. Existing outbound policy and additional CA settings apply. Collection does not execute installation/build scripts or upload source code.
+
+Collection creates a unique folder with evidence JSON, API responses and hashes, then generates Markdown/HTML in the selected languages. `repo-render` verifies saved evidence and regenerates reports; it replaces generated report files, so keep editorial additions in separate files. MCP installations use `plan_repository` and `collect_repository`, then CLI `repo-render` on the returned folder.
+
+The verdict covers **vulnerabilities and licenses of Yarn Berry npm/Cargo crates.io locked versions and Go declared requirements**, including development, optional and target-specific entries. It does not establish an installed/deployed inventory. Patched, Git and local dependencies, peer bindings and manifest/lock mismatches remain unverified. Recognized Java/Kotlin, Swift, Docker, Python and other dependency files are discovered but not yet analyzed. Source-code vulnerabilities and maintenance are outside this repository verdict's current scope.
+
+Go applies module/workspace replacements and exclusions without running Go. `go.sum` and `go.work.sum` contribute file hashes only, because checksums are not the selected dependency list. Go requirements remain **declared versions**, and every Go project retains a build-selection/complete-graph gap. Local replacements and conflicting workspace rules are not queried under their original module identity. See the [Go modules reference](https://go.dev/ref/mod).
+
+Cargo accepts lock formats 3/4, maps workspaces, dependency aliases, inherited fields and in-tree path dependencies, and follows locked transitive edges. Only crates.io sources are queried as public crates. Git, custom registries, patches, unsupported requirements and unresolved local nodes remain gaps. Detected `.cargo/config[.toml]` is reported as unsupported configuration; external configuration is outside the review. All target/feature lock entries may be included, irrespective of the deployed build. See [Cargo workspaces](https://doc.rust-lang.org/cargo/reference/workspaces.html) and [dependency resolution](https://doc.rust-lang.org/cargo/reference/resolver.html#lock-file).
+
+The default query cap is 2,000 unique package versions; `--max-packages` accepts 1..10000. Advisory details are capped at 1,000. Limits, failures and unsupported files become coverage gaps. Coverage denominators count identified ecosystem/name/version tuples, not every unresolved component in the repository. Existing package portfolio/reassessment commands do not yet accept repository snapshots.
+
+## Package review
+
 Use the `oss-review` skill with a public repository, package/version or supported manifest. Explicit language choices (`ko`, `en`, `both`) override the request language. Omitted version uses the registry default at collection time. Ambiguous repository-to-package mappings need clarification, not a silent guess.
 
 Package reviews use the `collect_review` (or CLI `collect`) MCP tool to save unique evidence folders. Supply an absolute workspace output root. `data.json` holds normalized evidence and policy results; `api-responses.json` preserves public JSON responses; `evidence-sha256.json` seals those files. DeepWiki material and agent verification are separate files. Exact raw DeepWiki capture depends on host tooling and must be labelled as transcription when appropriate.

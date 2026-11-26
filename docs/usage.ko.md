@@ -2,6 +2,30 @@
 
 [English](usage.md)
 
+## 레포 전체 의존성 심사 (개발 중)
+
+로컬 레포·모노레포의 Yarn Berry(`package.json`, `yarn.lock`), Go(`go.mod`, `go.work`), Cargo(`Cargo.toml`, `Cargo.lock`)를 함께 분석합니다. 생태계·이름·버전 단위로 중복 없이 조회하고, 사용 프로젝트·취약점·라이선스·미확인 항목을 한 보고서에 표시합니다. 레포 URL을 공개 패키지 하나에 연결하는 기존 기능과 별도입니다.
+
+```sh
+uv run --frozen --project plugins/oss-gate python plugins/oss-gate/cli.py repo-plan /absolute/repository --output-root /absolute/reviews
+uv run --frozen --project plugins/oss-gate python plugins/oss-gate/cli.py repo-collect /absolute/repository --public-packages --output-root /absolute/reviews --language both
+uv run --frozen --project plugins/oss-gate python plugins/oss-gate/cli.py repo-render /absolute/reviews/saved-run --language both
+```
+
+`repo-plan`은 네트워크 없이 파일·패키지 목록을 보여줍니다. 패키지 식별자가 공개 정보임을 확인한 경우에만 `--public-packages`를 사용합니다. 사설 패키지가 섞여 있다면 명시적으로 선택한 정책의 `network.allow_identifiers`로 전송 대상을 제한하고 이 플래그를 생략할 수 있습니다. 기존 통신 정책과 추가 CA 설정은 그대로 적용됩니다. 설치·빌드 스크립트 실행이나 소스코드 업로드는 하지 않습니다.
+
+수집은 새로운 폴더에 근거 JSON·API 원문·해시를 저장하고 선택 언어의 Markdown·HTML을 생성합니다. `repo-render`는 같은 근거를 검증해 보고서를 다시 생성합니다. 이 명령은 생성된 보고서를 덮어쓰므로 별도 편집 원고는 다른 파일에 보관하세요. MCP에서는 `plan_repository`, `collect_repository`를 사용하고, 반환된 폴더를 CLI `repo-render`로 렌더링합니다.
+
+현재 판정 범위는 **Yarn Berry npm·Cargo crates.io 잠금 버전과 Go 선언 버전의 취약점·라이선스**입니다. 개발·선택·플랫폼별 의존성을 포함하며 실제 설치·배포 목록을 확정하지 않습니다. patch·Git·로컬 출처, peer 연결, 선언과 lockfile 불일치는 미확인입니다. Java/Kotlin·Swift·Docker·Python 등의 파일은 발견·표시하지만 아직 심사하지 않습니다. 소스코드 결함과 유지보수도 현재 레포 판정 범위에 포함하지 않습니다.
+
+Go는 명령을 실행하지 않고 모듈·workspace의 대체 규칙과 제외 버전을 해석합니다. `go.sum`·`go.work.sum`은 설치 목록이 아니므로 파일 해시만 보존합니다. Go 버전은 **선언 버전**으로 표시하고 실제 빌드 선택 버전·전체 그래프 미확인을 남깁니다. 로컬 대체나 충돌한 workspace 규칙이 있으면 원래 모듈 이름으로 조회하지 않습니다. [Go 모듈 공식 문서](https://go.dev/ref/mod)를 기준으로 구분합니다.
+
+Cargo는 lock 형식 3/4, workspace·별칭·상속·레포 내부 path 의존성과 간접 연결을 분석합니다. crates.io 출처만 공개 crate로 조회하며 Git·대체 레지스트리·patch·미지원 버전 조건·미확인 로컬 항목은 미확인으로 남깁니다. 발견한 `.cargo/config[.toml]`은 미지원 설정으로 표시하고 외부 설정은 심사 범위에 포함하지 않습니다. lock 목록에는 배포하지 않는 플랫폼·기능의 항목도 포함될 수 있습니다. [Cargo workspace](https://doc.rust-lang.org/cargo/reference/workspaces.html)·[의존성 해석 공식 문서](https://doc.rust-lang.org/cargo/reference/resolver.html#lock-file)를 참고하세요.
+
+기본 조회 한도는 고유 패키지·버전 2,000개이며 `--max-packages`로 1~10,000개를 지정할 수 있습니다. 상세 취약점 한도는 1,000개입니다. 한도 도달·조회 실패·미지원 파일은 전체 판정의 미확인 사유로 남습니다. 검사율의 분모는 식별된 생태계·패키지·버전 수이며 해석하지 못한 파일까지 포함한 전체 검사율이 아닙니다. 기존 패키지 보고서용 집계·재판정 명령은 새 레포 스냅샷을 아직 지원하지 않습니다.
+
+## 패키지 검토
+
 `oss-review`에 공개 저장소, 패키지·버전 또는 지원하는 manifest를 지정합니다. 언어는 `ko`, `en`, `both` 또는 자연어로 선택합니다. 명시한 선택이 우선이며, 없으면 요청 언어를 따릅니다. 버전이 없으면 수집 시점 레지스트리 기본 버전을 사용합니다. 저장소에 대응하는 패키지가 모호하면 확인하고, 임의로 고르지 않습니다.
 
 패키지 검토는 `collect_review` MCP 또는 CLI `collect`로 고유한 근거 폴더를 만듭니다. 출력 루트에는 워크스페이스의 절대 경로를 지정합니다. `data.json`은 정리된 근거·판정, `api-responses.json`은 공개 API JSON 원문, `evidence-sha256.json`은 두 파일의 해시입니다. DeepWiki와 에이전트 검증 자료는 별도로 둡니다. 호스트 도구가 DeepWiki 원문 저장을 지원하지 않으면 전사한 자료임을 표시해야 합니다.

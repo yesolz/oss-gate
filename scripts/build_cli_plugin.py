@@ -19,6 +19,9 @@ Workflow operation mapping:
 |---|---|
 | `get_project(repo)` | `project <repo> --out <new-project.json>` |
 | `audit_manifest(text, type)` | `audit <sanitized-file> --type <type> --out <new-audit.json>` |
+| `plan_repository(root, output_root)` | `repo-plan <local-root> --output-root <directory>` |
+| `collect_repository(...)` | `repo-collect <local-root> --output-root <directory> --language <ko|en|both>`; see repository-review.md for public identifiers |
+| Repository report | `repo-render <repository-review-directory> --language <ko|en|both>` |
 | `collect_review(...)` | `collect <system> <name> --version <version> --repo <repo> --output-root <directory>` |
 | DeepWiki explanation | `explain <owner/repo> --topic <topic> --out <new-topic.json>` |
 | Explanation index | `index-explanations <review-directory> <topic-files...>` |

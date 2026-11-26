@@ -8,6 +8,7 @@ from .collect import collect
 from .settings import check, fingerprint, identifier, load_policy, npm_registry_url, policy_scope, PolicyBlocked
 from .repository import parse_repository
 from .tls import TLSConfigurationError, EVIDENCE as TLS_EVIDENCE
+from .repo_review import plan_repository, collect_repository
 
 
 def plan(system, name, version="", repo=""):
@@ -66,12 +67,14 @@ def invoke(operation, *args, policy_path=None, **kwargs):
         "audit_manifest": api._audit_manifest,
         "collect_review": lambda *a, **k: collect(api, *a, **k),
         "plan": plan,
+        "plan_repository": plan_repository,
+        "collect_repository": collect_repository,
     }
     if operation not in operations:
         return json.dumps({"error": "unknown operation", "code": "invalid_operation"})
     with policy_scope(config) as events:
         try:
-            with nullcontext() if operation == "plan" else api.client_scope(config):
+            with nullcontext() if operation in ("plan", "plan_repository") else api.client_scope(config):
                 result = json.loads(api._run(operations[operation], *args, **kwargs))
                 if operation != "plan" and TLS_EVIDENCE.get() is not None:
                     result["tls_trust"] = dict(TLS_EVIDENCE.get())
