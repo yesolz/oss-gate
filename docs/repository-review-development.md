@@ -70,6 +70,10 @@ Primary format references: [Go modules](https://go.dev/ref/mod), [Cargo workspac
 
 Primary format references: [Maven tree export](https://maven.apache.org/plugins/maven-dependency-plugin/examples/tree-mojo.html), [Gradle dependency locks](https://docs.gradle.org/current/userguide/dependency_locking.html), [Swift resolved store](https://github.com/swiftlang/swift-package-manager/blob/main/Sources/PackageGraph/ResolvedPackagesStore.swift), [Trivy image report](https://github.com/aquasecurity/trivy/blob/main/pkg/types/report.go), [Grype JSON model](https://github.com/anchore/grype/blob/main/grype/presenter/models/document.go), [Docker Scout scope](https://docs.docker.com/scout/).
 
+## Release presentation
+
+The v0.6.0 repository renderer reuses the package renderer's verdict seal, theme and interpretation guide and adds a contents menu built from actual second-level headings. Active language and download actions follow the same report conventions. Navigation identifiers are deterministic and source text is escaped. Desktop sidebar content remains scrollable on short screens; mobile/print behavior uses the shared theme. Three new tests cover link destinations, bilingual seal identity, active language, hostile text and unchanged evidence seals, bringing the versioned suite to 180 tests.
+
 ## Remaining scope
 
 An explicitly supplied Go selected-build-list or standardized SBOM import is a future extension. Swift license acquisition and advisory aliases need evidence-backed source adapters. General dependency resolution, build execution, reachability and final image generation are outside this implementation. Docker Scout is a separate service, not an assumed public Docker Hub vulnerability database. Repository review ships in v0.6.0 with separate snapshot/verdict schemas; package review and portfolio schemas remain unchanged.

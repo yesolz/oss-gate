@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 
 from .repo_review import SCHEMA
-from .render import LABELS, esc, markdown, shell
+from .render import LABELS, esc, markdown_engine, rendered_tables, shell, verdict_seal
 from .snapshot import verify
 from .license_display import explain as explain_license
 from .policy import advisory_groups
@@ -543,6 +543,21 @@ def narrative(data, lang):
     return "\n".join(lines)
 
 
+def report_body(text):
+    """Attach deterministic heading destinations before building the contents links."""
+    md, env = markdown_engine(), {}
+    tokens = md.parse(text, env)
+    sections = []
+    for index, token in enumerate(tokens):
+        if token.type == "heading_open" and token.tag == "h2":
+            target = f"repository-section-{len(sections) + 1}"
+            token.attrSet("id", target)
+            # Inline text has already passed the safe Markdown tokenizer.
+            label = tokens[index + 1].content
+            sections.append((target, label))
+    return rendered_tables(md.renderer.render(tokens, md.options, env)), sections
+
+
 def render_repository(source, language="ko"):
     if language not in ("ko", "en", "both"):
         raise ValueError("unsupported language")
@@ -558,29 +573,41 @@ def render_repository(source, language="ko"):
     for lang in languages:
         text = narrative(data, lang)
         t, grade = LABELS[lang], data["verdict"]["overall"]
-        cover = (
-            '<div class="brand"><span class="wordmark">OSS GATE</span></div>'
-            + f'<div class="document-status"><strong>{esc(t[grade])}</strong><p>{esc("레포 의존성 심사" if lang == "ko" else "Repository dependency review")}</p></div>'
-            + f'<div class="actions"><button data-print>{esc(t["print"])}</button><a href="review.{lang}.md">Markdown</a>'
-            + '<a href="data.json">Evidence JSON</a><a href="api-responses.json">API JSON</a></div>'
-        )
+        body, sections = report_body(text)
+        title = "레포 의존성 심사" if lang == "ko" else "Repository dependency review"
+        contents = "목차" if lang == "ko" else "Contents"
         available = [code for code in ("ko", "en") if code in languages or (folder / f"report.{code}.html").is_file()]
-        cover += (
-            '<nav class="language">'
+        language_nav = (
+            '<nav class="language" aria-label="Language">'
             + " ".join(
-                f'<a href="report.{code}.html" lang="{code}">{"한국어" if code == "ko" else "English"}</a>'
+                f'<a href="report.{code}.html" lang="{code}" {"aria-current=page" if code == lang else ""}>{"한국어" if code == "ko" else "English"}</a>'
                 for code in available
             )
             + "</nav>"
+        )
+        toc = (
+            f'<nav class="toc repository-toc" aria-label="{contents}"><ol>'
+            + "".join(f'<li><a href="#{target}">{esc(label)}</a></li>' for target, label in sections)
+            + "</ol></nav>"
+        )
+        cover = (
+            f'<a class="brand" href="#main"><span class="wordmark">OSS GATE</span><span class="brand-sub">{title}</span></a>'
+            + language_nav
+            + verdict_seal(grade, lang, str(data["generated_at"])[:10])
+            + f'<details class="details grade-guide"><summary>{t["grades"]}</summary><p>{t["grade_help"]}</p></details>'
+            + toc
+            + f'<div class="actions"><button data-print>{esc(t["print"])}</button><a href="review.{lang}.md" download>{esc(t["markdown"])}</a>'
+            + f'<a href="data.json" download>{esc(t["snapshot"])}</a><a href="api-responses.json" download>API JSON</a></div>'
         )
         content = shell(
             data["inventory"]["name"],
             lang,
             cover,
-            '<article class="review-body repository-report">' + markdown(text) + "</article>",
+            '<article class="review-body repository-report">' + body + "</article>",
+            cover_class="repository-cover",
         ).replace(
             "</head>",
-            "<style>.repository-report th{white-space:nowrap}.repository-report td:first-child{min-width:130px}.repository-report td{overflow-wrap:break-word}</style></head>",
+            "<style>.repository-report th{white-space:nowrap}.repository-report td:first-child{min-width:130px}.repository-report td{overflow-wrap:break-word}.repository-toc{max-height:32vh;overflow-y:auto}.cover .repository-toc a{padding:4px 0 4px 12px}@media(min-width:1001px){.repository-cover .cover-in{max-height:calc(100vh - 64px);overflow-y:auto}}@media print{.repository-cover .cover-in{max-height:none;overflow:visible}}</style></head>",
             1,
         )
         for name, value in ((f"review.{lang}.md", text), (f"report.{lang}.html", content)):

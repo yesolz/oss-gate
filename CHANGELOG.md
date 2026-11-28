@@ -11,6 +11,7 @@
 
 - Add offline local repository discovery and Yarn Berry workspace dependency screening through CLI and MCP, with exact-version deduplication, project occurrences and explicit unsupported-format gaps.
 - Preserve repository input hashes and raw API evidence; generate scoped Korean/English dependency reports with vulnerability/license coverage and immutable evidence verification.
+- Share the package report's verdict seal and reading guide with repository reports, with accessible language navigation and a contents menu linked to generated sections.
 - Follow bounded OSV pagination for repository queries and apply identifier policy to single-query pagination requests. Require confirmed public identifiers or an explicit identifier allowlist before repository collection.
 - Add a bounded string-only PyYAML loader; keep patched/Git/local dependencies, unresolved peers, manifest mismatches, caps and unavailable evidence visible.
 
