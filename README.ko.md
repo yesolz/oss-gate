@@ -74,7 +74,7 @@ reviews/<패키지-버전>/<시각-고유값>/
 
 HTML은 오프라인에서 열리며, 브라우저에서 PDF로 인쇄할 수 있습니다. 검토 결과를 받는 OSS Gate 백엔드는 없습니다. 기존 결과에는 `oss-viz`, `periodic-report`, `proposal-draft`도 사용할 수 있습니다. [사용 안내](docs/usage.ko.md)
 
-이 기능 브랜치에서 개발 중: Yarn Berry·Go·Cargo·Java/Kotlin·Swift와 Trivy/Grype 이미지 보고서를 함께 다루는 [레포 전체 심사](docs/usage.ko.md). 각 입력 형식의 해결 범위와 미확인 항목을 보고서에 표시합니다.
+v0.6.0부터 지원: Yarn Berry·Go·Cargo·Java/Kotlin·Swift와 Trivy/Grype 이미지 보고서를 함께 다루는 [레포 전체 심사](docs/usage.ko.md). 각 입력 형식의 해결 범위와 미확인 항목을 보고서에 표시합니다.
 
 ## 무엇이 좋은가
 
@@ -109,7 +109,7 @@ uv run --frozen python scripts/build_site.py
 
 [기여 안내](CONTRIBUTING.md) · [보안](SECURITY.md) · [변경 기록](CHANGELOG.md) · [MIT 라이선스](LICENSE) · [외부 자료 출처](NOTICE.md)
 
-[릴리즈 검증 기록](docs/release-v0.5.0.md)
+[릴리즈 검증 기록](docs/release-v0.6.0.md)
 
 [선택적 정책과 CLI](docs/customization.ko.md): 일반 검토에는 별도 설정이 필요하지 않습니다.
 

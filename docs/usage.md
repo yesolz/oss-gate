@@ -2,7 +2,7 @@
 
 [한국어](usage.ko.md)
 
-## Whole-repository dependency review (unreleased)
+## Whole-repository dependency review
 
 Local repositories and monorepos can combine Yarn Berry (`package.json`, `yarn.lock`), Go (`go.mod`, `go.work`), Cargo (`Cargo.toml`, `Cargo.lock`), Java/Kotlin resolved inputs, Swift pins and imported container image reports. Identified ecosystem/name/version tuples are queried once, retaining project occurrences, vulnerabilities, licenses and coverage gaps. This is separate from resolving a public repository URL to one published package.
 

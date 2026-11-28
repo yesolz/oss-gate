@@ -2,7 +2,7 @@
 
 [English](usage.md)
 
-## 레포 전체 의존성 심사 (개발 중)
+## 레포 전체 의존성 심사
 
 로컬 레포·모노레포의 Yarn Berry(`package.json`, `yarn.lock`), Go(`go.mod`, `go.work`), Cargo(`Cargo.toml`, `Cargo.lock`), Java/Kotlin 해결 결과, Swift pin과 컨테이너 검사 보고서를 함께 분석합니다. 생태계·이름·버전 단위로 중복 없이 조회하고, 사용 프로젝트·취약점·라이선스·미확인 항목을 한 보고서에 표시합니다. 레포 URL을 공개 패키지 하나에 연결하는 기존 기능과 별도입니다.
 

@@ -1,6 +1,6 @@
 # Multi-ecosystem repository review
 
-Status: unreleased feature branch. Validation date: 2026-11-27 (Asia/Seoul).
+Status: v0.6.0 release candidate. Feature validation: 2026-11-27; release preparation: 2026-11-28 (Asia/Seoul).
 
 ## Implemented scope
 
@@ -72,4 +72,4 @@ Primary format references: [Maven tree export](https://maven.apache.org/plugins/
 
 ## Remaining scope
 
-An explicitly supplied Go selected-build-list or standardized SBOM import is a future extension. Swift license acquisition and advisory aliases need evidence-backed source adapters. General dependency resolution, build execution, reachability and final image generation are outside this implementation. Docker Scout is a separate service, not an assumed public Docker Hub vulnerability database. Repository review remains unreleased on this feature branch; package review and portfolio schemas remain unchanged.
+An explicitly supplied Go selected-build-list or standardized SBOM import is a future extension. Swift license acquisition and advisory aliases need evidence-backed source adapters. General dependency resolution, build execution, reachability and final image generation are outside this implementation. Docker Scout is a separate service, not an assumed public Docker Hub vulnerability database. Repository review ships in v0.6.0 with separate snapshot/verdict schemas; package review and portfolio schemas remain unchanged.

@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.6.0
 
 - Add Java/Kotlin Maven resolved JSON trees and Gradle locks, including configuration provenance and exclusion of omitted verbose nodes.
 - Add Swift Package.resolved versions 1/2/3 with OSV SwiftURL queries, explicit source/revision gaps and unsupported license metadata.
