@@ -1,6 +1,6 @@
 # Multi-ecosystem repository review
 
-Status: v0.6.0 release candidate. Feature validation: 2026-11-27; release preparation: 2026-11-28 (Asia/Seoul).
+Status: v0.6.0 release. Feature validation: 2026-11-27; release preparation: 2026-11-28 (Asia/Seoul).
 
 ## Implemented scope
 
@@ -66,7 +66,7 @@ Primary format references: [Go modules](https://go.dev/ref/mod), [Cargo workspac
 
 - A cache-free frozen Python 3.10 installation from an isolated candidate archive installed 35 runtime distributions. The extracted CLI-only plugin planned the mixed fixture, and extracted MCP adapters passed smoke checks. A redacted Gitleaks scan of the actual extracted distribution found no leaks. The separately audited Python 3.10 pins also have no known vulnerabilities in the saved audit. No release was published or version changed.
 - GitHub Windows CI exposed implicit cp1252 decoding in the repository report tests, including earlier Yarn/Go/Cargo tests. Test fixtures and evidence/report reads now explicitly use UTF-8, matching the production writer.
-- Bilingual generation, escaping, evidence links and translated gaps pass automated checks. Visual inspection in Aside was attempted twice but the computer-use tool reported the Mac was locked; the user was asked to unlock it. New JVM/Swift/container layouts therefore have no completed visual pass in this stage. Earlier Yarn/Go/Cargo visual checks do not establish the new layouts' quality. Mobile/print visual checks also remain unverified.
+- Bilingual generation, escaping, evidence links and translated gaps pass automated checks. Visual inspection in Aside was attempted twice but the computer-use tool reported the Mac was locked; the user was asked to unlock it. The original automated visual pass was incomplete. During v0.6.0 release preparation the user opened the reports and reported readable output. The assistant compared the shared theme and distinct table-oriented layout in source, but could not independently inspect pixels in that session. Mobile/print visual checks remain unverified.
 
 Primary format references: [Maven tree export](https://maven.apache.org/plugins/maven-dependency-plugin/examples/tree-mojo.html), [Gradle dependency locks](https://docs.gradle.org/current/userguide/dependency_locking.html), [Swift resolved store](https://github.com/swiftlang/swift-package-manager/blob/main/Sources/PackageGraph/ResolvedPackagesStore.swift), [Trivy image report](https://github.com/aquasecurity/trivy/blob/main/pkg/types/report.go), [Grype JSON model](https://github.com/anchore/grype/blob/main/grype/presenter/models/document.go), [Docker Scout scope](https://docs.docker.com/scout/).
 
