@@ -32,10 +32,19 @@ async def run(live=False):
                 "get_project",
                 "audit_manifest",
                 "collect_review",
+                "plan_repository",
+                "collect_repository",
             }, names
             result = await session.call_tool("lookup_package", {"system": "unsupported", "name": "demo"})
             assert "unsupported system" in result.content[0].text
-            print("PASS: stdio initialize, six tools, validation error round-trip")
+            print("PASS: stdio initialize, eight tools, validation error round-trip")
+            with tempfile.TemporaryDirectory(prefix="oss-gate-repository-smoke-") as empty_repo:
+                result = await session.call_tool("plan_repository", {"root": empty_repo})
+                inventory = json.loads(result.content[0].text)
+                assert inventory["network_performed"] is False and inventory["coverage_gaps"]
+                result = await session.call_tool("collect_repository", {"root": empty_repo})
+                assert json.loads(result.content[0].text)["code"] == "public_identifiers_required"
+                print("PASS: repository MCP discovery and collection boundary without network")
             if live:
                 result = await session.call_tool(
                     "lookup_package", {"system": "pypi", "name": "requests", "version": "2.25.1"}

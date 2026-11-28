@@ -17,7 +17,7 @@ from urllib.parse import quote
 
 import httpx
 
-VERSION = "0.5.0"
+VERSION = "0.6.0"
 DEPSDEV_BASE = "https://api.deps.dev/v3"
 OSV_BASE = "https://api.osv.dev/v1"
 USER_AGENT = f"oss-gate-depsdev/{VERSION}"

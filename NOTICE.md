@@ -14,7 +14,7 @@ Reports preserve identifiers and source text; translations and policy explanatio
 
 ## Runtime dependencies
 
-The plugin downloads dependencies through uv using the committed lockfile; their code is not vendored in the release archive. Direct dependencies are the Python MCP SDK (MIT), HTTPX (BSD-3-Clause), and markdown-it-py (MIT). Their own notices and transitive dependency licenses remain applicable. See the release audit inventory for exact installed versions and license metadata. Metadata screening is not a substitute for reviewing the applicable license texts when redistributing dependencies.
+The plugin downloads dependencies through uv using the committed lockfile; their code is not vendored in the release archive. Direct dependencies include the Python MCP SDK (MIT), HTTPX (BSD-3-Clause), markdown-it-py (MIT), packaging (Apache-2.0 OR BSD-2-Clause), certifi (MPL-2.0), PyYAML (MIT), and Tomli (MIT). PyYAML 6.0.3 parses Yarn Berry lockfiles with a string-only loader that rejects tags, anchors, aliases, duplicate keys and excessive nesting. Tomli 2.5.0 parses Cargo TOML without running Cargo; input, nesting and node limits apply. Their own notices and transitive dependency licenses remain applicable. See the release audit inventory for exact installed versions and license metadata. Metadata screening is not a substitute for reviewing the applicable license texts when redistributing dependencies.
 
 ## SPDX identifiers
 

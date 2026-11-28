@@ -1,6 +1,6 @@
 [project]
 name = "oss-gate"
-version = "0.5.0"
+version = "0.6.0"
 description = "Evidence-backed open-source adoption reviews in your own agent"
 requires-python = ">=3.11"
 license = "MIT"
@@ -11,6 +11,8 @@ dependencies = [
     "markdown-it-py==4.3.0",
     "packaging==26.3",
     "certifi==2026.10.23",
+    "pyyaml==6.0.3",
+    "tomli==2.5.0",
 ]
 
 [dependency-groups]

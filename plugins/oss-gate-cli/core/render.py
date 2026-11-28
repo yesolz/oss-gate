@@ -302,11 +302,18 @@ def details(label, value):
     return f'<details class="details"><summary>{esc(label)}</summary><pre>{esc(json.dumps(value, ensure_ascii=False, indent=2))}</pre></details>'
 
 
-def shell(title, lang, cover, body):
+def shell(title, lang, cover, body, *, cover_class=""):
     script_hash = base64.b64encode(hashlib.sha256(SCRIPT.encode()).digest()).decode()
     csp = f"default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-{script_hash}'; img-src data:; base-uri 'none'; form-action 'none'"
     css = Path(__file__).with_name("theme.css").read_text(encoding="utf-8") + EXTRA_CSS
-    return f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="{csp}"><meta name="generator" content="OSS Gate 0.5.0"><title>{esc(title)}</title><style>{css}</style></head><body><a class="skip" href="#main">{esc(LABELS[lang]["read"])}</a><div class="page"><aside class="cover"><div class="cover-in">{cover}</div></aside><main class="sheet" id="main">{body}</main></div><script>{SCRIPT}</script></body></html>'''
+    cover_classes = "cover" + (" " + esc(cover_class) if cover_class else "")
+    return f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="{csp}"><meta name="generator" content="OSS Gate 0.6.0"><title>{esc(title)}</title><style>{css}</style></head><body><a class="skip" href="#main">{esc(LABELS[lang]["read"])}</a><div class="page"><aside class="{cover_classes}"><div class="cover-in">{cover}</div></aside><main class="sheet" id="main">{body}</main></div><script>{SCRIPT}</script></body></html>'''
+
+
+def verdict_seal(grade, lang, date):
+    """Use the same verdict identity in package and repository reports."""
+    t = LABELS[lang]
+    return f"""<div class="seal-wrap"><div class="seal st-{TOKENS[grade]}" style="--seal:160px"><svg class="seal-ring" viewBox="0 0 160 160" aria-hidden="true"><circle cx="80" cy="80" r="76" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="80" cy="80" r="69" fill="none" stroke="currentColor"/></svg><div class="seal-text"><span class="seal-k">{t["verdict"]}</span><span class="seal-v">{t[grade]}</span><span class="seal-d">{esc(date)}</span></div></div><p class="seal-cap">{t["current"]}</p></div>"""
 
 
 def render(data, text, lang, available=("ko", "en"), digest="", raw=False):
@@ -325,7 +332,7 @@ def render(data, text, lang, available=("ko", "en"), digest="", raw=False):
         )
         + "</nav>"
     )
-    stamp = f"""<div class="seal-wrap"><div class="seal st-{TOKENS[grade]}" style="--seal:160px"><svg class="seal-ring" viewBox="0 0 160 160" aria-hidden="true"><circle cx="80" cy="80" r="76" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="80" cy="80" r="69" fill="none" stroke="currentColor"/></svg><div class="seal-text"><span class="seal-k">{t["verdict"]}</span><span class="seal-v">{t[grade]}</span><span class="seal-d">{esc(date)}</span></div></div><p class="seal-cap">{t["current"]}</p></div>"""
+    stamp = verdict_seal(grade, lang, date)
     nav = (
         '<nav class="arows">'
         + "".join(

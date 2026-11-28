@@ -102,5 +102,32 @@ def collect_review(
     return invoke("collect_review", system, name, version, repo, output_root, communication_path)
 
 
+@mcp.tool()
+def plan_repository(root: str, output_root: str = "reviews") -> str:
+    """Discover a local repository without network or project code execution.
+
+    Returns supported ecosystem projects, locked/resolved/declared identities, container imports, file hashes, exclusions and
+    unsupported files. Inspect identifiers locally before collect_repository.
+    output_root is excluded from discovery. No clone, install, build or credential loading.
+    """
+    return invoke("plan_repository", root, output_root)
+
+
+@mcp.tool()
+def collect_repository(root: str, output_root: str = "reviews", public_packages: bool = False, max_packages: int = 2000) -> str:
+    """Screen local dependency inventories and imported image scans; write sealed evidence.
+
+    First inspect plan_repository. Set public_packages only when the package identifiers
+    are known public, or supply a launch-selected policy with an identifier allowlist.
+    Valid container-only imports need no public flag and stay offline. The policy always applies.
+    Saves raw API evidence and per-project occurrences;
+    caps and unsupported formats are coverage gaps, never clean findings.
+    This screens locked/resolved/declared dependencies and supplied image findings.
+    Source code, maintenance, peer bindings and final-build coverage remain outside scope.
+    Render offline with cli.py repo-render <folder> --language ko|en|both.
+    """
+    return invoke("collect_repository", root, output_root, public_packages, max_packages)
+
+
 if __name__ == "__main__":
     mcp.run()

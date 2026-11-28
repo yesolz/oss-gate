@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.6.0
+
+- Add Java/Kotlin Maven resolved JSON trees and Gradle locks, including configuration provenance and exclusion of omitted verbose nodes.
+- Add Swift Package.resolved versions 1/2/3 with OSV SwiftURL queries, explicit source/revision gaps and unsupported license metadata.
+- Import native Trivy/Grype image reports offline, retain suppressed findings, bind Dockerfile/Compose references only by exact repository digest, and apply vulnerability/license policy with separate container counts and source hashes.
+
+- Add Go module/workspace declaration screening and Cargo lock/workspace analysis. Preserve Go build-list uncertainty, custom/local source gaps, aliases, target/development groups and ecosystem-qualified identities through queries, policy and bilingual reports.
+- Pin Tomli 2.5.0 for consistent bounded TOML parsing on Python 3.10 and later.
+
+- Add offline local repository discovery and Yarn Berry workspace dependency screening through CLI and MCP, with exact-version deduplication, project occurrences and explicit unsupported-format gaps.
+- Preserve repository input hashes and raw API evidence; generate scoped Korean/English dependency reports with vulnerability/license coverage and immutable evidence verification.
+- Share the package report's verdict seal and reading guide with repository reports, with accessible language navigation and a contents menu linked to generated sections.
+- Follow bounded OSV pagination for repository queries and apply identifier policy to single-query pagination requests. Require confirmed public identifiers or an explicit identifier allowlist before repository collection.
+- Add a bounded string-only PyYAML loader; keep patched/Git/local dependencies, unresolved peers, manifest mismatches, caps and unavailable evidence visible.
+
 ## 0.5.0
 
 - Preserve failed DeepWiki responses with tool-recorded capture metadata and index multiple topics without rewriting responses.

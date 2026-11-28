@@ -19,12 +19,13 @@ SERVICES = {
     "pypi.org": "pypi",
     "mcp.deepwiki.com": "deepwiki",
 }
-ECOSYSTEMS = {"npm", "pypi", "go", "maven", "cargo", "nuget", "rubygems"}
+ECOSYSTEMS = {"npm", "pypi", "go", "maven", "cargo", "nuget", "rubygems", "swift", "container"}
 OSV_SYSTEMS = {
     "PyPI": "pypi",
     "Go": "go",
     "Maven": "maven",
     "crates.io": "cargo",
+    "SwiftURL": "swift",
     "NuGet": "nuget",
     "RubyGems": "rubygems",
     "npm": "npm",
@@ -189,6 +190,8 @@ def identifier(system, name):
         name = name.lower()
     elif system == "repo":
         name = name.lower().removeprefix("github.com/")
+    elif system == "swift":
+        name = name.removeprefix("https://").removesuffix(".git")
     return f"{system}:{name}"
 
 
@@ -205,6 +208,10 @@ def check(service, identifiers=()):
             return fnmatchcase(value, identifier(system, name))
 
         for value in identifiers:
+            if value.startswith("swift:") and "allowed_repository_hosts" in network:
+                host = urlsplit("//" + value[6:].removeprefix("https://")).hostname
+                if host not in {hostname(h) for h in network["allowed_repository_hosts"]}:
+                    reason = "repository_host_not_allowed"
             if value.startswith("repo:") and "allowed_repository_hosts" in network:
                 host, _ = parse_repository(value[5:])
                 if host not in {hostname(h) for h in network["allowed_repository_hosts"]}:
@@ -266,7 +273,8 @@ def guard_request(url, body=None):
             host, path = parse_repository(project)
             names = [identifier("repo", f"{host}/{path}")]
     elif service == "osv" and body:
-        names = [identifier(q["package"]["ecosystem"], q["package"]["name"]) for q in body.get("queries", [])]
+        queries = [body] if parsed.path == "/v1/query" else body.get("queries", [])
+        names = [identifier(q["package"]["ecosystem"], q["package"]["name"]) for q in queries]
     elif service == "pypi":
         names = [identifier("pypi", unquote(parts[2]))]
     check(service, names)
